@@ -17,23 +17,32 @@
 			$("#loginform").submit();
 		});
 		$("#btnlogout").click(function() {
-
-		})
+			$.ajax({
+				type : "POST",
+				url : "/user/userout.do",
+				success : function(data) {
+					location.href = "/.do"
+				}
+			});
+		});
 	});
 </script>
 </head>
 <body>
-	<form id="loginform" name="loginform" enctype="multipart/form-data">
+	<form id="loginform" name="loginform">
 		<input type="hidden" name="csrf" value="${CSRF_TOKEN}" /> 아이디 <input
-			type="text" id="user_id" name=""user_id""> 비밀번호 <input
+			type="text" id="user_id" name="user_id"> 비밀번호 <input
 			type="password" id="user_pw" name="user_pw"> <input
 			type="button" id="userlogin" name="userlogin" value="로그인">
 	</form>
 	<c:choose>
-		<c:when test="${not empty sessionScope.userLoginInfo}">
-	이름 :  ${sessionScope.userLoginInfo.user_name}
-		<input type="button" id="btnlogout" name="btnlogout" value="로그아웃">
+		<c:when test="${empty sessionScope.user_id}">
+		로그인하자
 		</c:when>
+		<c:otherwise>
+			<div>${sessionScope.user_id }님환영합니다.</div>
+			<input type="button" id="btnlogout" name="btnlogout" value="로그아웃">
+		</c:otherwise>
 	</c:choose>
 </body>
 </html>

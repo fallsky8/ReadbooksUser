@@ -19,7 +19,7 @@
 </script>
 </head>
 <body>
-	<form id="joinform" name="joinform" enctype="multipart/form-data">
+	<form id="joinform" name="joinform">
 		<input type="hidden" name="csrf" value="${CSRF_TOKEN}" />
 		<table>
 			<tr>

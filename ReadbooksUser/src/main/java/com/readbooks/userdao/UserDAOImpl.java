@@ -1,7 +1,5 @@
 package com.readbooks.userdao;
 
-import java.util.HashMap;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,8 +20,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public HashMap<String, Object> selectOne(String user_id) {
-		return session.selectOne("userCheck", user_id);
+	public int userCheck(UserVO user) {
+		return (Integer) session.selectOne("userCheck", user);
 	}
-
 }

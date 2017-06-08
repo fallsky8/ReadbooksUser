@@ -7,6 +7,6 @@
 </head>
 <body>
 	회원가입완료!
-	<jsp:include page="/user/userlogin.do"></jsp:include>
+	<jsp:include page="/user/usercheck.do"></jsp:include>
 </body>
 </html>

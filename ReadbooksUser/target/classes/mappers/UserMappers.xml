@@ -3,16 +3,23 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.readbooks.userdao.UserDAO">
-	<insert id="userInsert" parameterType="uservo">
+	<insert id="userInsert" parameterType="user">
 		insert into
 		tbl_user(user_id,user_pw,user_address,user_name,user_email,user_phonenumber,user_pwquestion,user_pwanswer,user_serviceagreement,user_collectiveagreement,user_referralagreement,user_registerdate,user_point)
 		values(#{user_id},#{user_pw},#{user_address},#{user_name},#{user_email},#{user_phonenumber},#{user_pwquestion},#{user_pwanswer},#{user_serviceagreement},#{user_collectiveagreement},#{user_referralagreement},sysdate,0)
 	</insert>
-	<select id="userCheck" parameterType="String" resultType="java.util.HashMap">
+	<select id="userCheck" parameterType="user" resultType="int">
 		select
-		* from
+		nvl((
+		select
+		1 from
 		tbl_user
 		where
 		user_id=#{user_id}
+		and
+		user_pw=#{user_pw}
+		),0)as state
+		from
+		dual
 	</select>
 </mapper>
