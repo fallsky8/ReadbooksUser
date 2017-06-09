@@ -6,7 +6,8 @@
 <title>리드북스에 오신 걸 환영합니다.</title>
 </head>
 <body>
-	회원가입완료!
+	<a href="user/userjoin.do">회원가입</a>
+	<a href="book/bookinsert.do">책 등록</a>
 	<jsp:include page="/user/usercheck.do"></jsp:include>
 </body>
 </html>

@@ -23,4 +23,15 @@ public class UserDAOImpl implements UserDAO {
 	public int userCheck(UserVO user) {
 		return (Integer) session.selectOne("userCheck", user);
 	}
+
+	@Override
+	public UserVO userGet(UserVO user) {
+		return (UserVO) session.selectOne("userGet", user);
+	}
+
+	@Override
+	public int userOut(UserVO user) {
+		return session.update("userOut", user);
+	}
+
 }

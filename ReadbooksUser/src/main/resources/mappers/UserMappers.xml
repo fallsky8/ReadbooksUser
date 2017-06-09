@@ -18,8 +18,23 @@
 		user_id=#{user_id}
 		and
 		user_pw=#{user_pw}
+		and
+		user_outdate is null
 		),0)as state
 		from
 		dual
 	</select>
+	<select id="userGet" parameterType="String" resultType="user">
+		select *
+		from tbl_user
+		where user_id = #{user_id}
+	</select>
+	<update id="userOut" parameterType="user">
+		update
+		tbl_user set
+		user_outdate = sysdate,
+		user_outreason = #{user_outreason}
+		where user_id
+		= #{user_id}
+	</update>
 </mapper>

@@ -25,7 +25,20 @@ public class UserServiceImpl implements UserService {
 	public int userCheck(UserVO user) {
 		int result = 0;
 		result = userdao.userCheck(user);
-		System.out.println(result+"service");
+		return result;
+	}
+
+	@Override
+	public UserVO userGet(UserVO user) {
+		UserVO userget = null;
+		userget = userdao.userGet(user);
+		return userget;
+	}
+
+	@Override
+	public int userOut(UserVO user) {
+		int result = 0;
+		result = userdao.userOut(user);
 		return result;
 	}
 

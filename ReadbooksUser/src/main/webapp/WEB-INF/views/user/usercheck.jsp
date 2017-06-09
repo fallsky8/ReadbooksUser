@@ -19,11 +19,18 @@
 		$("#btnlogout").click(function() {
 			$.ajax({
 				type : "POST",
-				url : "/user/userout.do",
+				url : "/user/userlogout.do",
 				success : function(data) {
 					location.href = "/.do"
 				}
 			});
+		});
+		$("#btnout").click(function() {
+			$("#outform").attr({
+				"method" : "POST",
+				"action" : "/user/userOut.do"
+			});
+			$("#outform").submit();
 		});
 	});
 </script>
@@ -41,7 +48,20 @@
 		</c:when>
 		<c:otherwise>
 			<div>${sessionScope.user_id }님환영합니다.</div>
+			<br>
+			이름 : ${userlist.user_name }<br>
+			이메일 : ${userlist.user_email }<br>
+			주소 : ${userlist.user_address }<br>
+			전화번호 : ${userlist.user_phonenumber }<br>
 			<input type="button" id="btnlogout" name="btnlogout" value="로그아웃">
+			<form id="outform" name="outform">
+				<input type="hidden" id="user_id" name="user_id"
+					value="${userlist.user_id }"> <input type="text"
+					id="user_outreason" name="user_outreason"
+					placeholder="탈퇴 사유를 적어주세요."> <input type="button"
+					id="btnout" name="btnout" value="회원탈퇴"
+					onclick="<%session.invalidate();%>">
+			</form>
 		</c:otherwise>
 	</c:choose>
 </body>
