@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.readbooks.bookdao.BookDAO">
+	<select id="bestbookGet" parameterType="book" resultType="book">
+		select
+		* from tbl_book where book_name='아리랑'
+	</select>
+	<select id="newbookGet" parameterType="book" resultType="book">
+		select
+		*
+		from tbl_book where book_name='아리랑'
+	</select>
+	<select id="foreignbookGet" parameterType="book" resultType="book">
+		select
+		* from tbl_book where book_name='아리랑'
+	</select>
+	<select id="koreabookGet" parameterType="book" resultType="book">
+		select
+		* from tbl_book where book_name='아리랑'
+	</select>
+</mapper>

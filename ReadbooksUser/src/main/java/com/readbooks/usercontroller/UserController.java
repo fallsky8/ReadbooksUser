@@ -72,7 +72,7 @@ public class UserController {
 		userget = userService.userGet(user);
 		model.addAttribute("userlist", userget);
 		if (result == 1) {
-			url = "/home";
+			url = "user/usercheck";
 		}
 		return url;
 	}
