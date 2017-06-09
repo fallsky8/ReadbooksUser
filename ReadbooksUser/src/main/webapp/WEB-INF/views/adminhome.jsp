@@ -5,6 +5,8 @@
 <head>
 <title>Insert title here</title>
 </head>
-<body>관리자 홈입니다.
+<body>
+	관리자 홈입니다.
+	<a href="book/bookinsert.do">책 등록</a>
 </body>
 </html>

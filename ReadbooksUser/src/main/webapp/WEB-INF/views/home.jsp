@@ -7,7 +7,6 @@
 </head>
 <body>
 	<a href="user/userjoin.do">회원가입</a>
-	<a href="book/bookinsert.do">책 등록</a>
 	<jsp:include page="/user/usercheck.do"></jsp:include>
 </body>
 </html>

@@ -6,6 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<a href="book/bookinsert.do">책 등록</a>
 </body>
 </html>
