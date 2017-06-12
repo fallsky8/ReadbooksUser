@@ -1,6 +1,6 @@
 package com.readbooks.adminbookvo;
 
-public class adminBookVO {
+public class AdminBookVO {
 	private int book_number;
 	private String book_name;
 	private int book_quantity;
@@ -18,7 +18,7 @@ public class adminBookVO {
 	private String book_registerdate;
 	private String book_status;
 
-	public adminBookVO() {
+	public AdminBookVO() {
 		super();
 	}
 

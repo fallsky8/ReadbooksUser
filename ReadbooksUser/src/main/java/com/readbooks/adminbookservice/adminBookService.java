@@ -1,5 +1,8 @@
 package com.readbooks.adminbookservice;
 
-public class adminBookService {
+import com.readbooks.adminbookvo.AdminBookVO;
 
+public interface AdminbookService {
+
+	public int adminbookInsert(AdminBookVO AdminBookVO);
 }

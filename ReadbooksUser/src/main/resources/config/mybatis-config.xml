@@ -6,5 +6,6 @@
 	<typeAliases>
 		<typeAlias type="com.readbooks.uservo.UserVO" alias="user" />
 		<typeAlias type="com.readbooks.bookvo.BookVO" alias="book" />
+		<typeAlias type="com.readbooks.adminbookvo.AdminBookVO" alias="adminbook" />
 	</typeAliases>
 </configuration>

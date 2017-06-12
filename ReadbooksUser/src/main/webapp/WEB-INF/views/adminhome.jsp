@@ -7,6 +7,6 @@
 </head>
 <body>
 	관리자 홈입니다.
-	<a href="book/bookinsert.do">책 등록</a>
+	<a href="adminbook/adminbookinsert.do">책 등록</a>
 </body>
 </html>

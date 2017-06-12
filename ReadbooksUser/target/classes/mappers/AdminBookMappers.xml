@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.readbooks.adminbookdao.AdminBookDAO">
+	<insert id="adminbookinsert" parameterType="adminbook">
+		insert into
+		tbl_book(BOOK_NUMBER,BOOK_NAME,BOOK_QUANTITY,BOOK_PRICE,BOOK_COUNTRY,BOOK_STORY,BOOK_WRITER,BOOK_PUBLISHER,BOOK_BOOKINFO,BOOK_WRITERINFO,BOOK_PUBLISHERREVIEW,BOOK_IMAGE,BOOK_DISCOUNT,BOOK_REGISTERDATE,BOOK_STATUS)
+		values(#{book_number},#{book_name},#{book_quantity},#{book_price},#{book_country},#{book_story},#{book_writer},#{book_publisher},#{book_bookinfo},#{book_writerinfo},#{book_publisherreview},#{book_image},#{book_discount},sysdate,'판매중')
+	</insert>
+
+</mapper>
