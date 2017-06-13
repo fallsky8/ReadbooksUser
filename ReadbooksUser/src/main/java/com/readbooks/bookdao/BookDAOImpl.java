@@ -36,4 +36,9 @@ public class BookDAOImpl implements BookDAO {
 		return session.selectList("newbookGet", book);
 	}
 
+	@Override
+	public BookVO detailbookGet(BookVO book) {
+		return session.selectOne("detailbookGet",book);
+	}
+
 }

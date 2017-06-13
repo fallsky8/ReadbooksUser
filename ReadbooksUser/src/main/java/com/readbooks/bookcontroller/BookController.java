@@ -3,8 +3,6 @@ package com.readbooks.bookcontroller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +25,7 @@ public class BookController {
 		List<BookVO> bestbookget = new ArrayList<BookVO>();
 		bestbookget = bookService.bestbookGet(book);
 		model.addAttribute("bestbooklist", bestbookget);
-		return "book/bookbestlist";
+		return "book/bookbest";
 	}
 
 	@RequestMapping(value = "/foreignbookGet", method = RequestMethod.GET)
@@ -52,5 +50,13 @@ public class BookController {
 		newbookGet = bookService.newbookGet(book);
 		model.addAttribute("newbooklist", newbookGet);
 		return "book/booknewlist";
+	}
+
+	@RequestMapping(value = "/bookdetail", method = RequestMethod.GET)
+	public String bookdetailGet(@ModelAttribute BookVO book, Model model) {
+		BookVO detailbookGet = new BookVO();
+		detailbookGet = bookService.detailbookGet(book);
+		model.addAttribute("detailbook", detailbookGet);
+		return "book/bookdetail";
 	}
 }

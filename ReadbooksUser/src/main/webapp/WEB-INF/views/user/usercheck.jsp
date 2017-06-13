@@ -4,7 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<link rel="shortcut icon" href="/resources/image/favicon.ico">
+<link rel="stylesheet" href="/resources/css/main.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet" href="/resources/css/login.css" type="text/css"
+	media="screen" />
+<title>리드북스 로그인</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
@@ -21,7 +26,6 @@
 				type : "POST",
 				url : "/user/userlogout.do",
 				success : function(data) {
-					location.href = "/.do"
 				}
 			});
 		});
@@ -36,33 +40,64 @@
 </script>
 </head>
 <body>
-	<form id="loginform" name="loginform">
-		<input type="hidden" name="csrf" value="${CSRF_TOKEN}" /> 아이디 <input
-			type="text" id="user_id" name="user_id"> 비밀번호 <input
-			type="password" id="user_pw" name="user_pw"> <input
-			type="button" id="userlogin" name="userlogin" value="로그인">
-	</form>
-	<c:choose>
-		<c:when test="${empty sessionScope.user_id}">
-		로그인하자
-		</c:when>
-		<c:otherwise>
-			<div>${sessionScope.user_id }님환영합니다.</div>
-			<br>
-			이름 : ${userlist.user_name }<br>
-			이메일 : ${userlist.user_email }<br>
-			주소 : ${userlist.user_address }<br>
-			전화번호 : ${userlist.user_phonenumber }<br>
-			<input type="button" id="btnlogout" name="btnlogout" value="로그아웃">
-			<form id="outform" name="outform">
-				<input type="hidden" id="user_id" name="user_id"
-					value="${userlist.user_id }"> <input type="text"
-					id="user_outreason" name="user_outreason"
-					placeholder="탈퇴 사유를 적어주세요."> <input type="button"
-					id="btnout" name="btnout" value="회원탈퇴"
-					onclick="<%session.invalidate();%>">
-			</form>
-		</c:otherwise>
-	</c:choose>
+	<div id="wrap">
+		<jsp:include page="../header.jsp"></jsp:include>
+		<div>
+			<div id="member">
+				<form id="loginform" name="loginform">
+					<input type="hidden" name="csrf" value="${CSRF_TOKEN}" />
+					<table>
+						<tr>
+							<td><b>회원</b></td>
+						<tr>
+						<tr>
+							<td>아이디</td>
+							<td><input type="text" name="user_id" id="user_id"></td>
+						</tr>
+						<tr>
+							<td>비밀번호</td>
+							<td><input type="password" name="user_pw" id="user_pw"></td>
+							<td colspan="2"><input type="button" id="userlogin"
+								name="userlogin" value="로그인"></td>
+						</tr>
+					</table>
+				</form>
+				<table>
+					<tr>
+						<td><a href="">아이디찾기</a></td>
+						<td><a href="">비밀번호찾기</a></td>
+						<td><a href="">회원가입하기</a></td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="guest">
+				<form>
+
+					<table>
+						<tr>
+							<td><b>비회원</b></td>
+						<tr>
+							<td>주문번호</td>
+							<td><input type="text" name="" id=""></td>
+						</tr>
+						<tr>
+							<td>비밀번호</td>
+							<td><input type="password" name="" id=""></td>
+							<td colspan="2"><a href="">주문확인</a></td>
+						</tr>
+					</table>
+					<table>
+						<tr>
+							<td><a href="">주문번호찾기</a></td>
+							<td><a href="">비밀번호찾기</a></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+
+		<jsp:include page="../footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

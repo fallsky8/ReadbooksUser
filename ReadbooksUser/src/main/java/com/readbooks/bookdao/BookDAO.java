@@ -12,4 +12,6 @@ public interface BookDAO {
 	public List<BookVO> koreabookGet(BookVO book);
 
 	public List<BookVO> newbookGet(BookVO book);
+
+	public BookVO detailbookGet(BookVO book);
 }

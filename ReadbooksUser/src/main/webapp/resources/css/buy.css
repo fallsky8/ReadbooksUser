@@ -1,0 +1,48 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0 auto;
+	padding: 0 auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+#buywrap {
+	width: 70%;
+	margin-left: 14%;
+	margin-right: 14%;
+}
+
+#buycheck {
+	width: 100%;
+}
+
+#buycheck table {
+	width: 90%;
+	text-align: center;
+}
+
+#buyinfo {
+	width: 100%;
+	margin-top: 2%;
+}
+
+#buyinfo table {
+	width: 90%;
+}
+
+#buymethod {
+	width: 100%;
+	margin-top: 2%;
+}
+
+#buymethod table {
+	width: 90%;
+}
+
+#buybtn {
+	width: 20%;
+	clear: both;
+}

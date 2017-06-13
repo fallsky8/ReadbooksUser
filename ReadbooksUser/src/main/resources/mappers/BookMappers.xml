@@ -5,19 +5,22 @@
 <mapper namespace="com.readbooks.bookdao.BookDAO">
 	<select id="bestbookGet" parameterType="book" resultType="book">
 		select
-		* from tbl_book where book_name='아리랑'
+		* from tbl_book
 	</select>
 	<select id="newbookGet" parameterType="book" resultType="book">
 		select
 		*
-		from tbl_book where book_name='아리랑'
+		from tbl_book
 	</select>
 	<select id="foreignbookGet" parameterType="book" resultType="book">
 		select
-		* from tbl_book where book_name='아리랑'
+		* from tbl_book
 	</select>
 	<select id="koreabookGet" parameterType="book" resultType="book">
 		select
-		* from tbl_book where book_name='아리랑'
+		* from tbl_book
+	</select>
+	<select id="detailbookGet" parameterType="book" resultType="book">
+		select * from tbl_book where book_number=#{book_number}
 	</select>
 </mapper>

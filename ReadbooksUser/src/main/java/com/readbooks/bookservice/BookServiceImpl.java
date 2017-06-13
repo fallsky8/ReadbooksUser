@@ -47,4 +47,10 @@ public class BookServiceImpl implements BookService {
 
 	}
 
+	@Override
+	public BookVO detailbookGet(BookVO book) {
+		BookVO detailbookGet = null;
+		detailbookGet = bookdao.detailbookGet(book);
+		return detailbookGet;
+	}
 }

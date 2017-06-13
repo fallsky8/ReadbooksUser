@@ -10,7 +10,7 @@ public class BookVO {
 	private String book_writer;
 	private String book_publisher;
 	private String book_bookinfo;
-	private String book_writeinfo;
+	private String book_writerinfo;
 	private String book_publisherreview;
 	private String book_image;
 	private int book_discount;
@@ -93,12 +93,12 @@ public class BookVO {
 		this.book_bookinfo = book_bookinfo;
 	}
 
-	public String getBook_writeinfo() {
-		return book_writeinfo;
+	public String getBook_writerinfo() {
+		return book_writerinfo;
 	}
 
-	public void setBook_writeinfo(String book_writeinfo) {
-		this.book_writeinfo = book_writeinfo;
+	public void setBook_writerinfo(String book_writerinfo) {
+		this.book_writerinfo = book_writerinfo;
 	}
 
 	public String getBook_publisherreview() {

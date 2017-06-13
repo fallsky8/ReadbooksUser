@@ -1,0 +1,56 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0 auto;
+	padding: 0 auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+#best {
+	margin-left: 14%;
+}
+
+#bestmenu {
+	float: left;
+}
+
+#bestmenu ul {
+	border: 1px solid #e1e1e1;
+	list-style: none;
+}
+
+#bestmenu ul li {
+	position: relative;
+}
+
+#bestform {
+	float: left;
+	margin-left: 5%;
+}
+
+#besttitle {
+	
+}
+
+#bestcontents {
+	
+}
+
+#bestcontents ul {
+	list-style: none;
+}
+
+#bestcontents ul li {
+	position: relative;
+}
+
+#bestinfo {
+	float: left;
+}
+
+#bestbtn {
+	float: left;
+}

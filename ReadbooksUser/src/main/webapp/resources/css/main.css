@@ -1,0 +1,188 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0 auto;
+	padding: 0 auto;
+}
+
+ul {
+	list-style: none;
+}
+
+#wrap {
+	width: 100%;
+	height: 1000px;
+}
+
+#header {
+	width: 100%;
+	height: 200px;
+}
+
+#loginjoin ul {
+	float: right;
+	margin-right: 16.5%;
+}
+
+#loginjoin ul li {
+	float: left;
+}
+
+#headerlogo {
+	width: 20%;
+	height: 30px;
+	float: left;
+	margin-left: 5%;
+	margin-top: 2%;
+}
+
+#logoimg1 {
+	width: auto;
+	height: 50px;
+}
+
+#search {
+	width: 50%;
+	height: 40px;
+	border: 1px solid #a9d6d3;
+	float: left;
+}
+
+#search #searchbox {
+	float: left;
+	width: 10%;
+	height: 40px;
+	margin-left: 2%;
+	margin-top: 1%;
+	cursor: pointer;
+}
+
+#sch_keyword {
+	float: left;
+	width: 85%;
+	height: 30px;
+	font-size: 16px;
+	font-weight: bold;
+	border: 0;
+	margin-top: 0.8%;
+}
+
+#mainicon ul li {
+	float: left;
+}
+
+#mainmenu {
+	width: 100%;
+	height: 40px;
+	float: left;
+	margin-top: 3%;
+}
+
+#mainmenu>ul {
+	width: 100%;
+	height: 2%;
+}
+
+#mainmenu li {
+	float: left;
+	position: relative;
+}
+
+#mainmenu a {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	color: #000000;
+	padding: 3%;
+}
+
+#mainmenu li ul {
+	position: absolute;
+	display: none;
+	font-size: 0.8em;
+}
+
+#mainmenu li:hover ul {
+	display: block;
+}
+
+#mainmenu li ul li {
+	background-color: #ffffff;
+	width: 100%;
+	border-bottom: 1px solid #9ee39b;
+	border-left: 1px solid #9ee39b;
+	border-right: 1px solid #9ee39b;
+	border-bottom: 1px solid #9ee39b;
+	width: 100%;
+	border-bottom: 1px solid #9ee39b;
+	border-left: 1px solid #9ee39b;
+	border-right: 1px solid #9ee39b;
+}
+
+#mainmenu li ul li:hover {
+	background-color: #e3fc03;
+}
+
+#footer {
+	width: 100%;
+	height: 260px;
+	clear: both;
+}
+
+#footermenu {
+	width: 100%;
+	height: 40px;
+	float: left;
+	margin-top: 3%;
+}
+
+#footermenu>ul {
+	width: 100%;
+	height: 2%;
+}
+
+#footermenu li {
+	float: left;
+	position: relative;
+}
+
+#footermenu #footercompany a {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	color: #000000;
+	padding-right: 3%;
+}
+
+#footermenu #footericon li {
+	display: block;
+	float: left;
+}
+
+#footerinfo #footerlogobox {
+	width: 20%;
+	height: 50px;
+	float: left;
+}
+
+#footerinfo #logoimg2 {
+	width: auto;
+	height: 40px;
+	margin-left: 20%;
+	margin-top: 10%;
+}
+
+#footerinfo ul {
+	float: left;
+	font-size: 0.8em;
+}
+
+#su {
+	width: 100%;
+	height: 400px;
+	clear: both;
+}
+
+#logoimg3 {
+	width: 100%;
+}

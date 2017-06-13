@@ -72,9 +72,9 @@ public class UserController {
 		userget = userService.userGet(user);
 		model.addAttribute("userlist", userget);
 		if (result == 1) {
-			url = "user/usercheck";
+			url = "/book/bestbookGet.do";
 		}
-		return url;
+		return "redirect:" + url;
 	}
 
 	@RequestMapping(value = "/userget", method = RequestMethod.POST)
