@@ -73,7 +73,6 @@
 
 			<div id="guest">
 				<form>
-
 					<table>
 						<tr>
 							<td><b>비회원</b></td>
