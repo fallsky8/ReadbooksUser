@@ -42,24 +42,28 @@ ul {
 }
 
 #search {
-	width: 50%;
+	width: 52%;
 	height: 40px;
 	border: 1px solid #a9d6d3;
 	float: left;
 }
 
-#search #searchbox {
+#searchbox {
 	float: left;
-	width: 10%;
+	width: 15%;
 	height: 40px;
 	margin-left: 2%;
 	margin-top: 1%;
-	cursor: pointer;
+}
+
+#searchbox select {
+	height: 30px;
+	border: none;
 }
 
 #sch_keyword {
 	float: left;
-	width: 85%;
+	width: 75%;
 	height: 30px;
 	font-size: 16px;
 	font-weight: bold;
@@ -123,6 +127,28 @@ ul {
 	background-color: #e3fc03;
 }
 
+#contents {
+	width: 100%;
+}
+
+#leftside {
+	float: left;
+	width: 11%;
+	background-color: blue;
+}
+
+#center {
+	float: left;
+	width: 75%;
+	margin-left: 1.5%;
+}
+
+#rightside {
+	float: right;
+	width: 11%;
+	background-color: green;
+}
+
 #footer {
 	width: 100%;
 	height: 260px;
@@ -132,49 +158,67 @@ ul {
 #footermenu {
 	width: 100%;
 	height: 40px;
-	float: left;
 	margin-top: 3%;
 }
 
-#footermenu>ul {
-	width: 100%;
-	height: 2%;
-}
-
-#footermenu li {
+#footercompany {
+	width: 70%;
 	float: left;
-	position: relative;
 }
 
-#footermenu #footercompany a {
+#footercompany li {
+	float: left;
+}
+
+#footercompany a {
 	display: block;
 	text-align: center;
 	text-decoration: none;
-	color: #000000;
 	padding-right: 3%;
 }
 
-#footermenu #footericon li {
+#footericon {
+	width: 20%;
+	float: left;
+}
+
+#footericon li {
 	display: block;
 	float: left;
 }
 
-#footerinfo #footerlogobox {
+#footerinfo {
+	width: 100%;
+	background-color: blue;
+}
+
+#footerlogobox {
 	width: 20%;
 	height: 50px;
 	float: left;
 }
 
-#footerinfo #logoimg2 {
+#logoimg2 {
 	width: auto;
 	height: 40px;
 	margin-left: 20%;
 	margin-top: 10%;
 }
 
-#footerinfo ul {
+#footercontents {
+	width: 80%;
 	float: left;
 	font-size: 0.8em;
+}
+
+#footercontents1 {
+	float: left;
+	width: 45%;
+}
+
+#footercontents2 {
+	float: left;
+	width: 45%;
 }
 
 #su {

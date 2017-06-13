@@ -30,10 +30,14 @@
 			<img id="logoimg1" alt="로고" src="/resources/image/readbooks-logo.png">
 		</div>
 		<div id="search">
-			<form>
-				<div id="searchbox">검색 v</div>
-				<input type="text" title="검색" id="sch_keyword" />
-			</form>
+			<div id="searchbox">
+				<select id="" name="">
+					<option value="">검색</option>
+					<option value="책제목">책제목</option>
+					<option value="검색하자">검색하자</option>
+				</select>
+			</div>
+			<input type="text" title="검색" id="sch_keyword" />
 		</div>
 		<div id="mainicon">
 			<ul>
