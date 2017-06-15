@@ -15,7 +15,7 @@ import com.readbooks.userservice.UserService;
 import com.readbooks.uservo.UserVO;
 
 @Controller
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/")
 public class UserController {
 
 	@Autowired
@@ -72,7 +72,7 @@ public class UserController {
 		userget = userService.userGet(user);
 		model.addAttribute("userlist", userget);
 		if (result == 1) {
-			url = "/book/bestbookGet.do";
+			url = "/home.do";
 		}
 		return "redirect:" + url;
 	}

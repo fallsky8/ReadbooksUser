@@ -10,15 +10,15 @@
 	<select id="newbookGet" parameterType="book" resultType="book">
 		select
 		*
-		from tbl_book
+		from tbl_book where trunc(sysdate,'mm') = trunc(book_opening,'mm')
 	</select>
 	<select id="foreignbookGet" parameterType="book" resultType="book">
 		select
-		* from tbl_book
+		* from tbl_book where book_country='해외'
 	</select>
 	<select id="koreabookGet" parameterType="book" resultType="book">
 		select
-		* from tbl_book
+		* from tbl_book where book_country='국내'
 	</select>
 	<select id="detailbookGet" parameterType="book" resultType="book">
 		select * from tbl_book where book_number=#{book_number}

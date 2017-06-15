@@ -14,7 +14,7 @@ import com.readbooks.bookservice.BookService;
 import com.readbooks.bookvo.BookVO;
 
 @Controller
-@RequestMapping(value = "/book")
+@RequestMapping(value = "/")
 public class BookController {
 
 	@Autowired
@@ -25,7 +25,7 @@ public class BookController {
 		List<BookVO> bestbookget = new ArrayList<BookVO>();
 		bestbookget = bookService.bestbookGet(book);
 		model.addAttribute("bestbooklist", bestbookget);
-		return "book/bookbest";
+		return "book/bookbestlist";
 	}
 
 	@RequestMapping(value = "/foreignbookGet", method = RequestMethod.GET)

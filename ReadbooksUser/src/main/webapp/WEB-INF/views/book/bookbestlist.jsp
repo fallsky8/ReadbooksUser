@@ -19,9 +19,52 @@
 			$("#book_number").val(b_num);
 			$("#booknumform").attr({
 				"method" : "GET",
-				"action" : "/book/bookdetail.do"
+				"action" : "/bookdetail.do"
 			});
 			$("#booknumform").submit();
+		});
+
+		$(".cartlist").click(function() {
+			var c_num = $(this).parents("tr").attr("data-num");
+			var c_number = $("#" + c_num).val();
+			var cart_num = $("#" + c_num).val();
+			$("#cart_buyquantity").val(cart_num);
+			var b_num = $(this).parents("tr").attr("data-num");
+			$("#book_number").val(b_num);
+			$.ajax({
+				url : "/cartInsert.do",
+				type : "GET",
+				data : $("#booknumform").serialize(),
+				success : function() {
+					var context = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
+					if (context == true) {
+						location.href = "/cartlistGet.do";
+					} else {
+						location.reload(true);
+					}
+				}
+			})
+		});
+
+		$('.bt_up').click(function() {
+			var n = $('.bt_up').index(this);
+			var num = $(".num:eq(" + n + ")").val();
+			num = $(".num:eq(" + n + ")").val(num * 1 + 1);
+			if (num.val() <= 0 || num.val() >= 51) {
+				alert("1이상 50이하 입력해주세요.")
+				num.val(1);
+			}
+
+		});
+		$('.bt_down').click(function() {
+			var n = $('.bt_down').index(this);
+			var num = $(".num:eq(" + n + ")").val();
+			num = $(".num:eq(" + n + ")").val(num * 1 - 1);
+			if (num.val() <= 0 || num.val() >= 51) {
+				alert("1이상 50이하 입력해주세요.")
+				num.val(1);
+			}
+
 		});
 	});
 </script>
@@ -38,7 +81,11 @@
 					</div>
 					<div id="bestcontents">
 						<form id="booknumform">
-							<input type="hidden" id="book_number" name="book_number">
+							<input type="hidden" id="user_id" name="user_id"
+								value="${sessionScope.user_id }"> <input type="hidden"
+								id="book_number" name="book_number"> <input
+								type="hidden" id="cart_buyquantity" id="cart_buyquantity"
+								name="cart_buyquantity">
 						</form>
 						<c:choose>
 							<c:when test="${not empty bestbooklist}">
@@ -53,9 +100,18 @@
 											<td>${bestbook.book_name }</td>
 											<td>${bestbook.book_writer }|${bestbook.book_publisher}</td>
 											<td>${bestbook.book_price}</td>
+											<td><b>수량</b><input type="text" name="num" class="num"
+												id="${bestbook.book_number}" size="1" readonly="readonly"
+												value="1" /> <img src="http://placehold.it/10x10"
+												width="10" height="10" class="bt_up" /> <img
+												src="http://placehold.it/10x10" width="10" height="10"
+												class="bt_down" /></td>
 											<td><input type="button" class="btndetail" value="상세보기"></td>
-											<td><input type="button" class="cartlist" value="장바구니">
-												<a href="">찜하기</a></td>
+											<td><input type="button" class="cartlist"
+												value="장바구니에 담기"></td>
+											<td><input type="button" class="mylist"
+												value="마이리스트에 추가"></td>
+
 										</tr>
 									</table>
 								</c:forEach>
@@ -64,7 +120,6 @@
 			등록된 책이 존재하지 않습니다.
 		</c:otherwise>
 						</c:choose>
-
 					</div>
 				</div>
 			</div>

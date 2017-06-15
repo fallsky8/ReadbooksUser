@@ -4,8 +4,6 @@
 <html>
 <head>
 <link rel="shortcut icon" href="resources/image/favicon.ico">
-<link rel="stylesheet" href="resources/css/main.css" type="text/css"
-	media="screen" />
 <link rel="stylesheet" href="resources/css/leftside.css" type="text/css"
 	media="screen" />
 <title>Insert title here</title>

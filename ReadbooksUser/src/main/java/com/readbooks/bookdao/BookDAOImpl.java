@@ -38,7 +38,7 @@ public class BookDAOImpl implements BookDAO {
 
 	@Override
 	public BookVO detailbookGet(BookVO book) {
-		return session.selectOne("detailbookGet",book);
+		return session.selectOne("detailbookGet", book);
 	}
 
 }

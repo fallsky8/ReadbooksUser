@@ -4,4 +4,4 @@
 <%
 	session.invalidate();
 %>
-<c:redirect url="/book/bestbookGet.do"></c:redirect>
+<c:redirect url="/home.do"></c:redirect>

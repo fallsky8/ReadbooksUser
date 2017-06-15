@@ -53,4 +53,5 @@ public class BookServiceImpl implements BookService {
 		detailbookGet = bookdao.detailbookGet(book);
 		return detailbookGet;
 	}
+
 }

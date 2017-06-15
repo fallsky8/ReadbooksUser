@@ -13,15 +13,15 @@
 			<c:when test="${empty sessionScope.user_id }">
 				<div id="loginjoin">
 					<ul>
-						<li><a href="../user/usercheck.do">로그인</a></li>
-						<li><a href="../user/userjoin.do">회원가입</a></li>
+						<li><a href="/usercheck.do">로그인</a></li>
+						<li><a href="/userjoin.do">회원가입</a></li>
 					</ul>
 				</div>
 			</c:when>
 			<c:otherwise>
 				<div id="loginjoin">
 					<ul>
-						<li><a href="../user/userlogout.do">로그아웃</a></li>
+						<li><a href="/userlogout.do">로그아웃</a></li>
 					</ul>
 				</div>
 			</c:otherwise>
@@ -47,19 +47,19 @@
 		</div>
 		<div id="mainmenu">
 			<ul>
-				<li><a href="/.do">홈</a></li>
-				<li id="hover"><a href="book/koreabookGet.do">국내소설</a>
+				<li><a href="/home.do">홈</a></li>
+				<li id="hover"><a href="/koreabookGet.do">국내소설</a>
 					<ul>
 						<li><a href="">국내장편</a>
 						<li><a href="">국내단편</a>
 					</ul></li>
-				<li id="hover"><a href="book/foreignbookGet.do">해외소설</a>
+				<li id="hover"><a href="/foreignbookGet.do">해외소설</a>
 					<ul>
 						<li><a href="">해외장편</a>
 						<li><a href="">해외단편</a>
 					</ul></li>
-				<li><a href="book/bestbookGet.do">베스트</a></li>
-				<li><a href="book/newbookGet.do">신간</a></li>
+				<li><a href="/bestbookGet.do">베스트</a></li>
+				<li><a href="/newbookGet.do">신간</a></li>
 				<li><a href="">리뷰게시판</a></li>
 				<li id="hover"><a href="">마이페이지</a>
 					<ul>

@@ -16,7 +16,7 @@
 		$("#userjoin").click(function() {
 			$("#joinform").attr({
 				"method" : "POST",
-				"action" : "/user/userInsert.do"
+				"action" : "/userInsert.do"
 			});
 			$("#joinform").submit();
 		});

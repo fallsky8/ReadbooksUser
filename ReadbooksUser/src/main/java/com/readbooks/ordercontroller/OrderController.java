@@ -14,7 +14,7 @@ import com.readbooks.orderservice.OrderService;
 import com.readbooks.ordervo.OrderVO;
 
 @Controller
-@RequestMapping(value = "/order")
+@RequestMapping(value = "/")
 public class OrderController {
 
 	@Autowired

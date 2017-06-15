@@ -16,6 +16,7 @@ public class BookVO {
 	private int book_discount;
 	private String book_registerdate;
 	private String book_status;
+	private String book_opening;
 
 	public BookVO() {
 		super();
@@ -139,6 +140,14 @@ public class BookVO {
 
 	public void setBook_status(String book_status) {
 		this.book_status = book_status;
+	}
+
+	public String getBook_opening() {
+		return book_opening;
+	}
+
+	public void setBook_opening(String book_opening) {
+		this.book_opening = book_opening;
 	}
 
 }

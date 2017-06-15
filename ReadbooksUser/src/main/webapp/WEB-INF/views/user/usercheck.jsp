@@ -17,14 +17,14 @@
 		$("#userlogin").click(function() {
 			$("#loginform").attr({
 				"method" : "POST",
-				"action" : "/user/userlogin.do"
+				"action" : "/userlogin.do"
 			});
 			$("#loginform").submit();
 		});
 		$("#btnlogout").click(function() {
 			$.ajax({
 				type : "POST",
-				url : "/user/userlogout.do",
+				url : "/userlogout.do",
 				success : function(data) {
 				}
 			});
@@ -32,7 +32,7 @@
 		$("#btnout").click(function() {
 			$("#outform").attr({
 				"method" : "POST",
-				"action" : "/user/userOut.do"
+				"action" : "/userOut.do"
 			});
 			$("#outform").submit();
 		});

@@ -14,4 +14,5 @@ public interface BookService {
 	public List<BookVO> newbookGet(BookVO book);
 
 	public BookVO detailbookGet(BookVO book);
+
 }

@@ -7,5 +7,7 @@
 		<typeAlias type="com.readbooks.uservo.UserVO" alias="user" />
 		<typeAlias type="com.readbooks.bookvo.BookVO" alias="book" />
 		<typeAlias type="com.readbooks.ordervo.OrderVO" alias="order" />
+		<typeAlias type="com.readbooks.cartvo.CartVO" alias="cart" />
+		<typeAlias type="com.readbooks.mylistvo.MyListVO" alias="mylist" />
 	</typeAliases>
 </configuration>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.readbooks.cartdao.CartDAO">
+	<insert id="cartInsert" parameterType="cart">
+		insert into
+		tbl_cart(cart_number,user_id,book_number,cart_buyquantity)
+		values(cart_number_seq.nextval,#{user_id},#{book_number},#{cart_buyquantity})
+	</insert>
+
+	<select id="cartlistGet" parameterType="cart" resultType="cart">
+		select
+		* from tbl_cart where user_id = #{user_id}
+	</select>
+</mapper>

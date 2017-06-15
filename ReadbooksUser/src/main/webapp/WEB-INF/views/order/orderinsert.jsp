@@ -17,7 +17,7 @@
 		$("#btnpayment").click(function() {
 			$("#orderpaymentform").attr({
 				"method" : "POST",
-				"action" : "/order/orderInsert.do"
+				"action" : "/orderInsert.do"
 			});
 			$("#orderpaymentform").submit();
 		});
@@ -32,11 +32,11 @@
 			<jsp:include page="../leftside.jsp"></jsp:include>
 
 
-			<c:choose>
-				<c:when test="${!empty sessionScope.user_id } ">
-
-					<div id="buywrap">
+			<div id="buywrap">
+				<c:choose>
+					<c:when test="${sessionScope.user_id != null }">
 						<div id="buycheck">
+							<h1>회원 주문 페이지</h1>
 							<h3>1.주문상품확인</h3>
 							<form>
 								<table border="1">
@@ -139,14 +139,12 @@
 						<div id="buybtn">
 							<input type="button" id="btnpayment" value="주문">
 						</div>
-					</div>
+					</c:when>
+					<c:otherwise>
 
-				</c:when>
-				<c:otherwise>
-
-				</c:otherwise>
-			</c:choose>
-
+					</c:otherwise>
+				</c:choose>
+			</div>
 
 
 			<jsp:include page="../rightside.jsp"></jsp:include>
