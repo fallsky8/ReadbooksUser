@@ -12,9 +12,10 @@
 </head>
 <body>
 	<div id="wrap">
+		<input type="hidden" id="user_id" name="user_id"
+			value="${sessionScope.user_id }">
 		<jsp:include page="../header.jsp"></jsp:include>
 		<div id="contents">
-			<jsp:include page="../leftside.jsp"></jsp:include>
 			<div id="cartwrap">
 				<div id="cartcheck">
 					<table>
@@ -27,7 +28,6 @@
 							<th>합계</th>
 							<th>삭제</th>
 							<th>주문비밀번호</th>
-							<th>${sessionScope.user_id }</th>
 						</tr>
 						<tr>
 							<td><input type="checkbox"></td>
@@ -66,15 +66,11 @@
 						</tr>
 					</table>
 				</div>
-
-
-
 				<div id="cartbtn">
 					<button>쇼핑계속하기</button>
 					<button>주문하기</button>
 				</div>
 			</div>
-			<jsp:include page="../rightside.jsp"></jsp:include>
 		</div>
 		<jsp:include page="../footer.jsp"></jsp:include>
 	</div>

@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.readbooks.cartservice.CartService;
 import com.readbooks.cartvo.CartVO;
@@ -30,15 +31,15 @@ public class CartController {
 		session.setAttribute("user_id", user.getUser_id());
 		result = cartService.cartInsert(cart);
 		if (result == 1) {
-			url = "cart/cartlist";
+			url = "/cartlistGet.do";
 		}
 		return url;
 	}
 
+	@ResponseBody
 	@RequestMapping(value = "/cartlistGet", method = RequestMethod.GET)
-	public String cartlistGet(@ModelAttribute CartVO cart, @ModelAttribute UserVO user, HttpSession session,
-			Model model) {
-		session.setAttribute("user_id", user.getUser_id());
+	public String cartlistGet(@ModelAttribute CartVO cart, HttpSession session, Model model) {
+		session.setAttribute("user_id", cart.getUser_id());
 		List<CartVO> cartlistGet = new ArrayList<CartVO>();
 		cartlistGet = cartService.cartlistGet(cart);
 		model.addAttribute("cartlist", cartlistGet);

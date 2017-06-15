@@ -14,7 +14,6 @@
 	<div id="wrap">
 		<jsp:include page="../header.jsp"></jsp:include>
 		<div id="contents">
-			<jsp:include page="../leftside.jsp"></jsp:include>
 
 			<div id="buycomwrap">
 				<div id="buycomcheck">
@@ -62,7 +61,6 @@
 				</div>
 			</div>
 
-			<jsp:include page="../rightside.jsp"></jsp:include>
 		</div>
 		<jsp:include page="../footer.jsp"></jsp:include>
 	</div>

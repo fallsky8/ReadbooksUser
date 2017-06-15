@@ -16,6 +16,6 @@ public class MyListDAOImpl implements MyListDAO {
 
 	@Override
 	public int cartInsert(MyListVO mylist) {
-		return session.insert("mylistInsert", mylist);
+		return session.insert("myListInsert", mylist);
 	}
 }

@@ -36,9 +36,27 @@
 				type : "GET",
 				data : $("#booknumform").serialize(),
 				success : function() {
-					var context = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
+				}
+			})
+
+			var context = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
+			if (context == true) {
+				location.href = "/cartlistGet.do";
+			} else {
+				location.reload(true);
+			}
+		});
+		$(".mylist").click(function() {
+			var b_num = $(this).parents("tr").attr("data-num");
+			$("#book_number").val(b_num);
+			$.ajax({
+				url : "/mylistInsert.do",
+				type : "GET",
+				data : $("#booknumform").serialize(),
+				success : function() {
+					var context = confirm("마이리스트에 추가되었습니다. 마이리스트로 이동하시겠습니까?");
 					if (context == true) {
-						location.href = "/cartlistGet.do";
+						location.href = "/mylistGet.do";
 					} else {
 						location.reload(true);
 					}
@@ -73,7 +91,6 @@
 	<div id="wrap">
 		<jsp:include page="../header.jsp"></jsp:include>
 		<div id="contents">
-			<jsp:include page="../leftside.jsp"></jsp:include>
 			<div id="best">
 				<div id="bestform">
 					<div id="besttitle">
@@ -111,7 +128,6 @@
 												value="장바구니에 담기"></td>
 											<td><input type="button" class="mylist"
 												value="마이리스트에 추가"></td>
-
 										</tr>
 									</table>
 								</c:forEach>
@@ -123,7 +139,6 @@
 					</div>
 				</div>
 			</div>
-			<jsp:include page="../rightside.jsp"></jsp:include>
 		</div>
 		<jsp:include page="../footer.jsp"></jsp:include>
 	</div>

@@ -27,7 +27,6 @@
 	<div id="wrap">
 		<jsp:include page="../header.jsp"></jsp:include>
 		<div id="contents">
-			<jsp:include page="../leftside.jsp"></jsp:include>
 			<div>
 				<form id="joinform" name="joinform">
 					<input type="hidden" name="csrf" value="${CSRF_TOKEN}" />
@@ -86,7 +85,6 @@
 					</table>
 				</form>
 			</div>
-			<jsp:include page="../rightside.jsp"></jsp:include>
 		</div>
 		<jsp:include page="../footer.jsp"></jsp:include>
 	</div>

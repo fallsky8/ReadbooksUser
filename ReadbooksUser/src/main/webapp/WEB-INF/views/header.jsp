@@ -7,72 +7,94 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="header">
-		<input type="hidden" name="csrf" value="${CSRF_TOKEN}" />
-		<c:choose>
-			<c:when test="${empty sessionScope.user_id }">
-				<div id="loginjoin">
+	<input type="hidden" name="csrf" value="${CSRF_TOKEN}" />
+	<c:choose>
+		<c:when test="${empty sessionScope.user_id }">
+			<div class="loginjoin">
+				<nav id="primary_nav_wrap">
 					<ul>
 						<li><a href="/usercheck.do">로그인</a></li>
 						<li><a href="/userjoin.do">회원가입</a></li>
 					</ul>
-				</div>
-			</c:when>
-			<c:otherwise>
-				<div id="loginjoin">
+				</nav>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div class="loginjoin">
+				<nav id="primary_nav_wrap">
 					<ul>
 						<li><a href="/userlogout.do">로그아웃</a></li>
 					</ul>
-				</div>
-			</c:otherwise>
-		</c:choose>
-		<div id="headerlogo">
-			<img id="logoimg1" alt="로고" src="/resources/image/readbooks-logo.png">
-		</div>
-		<div id="search">
-			<div id="searchbox">
-				<select id="" name="">
-					<option value="">검색</option>
-					<option value="책제목">책제목</option>
-					<option value="검색하자">검색하자</option>
-				</select>
+				</nav>
 			</div>
-			<input type="text" title="검색" id="sch_keyword" />
-		</div>
-		<div id="mainicon">
-			<ul>
-				<li><a><img alt="검색" src="/resources/image/search.png"></a></li>
-				<li><a><img alt="장바구니" src="/resources/image/cart.png"></a></li>
-			</ul>
-		</div>
-		<div id="mainmenu">
-			<ul>
-				<li><a href="/home.do">홈</a></li>
-				<li id="hover"><a href="/koreabookGet.do">국내소설</a>
-					<ul>
-						<li><a href="">국내장편</a>
-						<li><a href="">국내단편</a>
-					</ul></li>
-				<li id="hover"><a href="/foreignbookGet.do">해외소설</a>
-					<ul>
-						<li><a href="">해외장편</a>
-						<li><a href="">해외단편</a>
-					</ul></li>
-				<li><a href="/bestbookGet.do">베스트</a></li>
-				<li><a href="/newbookGet.do">신간</a></li>
-				<li><a href="">리뷰게시판</a></li>
-				<li id="hover"><a href="">마이페이지</a>
-					<ul>
-						<li><a href="">내정보보기</a>
-						<li><a href="">나의주문내역</a>
-					</ul></li>
-				<li id="hover"><a href="">고객센터</a>
-					<ul>
-						<li><a href="">FAQ</a>
-						<li><a href="">문의하기</a>
-					</ul></li>
-			</ul>
-		</div>
+		</c:otherwise>
+	</c:choose>
+	<div class="logoimg">
+		<img src="/resources/image/readbooks-logo.png" width="240" height="60">
 	</div>
+	<div class="searchbar">
+		<div class="searchcategory">
+			<select>
+				<option value="책제목" selected="selected">책제목</option>
+			</select>
+		</div>
+		<input type="text" />
+	</div>
+	<div class="searchcart">
+		<ul>
+			<li><a><img alt="검색"
+					src="/resources/image/magnifying-glass.png" height="28" width="28"></a></li>
+			<li><a><img alt="장바구니"
+					src="/resources/image/shopping-cart.png" height="28" width="28"></a></li>
+		</ul>
+	</div>
+	<nav id="primary_nav_wrap">
+		<ul>
+			<li class="current-menu-item"><a href="#">Home</a></li>
+			<li><a href="#">국내</a>
+				<ul>
+					<li><a href="#">Sub Menu 1</a></li>
+					<li><a href="#">Sub Menu 2</a></li>
+					<li><a href="#">Sub Menu 3</a></li>
+					<li><a href="#">Sub Menu 4</a>
+						<ul>
+							<li><a href="#">Deep Menu 1</a>
+								<ul>
+									<li><a href="#">Sub Deep 1</a></li>
+									<li><a href="#">Sub Deep 2</a></li>
+									<li><a href="#">Sub Deep 3</a></li>
+									<li><a href="#">Sub Deep 4</a></li>
+								</ul></li>
+							<li><a href="#">Deep Menu 2</a></li>
+						</ul></li>
+					<li><a href="#">Sub Menu 5</a></li>
+				</ul></li>
+			<li><a href="#">해외</a>
+				<ul>
+					<li><a href="#">Sub Menu 1</a></li>
+					<li><a href="#">Sub Menu 2</a></li>
+					<li><a href="#">Sub Menu 3</a></li>
+				</ul></li>
+			<li><a href="/bestbookGet.do">베스트</a>
+				<ul>
+					<li class="dir"><a href="#">Sub Menu 1</a></li>
+					<li class="dir"><a href="#">Sub Menu 2 THIS IS SO LONG IT
+							MIGHT CAUSE AN ISSEUE BUT MAYBE NOT?</a>
+						<ul>
+							<li><a href="#">Category 1</a></li>
+							<li><a href="#">Category 2</a></li>
+							<li><a href="#">Category 3</a></li>
+							<li><a href="#">Category 4</a></li>
+							<li><a href="#">Category 5</a></li>
+						</ul></li>
+					<li><a href="#">Sub Menu 3</a></li>
+					<li><a href="#">Sub Menu 4</a></li>
+					<li><a href="#">Sub Menu 5</a></li>
+				</ul></li>
+			<li><a href="#">신간</a></li>
+			<li><a href="#">마이페이지</a></li>
+			<li><a href="#">고객센터</a></li>
+		</ul>
+	</nav>
 </body>
 </html>
