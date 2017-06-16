@@ -5,7 +5,7 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-<link rel="stylesheet" href="/resources/css/main.css" type="text/css"
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 <title>리드북스신간</title>
 <script type="text/javascript"
@@ -13,6 +13,10 @@
 <script type="text/javascript">
 	$(function() {
 		$(".btndetail").click(function() {
+			var c_num = $(this).parents("tr").attr("data-num");
+			var c_number = $("#" + c_num).val();
+			var cart_num = $("#" + c_num).val();
+			$("#cart_buyquantity").val(cart_num);
 			var b_num = $(this).parents("tr").attr("data-num");
 			$("#book_number").val(b_num);
 			$("#booknumform").attr({
@@ -20,6 +24,42 @@
 				"action" : "/bookdetail.do"
 			});
 			$("#booknumform").submit();
+		});
+
+		$(".cartlist").click(function() {
+			var c_num = $(this).parents("tr").attr("data-num");
+			var c_number = $("#" + c_num).val();
+			var cart_num = $("#" + c_num).val();
+			$("#cart_buyquantity").val(cart_num);
+			var b_num = $(this).parents("tr").attr("data-num");
+			$("#book_number").val(b_num);
+			$.ajax({
+				url : "/cartInsert.do",
+				type : "GET",
+				data : $("#booknumform").serialize(),
+			})
+
+			var context = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
+			if (context == true) {
+				location.href = "/cartlistGet.do";
+			} else {
+			}
+		});
+		$(".mylist").click(function() {
+			var b_num = $(this).parents("tr").attr("data-num");
+			$("#book_number").val(b_num);
+			$.ajax({
+				url : "/mylistInsert.do",
+				type : "GET",
+				data : $("#booknumform").serialize(),
+				success : function() {
+					var context = confirm("마이리스트에 추가되었습니다. 마이리스트로 이동하시겠습니까?");
+					if (context == true) {
+						location.href = "/mylistGet.do";
+					} else {
+					}
+				}
+			})
 		});
 
 		$('.bt_up').click(function() {
@@ -51,12 +91,13 @@
 		<div id="contents">
 			<div id="new">
 				<div id="newform">
-					<div id="newtitle">
-						<h1>신간</h1>
-					</div>
 					<div id="newcontents">
 						<form id="booknumform">
-							<input type="hidden" id="book_number" name="book_number">
+							<input type="hidden" id="user_id" name="user_id"
+								value="${sessionScope.user_id }"> <input type="hidden"
+								id="book_number" name="book_number"> <input
+								type="hidden" id="cart_buyquantity" id="cart_buyquantity"
+								name="cart_buyquantity">
 						</form>
 						<c:choose>
 							<c:when test="${not empty newbooklist}">
@@ -72,16 +113,20 @@
 											<td>${newbook.book_writer }|${newbook.book_publisher}</td>
 											<td>${newbook.book_price}</td>
 											<td><b>수량</b><input type="text" name="num" value="1"
-												id="num" class="num" size="2" readonly="readonly" /> <img
-												src="http://placehold.it/10x10" alt="" width="10"
-												height="10" class="bt_up" /> <img
+												id="${newbook.book_number}" class="num" size="2"
+												readonly="readonly" /> <img src="http://placehold.it/10x10"
+												alt="" width="10" height="10" class="bt_up" /> <img
 												src="http://placehold.it/10x10" alt="" width="10"
 												height="10" class="bt_down" /></td>
-											<td><input type="button" class="btndetail" value="상세보기"></td>
-											<td><input type="button" class="cartlist"
-												value="장바구니에 담기"></td>
-											<td><input type="button" class="mylist"
-												value="마이리스트에 추가"></td>
+											<td><nav id="primary_nav_wrap">
+													<ul>
+														<li><a class="btndetail">상세보기</a></li>
+														<li><a class="cartlist">장바구니에 담기</a></li>
+														<li><a class="mylist">마이리스트에 추가</a></li>
+														<li><a class="orderinsert">주문하기</a></li>
+													</ul>
+												</nav>
+											<td>
 										</tr>
 									</table>
 								</c:forEach>

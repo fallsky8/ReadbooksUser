@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.readbooks.bookservice.BookService;
 import com.readbooks.bookvo.BookVO;
+import com.readbooks.cartvo.CartVO;
 
 @Controller
 @RequestMapping(value = "/")
@@ -59,4 +60,37 @@ public class BookController {
 		model.addAttribute("detailbook", detailbookGet);
 		return "book/bookdetail";
 	}
+
+	@RequestMapping(value = "/foreignlongbookGet", method = RequestMethod.GET)
+	public String foreignlongbookGet(@ModelAttribute BookVO book, Model model) {
+		List<BookVO> foreignlongbookGet = new ArrayList<BookVO>();
+		foreignlongbookGet = bookService.foreignlongbookGet(book);
+		model.addAttribute("foreignlongbooklist", foreignlongbookGet);
+		return "book/bookforeignlonglist";
+	}
+
+	@RequestMapping(value = "/foreignshortbookGet", method = RequestMethod.GET)
+	public String foreignshortbookGet(@ModelAttribute BookVO book, Model model) {
+		List<BookVO> foreignshortbookGet = new ArrayList<BookVO>();
+		foreignshortbookGet = bookService.foreignshortbookGet(book);
+		model.addAttribute("foreignshortbooklist", foreignshortbookGet);
+		return "book/bookforeignshortlist";
+	}
+
+	@RequestMapping(value = "/korealongbookGet", method = RequestMethod.GET)
+	public String korealongbookGet(@ModelAttribute BookVO book, Model model) {
+		List<BookVO> korealongbookGet = new ArrayList<BookVO>();
+		korealongbookGet = bookService.korealongbookGet(book);
+		model.addAttribute("korealongbooklist", korealongbookGet);
+		return "book/bookkorealonglist";
+	}
+
+	@RequestMapping(value = "/koreashortbookGet", method = RequestMethod.GET)
+	public String koreashortbookGet(@ModelAttribute BookVO book, Model model) {
+		List<BookVO> koreashortbookGet = new ArrayList<BookVO>();
+		koreashortbookGet = bookService.koreashortbookGet(book);
+		model.addAttribute("koreashortbooklist", koreashortbookGet);
+		return "book/bookkoreashortlist";
+	}
+
 }

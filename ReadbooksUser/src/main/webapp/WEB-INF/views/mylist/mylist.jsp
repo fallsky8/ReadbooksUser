@@ -4,7 +4,7 @@
 <html>
 <head>
 <link rel="shortcut icon" href="resources/image/favicon.ico">
-<link rel="stylesheet" href="resources/css/mylist.css" type="text/css"
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 <title>찜</title>
 </head>

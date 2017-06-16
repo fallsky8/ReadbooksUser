@@ -4,9 +4,7 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-<link rel="stylesheet" href="/resources/css/main.css" type="text/css"
-	media="screen" />
-<link rel="stylesheet" href="/resources/css/join.css" type="text/css"
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 <title>리드북스 회원가입</title>
 <script type="text/javascript"
