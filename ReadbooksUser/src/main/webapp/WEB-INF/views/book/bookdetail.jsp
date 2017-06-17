@@ -4,9 +4,7 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-<link rel="stylesheet" href="/resources/css/main.css" type="text/css"
-	media="screen" />
-<link rel="stylesheet" href="/resources/css/detail.css" type="text/css"
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 <title>Insert title here</title>
 <script type="text/javascript"
@@ -77,8 +75,8 @@
 						<ul>
 							<li><a class="btnpay">바로구매</a></li>
 							<li><a href="/cartInsert.do">장바구니에 담기</a></li>
-							<li><a href="/mylist.do">찜하기</a></li>
 							<li><a href="/reviewboardlist.do">회원리뷰</a></li>
+							<li><a href="/mylistInsert.do">찜하기</a></li>
 						</ul>
 					</div>
 					<div id="detailinfo">

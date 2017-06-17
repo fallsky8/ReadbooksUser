@@ -5,9 +5,7 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-<link rel="stylesheet" href="/resources/css/main.css" type="text/css"
-	media="screen" />
-<link rel="stylesheet" href="/resources/css/best.css" type="text/css"
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 <title>리드북스베스트</title>
 <script type="text/javascript"
@@ -15,6 +13,10 @@
 <script type="text/javascript">
 	$(function() {
 		$(".btndetail").click(function() {
+			var c_num = $(this).parents("tr").attr("data-num");
+			var c_number = $("#" + c_num).val();
+			var cart_num = $("#" + c_num).val();
+			$("#cart_buyquantity").val(cart_num);
 			var b_num = $(this).parents("tr").attr("data-num");
 			$("#book_number").val(b_num);
 			$("#booknumform").attr({
@@ -35,15 +37,12 @@
 				url : "/cartInsert.do",
 				type : "GET",
 				data : $("#booknumform").serialize(),
-				success : function() {
-				}
 			})
 
 			var context = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
 			if (context == true) {
 				location.href = "/cartlistGet.do";
 			} else {
-				location.reload(true);
 			}
 		});
 		$(".mylist").click(function() {
@@ -58,7 +57,6 @@
 					if (context == true) {
 						location.href = "/mylistGet.do";
 					} else {
-						location.reload(true);
 					}
 				}
 			})
@@ -91,11 +89,15 @@
 	<div id="wrap">
 		<jsp:include page="../header.jsp"></jsp:include>
 		<div id="contents">
+			<div id="sideMenu" class="side-menu">
+				<a href="#" class="menu-item">Home</a> <a href="#" class="menu-item">Collections</a>
+				<a href="#" class="menu-item">Communities</a> <a href="#"
+					class="menu-item">Profile</a> <a href="#" class="menu-item">Notifications</a>
+				<a href="#" class="menu-item">Settings</a> <a href="#"
+					class="menu-item">Send feedback</a> <a href="#" class="menu-item">Help</a>
+			</div>
 			<div id="best">
 				<div id="bestform">
-					<div id="besttitle">
-						<h1>베스트</h1>
-					</div>
 					<div id="bestcontents">
 						<form id="booknumform">
 							<input type="hidden" id="user_id" name="user_id"
@@ -123,11 +125,15 @@
 												width="10" height="10" class="bt_up" /> <img
 												src="http://placehold.it/10x10" width="10" height="10"
 												class="bt_down" /></td>
-											<td><input type="button" class="btndetail" value="상세보기"></td>
-											<td><input type="button" class="cartlist"
-												value="장바구니에 담기"></td>
-											<td><input type="button" class="mylist"
-												value="마이리스트에 추가"></td>
+											<td><nav id="primary_nav_wrap">
+													<ul>
+														<li><a class="btndetail">상세보기</a></li>
+														<li><a class="cartlist">장바구니에 담기</a></li>
+														<li><a class="mylist">마이리스트에 추가</a></li>
+														<li><a class="orderinsert">주문하기</a></li>
+													</ul>
+												</nav>
+											<td>
 										</tr>
 									</table>
 								</c:forEach>

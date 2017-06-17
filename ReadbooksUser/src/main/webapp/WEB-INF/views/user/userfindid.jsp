@@ -4,8 +4,8 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-<link rel="stylesheet" href="/resources/css/idsearch.css"
-	type="text/css" media="screen" />
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
+	media="screen" />
 <title>id찾기</title>
 </head>
 <body>

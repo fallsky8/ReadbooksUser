@@ -67,10 +67,10 @@ public class UserController {
 		int result = 0;
 		String url = "";
 		result = userService.userCheck(user);
-		session.setAttribute("user_id", user.getUser_id());
 		UserVO userget = new UserVO();
-		userget = userService.userGet(user);
-		model.addAttribute("userlist", userget);
+		// userget = userService.userGet(user);
+		session.setAttribute("user_id", user.getUser_id());
+		// model.addAttribute("userlist", userget);
 		if (result == 1) {
 			url = "/home.do";
 		}

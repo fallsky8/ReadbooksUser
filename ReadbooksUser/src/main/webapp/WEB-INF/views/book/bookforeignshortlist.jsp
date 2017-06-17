@@ -25,6 +25,7 @@
 			});
 			$("#booknumform").submit();
 		});
+
 		$(".cartlist").click(function() {
 			var c_num = $(this).parents("tr").attr("data-num");
 			var c_number = $("#" + c_num).val();
@@ -42,7 +43,6 @@
 			if (context == true) {
 				location.href = "/cartlistGet.do";
 			} else {
-
 			}
 		});
 		$(".mylist").click(function() {
@@ -57,7 +57,6 @@
 					if (context == true) {
 						location.href = "/mylistGet.do";
 					} else {
-
 					}
 				}
 			})
@@ -101,20 +100,20 @@
 								name="cart_buyquantity">
 						</form>
 						<c:choose>
-							<c:when test="${not empty foreignbooklist}">
-								<c:forEach var="foreignbook" items="${foreignbooklist}"
-									varStatus="status">
+							<c:when test="${not empty foreignshortbooklist}">
+								<c:forEach var="foreignshortbook"
+									items="${foreignshortbooklist}" varStatus="status">
 									<table>
-										<tr data-num="${foreignbook.book_number} ">
-											<td>${foreignbook.book_number }</td>
+										<tr data-num="${foreignshortbook.book_number} ">
+											<td>${foreignshortbook.book_number }</td>
 											<td><img alt="책상세이미지"
-												src="/resources/image/${foreignbook.book_image }"
+												src="/resources/image/${foreignshortbook.book_image }"
 												width="150" height="180"></td>
-											<td>${foreignbook.book_name }</td>
-											<td>${foreignbook.book_writer }|${foreignbook.book_publisher}</td>
-											<td>${foreignbook.book_price}</td>
+											<td>${foreignshortbook.book_name }</td>
+											<td>${foreignshortbook.book_writer }|${foreignshortbook.book_publisher}</td>
+											<td>${foreignshortbook.book_price}</td>
 											<td><b>수량</b><input type="text" name="num" value="1"
-												id="${foreignbook.book_number }" class="num" size="2"
+												id="${foreignshortbook.book_number}" class="num" size="2"
 												readonly="readonly" /> <img src="http://placehold.it/10x10"
 												alt="" width="10" height="10" class="bt_up" /> <img
 												src="http://placehold.it/10x10" alt="" width="10"

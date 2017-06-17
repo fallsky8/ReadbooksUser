@@ -5,9 +5,7 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-<link rel="stylesheet" href="/resources/css/main.css" type="text/css"
-	media="screen" />
-<link rel="stylesheet" href="/resources/css/buy.css" type="text/css"
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 <title>주문</title>
 <script type="text/javascript"

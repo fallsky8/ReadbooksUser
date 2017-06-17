@@ -1,11 +1,17 @@
 package com.readbooks.shoppingmall;
 
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.readbooks.bookservice.BookService;
+import com.readbooks.bookvo.BookVO;
 
 /**
  * Handles requests for the application home page.
@@ -13,9 +19,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	@Autowired
+	private BookService bookService;
 
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String home(@ModelAttribute BookVO book, Model model) {
+		List<BookVO> bestbookget = new ArrayList<BookVO>();
+		bestbookget = bookService.bestbookGet(book);
+		List<BookVO> foreignbookGet = new ArrayList<BookVO>();
+		foreignbookGet = bookService.foreignbookGet(book);
+		List<BookVO> koreabookGet = new ArrayList<BookVO>();
+		koreabookGet = bookService.koreabookGet(book);
+		List<BookVO> newbookGet = new ArrayList<BookVO>();
+		newbookGet = bookService.newbookGet(book);
+		model.addAttribute("koreabooklist", koreabookGet);
+		model.addAttribute("newbooklist", newbookGet);
+		model.addAttribute("bestbooklist", bestbookget);
+		model.addAttribute("foreignbooklist", foreignbookGet);
 		return "home";
 	}
 }

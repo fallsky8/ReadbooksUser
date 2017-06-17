@@ -7,7 +7,7 @@
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
-<title>리드북스해외</title>
+<title>리드북스국내</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
@@ -25,6 +25,7 @@
 			});
 			$("#booknumform").submit();
 		});
+
 		$(".cartlist").click(function() {
 			var c_num = $(this).parents("tr").attr("data-num");
 			var c_number = $("#" + c_num).val();
@@ -42,7 +43,6 @@
 			if (context == true) {
 				location.href = "/cartlistGet.do";
 			} else {
-
 			}
 		});
 		$(".mylist").click(function() {
@@ -57,7 +57,6 @@
 					if (context == true) {
 						location.href = "/mylistGet.do";
 					} else {
-
 					}
 				}
 			})
@@ -90,9 +89,9 @@
 	<div id="wrap">
 		<jsp:include page="../header.jsp"></jsp:include>
 		<div id="contents">
-			<div id="foreign">
-				<div id="foreignform">
-					<div id="foreigncontents">
+			<div id="korea">
+				<div id="koreaform">
+					<div id="koreacontents">
 						<form id="booknumform">
 							<input type="hidden" id="user_id" name="user_id"
 								value="${sessionScope.user_id }"> <input type="hidden"
@@ -101,20 +100,20 @@
 								name="cart_buyquantity">
 						</form>
 						<c:choose>
-							<c:when test="${not empty foreignbooklist}">
-								<c:forEach var="foreignbook" items="${foreignbooklist}"
+							<c:when test="${not empty koreashortbooklist}">
+								<c:forEach var="koreashortbook" items="${koreashortbooklist}"
 									varStatus="status">
 									<table>
-										<tr data-num="${foreignbook.book_number} ">
-											<td>${foreignbook.book_number }</td>
+										<tr data-num="${koreashortbook.book_number} ">
+											<td>${koreashortbook.book_number }</td>
 											<td><img alt="책상세이미지"
-												src="/resources/image/${foreignbook.book_image }"
+												src="/resources/image/${koreashortbook.book_image }"
 												width="150" height="180"></td>
-											<td>${foreignbook.book_name }</td>
-											<td>${foreignbook.book_writer }|${foreignbook.book_publisher}</td>
-											<td>${foreignbook.book_price}</td>
+											<td>${koreashortbook.book_name }</td>
+											<td>${koreashortbook.book_writer }|${koreashortbook.book_publisher}</td>
+											<td>${koreashortbook.book_price}</td>
 											<td><b>수량</b><input type="text" name="num" value="1"
-												id="${foreignbook.book_number }" class="num" size="2"
+												id="${koreashortbook.book_number} " class="num" size="2"
 												readonly="readonly" /> <img src="http://placehold.it/10x10"
 												alt="" width="10" height="10" class="bt_up" /> <img
 												src="http://placehold.it/10x10" alt="" width="10"

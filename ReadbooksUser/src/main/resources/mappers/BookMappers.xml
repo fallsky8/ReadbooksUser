@@ -23,4 +23,42 @@
 	<select id="detailbookGet" parameterType="book" resultType="book">
 		select * from tbl_book where book_number=#{book_number}
 	</select>
+
+	<select id="foreignlongbookGet" parameterType="book" resultType="book">
+		select
+		* from tbl_book where book_country='해외' and book_story='장편'
+	</select>
+	<select id="foreignshortbookGet" parameterType="book"
+		resultType="book">
+		select
+		* from tbl_book where book_country='해외' and
+		book_story='단편'
+	</select>
+	<select id="korealongbookGet" parameterType="book" resultType="book">
+		select
+		* from tbl_book where book_country='국내' and book_story='장편'
+	</select>
+	<select id="koreashortbookGet" parameterType="book" resultType="book">
+		select
+		* from tbl_book where book_country='국내' and book_story='단편'
+	</select>
+	<select id="allbookGet" parameterType="cart" resultType="book">
+		select
+		c.CART_BUYQUANTITY,c.CART_NUMBER, b.*
+		from tbl_book b, tbl_cart c where
+		b.book_number in (select
+		c.book_number from tbl_cart
+		where c.user_id =
+		#{user_id})
+	</select>
+	<select id="myListGet" parameterType="mylist" resultType="book">
+		select
+		m.mylist_NUMBER, b.*
+		from tbl_book b, tbl_mylist m where
+		b.book_number
+		in (select
+		m.book_number from tbl_mylist
+		where m.user_id =
+		#{user_id})
+	</select>
 </mapper>

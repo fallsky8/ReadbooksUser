@@ -17,9 +17,36 @@ public class BookVO {
 	private String book_registerdate;
 	private String book_status;
 	private String book_opening;
+	private int cart_buyquantity;
+	private int cart_number;
+	private int mylist_number;
+
+	public int getMylist_number() {
+		return mylist_number;
+	}
+
+	public void setMylist_number(int mylist_number) {
+		this.mylist_number = mylist_number;
+	}
+
+	public int getCart_number() {
+		return cart_number;
+	}
+
+	public void setCart_number(int cart_number) {
+		this.cart_number = cart_number;
+	}
 
 	public BookVO() {
 		super();
+	}
+
+	public int getCart_buyquantity() {
+		return cart_buyquantity;
+	}
+
+	public void setCart_buyquantity(int cart_buyquantity) {
+		this.cart_buyquantity = cart_buyquantity;
 	}
 
 	public int getBook_number() {
