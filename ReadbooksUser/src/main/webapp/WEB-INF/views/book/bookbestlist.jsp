@@ -93,6 +93,7 @@
 		<jsp:include page="../header.jsp"></jsp:include>
 	</header>
 	<div id="main">
+
 		<article>
 			<div id="sideMenu" class="side-menu">
 				<a href="#" class="menu-item">Home</a> <a href="#" class="menu-item">Collections</a>

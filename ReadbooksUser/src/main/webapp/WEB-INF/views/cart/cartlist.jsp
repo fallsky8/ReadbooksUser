@@ -78,6 +78,7 @@
 				value="${sessionScope.user_id }">
 		</form>
 		<header>
+
 			<jsp:include page="../header.jsp"></jsp:include>
 		</header>
 		<div id="main">
