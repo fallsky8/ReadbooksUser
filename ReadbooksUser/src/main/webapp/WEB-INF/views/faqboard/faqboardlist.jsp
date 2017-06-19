@@ -7,10 +7,12 @@
 <link rel="shortcut icon" href="resources/image/favicon.ico">
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
+<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
+	media="screen" />
 <title>Insert title here</title>
 <style type="text/css">
 .accordion {
-	width: 380px;
+	width: 600px;
 	margin: 20px auto;
 }
 
@@ -18,14 +20,9 @@
 	cursor: pointer;
 }
 
-.accordion h2, h3, h4 {
-	font-family: "News Cycle";
-}
-
 .accordion h1 {
 	padding: 15px 20px;
 	background-color: #333;
-	font-family: Lobster;
 	font-size: 1.5rem;
 	font-weight: normal;
 	color: #1abc9c;
@@ -43,188 +40,6 @@
 	border-radius: 0 0 10px 10px;
 }
 
-.accordion
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-h1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:not
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-(
-:last-of-type
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-){
-border-bottom
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-1
-px
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-dotted
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-#1abc9c
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;
-}
 .accordion div, .accordion p {
 	display: none;
 }
@@ -265,7 +80,6 @@ dotted
 .accordion p {
 	padding: 15px 35px;
 	background-color: #ddd;
-	font-family: "Georgia";
 	font-size: .8rem;
 	color: #333;
 	line-height: 1.3rem;
@@ -318,30 +132,42 @@ dotted
 	<header>
 		<jsp:include page="../header.jsp"></jsp:include>
 	</header>
-	<div id="main">
-		<aside class="accordion">
-			<h1>회원 FAQ</h1>
-			<c:forEach var="faqboarduserList" items="${faqboarduserList}">
-				<div class="opened-for-codepen">
-					<h4>Q . ${faqboarduserList.faqboard_question}</h4>
-					<p>A . ${faqboarduserList.faqboard_answer}</p>
-				</div>
-			</c:forEach>
-			<h1>상품 FAQ</h1>
-			<c:forEach var="faqboardbookList" items="${faqboardbookList}">
-				<div class="opened-for-codepen">
-					<h4>Q . ${faqboardbookList.faqboard_question}</h4>
-					<p>A . ${faqboardbookList.faqboard_answer}</p>
-				</div>
-			</c:forEach>
-			<h1>주문 FAQ</h1>
-			<c:forEach var="faqboardorderList" items="${faqboardorderList}">
-				<div class="opened-for-codepen">
-					<h4>Q . ${faqboardorderList.faqboard_question}</h4>
-					<p>A . ${faqboardorderList.faqboard_answer}</p>
-				</div>
-			</c:forEach>
-		</aside>
+	<div id='main'>
+		<article>
+			<div id="sideMenu" class="side-menu">
+				<a href="#" class="menu-item">고객센터</a> <a href="#" class="menu-item">공지사항</a>
+				<a href="#" class="menu-item">자주 묻는 질문</a> <a href="#"
+					class="menu-item">1:1 문의</a>
+			</div>
+			<div class="accordion">
+				<h1>회원 FAQ</h1>
+				<c:forEach var="faqboarduserList" items="${faqboarduserList}">
+					<div class="opened-for-codepen">
+						<h4>Q . ${faqboarduserList.faqboard_question}</h4>
+						<p>A . ${faqboarduserList.faqboard_answer}</p>
+					</div>
+				</c:forEach>
+				<h1>상품 FAQ</h1>
+				<c:forEach var="faqboardbookList" items="${faqboardbookList}">
+					<div class="opened-for-codepen">
+						<h4>Q . ${faqboardbookList.faqboard_question}</h4>
+						<p>A . ${faqboardbookList.faqboard_answer}</p>
+					</div>
+				</c:forEach>
+				<h1>주문 FAQ</h1>
+				<c:forEach var="faqboardorderList" items="${faqboardorderList}">
+					<div class="opened-for-codepen">
+						<h4>Q . ${faqboardorderList.faqboard_question}</h4>
+						<p>A . ${faqboardorderList.faqboard_answer}</p>
+					</div>
+				</c:forEach>
+			</div>
+			<div>
+				찾으시는 질문이 없나요? <b><ins>문의 게시판</ins></b>에 문의해주세요. <input type="button"
+					value="문의하기">
+			</div>
+		</article>
+		<aside>aside</aside>
 	</div>
 	<footer>
 		<jsp:include page="../footer.jsp"></jsp:include>

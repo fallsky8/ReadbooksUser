@@ -33,16 +33,18 @@
 		<a href="/home.do"><img src="/resources/image/readbooks-logo.png"
 			width="240" height="60"></a>
 	</div>
-	<div class="searchbar">
-		<input type="text" placeholder="제목으로 검색하세요!" />
-	</div>
-	<div class="searchcart">
-		<ul>
-			<li><a><img alt="검색"
-					src="/resources/image/magnifying-glass.png" height="28" width="28"></a></li>
-			<li><a href="/cartlistGet.do"><img alt="장바구니"
-					src="/resources/image/shopping-cart.png" height="28" width="28"></a></li>
-		</ul>
+	<div class="search">
+		<div class="searchbar">
+			<input type="text" placeholder="제목으로 검색하세요!" />
+		</div>
+		<div class="searchcart">
+			<ul>
+				<li><a><img alt="검색"
+						src="/resources/image/magnifying-glass.png" height="28" width="28"></a></li>
+				<li><a href="/cartlistGet.do"><img alt="장바구니"
+						src="/resources/image/shopping-cart.png" height="28" width="28"></a></li>
+			</ul>
+		</div>
 	</div>
 	<div class="navmenu">
 		<nav id="primary_nav_wrap">
@@ -88,7 +90,7 @@
 					</ul></li>
 				<li id="iii"><a href="#">고객센터</a>
 					<ul>
-						<li><a href="#">공지사항</a></li>
+						<li><a href="/noticeboardList.do">공지사항</a></li>
 						<li><a href="/faqboardList.do">자주 묻는 질문</a></li>
 						<li><a href="#">1:1 문의</a></li>
 					</ul></li>

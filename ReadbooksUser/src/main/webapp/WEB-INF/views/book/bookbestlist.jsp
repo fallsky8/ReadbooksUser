@@ -95,13 +95,6 @@
 	<div id="main">
 
 		<article>
-			<div id="sideMenu" class="side-menu">
-				<a href="#" class="menu-item">Home</a> <a href="#" class="menu-item">Collections</a>
-				<a href="#" class="menu-item">Communities</a> <a href="#"
-					class="menu-item">Profile</a> <a href="#" class="menu-item">Notifications</a>
-				<a href="#" class="menu-item">Settings</a> <a href="#"
-					class="menu-item">Send feedback</a> <a href="#" class="menu-item">Help</a>
-			</div>
 			<div id="best">
 				<div id="bestform">
 					<div id="bestcontents">
@@ -154,6 +147,8 @@
 		</article>
 		<aside>aside</aside>
 	</div>
-	<jsp:include page="../footer.jsp"></jsp:include>
+	<footer>
+		<jsp:include page="../footer.jsp"></jsp:include>
+	</footer>
 </body>
 </html>

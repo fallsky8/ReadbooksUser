@@ -8,6 +8,8 @@
 <link rel="shortcut icon" href="resources/image/favicon.ico">
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
+<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
+	media="screen" />
 <title>장바구니</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
@@ -33,20 +35,19 @@
 			}
 
 		});
-
 		//checkbox이벤트
 		$('.check-items input[type=checkbox]').on(
 				'click',
 				function() {
 					var group = $(this).parents('.check-items');
-					var input = group.find('input');
+					var input = group.find('input[type=checkbox]');
 					var inputTotal = input.length;
 					var inputCheckTotal = group.find('input:checked').length;
 
 					if (inputTotal == inputCheckTotal) {
 						$(this).parents('.check-group').find('.all').prop(
 								'checked', true);
-					} else if (inputCheckTotal == 0) {
+					} else if (inputCheckTotal == inputTotal - 1) {
 						$(this).parents('.check-group').find('.all').prop(
 								'checked', false);
 					}
@@ -67,6 +68,7 @@
 						});
 					}
 				});
+
 	});
 </script>
 </head>
@@ -83,12 +85,18 @@
 		</header>
 		<div id="main">
 			<article>
+				<div id="sideMenu" class="side-menu">
+					<a href="#" class="menu-item">마이페이지</a> <a href="#"
+						class="menu-item">회원 정보 관리</a> <a href="#" class="menu-item">주문
+						내역</a> <a href="#" class="menu-item">장바구니</a> <a href="#"
+						class="menu-item">마이리스트</a>
+				</div>
 				<div id="cartwrap">
 					<div id="cartcheck">
 						<c:choose>
 							<c:when test="${sessionScope.user_id!=null}">
 								<div class="check-group">
-									<table border="1">
+									<table border="1" class="check-group">
 										<tr>
 											<th><input type="checkbox" id="all" class="all" /></th>
 											<th width="120">상품이미지</th>
@@ -97,11 +105,12 @@
 											<th width="200">수량 및 상태</th>
 										</tr>
 									</table>
-									<div class="check-items">
-										<c:forEach var="booklist" items="${cartbooklist}">
-											<table border="1">
+									<div>
+										<table border="1" class="check-items">
+											<c:forEach var="booklist" items="${cartbooklist}">
 												<tr>
-													<th><input type="checkbox"></th>
+													<th><input type="checkbox"
+														id="${booklist.cart_number}"></th>
 													<th width="120"><img alt="책상세이미지"
 														src="/resources/image/${booklist.book_image }" width="100"
 														height="120"></th>
@@ -116,8 +125,8 @@
 														class="bt_down" /><input type="button" value="수정">
 														<input type="button" value="삭제"></td>
 												</tr>
-											</table>
-										</c:forEach>
+											</c:forEach>
+										</table>
 									</div>
 								</div>
 							</c:when>
