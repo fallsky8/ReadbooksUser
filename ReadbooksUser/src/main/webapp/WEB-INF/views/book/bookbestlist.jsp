@@ -7,6 +7,9 @@
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
+<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
+	media="screen" />
+
 <title>리드북스베스트</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
@@ -86,9 +89,11 @@
 </script>
 </head>
 <body>
-	<div id="wrap">
+	<header>
 		<jsp:include page="../header.jsp"></jsp:include>
-		<div id="contents">
+	</header>
+	<div id="main">
+		<article>
 			<div id="sideMenu" class="side-menu">
 				<a href="#" class="menu-item">Home</a> <a href="#" class="menu-item">Collections</a>
 				<a href="#" class="menu-item">Communities</a> <a href="#"
@@ -145,8 +150,9 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<jsp:include page="../footer.jsp"></jsp:include>
+		</article>
+		<aside>aside</aside>
 	</div>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
