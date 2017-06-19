@@ -6,6 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div class="footer_blank"></div>
 	<div class="footer">
 		<div id="button"></div>
 		<div id="container">

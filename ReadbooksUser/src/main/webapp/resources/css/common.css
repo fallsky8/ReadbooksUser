@@ -13,7 +13,7 @@ body {
 
 #main {
 	min-height: 800px;
-	margin: 0px;
+	margin-top: 70px;
 	padding: 0px;
 	display: -webkit-flex;
 	display: flex;
@@ -55,7 +55,7 @@ header {
 	display: block;
 	margin: 4px;
 	padding: 5px;
-	min-height: 150px;
+	min-height: 200px;
 	border: 1px solid #eebb55;
 }
 
@@ -365,20 +365,17 @@ header {
 
 .logoimg {
 	float: left;
-	margin-left: 80px;
-	margin-top: 20px;
+	margin-left: 50px;
+	margin-top: 60px;
 }
 
 .searchbar {
 	float: left;
 	border: 1px solid #5FC5C5;
 	margin-left: 35px;
-	margin-top: 32px;
+	margin-top: 72px;
 	margin-bottom: 12px;
-}
-
-.searchcategory {
-	float: left;
+	margin-right: 10px;
 }
 
 .searchcategory select {
@@ -393,14 +390,15 @@ header {
 
 .searchbar input {
 	height: 28px;
-	width: 350px;
+	width: 600px;
 	border: none;
 }
 
 .searchcart ul li {
 	float: left;
 	list-style: none;
-	margin-top: 20px;
+	margin-top: 60px;
+	margin-right: 5px;
 }
 
 .navmenu {
@@ -408,6 +406,7 @@ header {
 	width: 1000px;
 	height: 50px;
 	margin-left: 180px;
+	margin-top: 10px;
 }
 
 .navmenu #primary_nav_wrap #iii {
@@ -503,4 +502,8 @@ a.control_next {
 
 .bookstable {
 	float: left;
+}
+
+.footer_blank {
+	height: 5em;
 }
