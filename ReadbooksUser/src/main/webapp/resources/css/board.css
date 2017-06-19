@@ -14,7 +14,6 @@ table {
 	table-layout: fixed;
 	background: -webkit-linear-gradient(left, #25c481, #25b7c4);
 	background: linear-gradient(to right, #25c481, #25b7c4);
-	
 }
 
 .tbl-header {
@@ -29,8 +28,8 @@ table {
 }
 
 th {
-	padding: 20px 15px;
-	text-align: left;
+	width: 100%;
+	text-align: center;
 	font-weight: 500;
 	font-size: 12px;
 	color: #fff;
@@ -38,9 +37,11 @@ th {
 }
 
 td {
-	overflow: hidden; white-space : nowrap; text-overflow : ellipsis;
-	padding: 15px;
-	text-align: left;
+	width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-align: center;
 	vertical-align: middle;
 	font-weight: 300;
 	font-size: 12px;
@@ -48,32 +49,13 @@ td {
 	border-bottom: solid 1px rgba(255, 255, 255, 0.1);
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	overflow: hidden;
 }
+
 td input {
-	color:#25b7c4;
+	color: #25b7c4;
 }
+
 th input {
-	color:#25b7c4;
-}
-
-/* demo styles */
-@import
-	url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
-
-body {
-	background: white;
-	font-family: 'Roboto', sans-serif;
-}
-
-/* for custom scrollbar for webkit browser*/
-::-webkit-scrollbar {
-	width: 6px;
-}
-
-::-webkit-scrollbar-track {
-	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-::-webkit-scrollbar-thumb {
-	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	color: #25b7c4;
 }

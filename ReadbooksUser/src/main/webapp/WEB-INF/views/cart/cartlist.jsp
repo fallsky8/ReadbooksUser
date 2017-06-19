@@ -74,102 +74,98 @@
 </head>
 <body>
 
-	<div id="wrap">
-		<form id="booknumform">
-			<input type="hidden" id="user_id" name="user_id"
-				value="${sessionScope.user_id }">
-		</form>
-		<header>
-
-			<jsp:include page="../header.jsp"></jsp:include>
-		</header>
-		<div id="main">
-			<article>
-				<div id="sideMenu" class="side-menu">
-					<a href="#" class="menu-item">마이페이지</a> <a href="#"
-						class="menu-item">회원 정보 관리</a> <a href="#" class="menu-item">주문
-						내역</a> <a href="#" class="menu-item">장바구니</a> <a href="#"
-						class="menu-item">마이리스트</a>
-				</div>
-				<div id="cartwrap">
-					<div id="cartcheck">
-						<c:choose>
-							<c:when test="${sessionScope.user_id!=null}">
-								<div class="check-group">
-									<table border="1" class="check-group">
-										<tr>
-											<th><input type="checkbox" id="all" class="all" /></th>
-											<th width="120">상품이미지</th>
-											<th width="300">상품</th>
-											<th width="200">가격</th>
-											<th width="200">수량 및 상태</th>
-										</tr>
+	<form id="booknumform">
+		<input type="hidden" id="user_id" name="user_id"
+			value="${sessionScope.user_id }">
+	</form>
+	<header>
+		<jsp:include page="../header.jsp"></jsp:include>
+	</header>
+	<div id="main">
+		<article>
+			<div id="sideMenu" class="side-menu">
+				<a href="#" class="menu-item">마이페이지</a> <a href="#"
+					class="menu-item">회원 정보 관리</a> <a href="#" class="menu-item">주문
+					내역</a> <a href="#" class="menu-item">장바구니</a> <a href="#"
+					class="menu-item">마이리스트</a>
+			</div>
+			<div id="cartwrap">
+				<div id="cartcheck">
+					<c:choose>
+						<c:when test="${sessionScope.user_id!=null}">
+							<div class="check-group">
+								<table border="1" class="check-group">
+									<tr>
+										<th><input type="checkbox" id="all" class="all" /></th>
+										<th width="120">상품이미지</th>
+										<th width="300">상품</th>
+										<th width="200">가격</th>
+										<th width="200">수량 및 상태</th>
+									</tr>
+								</table>
+								<div>
+									<table border="1" class="check-items">
+										<c:forEach var="booklist" items="${cartbooklist}">
+											<tr>
+												<th><input type="checkbox" id="${booklist.cart_number}"></th>
+												<th width="120"><img alt="책상세이미지"
+													src="/resources/image/${booklist.book_image }" width="100"
+													height="120"></th>
+												<th width="300">${booklist.book_name }</th>
+												<th width="200">${booklist.book_price}원</th>
+												<td width="200"><input type="text" name="num"
+													class="num" id="${booklist.cart_number}" size="1"
+													readonly="readonly" value="${booklist.cart_buyquantity}" />
+													<img src="http://placehold.it/10x10" width="10" height="10"
+													class="bt_up" /> <img src="http://placehold.it/10x10"
+													width="10" height="10" class="bt_down" /><input
+													type="button" value="수정"> <input type="button"
+													value="삭제"></td>
+											</tr>
+										</c:forEach>
 									</table>
-									<div>
-										<table border="1" class="check-items">
-											<c:forEach var="booklist" items="${cartbooklist}">
-												<tr>
-													<th><input type="checkbox"
-														id="${booklist.cart_number}"></th>
-													<th width="120"><img alt="책상세이미지"
-														src="/resources/image/${booklist.book_image }" width="100"
-														height="120"></th>
-													<th width="300">${booklist.book_name }</th>
-													<th width="200">${booklist.book_price}원</th>
-													<td width="200"><input type="text" name="num"
-														class="num" id="${booklist.cart_number}" size="1"
-														readonly="readonly" value="${booklist.cart_buyquantity}" />
-														<img src="http://placehold.it/10x10" width="10"
-														height="10" class="bt_up" /> <img
-														src="http://placehold.it/10x10" width="10" height="10"
-														class="bt_down" /><input type="button" value="수정">
-														<input type="button" value="삭제"></td>
-												</tr>
-											</c:forEach>
-										</table>
-									</div>
 								</div>
-							</c:when>
-							<c:otherwise>
+							</div>
+						</c:when>
+						<c:otherwise>
 						카트에 등록된 상품이 없습니다.
 						</c:otherwise>
-						</c:choose>
-					</div>
-					<div id="cartsum">
-						<table>
-							<tr>
-								<th>선택한 상품개수</th>
-								<th>선택한 상품의 총 금액</th>
-								<th rowspan="2">+</th>
-								<th>총배송비</th>
-								<th rowspan="2">-</th>
-								<th>상품할인</th>
-								<th rowspan="2">=</th>
-								<th>최종결제금액</th>
-							</tr>
-							<tr>
-								<td>2개</td>
-								<td>25,600원</td>
-								<td>0원</td>
-								<td>0원</td>
-								<td>25,600원</td>
-							</tr>
-							<tr>
-								<td>적립포인트</td>
-								<td>200포인트</td>
-							</tr>
-						</table>
-					</div>
-					<div id="cartbtn">
-						<button>쇼핑계속하기</button>
-						<button>주문하기</button>
-					</div>
+					</c:choose>
 				</div>
-			</article>
-			<aside>aside</aside>
-		</div>
-
-		<jsp:include page="../footer.jsp"></jsp:include>
+				<div id="cartsum">
+					<table>
+						<tr>
+							<th>선택한 상품개수</th>
+							<th>선택한 상품의 총 금액</th>
+							<th rowspan="2">+</th>
+							<th>총배송비</th>
+							<th rowspan="2">-</th>
+							<th>상품할인</th>
+							<th rowspan="2">=</th>
+							<th>최종결제금액</th>
+						</tr>
+						<tr>
+							<td>2개</td>
+							<td>25,600원</td>
+							<td>0원</td>
+							<td>0원</td>
+							<td>25,600원</td>
+						</tr>
+						<tr>
+							<td>적립포인트</td>
+							<td>200포인트</td>
+						</tr>
+					</table>
+				</div>
+				<div id="cartbtn">
+					<button>쇼핑계속하기</button>
+					<button>주문하기</button>
+				</div>
+			</div>
+		</article>
+		<aside>aside</aside>
 	</div>
+
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

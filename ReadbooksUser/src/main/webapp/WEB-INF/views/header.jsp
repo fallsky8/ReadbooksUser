@@ -88,7 +88,7 @@
 						<li><a href="/cartlistGet.do">장바구니</a></li>
 						<li><a href="/mylistGet.do">마이리스트</a></li>
 					</ul></li>
-				<li id="iii"><a href="#">고객센터</a>
+				<li id="iii"><a href="/noticeboardList.do">고객센터</a>
 					<ul>
 						<li><a href="/noticeboardList.do">공지사항</a></li>
 						<li><a href="/faqboardList.do">자주 묻는 질문</a></li>
