@@ -23,7 +23,6 @@ public class UserController {
 
 	@RequestMapping(value = "/userjoin")
 	public String insertuser(HttpSession session) {
-		session.setAttribute("CSRF_TOKEN", UUID.randomUUID().toString());
 
 		return "user/userjoin";
 	}

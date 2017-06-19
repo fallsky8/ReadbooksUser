@@ -27,7 +27,6 @@
 		<div id="contents">
 			<div>
 				<form id="joinform" name="joinform">
-					<input type="hidden" name="csrf" value="${CSRF_TOKEN}" />
 					<table>
 						<tr>
 							<td>필수정보입력</td>

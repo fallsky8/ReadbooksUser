@@ -44,7 +44,6 @@
 			<div>
 				<div id="member">
 					<form id="loginform" name="loginform">
-						<input type="hidden" name="csrf" value="${CSRF_TOKEN}" />
 						<table>
 							<tr>
 								<td><b>회원</b></td>

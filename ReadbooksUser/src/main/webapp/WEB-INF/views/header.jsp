@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<input type="hidden" name="csrf" value="${CSRF_TOKEN}" />
 	<c:choose>
 		<c:when test="${empty sessionScope.user_id }">
 			<div class="loginjoin">
