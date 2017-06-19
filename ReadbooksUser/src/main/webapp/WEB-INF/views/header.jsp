@@ -89,7 +89,7 @@
 				<li id="iii"><a href="#">고객센터</a>
 					<ul>
 						<li><a href="#">공지사항</a></li>
-						<li><a href="#">자주 묻는 질문</a></li>
+						<li><a href="/faqboardList.do">자주 묻는 질문</a></li>
 						<li><a href="#">1:1 문의</a></li>
 					</ul></li>
 			</ul>

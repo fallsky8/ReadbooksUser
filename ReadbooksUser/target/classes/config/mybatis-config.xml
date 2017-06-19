@@ -9,5 +9,6 @@
 		<typeAlias type="com.readbooks.ordervo.OrderVO" alias="order" />
 		<typeAlias type="com.readbooks.cartvo.CartVO" alias="cart" />
 		<typeAlias type="com.readbooks.mylistvo.MyListVO" alias="mylist" />
+		<typeAlias type="com.readbooks.faqboardvo.FAQBoardVO" alias="faqboard"/>
 	</typeAliases>
 </configuration>
