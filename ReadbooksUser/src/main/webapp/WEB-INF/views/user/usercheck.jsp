@@ -38,9 +38,11 @@
 </script>
 </head>
 <body>
-	<div id="wrap">
+<header>
 		<jsp:include page="../header.jsp"></jsp:include>
-		<div id="contents">
+</header>
+		<div id="main">
+		<article>
 			<div>
 				<div id="member">
 					<form id="loginform" name="loginform">
@@ -64,7 +66,7 @@
 						<tr>
 							<td><a href="">아이디찾기</a></td>
 							<td><a href="">비밀번호찾기</a></td>
-							<td><a href="">회원가입하기</a></td>
+							<td><a href="/userjoin.do">회원가입하기</a></td>
 						</tr>
 					</table>
 				</div>
@@ -94,8 +96,11 @@
 					</form>
 				</div>
 			</div>
+			</article>
+			<aside>aside</aside>
 		</div>
+		<footer>
 		<jsp:include page="../footer.jsp"></jsp:include>
-	</div>
+		</footer>
 </body>
 </html>

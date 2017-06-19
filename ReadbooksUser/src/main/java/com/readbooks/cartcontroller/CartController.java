@@ -42,13 +42,13 @@ public class CartController {
 	}
 
 	@RequestMapping(value = "/cartlistGet", method = RequestMethod.GET)
-	public String cartlistGet(@ModelAttribute CartVO cart, @ModelAttribute BookVO book, HttpSession session,
-			HttpServletRequest request, Model model) {
-
+	public String cartlistGet(@ModelAttribute CartVO cart, @ModelAttribute BookVO book, @ModelAttribute UserVO user,
+			HttpSession session, HttpServletRequest request, Model model) {
 		cart.setUser_id((String) session.getAttribute("user_id"));
 		List<BookVO> allbookGet = new ArrayList<BookVO>();
 		allbookGet = bookService.allbookGet(cart);
 		model.addAttribute("cartbooklist", allbookGet);
 		return "cart/cartlist";
+
 	}
 }

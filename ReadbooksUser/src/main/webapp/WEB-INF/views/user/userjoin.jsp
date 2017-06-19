@@ -22,9 +22,11 @@
 </script>
 </head>
 <body>
-	<div id="wrap">
+	<header>
 		<jsp:include page="../header.jsp"></jsp:include>
-		<div id="contents">
+	</header>
+	<div id="main">
+		<article>
 			<div>
 				<form id="joinform" name="joinform">
 					<table>
@@ -82,8 +84,11 @@
 					</table>
 				</form>
 			</div>
-		</div>
-		<jsp:include page="../footer.jsp"></jsp:include>
+		</article>
+		<aside>aside</aside>
 	</div>
+	<footer>
+		<jsp:include page="../footer.jsp"></jsp:include>
+	</footer>
 </body>
 </html>
