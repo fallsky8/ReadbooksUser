@@ -9,11 +9,18 @@
 	media="screen" />
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
 	media="screen" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
 .accordion {
-	width: 600px;
-	margin: 20px auto;
+	width: 750px;
+	border: 1px solid #5FC5C5;
+	margin-left: 220px;
 }
 
 .accordion h1, h2, h3, h4 {
@@ -22,7 +29,7 @@
 
 .accordion h1 {
 	padding: 15px 20px;
-	background-color: #333;
+	background-color: rgba(95, 197, 197, 0.1);
 	font-size: 1.5rem;
 	font-weight: normal;
 	color: #1abc9c;
@@ -32,21 +39,20 @@
 	color: #4afcdc;
 }
 
-.accordion h1:first-child {
-	border-radius: 10px 10px 0 0;
-}
+/* .accordion h1:first-child { */
+/* 	border-radius: 10px 10px 0 0; */
+/* } */
 
-.accordion h1:last-of-type {
-	border-radius: 0 0 10px 10px;
-}
-
+/* .accordion h1:last-of-type { */
+/* 	border-radius: 0 0 10px 10px; */
+/* } */
 .accordion div, .accordion p {
 	display: none;
 }
 
 .accordion h2 {
 	padding: 5px 25px;
-	background-color: #1abc9c;
+	/* 	background-color: #1abc9c; */
 	font-size: 1.1rem;
 	color: #333;
 }
@@ -57,7 +63,7 @@
 
 .accordion h3 {
 	padding: 5px 30px;
-	background-color: #b94152;
+	/* 	background-color: #b94152; */
 	font-size: .9rem;
 	color: #ddd;
 }
@@ -68,7 +74,7 @@
 
 .accordion h4 {
 	padding: 5px 35px;
-	background-color: #ffc25a;
+	/* 	background-color: #ffc25a; */
 	font-size: .9rem;
 	color: #af720a;
 }
@@ -79,7 +85,7 @@
 
 .accordion p {
 	padding: 15px 35px;
-	background-color: #ddd;
+	/* 	background-color: #ddd; */
 	font-size: .8rem;
 	color: #333;
 	line-height: 1.3rem;
@@ -116,12 +122,12 @@
 								$(allAtDepth).slideUp("fast");
 
 								subItem.slideToggle("fast", function() {
-									$(".accordion :visible:last").css(
-											"border-radius", "0 0 10px 10px");
+									// 									$(".accordion :visible:last").css(
+									// 											"border-radius", "0 0 10px 10px");
 								});
 								$(target).css({
-									"border-bottom-right-radius" : "0",
-									"border-bottom-left-radius" : "0"
+								// 									"border-bottom-right-radius" : "0",
+								// 									"border-bottom-left-radius" : "0"
 								});
 							}
 						});
@@ -135,8 +141,9 @@
 	<div id='main'>
 		<article>
 			<div id="sideMenu" class="side-menu">
-				<a href="#" class="menu-item">고객센터</a> <a href="#" class="menu-item">공지사항</a>
-				<a href="#" class="menu-item">자주 묻는 질문</a> <a href="#"
+				<a href="/noticeboardList.do" class="menu-item">고객센터</a> <a
+					href="/noticeboardList.do" class="menu-item">공지사항</a> <a
+					href="/faqboardList.do" class="menu-item">자주 묻는 질문</a> <a href="#"
 					class="menu-item">1:1 문의</a>
 			</div>
 			<div class="accordion">
@@ -164,7 +171,7 @@
 			</div>
 			<div>
 				찾으시는 질문이 없나요? <b><ins>문의 게시판</ins></b>에 문의해주세요. <input type="button"
-					value="문의하기">
+					class="btn btn-default" value="문의하기">
 			</div>
 		</article>
 		<aside>aside</aside>

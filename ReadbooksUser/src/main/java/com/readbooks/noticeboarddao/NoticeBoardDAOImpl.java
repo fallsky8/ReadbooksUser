@@ -20,4 +20,9 @@ public class NoticeBoardDAOImpl implements NoticeBoardDAO {
 	public List<NoticeBoardVO> noticeboardList(NoticeBoardVO noticeboard) {
 		return session.selectList("noticeboardList", noticeboard);
 	}
+
+	@Override
+	public int noticeboardListCnt(NoticeBoardVO noticeboard) {
+		return (Integer) session.selectOne("noticeboardListCnt", noticeboard);
+	}
 }

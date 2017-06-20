@@ -87,49 +87,46 @@ public class PagingTag extends TagSupport {
 
 		currentlast = (currentlast > lastPage) ? lastPage : currentlast;
 
-		ret += " <div class='paginate'>";
+		ret += " <div class='pagination pagination-sm'>";
 
 		if (page > 1) {
-			ret += "<a href=\"javascript:goPage('1');\"><span><img src='/resources/images/btn_paginate_first.gif' alt='처음'/></span></a>";
+			ret += "<ul class='pagination pagination-sm'><li><a href=\"javascript:goPage('1');\"><span>처음</span></a></li>";
 		} else {
-			ret += "<span><img src='/resources/images/btn_paginate_first.gif' alt='처음'/></span>";
+			ret += "<li><span>처음</span></li>";
 
 		}
 
 		if (prevLast > 0) {
-			ret += "<a href=\"javascript:goPage('" + prevLast
-					+ "');\"><span><img src='/resources/images/btn_paginate_prev.gif' alt='이전'/></span></a>";
+			ret += "<li><a href=\"javascript:goPage('" + prevLast + "');\"><span>이전</span></a></li>";
 
 		} else {
-			ret += "<span><img src='/resources/images/btn_paginate_prev.gif' alt='이전'/></span>";
+			ret += "<li><span>이전</span></li>";
 
 		}
 
 		for (int j = currentFirst; j < currentFirst + page_size && j <= lastPage; j++) {
 			if (j <= currentlast) {
 				if (j == page) {
-					ret += "<a href='#' class='on textAn'>" + j + "</a>";
+					ret += "<li><a href='#'>" + j + "</a></li>";
 				} else {
-					ret += "<a href=\"javascript:goPage('" + j + "');\" class='textAn'>" + j + "</a>";
+					ret += "<li><a href=\"javascript:goPage('" + j + "');\" >" + j + "</a></li>";
 				}
 			}
 		}
 
 		if (nextFirst <= lastPage) {
-			ret += "<a href=\"javascript:goPage('" + nextFirst
-					+ "');\"><span><img src='/resources/images/btn_paginate_next.gif' alt='다음'/></span></a>";
+			ret += "<li><a href=\"javascript:goPage('" + nextFirst + "');\"><span>다음</span></a></li>";
 
 		} else {
-			ret += "<span><img src='/resources/images/btn_paginate_next.gif' alt='다음'/></span>";
+			ret += "<li><span>다음</span></li>";
 
 		}
 
 		if (page < lastPage) {
-			ret += "<a href=\"javascript:goPage('" + lastPage
-					+ "');\"><span><img src='/resources/images/btn_paginate_last.gif' alt='마지막'/></span></a>";
+			ret += "<li><a href=\"javascript:goPage('" + lastPage + "');\"><span>마지막</span></a></li>";
 
 		} else {
-			ret += "<span><img src='/resources/images/btn_paginate_last.gif' alt='마지막'/></span>";
+			ret += "<li><span>마지막</span></li></ul>";
 
 		}
 		ret += "</div>";

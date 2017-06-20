@@ -22,4 +22,9 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 		noticeboardList = noticeboarddao.noticeboardList(noticeboard);
 		return noticeboardList;
 	}
+
+	@Override
+	public int noticeboardListCnt(NoticeBoardVO noticeboard) {
+		return noticeboarddao.noticeboardListCnt(noticeboard);
+	}
 }

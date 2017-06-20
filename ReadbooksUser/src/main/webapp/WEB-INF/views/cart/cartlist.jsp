@@ -10,6 +10,12 @@
 	media="screen" />
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
 	media="screen" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>장바구니</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
@@ -23,7 +29,6 @@
 				alert("1이상 50이하 입력해주세요.")
 				num.val(1);
 			}
-
 		});
 		$('.bt_down').click(function() {
 			var n = $('.bt_down').index(this);
@@ -33,7 +38,6 @@
 				alert("1이상 50이하 입력해주세요.")
 				num.val(1);
 			}
-
 		});
 		//checkbox이벤트
 		$('.check-items input[type=checkbox]').on(
@@ -51,6 +55,16 @@
 						$(this).parents('.check-group').find('.all').prop(
 								'checked', false);
 					}
+					var discount = 0.9;
+					var sum = 0;
+					var count = this.form.chkbox.length;
+					for (var i = 0; i < count; i++) {
+						if (this.form.chkbox[i].checked == true) {
+							sum += parseInt(this.form.chkbox[i].value
+									* this.form.num[i].value * discount);
+						}
+					}
+					this.form.total_sum.value = sum;
 				});
 
 		$('.all').on(
@@ -68,7 +82,6 @@
 						});
 					}
 				});
-
 	});
 </script>
 </head>
@@ -104,26 +117,34 @@
 									</tr>
 								</table>
 								<div>
-									<table border="1" class="check-items">
-										<c:forEach var="booklist" items="${cartbooklist}">
+									<form>
+										<table border="1" class="check-items">
+											<c:forEach var="booklist" items="${cartbooklist}">
+												<tr>
+													<th><input type="hidden" id="dedede"
+														value="${booklist.cart_number}"> <input
+														type="checkbox" id="${booklist.cart_number}"
+														value="${booklist.book_price}" name="chkbox"></th>
+													<th width="120"><img alt="책상세이미지"
+														src="/resources/image/${booklist.book_image }" width="100"
+														height="120"></th>
+													<th width="300">${booklist.book_name }</th>
+													<th width="200">${booklist.book_price}원</th>
+													<td width="200"><input type="text" name="num"
+														class="num" id="${booklist.cart_number}" size="1"
+														readonly="readonly" value="${booklist.cart_buyquantity}" />
+														<img src="http://placehold.it/10x10" width="10"
+														height="10" class="bt_up" /> <img
+														src="http://placehold.it/10x10" width="10" height="10"
+														class="bt_down" /><input type="button" value="수정">
+														<input type="button" value="삭제"></td>
+												</tr>
+											</c:forEach>
 											<tr>
-												<th><input type="checkbox" id="${booklist.cart_number}"></th>
-												<th width="120"><img alt="책상세이미지"
-													src="/resources/image/${booklist.book_image }" width="100"
-													height="120"></th>
-												<th width="300">${booklist.book_name }</th>
-												<th width="200">${booklist.book_price}원</th>
-												<td width="200"><input type="text" name="num"
-													class="num" id="${booklist.cart_number}" size="1"
-													readonly="readonly" value="${booklist.cart_buyquantity}" />
-													<img src="http://placehold.it/10x10" width="10" height="10"
-													class="bt_up" /> <img src="http://placehold.it/10x10"
-													width="10" height="10" class="bt_down" /><input
-													type="button" value="수정"> <input type="button"
-													value="삭제"></td>
+												<td><input type="text" name="total_sum"></td>
 											</tr>
-										</c:forEach>
-									</table>
+										</table>
+									</form>
 								</div>
 							</div>
 						</c:when>
@@ -157,10 +178,8 @@
 						</tr>
 					</table>
 				</div>
-				<div id="cartbtn">
-					<button>쇼핑계속하기</button>
-					<button>주문하기</button>
-				</div>
+				<input type="button" class="btn btn-default" value="쇼핑계속하기">
+				<input type="button" class="btn btn-default" value="주문하기">
 			</div>
 		</article>
 		<aside>aside</aside>

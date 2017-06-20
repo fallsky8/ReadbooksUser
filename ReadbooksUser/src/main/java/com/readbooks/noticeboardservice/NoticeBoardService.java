@@ -8,4 +8,6 @@ public interface NoticeBoardService {
 
 	public List<NoticeBoardVO> noticeboardList(NoticeBoardVO noticeboard);
 
+	public int noticeboardListCnt(NoticeBoardVO noticeboard);
+
 }
