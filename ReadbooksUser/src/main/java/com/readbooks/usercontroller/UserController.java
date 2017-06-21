@@ -1,7 +1,5 @@
 package com.readbooks.usercontroller;
 
-import java.util.UUID;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,10 +64,7 @@ public class UserController {
 		int result = 0;
 		String url = "";
 		result = userService.userCheck(user);
-		UserVO userget = new UserVO();
-		// userget = userService.userGet(user);
 		session.setAttribute("user_id", user.getUser_id());
-		// model.addAttribute("userlist", userget);
 		if (result == 1) {
 			url = "/home.do";
 		}

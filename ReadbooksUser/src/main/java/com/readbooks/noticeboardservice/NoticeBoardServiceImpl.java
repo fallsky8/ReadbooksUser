@@ -27,4 +27,12 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 	public int noticeboardListCnt(NoticeBoardVO noticeboard) {
 		return noticeboarddao.noticeboardListCnt(noticeboard);
 	}
+
+	@Override
+	public NoticeBoardVO noticeboardDetail(NoticeBoardVO noticeboard) {
+		NoticeBoardVO detail = null;
+		detail = noticeboarddao.noticeboardDetail(noticeboard);
+		return detail;
+
+	}
 }

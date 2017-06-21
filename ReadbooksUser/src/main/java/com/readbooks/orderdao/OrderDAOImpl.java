@@ -1,5 +1,7 @@
 package com.readbooks.orderdao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,6 +19,11 @@ public class OrderDAOImpl implements OrderDAO {
 	@Override
 	public int orderInsert(OrderVO order) {
 		return session.insert("orderInsert", order);
+	}
+
+	@Override
+	public List<OrderVO> orderSelect(OrderVO order) {
+		return session.selectList("orderSelect", order);
 	}
 
 }

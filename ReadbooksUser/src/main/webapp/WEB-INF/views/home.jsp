@@ -3,15 +3,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="shortcut icon" href="resources/image/favicon.ico">
-<link rel="stylesheet" href="resources/css/common.css" type="text/css"
+<link rel="shortcut icon" href="/resources/image/favicon.ico">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/resources/js/cart.js"></script>
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
-<title>리드북스에 오신 걸 환영합니다.</title>
+<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
+	media="screen" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<title>리드북스에 오신 걸 환영합니다.</title>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
-
 		setInterval(function() {
 			moveRight();
 		}, 3000);

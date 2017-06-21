@@ -1,5 +1,8 @@
 package com.readbooks.ordercontroller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +38,13 @@ public class OrderController {
 			url = "/home";
 		}
 		return url;
+	}
+
+	@RequestMapping(value = "/orderSelect", method = RequestMethod.GET)
+	public String selectOrder(@ModelAttribute OrderVO order, Model model) {
+		List<OrderVO> orderselect = new ArrayList<OrderVO>();
+		orderselect = orderService.orderSelect(order);
+		model.addAttribute("orderlist", orderselect);
+		return "order/orderlist";
 	}
 }

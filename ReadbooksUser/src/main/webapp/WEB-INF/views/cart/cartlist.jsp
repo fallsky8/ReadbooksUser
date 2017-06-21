@@ -6,185 +6,242 @@
 <html>
 <head>
 <link rel="shortcut icon" href="resources/image/favicon.ico">
-<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
-	media="screen" />
-<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
-	media="screen" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
+	media="screen" />
 <title>장바구니</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$('.bt_up').click(function() {
-			var n = $('.bt_up').index(this);
-			var num = $(".num:eq(" + n + ")").val();
-			num = $(".num:eq(" + n + ")").val(num * 1 + 1);
-			if (num.val() <= 0 || num.val() >= 51) {
-				alert("1이상 50이하 입력해주세요.")
-				num.val(1);
-			}
-		});
-		$('.bt_down').click(function() {
-			var n = $('.bt_down').index(this);
-			var num = $(".num:eq(" + n + ")").val();
-			num = $(".num:eq(" + n + ")").val(num * 1 - 1);
-			if (num.val() <= 0 || num.val() >= 51) {
-				alert("1이상 50이하 입력해주세요.")
-				num.val(1);
-			}
-		});
-		//checkbox이벤트
-		$('.check-items input[type=checkbox]').on(
-				'click',
-				function() {
-					var group = $(this).parents('.check-items');
-					var input = group.find('input[type=checkbox]');
-					var inputTotal = input.length;
-					var inputCheckTotal = group.find('input:checked').length;
+		var check = false;
 
-					if (inputTotal == inputCheckTotal) {
-						$(this).parents('.check-group').find('.all').prop(
-								'checked', true);
-					} else if (inputCheckTotal == inputTotal - 1) {
-						$(this).parents('.check-group').find('.all').prop(
-								'checked', false);
-					}
-					var discount = 0.9;
-					var sum = 0;
-					var count = this.form.chkbox.length;
-					for (var i = 0; i < count; i++) {
-						if (this.form.chkbox[i].checked == true) {
-							sum += parseInt(this.form.chkbox[i].value
-									* this.form.num[i].value * discount);
-						}
-					}
-					this.form.total_sum.value = sum;
-				});
+		function changeVal(el) {
+			var qt = parseFloat(el.parent().children(".qt").html());
+			var price = parseFloat(el.parent().children(".price").html());
+			var eq = Math.round(price * qt * 100) / 100;
 
-		$('.all').on(
-				'click',
-				function() {
-					if (this.checked) {
-						$(this).parents('.check-group').find(
-								'.check-items input').each(function() {
-							this.checked = true;
+			el.parent().children(".full-price").html(eq + "원");
+
+			changeTotal();
+		}
+
+		function changeTotal() {
+
+			var price = 0;
+
+			$(".full-price").each(function(index) {
+				price += parseFloat($(".full-price").eq(index).html());
+			});
+
+			price = Math.round(price * 100) / 100;
+			var discount = Math.round(price * 10) / 100;
+			var fullPrice = Math.round((price - discount) * 100) / 100;
+
+			if (price == 0) {
+				fullPrice = 0;
+			}
+
+			$(".subtotal span").html(price);
+			$(".discount span").html(discount);
+			$(".total span").html(fullPrice);
+		}
+
+		$(document)
+				.ready(
+						function() {
+							changeTotal();
+							$(".remove")
+									.click(
+											function() {
+												var b_num = $(this).parents(
+														"article").attr(
+														"data-num");
+												$("#cart_number").val(b_num);
+												$("#booknumform").attr({
+													"method" : "get",
+													"action" : "/cartDelete.do"
+												});
+												$("#booknumform").submit();
+												var el = $(this);
+												el.parent().parent().addClass(
+														"removed");
+												window
+														.setTimeout(
+																function() {
+																	el
+																			.parent()
+																			.parent()
+																			.slideUp(
+																					'fast',
+																					function() {
+																						el
+																								.parent()
+																								.parent()
+																								.remove();
+																						if ($(".product").length == 0) {
+																							if (check) {
+																								//구매완료 
+																								$(
+																										"#cart")
+																										.html(
+																												"<h1>구매 완료</h1><p>감사합니다 구매가 완료되었습니다. 쇼핑을 계속 하시려면 <a href='/home.do'>readbooks</a>. </p>");
+																							} else {
+																								//상품없을시 
+																								$(
+																										"#cart")
+																										.html(
+																												"<h1>장바구니에 등록된 상품이 없습니다.!</h1>");
+																							}
+																						}
+																						changeTotal();
+																					});
+																}, 200);
+											});
+							//수량 추가
+							$(".qt-plus")
+									.click(
+											function() {
+												$(this)
+														.parent()
+														.children(".qt")
+														.html(
+																parseInt($(this)
+																		.parent()
+																		.children(
+																				".qt")
+																		.html()) + 1);
+
+												$(this).parent().children(
+														".full-price")
+														.addClass("added");
+
+												var el = $(this);
+												window.setTimeout(function() {
+													el.parent().children(
+															".full-price")
+															.removeClass(
+																	"added");
+													changeVal(el);
+												}, 150);
+											});
+							//수량 감소
+							$(".qt-minus")
+									.click(
+											function() {
+
+												child = $(this).parent()
+														.children(".qt");
+
+												if (parseInt(child.html()) > 1) {
+													child.html(parseInt(child
+															.html()) - 1);
+												}
+
+												$(this).parent().children(
+														".full-price")
+														.addClass("minused");
+
+												var el = $(this);
+												window.setTimeout(function() {
+													el.parent().children(
+															".full-price")
+															.removeClass(
+																	"minused");
+													changeVal(el);
+												}, 150);
+											});
+
+							window.setTimeout(function() {
+								$(".is-open").removeClass("is-open")
+							}, 1200);
+
+							$(".payment").click(function() {
+								check = true;
+								$(".remove").click();
+							});
 						});
-					} else {
-						$(this).parents('.check-group').find(
-								'.check-items input').each(function() {
-							this.checked = false;
-						});
-					}
-				});
 	});
 </script>
 </head>
 <body>
-
-	<form id="booknumform">
-		<input type="hidden" id="user_id" name="user_id"
-			value="${sessionScope.user_id }">
-	</form>
 	<header>
 		<jsp:include page="../header.jsp"></jsp:include>
 	</header>
+	<form id="booknumform">
+		<input type="hidden" id="cart_number" name="cart_number">
+	</form>
 	<div id="main">
 		<article>
-			<div id="sideMenu" class="side-menu">
-				<a href="#" class="menu-item">마이페이지</a> <a href="#"
-					class="menu-item">회원 정보 관리</a> <a href="#" class="menu-item">주문
-					내역</a> <a href="#" class="menu-item">장바구니</a> <a href="#"
-					class="menu-item">마이리스트</a>
-			</div>
-			<div id="cartwrap">
-				<div id="cartcheck">
-					<c:choose>
-						<c:when test="${sessionScope.user_id!=null}">
-							<div class="check-group">
-								<table border="1" class="check-group">
-									<tr>
-										<th><input type="checkbox" id="all" class="all" /></th>
-										<th width="120">상품이미지</th>
-										<th width="300">상품</th>
-										<th width="200">가격</th>
-										<th width="200">수량 및 상태</th>
-									</tr>
-								</table>
-								<div>
-									<form>
-										<table border="1" class="check-items">
-											<c:forEach var="booklist" items="${cartbooklist}">
-												<tr>
-													<th><input type="hidden" id="dedede"
-														value="${booklist.cart_number}"> <input
-														type="checkbox" id="${booklist.cart_number}"
-														value="${booklist.book_price}" name="chkbox"></th>
-													<th width="120"><img alt="책상세이미지"
-														src="/resources/image/${booklist.book_image }" width="100"
-														height="120"></th>
-													<th width="300">${booklist.book_name }</th>
-													<th width="200">${booklist.book_price}원</th>
-													<td width="200"><input type="text" name="num"
-														class="num" id="${booklist.cart_number}" size="1"
-														readonly="readonly" value="${booklist.cart_buyquantity}" />
-														<img src="http://placehold.it/10x10" width="10"
-														height="10" class="bt_up" /> <img
-														src="http://placehold.it/10x10" width="10" height="10"
-														class="bt_down" /><input type="button" value="수정">
-														<input type="button" value="삭제"></td>
-												</tr>
-											</c:forEach>
-											<tr>
-												<td><input type="text" name="total_sum"></td>
-											</tr>
-										</table>
-									</form>
+			<div class="contain">
+				<div class="cartcontainer">
+
+					<section id="cart">
+						<!-- 		상품1시작 -->
+						<c:forEach var="cartbooklist" items="${cartbooklist}">
+							<article class="product" data-num="${cartbooklist.cart_number }">
+								<header>
+									<!-- 				삭제 이미지 -->
+									<a class="remove"> <!-- 					상품이미지 --> <img
+										src="/resources/image/${cartbooklist.book_image }"> <!-- 제거 -->
+										<h3>삭제하기</h3>
+									</a>
+								</header>
+								<div class="content">
+									<!-- 상품이름 -->
+									<h1>${cartbooklist.book_name}</h1>
+									<!-- 상품 설명 -->
+									<p>${cartbooklist.book_writer }
+									<p>
 								</div>
-							</div>
-						</c:when>
-						<c:otherwise>
-						카트에 등록된 상품이 없습니다.
-						</c:otherwise>
-					</c:choose>
+								<footer class="content">
+									<span class="qt-minus">-</span> <span class="qt">${cartbooklist.cart_buyquantity }</span>
+									<span class="qt-plus">+</span>
+
+									<h2 class="full-price">${cartbooklist.book_price * cartbooklist.cart_buyquantity }원</h2>
+
+									<h2 class="price">${cartbooklist.book_price}원</h2>
+								</footer>
+							</article>
+						</c:forEach>
+						<!-- 			상품1끝 -->
+					</section>
 				</div>
-				<div id="cartsum">
-					<table>
-						<tr>
-							<th>선택한 상품개수</th>
-							<th>선택한 상품의 총 금액</th>
-							<th rowspan="2">+</th>
-							<th>총배송비</th>
-							<th rowspan="2">-</th>
-							<th>상품할인</th>
-							<th rowspan="2">=</th>
-							<th>최종결제금액</th>
-						</tr>
-						<tr>
-							<td>2개</td>
-							<td>25,600원</td>
-							<td>0원</td>
-							<td>0원</td>
-							<td>25,600원</td>
-						</tr>
-						<tr>
-							<td>적립포인트</td>
-							<td>200포인트</td>
-						</tr>
-					</table>
+
+				<div id="site-footer">
+					<div class="cartcontainer clearfix">
+
+						<div class="left">
+							<h2 class="subtotal">
+								원가 총합: <span></span>원
+							</h2>
+							<h3 class="discount">
+								할인 (10%): <span></span>원
+							</h3>
+						</div>
+
+						<div class="right">
+							<h1 class="total">
+								결제 총합: <span></span>원
+							</h1>
+							<a class="payment">결제하기</a>
+						</div>
+
+					</div>
 				</div>
-				<input type="button" class="btn btn-default" value="쇼핑계속하기">
-				<input type="button" class="btn btn-default" value="주문하기">
 			</div>
 		</article>
 		<aside>aside</aside>
 	</div>
-
-	<jsp:include page="../footer.jsp"></jsp:include>
+	<footer>
+		<jsp:include page="../footer.jsp"></jsp:include>
+	</footer>
 </body>
 </html>

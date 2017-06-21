@@ -19,4 +19,9 @@ public class CartDAOImpl implements CartDAO {
 		return session.insert("cartInsert", cart);
 	}
 
+	@Override
+	public int cartDelete(CartVO cart) {
+		return session.delete("cartDelete", cart);
+	}
+
 }

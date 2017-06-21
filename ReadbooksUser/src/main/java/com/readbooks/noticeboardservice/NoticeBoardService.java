@@ -10,4 +10,6 @@ public interface NoticeBoardService {
 
 	public int noticeboardListCnt(NoticeBoardVO noticeboard);
 
+	public NoticeBoardVO noticeboardDetail(NoticeBoardVO noticeboard);
+
 }

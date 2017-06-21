@@ -5,16 +5,16 @@
 <html>
 <head>
 <link rel="shortcut icon" href="resources/image/favicon.ico">
-<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
-	media="screen" />
-<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
-	media="screen" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
+	media="screen" />
 <title>Insert title here</title>
 <style type="text/css">
 .accordion {
@@ -170,8 +170,8 @@
 				</c:forEach>
 			</div>
 			<div>
-				찾으시는 질문이 없나요? <b><ins>문의 게시판</ins></b>에 문의해주세요. <input type="button"
-					class="btn btn-default" value="문의하기">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;찾으시는 질문이 없나요? <b><ins>문의 게시판</ins></b>에
+				문의해주세요. <input type="button" class="btn btn-default" value="문의하기">
 			</div>
 		</article>
 		<aside>aside</aside>

@@ -8,4 +8,8 @@
 		tbl_cart(cart_number,user_id,book_number,cart_buyquantity)
 		values(cart_number_seq.nextval,#{user_id},#{book_number},#{cart_buyquantity})
 	</insert>
+	<delete id="cartDelete" parameterType="cart">
+		delete from tbl_cart where
+		cart_number = #{cart_number}
+	</delete>
 </mapper>

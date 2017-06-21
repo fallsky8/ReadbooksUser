@@ -6,4 +6,6 @@ public interface CartDAO {
 
 	public int cartInsert(CartVO cart);
 
+	public int cartDelete(CartVO cart);
+
 }

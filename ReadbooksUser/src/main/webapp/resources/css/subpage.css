@@ -7,7 +7,7 @@
 	flex-wrap: no-wrap;
 	min-height: 100%;
 	/* 	height: auto; */
-	width: 200px;
+	width: 120px;
 	background-color: gba(255, 255, 255, 0.6);
 	box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.35);
 	will-change: transform;

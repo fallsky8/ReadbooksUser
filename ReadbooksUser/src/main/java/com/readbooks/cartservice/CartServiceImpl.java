@@ -21,4 +21,11 @@ public class CartServiceImpl implements CartService {
 		return result;
 	}
 
+	@Override
+	public int cartDelete(CartVO cart) {
+		int result = 0;
+		result = cartdao.cartDelete(cart);
+		return result;
+	}
+
 }

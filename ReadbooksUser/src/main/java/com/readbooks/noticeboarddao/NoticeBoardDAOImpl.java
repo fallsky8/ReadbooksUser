@@ -25,4 +25,9 @@ public class NoticeBoardDAOImpl implements NoticeBoardDAO {
 	public int noticeboardListCnt(NoticeBoardVO noticeboard) {
 		return (Integer) session.selectOne("noticeboardListCnt", noticeboard);
 	}
+
+	@Override
+	public NoticeBoardVO noticeboardDetail(NoticeBoardVO noticeboard) {
+		return (NoticeBoardVO) session.selectOne("noticeboardDetail", noticeboard);
+	}
 }

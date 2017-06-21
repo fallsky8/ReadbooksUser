@@ -21,7 +21,7 @@
 	<select id="noticeboardList" parameterType="noticeboard"
 		resultType="noticeboard">
 		SELECT noticeboard_number, NOTICEBOARD_WRITER, NOTICEBOARD_TITLE,
-		to_char(NOTICEBOARD_REGISTERDATE,'YYYY-MM-DD HH24:MI:SS')
+		to_char(NOTICEBOARD_REGISTERDATE,'YYYY-MM-DD')
 		as
 		NOTICEBOARD_REGISTERDATE FROM (SELECT list.*,ROWNUM AS RNUM FROM(
 		<include refid="noticeboardCommon" />
@@ -61,5 +61,14 @@
 		SELECT NVL(count(1),0)FROM ( SELECT list.*, ROWNUM AS RNUM FROM(
 		<include refid="noticeboardCommon" />
 		ORDER BY noticeboard_number desc )list )
+	</select>
+	<select id="noticeboardDetail" resultType="noticeboard"
+		parameterType="int">
+		SELECT noticeboard_number, noticeboard_writer,
+		noticeboard_title, noticeboard_contents,
+		TO_CHAR(noticeboard_registerdate,'YYYY-MM-DD') AS
+		noticeboard_registerdate FROM tbl_noticeboard
+		WHERE noticeboard_number
+		= #{noticeboard_number}
 	</select>
 </mapper>

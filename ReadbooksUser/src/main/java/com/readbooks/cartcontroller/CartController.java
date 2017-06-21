@@ -49,6 +49,17 @@ public class CartController {
 		allbookGet = bookService.allbookGet(cart);
 		model.addAttribute("cartbooklist", allbookGet);
 		return "cart/cartlist";
-
 	}
+
+	@RequestMapping(value = "/cartDelete", method = RequestMethod.GET)
+	private String cartDelete(@ModelAttribute CartVO cart, HttpSession session) {
+		int result = 0;
+		String url = "";
+		result = cartService.cartDelete(cart);
+		if (result == 1) {
+			url = "/cartlistGet.do";
+		}
+		return "redirect:" + url;
+	}
+
 }

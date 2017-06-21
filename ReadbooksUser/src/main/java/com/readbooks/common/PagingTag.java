@@ -87,7 +87,7 @@ public class PagingTag extends TagSupport {
 
 		currentlast = (currentlast > lastPage) ? lastPage : currentlast;
 
-		ret += " <div class='pagination pagination-sm'>";
+		ret += " <div class='pagination pagination-sm' style='margin-left:250px;margin-top:-10px;'>";
 
 		if (page > 1) {
 			ret += "<ul class='pagination pagination-sm'><li><a href=\"javascript:goPage('1');\"><span>처음</span></a></li>";

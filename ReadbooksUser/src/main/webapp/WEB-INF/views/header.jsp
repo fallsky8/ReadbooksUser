@@ -34,7 +34,7 @@
 	</div>
 	<div class="search">
 		<div class="searchbar">
-			<input type="text" placeholder="제목으로 검색하세요!" />
+			<input type="text" placeholder="책 제목으로 검색하세요!" />
 		</div>
 		<div class="searchcart">
 			<ul>
@@ -84,7 +84,6 @@
 					<ul>
 						<li><a href="#">회원정보관리</a></li>
 						<li><a href="#">주문내역</a></li>
-						<li><a href="/cartlistGet.do">장바구니</a></li>
 						<li><a href="/mylistGet.do">마이리스트</a></li>
 					</ul></li>
 				<li id="iii"><a href="/noticeboardList.do">고객센터</a>

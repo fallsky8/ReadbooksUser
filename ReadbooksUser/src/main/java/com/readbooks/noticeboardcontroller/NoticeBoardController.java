@@ -43,4 +43,13 @@ public class NoticeBoardController {
 		model.addAttribute("total", total);
 		return "noticeboard/noticeboardlist";
 	}
+
+	@RequestMapping(value = "/noticeboarddetail", method = RequestMethod.GET)
+	public String noticeboardDetail(@ModelAttribute NoticeBoardVO noticeboard, Model model) {
+		NoticeBoardVO noticeboarddetail = new NoticeBoardVO();
+		noticeboarddetail = noticeboardservice.noticeboardDetail(noticeboard);
+		model.addAttribute("noticeboarddetail", noticeboarddetail);
+
+		return "noticeboard/noticeboarddetail";
+	}
 }

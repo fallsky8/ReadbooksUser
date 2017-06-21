@@ -13,11 +13,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
-	media="screen" />
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
 	media="screen" />
-
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
+	media="screen" />
 <title>공지사항 게시판</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
@@ -71,10 +70,6 @@
 			$("#detailForm").submit();
 		});
 
-		/* 글쓰기 버튼 클릭 시 처리 이벤트 */
-		$("#InsertFormBtn").click(function() {
-			location.href = "/noticeboardwriteForm.do";
-		});
 	});
 	/* 정렬 버튼 클릭 시 처리 함수 */
 	function setOrder(order_by) {
@@ -100,6 +95,18 @@
 		$("#f_search").submit();
 	}
 </script>
+<style type="text/css">
+.table {
+	width: 78%;
+	margin-left: 210px;
+	border: 1px solid #5fc5c5;
+	background-color: rgba(95, 197, 197, 0.1);
+}
+
+#btd1, #btd2 {
+	border-top: 1px solid #5fc5c5;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -114,7 +121,6 @@
 					class="menu-item">1:1 문의</a>
 			</div>
 			<h2>공지사항</h2>
-
 			<%--================상세 페이지 이동을 위한 FORM================= --%>
 			<form name="detailForm" id="detailForm">
 				<input type="hidden" name="noticeboard_number"
@@ -130,8 +136,8 @@
 					<input type="hidden" id="order_by" name="order_by"
 						value="${data.order_by}" /> <input type="hidden" id="order_sc"
 						name="order_sc" value="${data.order_sc}" />
-					<table class="table" style="width: 78%; margin-left: 210px">
-						<tr style="background-color: rgba(95, 197, 197, 0.1);">
+					<table class="table">
+						<tr>
 							<td id="btd1"><label>검색 조건</label> <select id="search"
 								name="search">
 									<option value="all">전체</option>
@@ -159,10 +165,9 @@
 
 			<%--=================리스트 시작================= --%>
 			<div id="boardList">
-				<table class="table" summary="게시판 리스트"
-					style="width: 78%; margin-left: 210px">
+				<table class="table" summary="게시판 리스트">
 					<thead>
-						<tr style="background-color: rgba(95, 197, 197, 0.1);">
+						<tr>
 							<th><a href="javascript:setOrder('noticeboard_number');">글번호
 									<c:choose>
 										<c:when
@@ -192,8 +197,7 @@
 							<c:when test="${not empty noticeboardList}">
 								<c:forEach var="noticeboardList" items="${noticeboardList}"
 									varStatus="status">
-									<tr data-num="${noticeboardList.noticeboard_number}"
-										style="background-color: rgba(95, 197, 197, 0.1);">
+									<tr data-num="${noticeboardList.noticeboard_number}">
 										<td>${count-(status.count-1)}</td>
 										<%-- <td>${board.b_num}</td> --%>
 										<td class="tal"><span class="goDetail">${noticeboardList.noticeboard_title}</span>
@@ -203,7 +207,7 @@
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-								<tr style="background-color: rgba(95, 197, 197, 0.1);">
+								<tr>
 									<td>등록된 게시물이 존재하지 않습니다.</td>
 								</tr>
 							</c:otherwise>
@@ -214,10 +218,6 @@
 			<%--==========================리스트 종료======================== --%>
 
 			<%--========================글쓰기 버튼 출력 시작===================== --%>
-			<div id="contentBtn">
-				<input type="button" value="글쓰기" id="InsertFormBtn"
-					class="btn btn-default">
-			</div>
 
 			<%--========================글쓰기 버튼 출력 종료===================== --%>
 
@@ -230,5 +230,6 @@
 		</article>
 		<aside>aside</aside>
 	</div>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

@@ -158,7 +158,7 @@ public class BookVO {
 	}
 
 	public void setBook_registerdate(String book_registerdate) {
-		this.book_registerdate = book_registerdate;
+		this.book_registerdate = book_registerdate.substring(0, 10);
 	}
 
 	public String getBook_status() {
@@ -174,7 +174,7 @@ public class BookVO {
 	}
 
 	public void setBook_opening(String book_opening) {
-		this.book_opening = book_opening;
+		this.book_opening = book_opening.substring(0, 10);
 	}
 
 }
