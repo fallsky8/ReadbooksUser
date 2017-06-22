@@ -7,7 +7,7 @@
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
-<title>주문</title>
+<title>주문하기</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">

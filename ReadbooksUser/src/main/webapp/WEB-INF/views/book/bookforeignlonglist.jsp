@@ -18,7 +18,7 @@
 	media="screen" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-<title>리드북스해외</title>
+<title>리드북스 해외 장편소설</title>
 </head>
 <body>
 	<header>

@@ -15,7 +15,7 @@
 	media="screen" />
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
-<title>Insert title here</title>
+<title>자주 묻는 질문</title>
 <style type="text/css">
 .accordion {
 	width: 750px;

@@ -31,4 +31,11 @@ public class MyListServiceImpl implements MyListService {
 		mylistGet = mylistdao.mylistGet(mylist);
 		return mylistGet;
 	}
+
+	@Override
+	public int mylistDelete(MyListVO mylist) {
+		int result = 0;
+		result = mylistdao.mylistDelete(mylist);
+		return result;
+	}
 }

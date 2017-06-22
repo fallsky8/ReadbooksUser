@@ -3,6 +3,8 @@ package com.readbooks.bookcontroller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,7 +56,8 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "/bookdetail", method = RequestMethod.GET)
-	public String bookdetailGet(@ModelAttribute BookVO book, Model model) {
+	public String bookdetailGet(@ModelAttribute BookVO book, @ModelAttribute CartVO cart, Model model,
+			HttpSession session) {
 		BookVO detailbookGet = new BookVO();
 		detailbookGet = bookService.detailbookGet(book);
 		model.addAttribute("detailbook", detailbookGet);

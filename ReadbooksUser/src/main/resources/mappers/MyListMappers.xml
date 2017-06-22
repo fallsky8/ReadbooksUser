@@ -8,4 +8,8 @@
 		tbl_mylist(mylist_number,user_id,book_number)
 		values(mylist_number_seq.nextval,#{user_id},#{book_number})
 	</insert>
+	<delete id="myListDelete" parameterType="mylist">
+		delete from tbl_mylist where
+		mylist_number = #{mylist_number}
+	</delete>
 </mapper>

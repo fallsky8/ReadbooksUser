@@ -3,7 +3,6 @@ package com.readbooks.mylistcontroller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.readbooks.bookservice.BookService;
 import com.readbooks.bookvo.BookVO;
-import com.readbooks.cartvo.CartVO;
 import com.readbooks.mylistservice.MyListService;
 import com.readbooks.mylistvo.MyListVO;
 import com.readbooks.uservo.UserVO;
@@ -51,4 +49,16 @@ public class MyListController {
 		model.addAttribute("mylist", mylistGet);
 		return "mylist/mylist";
 	}
+
+	@RequestMapping(value = "/mylistDelete", method = RequestMethod.GET)
+	private String mylistDelete(@ModelAttribute MyListVO mylist, HttpSession session) {
+		int result = 0;
+		String url = "";
+		result = myListService.mylistDelete(mylist);
+		if (result == 1) {
+			url = "/mylistGet.do";
+		}
+		return "redirect:" + url;
+	}
+
 }

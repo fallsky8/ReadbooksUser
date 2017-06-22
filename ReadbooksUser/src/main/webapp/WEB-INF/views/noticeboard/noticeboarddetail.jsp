@@ -16,7 +16,7 @@
 	media="screen" />
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
-<title>Insert title here</title>
+<title>공지사항</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>

@@ -11,14 +11,207 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
 	media="screen" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-<title>마이리스트</title>
+<title>마이 리스트</title>
+<script type="text/javascript">
+	$(function() {
+		$(".btndetail").click(function() {
+			var b_num = $(this).parents("article").attr("data-num");
+			$("#mylist_number").val(b_num);
+			var c_num = $(this).parents("article").attr("data-val");
+			$("#book_number").val(c_num);
+			$("#booknumform").attr({
+				"method" : "GET",
+				"action" : "/bookdetail.do"
+			});
+			$("#booknumform").submit();
+		});
+
+		$(".cartlist").click(function() {
+			var b_num = $(this).parents("article").attr("data-num");
+			$("#mylist_number").val(b_num);
+			var c_num = $(this).parents("article").attr("data-val");
+			$("#book_number").val(c_num);
+			$.ajax({
+				url : "/cartInsert.do",
+				type : "GET",
+				data : $("#booknumform").serialize(),
+				success : function(data) {
+					$("#booknumform").attr({
+						"method" : "get",
+						"action" : "/mylistDelete.do"
+					});
+					$("#booknumform").submit();
+
+				}
+			})
+			var context = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
+			if (context == true) {
+				location.href = "/cartlistGet.do";
+			} else {
+				return false;
+			}
+		});
+		var check = false;
+
+		function changeVal(el) {
+			var qt = parseFloat(el.parent().children(".qt").html());
+			var price = parseFloat(el.parent().children(".price").html());
+			var eq = Math.round(price * qt * 100) / 100;
+
+			el.parent().children(".full-price").html(eq + "원");
+
+			changeTotal();
+		}
+
+		function changeTotal() {
+
+			var price = 0;
+
+			$(".full-price").each(function(index) {
+				price += parseFloat($(".full-price").eq(index).html());
+			});
+
+			price = Math.round(price * 100) / 100;
+			var discount = Math.round(price * 10) / 100;
+			var fullPrice = Math.round((price - discount) * 100) / 100;
+
+			if (price == 0) {
+				fullPrice = 0;
+			}
+
+			$(".subtotal span").html(price);
+			$(".discount span").html(discount);
+			$(".total span").html(fullPrice);
+		}
+
+		$(document)
+				.ready(
+						function() {
+							changeTotal();
+							$(".remove")
+									.click(
+											function() {
+												var b_num = $(this).parents(
+														"article").attr(
+														"data-num");
+												$("#mylist_number").val(b_num);
+												var c_num = $(this).parents(
+														"article").attr(
+														"data-val");
+												$("#book_number").val(c_num);
+												$("#booknumform")
+														.attr(
+																{
+																	"method" : "get",
+																	"action" : "/mylistDelete.do"
+																});
+												$("#booknumform").submit();
+												var el = $(this);
+												el.parent().parent().addClass(
+														"removed");
+												window
+														.setTimeout(
+																function() {
+																	el
+																			.parent()
+																			.parent()
+																			.slideUp(
+																					'fast',
+																					function() {
+																						el
+																								.parent()
+																								.parent()
+																								.remove();
+																						if ($(".product").length == 0) {
+																							if (check) {
+																								//구매완료 
+																								$(
+																										"#cart")
+																										.html(
+																												"<h1>구매 완료</h1><p>감사합니다 구매가 완료되었습니다. 쇼핑을 계속 하시려면 <a href='/home.do'>readbooks</a>. </p>");
+																							} else {
+																								//상품없을시 
+																								$(
+																										"#cart")
+																										.html(
+																												"<h1>장바구니에 등록된 상품이 없습니다.!</h1>");
+																							}
+																						}
+																						changeTotal();
+																					});
+																}, 200);
+											});
+							//수량 추가
+							$(".qt-plus")
+									.click(
+											function() {
+												$(this)
+														.parent()
+														.children(".qt")
+														.html(
+																parseInt($(this)
+																		.parent()
+																		.children(
+																				".qt")
+																		.html()) + 1);
+
+												$(this).parent().children(
+														".full-price")
+														.addClass("added");
+
+												var el = $(this);
+												window.setTimeout(function() {
+													el.parent().children(
+															".full-price")
+															.removeClass(
+																	"added");
+													changeVal(el);
+												}, 150);
+											});
+							//수량 감소
+							$(".qt-minus")
+									.click(
+											function() {
+
+												child = $(this).parent()
+														.children(".qt");
+
+												if (parseInt(child.html()) > 1) {
+													child.html(parseInt(child
+															.html()) - 1);
+												}
+
+												$(this).parent().children(
+														".full-price")
+														.addClass("minused");
+
+												var el = $(this);
+												window.setTimeout(function() {
+													el.parent().children(
+															".full-price")
+															.removeClass(
+																	"minused");
+													changeVal(el);
+												}, 150);
+											});
+
+							window.setTimeout(function() {
+								$(".is-open").removeClass("is-open")
+							}, 1200);
+
+							$(".payment").click(function() {
+								check = true;
+								$(".remove").click();
+							});
+						});
+	});
+</script>
 </head>
 <body>
 	<header>
@@ -36,15 +229,17 @@
 					<form id="booknumform">
 						<input type="hidden" id="user_id" name="user_id"
 							value="${sessionScope.user_id }"> <input type="hidden"
-							id="book_number" name="book_number"> <input type="hidden"
 							id="cart_buyquantity" name="cart_buyquantity" value="1">
+						<input type="hidden" id="mylist_number" name="mylist_number">
+						<input type="hidden" id="book_number" name="book_number">
 					</form>
 					<section id="cart">
 						<!-- 		상품1시작 -->
 						<c:choose>
 							<c:when test="${not empty mylist}">
 								<c:forEach var="mylist" items="${mylist}">
-									<article class="product" data-num="${mylist.book_number }">
+									<article class="product" data-num="${mylist.mylist_number }"
+										data-val="${mylist.book_number }">
 										<header>
 											<!-- 				삭제 이미지 -->
 											<a class="remove"> <!-- 					상품이미지 --> <img
@@ -61,7 +256,7 @@
 											<div id="primary_nav_wrap">
 												<ul>
 													<li><a class="btndetail">상세보기</a></li>
-													<li><a class="cartlist">장바구니에 담기</a></li>
+													<li><a class="cartlist">장바구니로 이동</a></li>
 												</ul>
 											</div>
 										</div>

@@ -16,7 +16,7 @@
 	media="screen" />
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
 	media="screen" />
-<title>장바구니</title>
+<title>장바구니 목록</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">

@@ -12,5 +12,9 @@
 		<typeAlias type="com.readbooks.faqboardvo.FAQBoardVO" alias="faqboard" />
 		<typeAlias type="com.readbooks.noticeboardvo.NoticeBoardVO"
 			alias="noticeboard" />
+		<typeAlias type="com.readbooks.inquireboardvo.InquireBoardVO"
+			alias="inquireboard" />
+		<typeAlias type="com.readbooks.inquirereplyvo.InquireReplyVO"
+			alias="inquirereply" />
 	</typeAliases>
 </configuration>

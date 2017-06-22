@@ -38,10 +38,10 @@
 </script>
 </head>
 <body>
-<header>
+	<header>
 		<jsp:include page="../header.jsp"></jsp:include>
-</header>
-		<div id="main">
+	</header>
+	<div id="main">
 		<article>
 			<div>
 				<div id="member">
@@ -70,37 +70,12 @@
 						</tr>
 					</table>
 				</div>
-
-				<div id="guest">
-					<form>
-
-						<table>
-							<tr>
-								<td><b>비회원</b></td>
-							<tr>
-								<td>주문번호</td>
-								<td><input type="text" name="" id=""></td>
-							</tr>
-							<tr>
-								<td>비밀번호</td>
-								<td><input type="password" name="" id=""></td>
-								<td colspan="2"><a href="">주문확인</a></td>
-							</tr>
-						</table>
-						<table>
-							<tr>
-								<td><a href="">주문번호찾기</a></td>
-								<td><a href="">비밀번호찾기</a></td>
-							</tr>
-						</table>
-					</form>
-				</div>
 			</div>
-			</article>
-			<aside>aside</aside>
-		</div>
-		<footer>
+		</article>
+		<aside>aside</aside>
+	</div>
+	<footer>
 		<jsp:include page="../footer.jsp"></jsp:include>
-		</footer>
+	</footer>
 </body>
 </html>

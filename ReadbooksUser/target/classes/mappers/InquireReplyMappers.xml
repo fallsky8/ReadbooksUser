@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.readbooks.inquirereplydao.InquireReplyDAO">
+	<insert id="inquirereplyInsert" parameterType="inquirereply">
+		insert into
+		tbl_inquirereply(inquirereply_number,admin_id,inquireboard_number,inquirereply_contents,inquirereply_registerdate,inquireboard_writer)
+		values(inquirereply_number_seq.nextval,#{admin_id},#{inquireboard_number},#{inquirereply_contents},sysdate,#{inquireboard_writer})
+	</insert>
+</mapper>

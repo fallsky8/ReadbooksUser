@@ -18,7 +18,7 @@
 	media="screen" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-<title>리드북스신간</title>
+<title>리드북스 신간</title>
 </head>
 <body>
 	<header>

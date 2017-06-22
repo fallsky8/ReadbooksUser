@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.readbooks.inquireboarddao.InquireBoardDAO">
+	<insert id="inquireboardInsert" parameterType="inquireboard">
+		insert into
+		tbl_inquireboard(inquireboard_number,user_id,inquireboard_contents,inquireboard_registerdate,inquireboard_attachmentfile)
+		values(inquire_number_seq.nextval,#{user_id},#{inquireboard_contents},sysdate,#{inquireboard_attachmentfile})
+	</insert>
+</mapper>

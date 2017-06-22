@@ -18,13 +18,13 @@
 	media="screen" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-<title>Insert title here</title>
+<title>${detailbook.book_name}</title>
 <script type="text/javascript">
 	$(function() {
 		$(".btnpay").on({
 			"click" : function() {
-				$("#detailbookform").attr("action", "/orderinsertpage.do");
-				$("#detailbookform").submit();
+				$("#booknumform").attr("action", "/orderinsertpage.do");
+				$("#booknumform").submit();
 			}
 		});
 	});
@@ -61,12 +61,11 @@
 		<jsp:include page="../header.jsp"></jsp:include>
 	</header>
 	<div id="main">
-		<form id="detailbookform">
-			<input id="book_number" type="hidden" name="book_number"
-				value="${detailbook.book_number}"> <input id="book_name"
-				type="hidden" name="book_name" value="${detailbook.book_name }">
+		<form id="booknumform">
 			<input type="hidden" id="user_id" name="user_id"
-				value="${sessionScope.user_id }">
+				value="${sessionScope.user_id }"> <input type="hidden"
+				id="book_number" name="book_number"> <input type="hidden"
+				id="cart_buyquantity" id="cart_buyquantity" name="cart_buyquantity">
 		</form>
 		<article>
 			<div class="contain">
@@ -103,9 +102,9 @@
 								<div id="primary_nav_wrap">
 									<ul>
 										<li><a class="btnpay">주문하기</a></li>
-										<li><a href="/cartInsert.do">장바구니에 담기</a></li>
+										<li><a class="cartlist">장바구니에 담기</a></li>
 										<li><a href="/reviewboardlist.do">회원리뷰</a></li>
-										<li><a href="/mylistInsert.do">마이리스트에 추가</a></li>
+										<li><a class="mylist">마이리스트에 추가</a></li>
 									</ul>
 								</div>
 							</div>

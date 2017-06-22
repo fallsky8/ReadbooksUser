@@ -11,4 +11,6 @@ public interface MyListDAO {
 
 	public List<BookVO> mylistGet(MyListVO mylist);
 
+	public int mylistDelete(MyListVO mylist);
+
 }

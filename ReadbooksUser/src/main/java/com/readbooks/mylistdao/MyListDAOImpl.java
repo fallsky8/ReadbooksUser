@@ -26,4 +26,9 @@ public class MyListDAOImpl implements MyListDAO {
 	public List<BookVO> mylistGet(MyListVO mylist) {
 		return session.selectList("myListGet", mylist);
 	}
+
+	@Override
+	public int mylistDelete(MyListVO mylist) {
+		return session.delete("myListDelete", mylist);
+	}
 }
