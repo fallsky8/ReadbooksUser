@@ -16,5 +16,7 @@
 			alias="inquireboard" />
 		<typeAlias type="com.readbooks.inquirereplyvo.InquireReplyVO"
 			alias="inquirereply" />
+		<typeAlias type="com.readbooks.reviewboardvo.ReviewBoardVO"
+			alias="reviewboard" />
 	</typeAliases>
 </configuration>
