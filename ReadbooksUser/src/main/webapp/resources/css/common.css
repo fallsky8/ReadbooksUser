@@ -29,7 +29,7 @@ body {
 #main>article {
 	margin: 4px;
 	padding: 5px;
-	border: 1px solid #cccc33;
+/* 	border: 1px solid #cccc33; */
 	-webkit-flex: 3 1 60%;
 	flex: 3 1 60%;
 	-webkit-order: 2;

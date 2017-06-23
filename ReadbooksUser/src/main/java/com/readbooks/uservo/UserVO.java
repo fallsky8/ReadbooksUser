@@ -7,10 +7,7 @@ public class UserVO {
 	private String user_name;// 이름 VARCHAR2(20 BYTE)
 	private String user_email;// 이메일 VARCHAR2(100 BYTE)
 	private String user_phonenumber;// 휴대폰 번호 VARCHAR2(20 BYTE)
-	private String user_pwquestion;// 비밀번호 찾기 질문 VARCHAR2(100 BYTE)
-	private String user_pwanswer;// 비밀번호 찾기 답 VARCHAR2(100 BYTE)
 	private String user_registerdate;// 회원가입날짜 DATE
-	private int user_point;// 포인트 NUMBER
 	private String user_serviceagreement;// 서비스 이용약관 동의VARCHAR2(20 BYTE)
 	private String user_collectiveagreement;// 개인정보 수집 동의VARCHAR2(20 BYTE)
 	private String user_referralagreement;// 개인정보 처리 위탁 동의VARCHAR2(20 BYTE)
@@ -69,36 +66,12 @@ public class UserVO {
 		this.user_phonenumber = user_phonenumber;
 	}
 
-	public String getUser_pwquestion() {
-		return user_pwquestion;
-	}
-
-	public void setUser_pwquestion(String user_pwquestion) {
-		this.user_pwquestion = user_pwquestion;
-	}
-
-	public String getUser_pwanswer() {
-		return user_pwanswer;
-	}
-
-	public void setUser_pwanswer(String user_pwanswer) {
-		this.user_pwanswer = user_pwanswer;
-	}
-
 	public String getUser_registerdate() {
 		return user_registerdate;
 	}
 
 	public void setUser_registerdate(String user_registerdate) {
 		this.user_registerdate = user_registerdate;
-	}
-
-	public int getUser_point() {
-		return user_point;
-	}
-
-	public void setUser_point(int user_point) {
-		this.user_point = user_point;
 	}
 
 	public String getUser_serviceagreement() {

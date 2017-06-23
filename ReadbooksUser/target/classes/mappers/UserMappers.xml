@@ -5,8 +5,8 @@
 <mapper namespace="com.readbooks.userdao.UserDAO">
 	<insert id="userInsert" parameterType="user">
 		insert into
-		tbl_user(user_id,user_pw,user_address,user_name,user_email,user_phonenumber,user_pwquestion,user_pwanswer,user_serviceagreement,user_collectiveagreement,user_referralagreement,user_registerdate)
-		values(#{user_id},#{user_pw},#{user_address},#{user_name},#{user_email},#{user_phonenumber},#{user_pwquestion},#{user_pwanswer},1,1,1,sysdate)
+		tbl_user(user_id,user_pw,user_address,user_name,user_email,user_serviceagreement,user_collectiveagreement,user_referralagreement,user_registerdate)
+		values(#{user_id},#{user_pw},#{user_address},#{user_name},#{user_email},1,1,1,sysdate)
 	</insert>
 	<select id="userCheck" parameterType="user" resultType="int">
 		select

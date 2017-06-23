@@ -10,6 +10,14 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+<link
+	href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900'
+	rel='stylesheet' type='text/css'>
+<link
+	href='https://fonts.googleapis.com/css?family=Gafata|Nobile:400,700'
+	rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,300'
+	rel='stylesheet' type='text/css'>
 <script type="text/javascript">
 	$(function() {
 		$("#userjoin").click(function() {
@@ -66,6 +74,141 @@
 				}).open();
 	}
 </script>
+<style type="text/css">
+#wrapper #box input {
+	outline: none;
+}
+
+#wrapper {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	margin-top: -50px;
+}
+
+#box {
+	width: 345px;
+	height: 450px;
+	background-color: #fff;
+	margin: 0 auto;
+	-webkit-border-radius: 4px;
+	-o-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 3px;
+}
+
+#top_header {
+	width: 100%;
+	margin: 0;
+	padding-top: 0px;
+}
+
+#top_header>h3 {
+	text-align: center;
+	font-family: 'Lato', sans-serif;
+	font-size: 32px;
+	font-weight: 800;
+	color: #5fc5c5;
+	-webkit-text-stroke: 0.5px;
+	margin: 0;
+}
+
+#top_header>h5 {
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	font-weight: 300;
+	color: #5fc5c5;
+	line-height: 1.6;
+	margin: 0;
+	padding: 15px 0;
+	color: #555;
+	-webkit-text-stroke: 0.2px;
+}
+
+#inputs {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+
+#inputs input[type=text], #inputs input[type=password], #inputs #userjoin,
+	#inputs form .container #user_email {
+	width: 300px;
+	height: 55px;
+	position: relative;
+	margin: 0 auto;
+	display: block;
+	margin-bottom: -10px;
+	padding: 15px;
+	box-sizing: border-box;
+	-webkit-text-stroke: 0.1px;
+}
+
+#inputs input[type=text], #inputs input[type=password], #inputs form .container #user_email
+	{
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	border: thin solid #ccc;
+	border-radius: 5px;
+	color: #378DE5;
+}
+
+#inputs input[type=text]:focus, #inputs input[type=password]:focus,
+	#inputs form .container #user_email:focus {
+	border: thin solid #378DE5;
+	-webkit-transition: all .4s ease;
+	-moz-transition: all .4s ease;
+	-o-transition: all .4s ease;
+	transition: all .4s ease;
+}
+
+#inputs input[type=text]:focus, #inputs input[type=password]:focus,
+	#inputs form .container #user_email:focus {
+	border-left: thin solid #378DE5;
+}
+
+#userjoin {
+	color: #5fc5c5;
+	background-color: #fff;
+	border: 1px solid #5fc5c5;
+	border-radius: 5px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	transition: all .3s ease;
+	margin-top: 0px;
+	cursor: pointer;
+}
+
+#userjoin:hover {
+	background-color: #5fc5c5;
+	color: #fff;
+}
+
+#bottom {
+	width: 300px;
+	margin: 0 auto;
+	margin-top: 15px;
+}
+
+#bottom a {
+	text-decoration: none;
+	color: #282828;
+	font-size: 15px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	transition: color .3s ease;
+	outline: none;
+	float: right;
+}
+
+#bottom a:hover {
+	color: #5fc5c5;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -73,60 +216,52 @@
 	</header>
 	<div id="main">
 		<article>
-			<div>
-				<form id="joinform" name="joinform">
-					<input type="button" onclick="Postcode()" value="주소검색"><br>
-					<input type="text" id="user_address" name="user_address"
-						placeholder="주소">
-					<table>
-						<tr>
-							<td>필수정보입력</td>
-						</tr>
-						<tr>
-							<td>아이디</td>
-							<td><input type="text" name="user_id" id="user_id"></td>
-							<td><input type="button" name="btnidcheck" id="btnidcheck"
-								value="중복확인"> <small>4~12자리의 영문소문자와 숫자만 가능합니다</small></td>
-						</tr>
-						<tr>
-							<td>비밀번호</td>
-							<td><input type="password" name="user_pw" id="user_pw"></td>
-							<td><small>8~20자리의 영문 대/소문자,숫자,특수문자 조합</small></td>
-						</tr>
-						<tr>
-							<td>비밀번호확인</td>
-							<td><input type="password" name="user_pwchk" id="user_pwchk"></td>
-							<td><small>비밀번호를 한 번 더 입력해주세요</small></td>
-						</tr>
-						<tr>
-							<td>이름</td>
-							<td><input type="text" name="user_name" id="user_name"></td>
-						</tr>
-						<tr>
-							<td>휴대폰번호</td>
-							<td><input type="tel" id="user_phonenumber"
-								name="user_phonenumber"></td>
-						</tr>
-						<tr>
-							<td>비밀번호 찾기 질문 <input type="text" id="user_pwquestion"
-								name="user_pwquestion"></td>
-						</tr>
-						<tr>
-							<td>비밀번호 찾기 답 <input type="text" id="user_pwanswer"
-								name="user_pwanswer"></td>
-						</tr>
-						<tr>
-							<td>이메일</td>
-							<td><input type="email" id="user_email" name="user_email"><input
-								type="hidden" id="user_serviceagreement"
-								name="user_serviceagreement"> <input type="hidden"
-								id="user_collectiveagreement" name="user_collectiveagreement">
-								<input type="hidden" id="user_referralagreement"
-								name="user_referralagreement">
-							<td><input type="button" id="userjoin" value="가입하기"></td>
-						</tr>
-					</table>
-				</form>
+			<div id="wrapper">
+				<div id="box">
+					<div id="top_header">
+						<h3>회원가입</h3>
+						<h5>리드북스 가입을 환영합니다.</h5>
+					</div>
+					<div id="inputs">
+						<form id='joinform' style="margin-left: 6px;">
+							<input type="hidden" id="user_collectiveagreement"
+								name="user_collectiveagreement"> <input type="hidden"
+								id="user_referralagreement" name="user_referralagreement">
+							<input type="hidden" id="user_serviceagreement"
+								name="user_serviceagreement">
+							<div class='container'>
+								<input type='text' name='user_name' id='user_name'
+									maxlength="50" size="30" placeholder="이름" /><br />
+							</div>
+							<div class='container'>
+								<input type='text' name='user_id' id='user_id' maxlength="50"
+									size="30" placeholder="아이디" /><br />
+							</div>
+							<div class='container'>
+								<input type='password' name='user_pw' id='user_pw'
+									maxlength="50" size="30" placeholder="비밀번호" /><br />
+							</div>
+							<div class='container'>
+								<input type='password' name='user_pwck' id='user_pwck'
+									maxlength="50" size="30" placeholder="비밀번호확인" /><br />
+							</div>
+							<div class='container'>
+								<input type="text" id="user_address" name="user_address"
+									placeholder="주소를 검색하세요!">
+								<div id="bottom">
+									<a onclick="Postcode()">주소검색</a>
+								</div>
+							</div>
+							<div class='container'>
+								<input type="email" name='user_email' id='user_email'
+									maxlength="50" size="30" placeholder="이메일" /><br />
+							</div>
+							<div class='container'>
+								<input type='button' id="userjoin" value='가입하기' />
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</article>
 		<aside>aside</aside>

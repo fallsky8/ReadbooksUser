@@ -8,6 +8,148 @@
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 <title>리드북스 로그인</title>
+<link
+	href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900'
+	rel='stylesheet' type='text/css'>
+<link
+	href='https://fonts.googleapis.com/css?family=Gafata|Nobile:400,700'
+	rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,300'
+	rel='stylesheet' type='text/css'>
+<style type="text/css">
+#wrapper #box input {
+	outline: none;
+}
+
+#wrapper {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+#box {
+	width: 345px;
+	height: 450px;
+	background-color: #fff;
+	margin: 0 auto;
+	-webkit-border-radius: 4px;
+	-o-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 3px;
+}
+
+#top_header {
+	width: 100%;
+	margin: 0;
+	padding-top: 45px;
+}
+
+#top_header>h3 {
+	text-align: center;
+	font-family: 'Lato', sans-serif;
+	font-size: 32px;
+	font-weight: 800;
+	color: #5fc5c5;
+	-webkit-text-stroke: 0.5px;
+	margin: 0;
+}
+
+#top_header>h5 {
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	font-weight: 300;
+	color: #5fc5c5;
+	line-height: 1.6;
+	margin: 0;
+	padding: 15px 0;
+	color: #555;
+	-webkit-text-stroke: 0.2px;
+}
+
+#inputs {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+
+#inputs input[type=text], #inputs input[type=password], #inputs #userlogin
+	{
+	width: 300px;
+	height: 55px;
+	position: relative;
+	margin: 0 auto;
+	display: block;
+	margin-bottom: -10px;
+	padding: 15px;
+	box-sizing: border-box;
+	-webkit-text-stroke: 0.1px;
+}
+
+#inputs input[type=text], #inputs input[type=password] {
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	border: thin solid #ccc;
+	border-radius: 5px;
+	color: #378DE5;
+}
+
+#inputs input[type=text]:focus, #inputs input[type=password]:focus {
+	border: thin solid #378DE5;
+	-webkit-transition: all .4s ease;
+	-moz-transition: all .4s ease;
+	-o-transition: all .4s ease;
+	transition: all .4s ease;
+}
+
+#inputs input[type=text]:focus, #inputs input[type=password]:focus {
+	border-left: thin solid #378DE5;
+}
+
+#userlogin {
+	color: #5fc5c5;
+	background-color: #fff;
+	border: 1px solid #5fc5c5;
+	border-radius: 5px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	transition: all .3s ease;
+	margin-top: 0px;
+	cursor: pointer;
+}
+
+#userlogin:hover {
+	background-color: #5fc5c5;
+	color: #fff;
+}
+
+#bottom {
+	width: 300px;
+	margin: 0 auto;
+	margin-top: 15px;
+}
+
+#bottom a {
+	text-decoration: none;
+	color: #282828;
+	font-size: 13px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	transition: color .3s ease;
+	outline: none;
+}
+
+#bottom a:hover {
+	color: #5fc5c5;
+}
+
+.right_a {
+	float: right;
+}
+</style>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
@@ -43,32 +185,37 @@
 	</header>
 	<div id="main">
 		<article>
-			<div>
-				<div id="member">
-					<form id="loginform" name="loginform">
-						<table>
-							<tr>
-								<td><b>회원</b></td>
-							<tr>
-							<tr>
-								<td>아이디</td>
-								<td><input type="text" name="user_id" id="user_id"></td>
-							</tr>
-							<tr>
-								<td>비밀번호</td>
-								<td><input type="password" name="user_pw" id="user_pw"></td>
-								<td colspan="2"><input type="button" id="userlogin"
-									name="userlogin" value="로그인"></td>
-							</tr>
-						</table>
-					</form>
-					<table>
-						<tr>
-							<td><a href="">아이디찾기</a></td>
-							<td><a href="">비밀번호찾기</a></td>
-							<td><a href="/userjoin.do">회원가입하기</a></td>
-						</tr>
-					</table>
+			<div id="wrapper">
+				<div id="box">
+					<div id="top_header">
+						<h3>로그인</h3>
+						<h5>리드북스에 오신 것을 환영합니다.</h5>
+					</div>
+
+					<div id="inputs">
+						<form id='loginform' style="margin-left: 6px;">
+
+							<div class='container'>
+								<input type='text' name='user_id' id='user_id' maxlength="50"
+									size="30" placeholder="아이디" /><br />
+							</div>
+
+							<div class='container'>
+								<input type='password' name='user_pw' id='user_pw'
+									maxlength="50" size="30" placeholder="비밀번호" /><br />
+							</div>
+
+							<div class='container'>
+								<input type='button' name='userlogin' id="userlogin" value='로그인' />
+							</div>
+
+						</form>
+
+						<div id="bottom">
+							<a href="/userjoin.do">아직 리드북스 회원이 아니세요?</a> <a class="right_a"
+								href="#">찾기</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</article>
