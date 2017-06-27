@@ -25,7 +25,7 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
-	$(function() {
+	$(function() { 
 
 		$(window).scroll(function() {
 			if ($(this).scrollTop() > 450) {
