@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.readbooks.replydao.ReplyDao">
+
+	<!-- 게시물 기본 조회 -->
+	<select id="reviewreplyList" parameterType="reviewreply"
+		resultType="reviewreply">
+		SELECT
+		reviewreply_number,
+		user_id,
+		reviewreply_contents,
+		to_char(reviewreply_registerdate,'YYYY-MM-DD')
+		as
+		reviewreply_registerdate
+		FROM tbl_reviewreply
+		WHERE reviewboard_number =
+		#{reviewboard_number}
+		order by
+		reviewreply_number desc
+	</select>
+
+
+
+	<!-- 게시물 등록 -->
+	<insert id="reviewreplyInsert" parameterType="reviewreply">
+
+		INSERT INTO
+		tbl_reviewreply (reviewreply_number, reviewboard_number,
+		user_id,
+		reviewreply_contents)
+		VALUES(reviewreply_number_seq.nextval,#{reviewboard_number},#{user_id},#{reviewreply_contents})
+	</insert>
+
+	<update id="reviewreplyUpdate" parameterType="reviewreply"> UPDATE
+		tbl_reviewreply
+		SET reviewreply_contents=#{reviewreply_contents},
+		reviewreply_registerdate =
+		sysdate WHERE reviewreply_number =
+		#{reviewreply_number}
+	</update>
+
+	<delete id="reviewreplyDelete" parameterType="reviewreply"> DELETE FROM
+		tbl_reviewreply
+		WHERE reviewreply_number = #{reviewreply_number}
+	</delete>
+
+</mapper>

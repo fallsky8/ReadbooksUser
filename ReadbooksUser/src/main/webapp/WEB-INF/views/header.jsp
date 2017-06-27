@@ -79,7 +79,7 @@
 					<!-- 					<li><a href="#">Sub Menu 3</a></li> --> <!-- 					<li><a href="#">Sub Menu 4</a></li> -->
 					<!-- 					<li><a href="#">Sub Menu 5</a></li> --> <!-- 				</ul></li> -->
 				<li id="iii"><a href="/newbookGet.do">신간소설</a></li>
-				<li id="iii"><a href="#">리뷰게시판</a></li>
+				<li id="iii"><a href="/reviewboardList.do">리뷰게시판</a></li>
 				<li id="iii"><a href="#">마이페이지</a>
 					<ul>
 						<li><a href="#">회원정보관리</a>

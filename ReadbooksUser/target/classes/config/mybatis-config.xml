@@ -14,5 +14,8 @@
 			alias="noticeboard" />
 		<typeAlias type="com.readbooks.inquireboardvo.InquireBoardVO"
 			alias="inquireboard" />
+		<typeAlias alias="reviewboard" type="com.readbooks.reviewboardvo.ReviewBoardVO" />
+
+		<typeAlias alias="reviewreply" type="com.readbooks.reviewreplyvo.ReviewReplyVO" />
 	</typeAliases>
 </configuration>

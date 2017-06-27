@@ -278,8 +278,6 @@
 									</ul>
 								</c:forEach></li>
 
-
-
 							<li class="swiper-slide"><c:forEach var="bestbooklist"
 									items="${bestbooklist }" begin="5" end="9">
 									<ul class="issue_book_list">
@@ -474,8 +472,6 @@
 
 									</ul>
 								</c:forEach></li>
-
-
 
 							<li class="swiper-slide"><c:forEach var="foreignbooklist"
 									items="${foreignbooklist }" begin="5" end="9">

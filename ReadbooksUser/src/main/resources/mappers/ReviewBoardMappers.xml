@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.readbooks.reviewboarddao.ReviewBoardDAO">
+	<sql id="reviewboardcommon">
+		SELECT reviewboard_number,reviewboard_star, user_id,
+		reviewboard_title,
+		reviewboard_registerdate FROM tbl_reviewboard
+		<trim prefixOverrides="AND" prefix="WHERE">
+			<if test="search=='reviewboard_title'">
+<![CDATA[reviewboard_title LIKE'%'||#{keyword}||'%']]>
+			</if>
+			<if test="search=='reviewboard_contents'">
+<![CDATA[AND reviewboard_contents LIKE'%'||#{keyword}||'%']]>
+			</if>
+			<if test="search=='user_id'">
+<![CDATA[AND user_id LIKE'%'||#{keyword}||'%']]>
+			</if>
+		</trim>
+	</sql>
+
+	<select id="reviewboardList" parameterType="reviewboard"
+		resultType="reviewboard">
+		SELECT reviewboard_number, reviewboard_star, user_id,
+		reviewboard_title,
+		to_char(reviewboard_registerdate,'YY-MM-DD')
+		as
+		reviewboard_registerdate FROM (SELECT list.*,ROWNUM AS RNUM FROM(
+		<include refid="reviewboardcommon" />
+		<choose>
+			<when test="order_by=='reviewboard_number'"> ORDER BY reviewboard_number </when>
+			<when test="order_by=='reviewboard_registerdate'"> ORDER BY reviewboard_registerdate </when>
+		</choose>
+
+		<choose>
+			<when test="order_sc=='ASC'"> ASC </when>
+			<when test="order_sc=='DESC'"> DESC </when>
+		</choose>
+		)list )
+		<where>
+			<if test="start_row != null and start_row !=''">
+				<if test="end_row != null and end_row !=''"> RNUM BETWEEN #{start_row} AND #{end_row} </if>
+			</if>
+		</where>
+	</select>
+	<select id="reviewboardListCnt" resultType="int" parameterType="reviewboard">
+		SELECT NVL(count(1),0)FROM ( SELECT list.*, ROWNUM AS RNUM FROM(
+		<include refid="reviewboardcommon" />
+		ORDER BY reviewboard_number desc)list )
+	</select>
+
+	<insert id="reviewboardInsert" parameterType="reviewboard">
+		INSERT INTO
+		tbl_reviewboard
+		(reviewboard_number,reviewboard_star,
+		user_id,
+		reviewboard_title, reviewboard_contents
+		<if
+			test="reviewboard_attachmentfile != null and reviewboard_attachmentfile !=''">,REVIEWBOARD_ATTACHMENTFILE</if>
+		)
+		VALUES(review_number_seq.nextval,#{reviewboard_star},#{user_id},#{reviewboard_title},#{reviewboard_contents}
+		<if
+			test="reviewboard_attachmentfile != null and reviewboard_attachmentfile !=''">,#{reviewboard_attachmentfile}</if>
+		)
+	</insert>
+
+	<!-- 글상세 -->
+	<select id="reviewboardDetail" parameterType="reviewboard"
+		resultType="reviewboard">
+		SELECT
+		reviewboard_number, reviewboard_star, user_id,
+		reviewboard_title,
+		reviewboard_contents, reviewboard_attachmentfile,
+		TO_CHAR(reviewboard_registerdate,'YYYY-MM-DD') AS
+		reviewboard_registerdate FROM
+		tbl_reviewboard
+		WHERE reviewboard_number =
+		#{reviewboard_number}
+	</select>
+
+	<!-- 글수정 -->
+	<update id="reviewboardUpdate" parameterType="reviewboard">
+		UPDATE tbl_reviewboard
+		SET
+		reviewboard_title = #{reviewboard_title},
+		reviewboard_contents = #{reviewboard_contents},
+		reviewboard_registerdate = sysdate
+		<if test="reviewboard_attachmentfile !=''">
+			,reviewboard_attachmentfile =
+			#{reviewboard_attachmentfile}
+		</if>
+		,reviewboard_star = #{reviewboard_star}
+		WHERE reviewboard_number =
+		#{reviewboard_number}
+	</update>
+
+	<delete id="reviewboardDelete" parameterType="reviewboard">
+		delete from
+		tbl_reviewboard
+		WHERE reviewboard_number = #{reviewboard_number}
+	</delete>
+
+</mapper>
