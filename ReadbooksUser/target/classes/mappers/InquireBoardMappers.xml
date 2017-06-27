@@ -3,9 +3,71 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.readbooks.inquireboarddao.InquireBoardDAO">
+	<sql id="inquireboardCommon">
+		SELECT inquireboard_number, USER_ID,
+		inquireboard_title,inquireboard_contents,inquireboard_answer,
+		INQUIREBOARD_REGISTERDATE,inquireboard_attachmentfile,inquireboard_type
+		FROM
+		tbl_inquireboard where user_id=#{user_id}
+		<trim>
+			<if test="search=='inquireboard_title'">
+<![CDATA[and inquireboard_title LIKE'%'||#{keyword}||'%']]>
+			</if>
+			<if test="search=='INQUIREBOARD_CONTENTS'">
+<![CDATA[and INQUIREBOARD_CONTENTS LIKE'%'||#{keyword}||'%']]>
+			</if>
+			<if test="search=='INQUIREBOARD_ANSWER'">
+<![CDATA[and INQUIREBOARD_ANSWER LIKE'%'||#{keyword}||'%']]>
+			</if>
+		</trim>
+	</sql>
 	<insert id="inquireboardInsert" parameterType="inquireboard">
 		insert into
-		tbl_inquireboard(inquireboard_number,user_id,inquireboard_contents,inquireboard_registerdate,inquireboard_attachmentfile)
-		values(inquire_number_seq.nextval,#{user_id},#{inquireboard_contents},sysdate,#{inquireboard_attachmentfile})
+		tbl_inquireboard(inquireboard_number,user_id,inquireboard_title,inquireboard_type,inquireboard_contents,inquireboard_registerdate,inquireboard_attachmentfile)
+		values(inquire_number_seq.nextval,#{user_id},#{inquireboard_title},#{inquireboard_type},#{inquireboard_contents},sysdate,#{inquireboard_attachmentfile})
 	</insert>
+
+	<select id="inquireboardList" parameterType="inquireboard"
+		resultType="inquireboard">
+		SELECT inquireboard_number, USER_ID,
+		inquireboard_title,inquireboard_contents,inquireboard_type,inquireboard_answer,inquireboard_attachmentfile,
+		to_char(inquireboard_registerdate,'YYYY-MM-DD')
+		as
+		inquireboard_registerdate FROM (SELECT list.*,ROWNUM AS RNUM FROM(
+		<include refid="inquireboardCommon" />
+
+
+		<choose>
+
+			<when test="order_by=='inquireboard_number'"> ORDER BY inquireboard_number </when>
+
+			<when test="order_by=='inquireboard_registerdate'"> ORDER BY inquireboard_registerdate </when>
+
+		</choose>
+		<choose>
+
+			<when test="order_sc=='ASC'"> ASC </when>
+
+			<when test="order_sc=='DESC'"> DESC </when>
+
+		</choose>
+		)list )
+
+		<where>
+
+
+			<if test="start_row != null and start_row !=''">
+
+				<if test="end_row != null and end_row !=''"> RNUM BETWEEN #{start_row} AND #{end_row} </if>
+
+			</if>
+
+		</where>
+
+	</select>
+	<select id="inquireboardListCnt" resultType="int" parameterType="inquireboard">
+		SELECT NVL(count(1),0)FROM ( SELECT list.*, ROWNUM AS RNUM FROM(
+		<include refid="inquireboardCommon" />
+		ORDER BY inquireboard_number desc )list )
+	</select>
 </mapper>

@@ -82,7 +82,11 @@
 				<li id="iii"><a href="#">리뷰게시판</a></li>
 				<li id="iii"><a href="#">마이페이지</a>
 					<ul>
-						<li><a href="#">회원정보관리</a></li>
+						<li><a href="#">회원정보관리</a>
+							<ul>
+								<li class="dir"><a href="/useroutpage.do">회원탈퇴</a></li>
+								<li class="dir"><a href="#">개인정보수정</a></li>
+							</ul></li>
 						<li><a href="#">주문내역</a></li>
 						<li><a href="/mylistGet.do">마이리스트</a></li>
 					</ul></li>
@@ -90,7 +94,7 @@
 					<ul>
 						<li><a href="/noticeboardList.do">공지사항</a></li>
 						<li><a href="/faqboardList.do">자주 묻는 질문</a></li>
-						<li><a href="#">1:1 문의</a></li>
+						<li><a href="/inquireboardList.do">1:1 문의</a></li>
 					</ul></li>
 			</ul>
 		</nav>

@@ -4,8 +4,10 @@
 
 <mapper namespace="com.readbooks.noticeboarddao.NoticeBoardDAO">
 	<sql id="noticeboardCommon">
-		SELECT noticeboard_number, NOTICEBOARD_WRITER, NOTICEBOARD_TITLE,
-		NOTICEBOARD_REGISTERDATE FROM tbl_noticeboard
+		SELECT noticeboard_number, NOTICEBOARD_WRITER,
+		NOTICEBOARD_TITLE,
+		NOTICEBOARD_REGISTERDATE FROM
+		tbl_noticeboard
 		<trim prefixOverrides="AND" prefix="WHERE">
 			<if test="search=='noticeboard_title'">
 <![CDATA[noticeboard_title LIKE'%'||#{keyword}||'%']]>
@@ -20,7 +22,8 @@
 	</sql>
 	<select id="noticeboardList" parameterType="noticeboard"
 		resultType="noticeboard">
-		SELECT noticeboard_number, NOTICEBOARD_WRITER, NOTICEBOARD_TITLE,
+		SELECT noticeboard_number, NOTICEBOARD_WRITER,
+		NOTICEBOARD_TITLE,
 		to_char(NOTICEBOARD_REGISTERDATE,'YYYY-MM-DD')
 		as
 		NOTICEBOARD_REGISTERDATE FROM (SELECT list.*,ROWNUM AS RNUM FROM(
@@ -34,8 +37,6 @@
 			<when test="order_by=='noticeboard_registerdate'"> ORDER BY noticeboard_registerdate </when>
 
 		</choose>
-
-
 		<choose>
 
 			<when test="order_sc=='ASC'"> ASC </when>

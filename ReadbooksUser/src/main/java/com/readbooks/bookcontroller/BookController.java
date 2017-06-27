@@ -55,6 +55,7 @@ public class BookController {
 		return "book/booknewlist";
 	}
 
+
 	@RequestMapping(value = "/bookdetail", method = RequestMethod.GET)
 	public String bookdetailGet(@ModelAttribute BookVO book, @ModelAttribute CartVO cart, Model model,
 			HttpSession session) {
@@ -63,7 +64,6 @@ public class BookController {
 		model.addAttribute("detailbook", detailbookGet);
 		return "book/bookdetail";
 	}
-
 	@RequestMapping(value = "/foreignlongbookGet", method = RequestMethod.GET)
 	public String foreignlongbookGet(@ModelAttribute BookVO book, Model model) {
 		List<BookVO> foreignlongbookGet = new ArrayList<BookVO>();

@@ -91,13 +91,21 @@
 								<!-- 상품이름 -->
 								<h1>${detailbook.book_name}</h1>
 								<!-- 상품 설명 -->
-								<p>저자&nbsp;&nbsp;&nbsp;${detailbook.book_writer }</p>
+								<p>
+									<b>저자</b>&nbsp;&nbsp;&nbsp;${detailbook.book_writer }
+								</p>
 								<br>
-								<p>분류&nbsp;&nbsp;&nbsp;${detailbook.book_country },${detailbook.book_story }&nbsp;소설</p>
+								<p>
+									<b>분류</b>&nbsp;&nbsp;&nbsp;${detailbook.book_country },${detailbook.book_story }&nbsp;소설
+								</p>
 								<br>
-								<p>출판사&nbsp;&nbsp;&nbsp;${detailbook.book_publisher }</p>
+								<p>
+									<b>출판사</b>&nbsp;&nbsp;&nbsp;${detailbook.book_publisher }
+								</p>
 								<br>
-								<p>출판일&nbsp;&nbsp;&nbsp;${detailbook.book_opening }</p>
+								<p>
+									<b>출판일</b>&nbsp;&nbsp;&nbsp;${detailbook.book_opening }
+								</p>
 								<br>
 								<div id="primary_nav_wrap">
 									<ul>

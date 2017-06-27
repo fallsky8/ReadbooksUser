@@ -208,7 +208,6 @@
 							<div class='container'>
 								<input type='button' name='userlogin' id="userlogin" value='로그인' />
 							</div>
-
 						</form>
 
 						<div id="bottom">

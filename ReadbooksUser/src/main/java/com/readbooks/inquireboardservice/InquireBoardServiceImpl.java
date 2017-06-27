@@ -1,5 +1,7 @@
 package com.readbooks.inquireboardservice;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,5 +21,17 @@ public class InquireBoardServiceImpl implements InquireBoardService {
 		int result = 0;
 		result = inquireboarddao.inquireboardInsert(inquire);
 		return result;
+	}
+
+	@Override
+	public int inquireboardListCnt(InquireBoardVO inquire) {
+		return inquireboarddao.inquireboardListCnt(inquire);
+	}
+
+	@Override
+	public List<InquireBoardVO> inquireboardList(InquireBoardVO inquire) {
+		List<InquireBoardVO> inquireboardList = null;
+		inquireboardList = inquireboarddao.inquireboardList(inquire);
+		return inquireboardList;
 	}
 }

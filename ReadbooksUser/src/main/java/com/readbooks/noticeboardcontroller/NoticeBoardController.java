@@ -49,7 +49,6 @@ public class NoticeBoardController {
 		NoticeBoardVO noticeboarddetail = new NoticeBoardVO();
 		noticeboarddetail = noticeboardservice.noticeboardDetail(noticeboard);
 		model.addAttribute("noticeboarddetail", noticeboarddetail);
-
 		return "noticeboard/noticeboarddetail";
 	}
 }

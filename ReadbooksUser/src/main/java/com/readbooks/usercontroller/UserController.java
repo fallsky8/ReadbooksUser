@@ -25,6 +25,12 @@ public class UserController {
 		return "user/userjoin";
 	}
 
+	@RequestMapping(value = "/useroutpage")
+	public String useroutpage(HttpSession session) {
+
+		return "user/userout";
+	}
+
 	@RequestMapping(value = "/usercheck")
 	public String checkuser(HttpSession session) {
 

@@ -221,8 +221,9 @@
 		<article>
 			<div id="sideMenu" class="side-menu">
 				<a href="#" class="menu-item">마이페이지</a> <a href="#"
-					class="menu-item">회원정보관리</a> <a href="#" class="menu-item">주문내역</a>
-				<a href="#" class="menu-item">마이리스트</a>
+					class="menu-item">회원정보관리</a> <a href="#" class="menu-item">&nbsp;&nbsp;&nbsp;-개인정보수정</a>
+				<a href="/useroutpage.do" class="menu-item">&nbsp;&nbsp;&nbsp;-회원탈퇴</a>
+				<a href="#" class="menu-item">주문내역</a> <a href="#" class="menu-item">마이리스트</a>
 			</div>
 			<div class="contain">
 				<div class="cartcontainer">

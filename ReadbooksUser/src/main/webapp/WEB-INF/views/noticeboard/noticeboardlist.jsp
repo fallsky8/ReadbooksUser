@@ -117,8 +117,8 @@
 			<div id="sideMenu" class="side-menu">
 				<a href="/noticeboardList.do" class="menu-item">고객센터</a> <a
 					href="/noticeboardList.do" class="menu-item">공지사항</a> <a
-					href="/faqboardList.do" class="menu-item">자주 묻는 질문</a> <a href="#"
-					class="menu-item">1:1 문의</a>
+					href="/faqboardList.do" class="menu-item">자주 묻는 질문</a> <a
+					href="/inquireboardList.do" class="menu-item">1:1 문의</a>
 			</div>
 			<h2>공지사항</h2>
 			<%--================상세 페이지 이동을 위한 FORM================= --%>
@@ -200,7 +200,7 @@
 									<tr data-num="${noticeboardList.noticeboard_number}">
 										<td>${count-(status.count-1)}</td>
 										<%-- <td>${board.b_num}</td> --%>
-										<td class="tal"><span class="goDetail">${noticeboardList.noticeboard_title}</span>
+										<td><span class="goDetail">${noticeboardList.noticeboard_title}</span></td>
 										<td>${noticeboardList.noticeboard_registerdate}</td>
 										<td>${noticeboardList.noticeboard_writer}</td>
 									</tr>
