@@ -5,17 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<link rel="stylesheet" type="text/css" href="/resources/css/common.css" />
-<link rel="stylesheet" type="text/css" href="/resources/css/board.css" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript" src="/resources/js/common.js"></script>
 <title>comment</title>
 <script type="text/javascript">
 	$(function() {
+
 		/* 기본 덧글 목록 불러오기 */
 		var reviewboard_number = "<c:out value='${reviewdetail.reviewboard_number}' />";
 		listAll(reviewboard_number)
@@ -60,7 +55,8 @@
 						".update_form",
 						function() {
 							var now = "${sessionScope.user_id}";
-							if (now == user_id) {
+							var user = $("#g2").val();
+							if (now == user) {
 								$(".reset_btn").click();
 								var conText = $(this).parents("li").children()
 										.eq(1).html();
@@ -79,7 +75,7 @@
 								conArea.html(data);
 							} else if (now == "") {
 								alert("당신은 비회원입니다.");
-							} else {
+							} else if (now != user) {
 								alert("당신은 작성자가 아닙니다.");
 							}
 
@@ -129,7 +125,9 @@
 				function() {
 
 					var now = "${sessionScope.user_id}";
-					if (now == user_id) {
+					var user = $("#g2").val();
+
+					if (now == user) {
 						var reviewreply_number = $(this).parents("li").attr(
 								"data-num");
 						console
@@ -157,7 +155,7 @@
 
 					} else if (now == "") {
 						alert("당신은 비회원입니다.");
-					} else {
+					} else if (now != user) {
 						alert("당신은 작성자가 아닙니다.");
 					}
 
@@ -173,7 +171,6 @@
 						url,
 						function(data) {
 							console.log(data.length);
-
 							$(data)
 									.each(
 											function() {
@@ -186,6 +183,7 @@
 														reviewreply_contents,
 														reviewreply_registerdate);
 											});
+
 						}).fail(function() {
 					alert("덧글 목록을 불러오는데 실패하였습니다. 잠시후에 다시 시도해주세요.");
 				});
@@ -200,7 +198,7 @@
 		new_li.attr("data-num", reviewreply_number);
 		new_li.addClass("comment_item");
 
-		/* 작성자 정보가 지정될 <p>태그 */
+		/* 작성자 정보가 지정될 _$t태그 */
 		var writer_p = $("<p>");
 		writer_p.addClass("writer");
 
@@ -208,6 +206,7 @@
 		var name_span = $("<span>");
 		name_span.addClass("name");
 		name_span.html(user_id + "님");
+		$("#g2").val(user_id);
 
 		//작성일시
 		var date_span = $("<span>");
@@ -217,7 +216,8 @@
 		var up_input = $("<input>");
 		up_input.attr({
 			"type" : "button",
-			"value" : "수정하기"
+			"value" : "수정하기",
+			"class" : "btn btn-default"
 		});
 		up_input.addClass("update_form");
 
@@ -225,7 +225,8 @@
 		var del_input = $("<input>");
 		del_input.attr({
 			"type" : "button",
-			"value" : "삭제하기"
+			"value" : "삭제하기",
+			"class" : "btn btn-default"
 		});
 		del_input.addClass("delete_btn");
 
@@ -251,18 +252,20 @@
 		<div id="comment_write">
 			<form id="comment_form">
 				<div>
-					<label for="user_id">작성자</label>${sessionScope.user_id}<input
+					<input id="g2" name="g2" type="hidden" value=""> <label
+						for="user_id">작성자</label>${sessionScope.user_id}<input
 						type="hidden" id="user_id" name="user_id"
-						value="${sessionScope.user_id}"> <label for="user_id">
-						<input type="button" id="reviewreplyInsert" value="저장하기" />
-					</label>
+						value="${sessionScope.user_id}"> <input type="button"
+						id="reviewreplyInsert" value="저장하기" class="btn btn-default" />
 				</div>
+				<label for="reviewreply_contents">덧글 내용</label>
 				<div>
-					<label for="reviewreply_contents">덧글 내용</label>
-					<textarea name="reviewreply_contents" id="reviewreply_contents"></textarea>
+					<textarea name="reviewreply_contents" id="reviewreply_contents"
+						class="form-control"></textarea>
 				</div>
 			</form>
 		</div>
+		<br>
 		<ul id="comment_list">
 			<!-- 여기에 동적 생성 요소가 들어가게 됩니다. -->
 		</ul>

@@ -4,23 +4,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="shortcut icon" href="resources/image/favicon.ico">
+<link rel="shortcut icon" href="/resources/image/favicon.ico">
+<link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet"
+	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
+	type="text/css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
-	media="screen" />
+<script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
+<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
+	media="screen" />
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
 <title>자주 묻는 질문</title>
 <style type="text/css">
 .accordion {
-	width: 750px;
+	width: 800px; 
 	border: 1px solid #5FC5C5;
-	margin-left: 220px;
+	margin-left: 220px; 
 }
 
 .accordion h1, h2, h3, h4 {
@@ -30,9 +38,10 @@
 .accordion h1 {
 	padding: 15px 20px;
 	background-color: rgba(95, 197, 197, 0.1);
-	font-size: 1.5rem;
+	font-size: 25px;
 	font-weight: normal;
 	color: #1abc9c;
+	margin: 0 !important;
 }
 
 .accordion h1:hover {
@@ -52,7 +61,6 @@
 
 .accordion h2 {
 	padding: 5px 25px;
-	/* 	background-color: #1abc9c; */
 	font-size: 1.1rem;
 	color: #333;
 }
@@ -63,7 +71,6 @@
 
 .accordion h3 {
 	padding: 5px 30px;
-	/* 	background-color: #b94152; */
 	font-size: .9rem;
 	color: #ddd;
 }
@@ -74,19 +81,21 @@
 
 .accordion h4 {
 	padding: 5px 35px;
-	/* 	background-color: #ffc25a; */
-	font-size: .9rem;
-	color: #af720a;
+	font-size: 14px;
+	color: #489CFF;
+	margin: 0 !important;
+	height: 50px;
+	padding-top: 17px;
 }
 
 .accordion h4:hover {
-	background-color: #e0b040;
+	background-color: #489CFF;
+	color: white;
 }
 
 .accordion p {
 	padding: 15px 35px;
-	/* 	background-color: #ddd; */
-	font-size: .8rem;
+	font-size: 14px;
 	color: #333;
 	line-height: 1.3rem;
 }
@@ -119,18 +128,15 @@
 														return true;
 													}
 												});
-								$(allAtDepth).slideUp("fast");
+								$(allAtDepth).slideUp(10);
 
-								subItem.slideToggle("fast", function() {
-									// 									$(".accordion :visible:last").css(
-									// 											"border-radius", "0 0 10px 10px");
-								});
-								$(target).css({
-								// 									"border-bottom-right-radius" : "0",
-								// 									"border-bottom-left-radius" : "0"
-								});
+								subItem.slideToggle(10);
 							}
 						});
+
+		$("#munui").click(function() {
+			location.href = "/inquireboardList.do";
+		})
 	});
 </script>
 </head>
@@ -146,7 +152,6 @@
 					href="/faqboardList.do" class="menu-item">자주 묻는 질문</a> <a
 					href="/inquireboardList.do" class="menu-item">1:1 문의</a>
 			</div>
-			<h2>자주 묻는 질문</h2>
 			<div class="accordion">
 				<h1>회원 FAQ</h1>
 				<c:forEach var="faqboarduserList" items="${faqboarduserList}">
@@ -170,12 +175,34 @@
 					</div>
 				</c:forEach>
 			</div>
-			<div>
+			<div style="margin-left: 581px;"> 
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;찾으시는 질문이 없나요? <b><ins>문의 게시판</ins></b>에
-				문의해주세요. <input type="button" class="btn btn-default" value="문의하기">
+				문의해주세요. <input type="button" class="btn btn-default" value="문의하기"
+					id="munui">
 			</div>
 		</article>
-		<aside>aside</aside>
+		<aside>
+			<div id="serviceWrap">
+				<div class="ss_myshop">
+					<a href="#"><span>주요서비스</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/usercheck.do"><span>로그인</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/userjoin.do"><span>회원가입</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/cartlistGet.do"><span>쇼핑카트</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/mylistGet.do"><span>마이리스트</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="#"><span>주문내역</span></a>
+				</div>
+			</div>
+		</aside>
 	</div>
 	<footer>
 		<jsp:include page="../footer.jsp"></jsp:include>

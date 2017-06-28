@@ -43,6 +43,12 @@ public class UserController {
 		return "user/userlogout";
 	}
 
+	@RequestMapping(value = "/userinfo")
+	public String userinfo(HttpSession session) {
+
+		return "user/userinfo";
+	}
+
 	@RequestMapping(value = "/userInsert", method = RequestMethod.POST)
 	public String userInsert(@ModelAttribute UserVO user) {
 		int result = 0;
@@ -55,14 +61,14 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/userOut", method = RequestMethod.POST)
-	public String userOut(@ModelAttribute UserVO user) {
+	public String userOut(@ModelAttribute UserVO user, HttpSession session) {
 		int result = 0;
 		String url = "";
 		result = userService.userOut(user);
 		if (result == 1) {
-			url = "/home";
+			url = "/userlogout.do";
 		}
-		return url;
+		return "redirect:" + url;
 	}
 
 	@RequestMapping(value = "/userlogin", method = RequestMethod.POST)
@@ -83,6 +89,17 @@ public class UserController {
 		userget = userService.userGet(user);
 		model.addAttribute("userlist", userget);
 		return "/home";
+	}
+
+	@RequestMapping(value = "/userupdate", method = RequestMethod.POST)
+	public String userupdate(@ModelAttribute UserVO user, Model model) {
+		int result = 0;
+		String url = "";
+		result = userService.userupdate(user);
+		if (result == 1) {
+			url = "/userinfo.do";
+		}
+		return "redirect:" + url;
 	}
 
 }

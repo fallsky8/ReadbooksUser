@@ -5,6 +5,11 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
+<link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet"
+	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
+	type="text/css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -89,7 +94,26 @@
 				</div>
 			</div>
 		</article>
-		<aside>aside</aside>
+		<aside><div id="serviceWrap">
+				<div class="ss_myshop">
+					<a href="#"><span>주요서비스</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/usercheck.do"><span>로그인</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/userjoin.do"><span>회원가입</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/cartlistGet.do"><span>쇼핑카트</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/mylistGet.do"><span>마이리스트</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="#"><span>주문내역</span></a>
+				</div>
+			</div></aside>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>

@@ -3,21 +3,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="shortcut icon" href="resources/image/favicon.ico">
+<link rel="shortcut icon" href="/resources/image/favicon.ico">
+<link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet"
+	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
+	type="text/css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
-	media="screen" />
+<script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
-<title>문의하기</title>
-<script type="text/javascript" src="/resources/js/common.js"></script>
+<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
+	media="screen" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="/resources/js/common.js"></script>
+<title>문의하기</title>
 <script type="text/javascript">
 	$(document).ready(function() {
 		/* 저장 버튼 클릭 시 처리 이벤트 */
@@ -67,7 +73,7 @@
 					href="/faqboardList.do" class="menu-item">자주 묻는 질문</a> <a
 					href="/inquireboardList.do" class="menu-item">1:1 문의</a>
 			</div>
-			<h2>1:1 문의</h2>
+			<h2>문의하기</h2> 
 			<form id="inquireinsertForm" name="inquireinsertForm"
 				enctype="multipart/form-data">
 				<input type="hidden" name="user_id" id="user_id"
@@ -76,7 +82,7 @@
 					<tr id="btd1">
 						<td id="btd2">상담유형</td>
 						<td id="btd2"><select id="inquireboard_type"
-							name="inquireboard_type">
+							name="inquireboard_type" class="form-control">
 								<option value="회원">회원</option>
 								<option value="상품">상품</option>
 								<option value="환불">환불</option>
@@ -85,16 +91,16 @@
 					<tr>
 						<td>글제목</td>
 						<td><input type="text" name="inquireboard_title"
-							id="inquireboard_title"></td>
+							id="inquireboard_title" class="form-control"></td>
 					</tr>
 					<tr>
 						<td>문의내용</td>
 						<td><textarea name="inquireboard_contents"
-								id="inquireboard_contents"></textarea></td>
+								id="inquireboard_contents" class="form-control"></textarea></td>
 					</tr>
 					<tr>
 						<td>첨부파일</td>
-						<td><input type="file" name="file" id="file"></td>
+						<td><input type="file" name="file" id="file" class="form-control"></td>
 					</tr>
 				</table>
 			</form>
@@ -102,7 +108,26 @@
 				id="inquireboardInsert"> <input type="button"
 				class="btn btn-default" value="목록" id="inquireboardList">
 		</article>
-		<aside>aside</aside>
+		<aside><div id="serviceWrap">
+				<div class="ss_myshop">
+					<a href="#"><span>주요서비스</span></a>
+				</div> 
+				<div class="ss_myshop">
+					<a href="/usercheck.do"><span>로그인</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/userjoin.do"><span>회원가입</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/cartlistGet.do"><span>쇼핑카트</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/mylistGet.do"><span>마이리스트</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="#"><span>주문내역</span></a>
+				</div>
+			</div></aside>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>

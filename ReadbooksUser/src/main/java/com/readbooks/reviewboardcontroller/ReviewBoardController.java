@@ -124,7 +124,6 @@ public class ReviewBoardController {
 			reviewdetail.setReviewboard_contents(
 					reviewdetail.getReviewboard_contents().toString().replaceAll("\n", "<br>"));
 		}
-		System.out.println(reviewdetail.getReviewboard_star());
 		model.addAttribute("reviewdetail", reviewdetail);
 
 		return "reviewboard/reviewboarddetail";

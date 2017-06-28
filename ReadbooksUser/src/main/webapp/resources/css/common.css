@@ -29,7 +29,7 @@ body {
 #main>article {
 	margin: 4px;
 	padding: 5px;
-/* 	border: 1px solid #cccc33; */
+	/* 	border: 1px solid #cccc33; */
 	-webkit-flex: 3 1 60%;
 	flex: 3 1 60%;
 	-webkit-order: 2;
@@ -39,7 +39,7 @@ body {
 #main>nav {
 	margin: 4px;
 	padding: 5px;
-	border: 1px solid #8888bb;
+	/* 	border: 1px solid #8888bb; */
 	-webkit-flex: 1 6 20%;
 	flex: 1 6 14%;
 	-webkit-order: 1;
@@ -49,7 +49,7 @@ body {
 #main>aside {
 	margin: 4px;
 	padding: 5px;
-/* 	border: 1px solid #8888bb; */
+	/* 	border: 1px solid #8888bb; */
 	-webkit-flex: 1 6 20%;
 	flex: 1 6 13%;
 	-webkit-order: 3;
@@ -61,7 +61,7 @@ header {
 	margin: 4px;
 	padding: 5px;
 	min-height: 200px;
-/* 	border: 1px solid #eebb55; */
+	/* 	border: 1px solid #eebb55; */
 }
 
 /* Too narrow to support three columns */
@@ -370,12 +370,14 @@ header {
 
 .logoimg {
 	float: left;
-	margin-left: 50px;
-	margin-top: 60px;
+	margin-left: 55px;
+	margin-top: 45px;
+	margin-bottom: 30px;
 }
 
 .search {
-	margin-top: 72px;
+	margin-top: 60px;
+	margin-bottom: 30px;
 }
 
 .searchbar {
@@ -833,4 +835,46 @@ a.control_next {
 
 .added {
 	margin: 0 -50px 0 0 !important;
+}
+
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+#serviceWrap {
+	top: 260px !important;
+}
+
+.ss_fixed {
+	margin-top: -220px !important;
+}
+
+#serviceWrap .ss_myshop {
+	border: 1px solid #e9e9e9;
+}
+
+#serviceWrap .ss_myshop a {
+	color: #5fc5c5;
+	font: normal 12 px;
+	font-weight: bold;
+	padding: 5px;
+}
+
+#tjfalstjr {
+	margin-left: 10px;
 }

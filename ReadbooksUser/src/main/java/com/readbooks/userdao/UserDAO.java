@@ -10,4 +10,6 @@ public interface UserDAO {
 	public UserVO userGet(UserVO user);
 
 	public int userOut(UserVO user);
+
+	public int userupdate(UserVO user);
 }

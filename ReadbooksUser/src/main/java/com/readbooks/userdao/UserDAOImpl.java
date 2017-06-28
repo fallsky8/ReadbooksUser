@@ -34,4 +34,9 @@ public class UserDAOImpl implements UserDAO {
 		return session.update("userOut", user);
 	}
 
+	@Override
+	public int userupdate(UserVO user) {
+		return session.update("userupdate", user);
+	}
+
 }

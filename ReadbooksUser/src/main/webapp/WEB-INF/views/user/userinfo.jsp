@@ -22,7 +22,8 @@
 	media="screen" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-<title>서비스 전체보기</title>
+<script type="text/javascript" src="/resources/js/common.js"></script>
+<title>개인정보관리</title>
 </head>
 <body>
 	<header>
@@ -31,12 +32,15 @@
 	<div id="main">
 		<article>
 			<div id="sideMenu" class="side-menu">
-				<a href="#" class="menu-item">리드북스 소개</a> <a href="#"
-					class="menu-item">이용약관</a> <a href="#" class="menu-item">개인정보처리방침</a>
-				<a href="#" class="menu-item">서비스 전체보기</a>
+				<a href="#" class="menu-item">마이페이지</a> <a href="#"
+					class="menu-item">회원정보관리</a> <a href="#" class="menu-item">&nbsp;&nbsp;&nbsp;-개인정보관리</a>
+				<a href="/useroutpage.do" class="menu-item">&nbsp;&nbsp;&nbsp;-회원탈퇴</a>
+				<a href="#" class="menu-item">주문내역</a> <a href="/mylistGet.do"
+					class="menu-item">마이리스트</a>
 			</div>
 		</article>
-		<aside><div id="serviceWrap">
+		<aside>
+			<div id="serviceWrap">
 				<div class="ss_myshop">
 					<a href="#"><span>주요서비스</span></a>
 				</div>
@@ -55,7 +59,8 @@
 				<div class="ss_myshop">
 					<a href="#"><span>주문내역</span></a>
 				</div>
-			</div></aside>
+			</div>
+		</aside>
 	</div>
 	<footer>
 		<jsp:include page="../footer.jsp"></jsp:include>

@@ -6,21 +6,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="shortcut icon" href="resources/image/favicon.ico">
+<link rel="shortcut icon" href="/resources/image/favicon.ico">
+<link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet"
+	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
+	type="text/css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
-	media="screen" />
+<script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
-<title>1:1문의</title>
+<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
+	media="screen" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
+<title>1:1문의</title>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var asdasd = $(this).parents("tr").attr("data-num");
@@ -119,8 +125,6 @@
 					href="/faqboardList.do" class="menu-item">자주 묻는 질문</a> <a
 					href="/inquireboardList.do" class="menu-item">1:1 문의</a>
 			</div>
-			<h2>1:1 문의</h2>
-
 			<%--================검색기능 시작================= --%>
 			<div id="boardSearch">
 				<form id="f_search" name="f_search">
@@ -130,24 +134,28 @@
 						name="order_sc" value="${data.order_sc}" />
 					<table class="table">
 						<tr>
-							<td id="btd1"><label>검색 조건</label> <select id="search"
-								name="search">
+							<td id="btd1"><select id="search" name="search"
+								class="form-control"
+								style="width: 100px !important; display: inline !important;">
 									<option value="all">전체</option>
 									<option value="inquireboard_title">제목</option>
 									<option value="inquireboard_contents">질문</option>
 									<option value="inquireboard_answer">답변</option>
 							</select> <input type="text" name="keyword" id="keyword"
-								placeholder="검색어를 입력하세요" /> <input type="button" value="검색"
-								id="searchData" /></td>
-							<td id="btd2">한페이지에 <select id="pageSize" name="pageSize">
-									<option value="10">10줄</option>
-									<option value="20">20줄</option>
-									<option value="30">30줄</option>
-									<option value="50">50줄</option>
-									<option value="70">70줄</option>
-									<option value="100">100줄</option>
-							</select>
-							</td>
+								placeholder="검색어를 입력하세요" class="form-control"
+								style="width: 200px !important; display: inline !important;" />
+								<input type="button" value="검색" id="searchData"
+								class="btn btn-default"
+								style="height: 30px !important; margin-top: -3px;" /></td>
+							<td id="btd2"><select id="pageSize" name="pageSize"
+								class="form-control">
+									<option value="10">10줄씩보이기</option>
+									<option value="20">20줄씩보이기</option>
+									<option value="30">30줄씩보이기</option>
+									<option value="50">50줄씩보이기</option>
+									<option value="70">70줄씩보이기</option>
+									<option value="100">100줄씩보이기</option>
+							</select></td>
 						</tr>
 					</table>
 				</form>
@@ -219,10 +227,9 @@
 				</table>
 			</div>
 			<%--==========================리스트 종료======================== --%>
-
 			<%--========================글쓰기 버튼 출력 시작===================== --%>
 			<input type="button" class="btn btn-default" value="문의하기"
-				id="inquireInsert">
+				id="inquireInsert" style="margin-left: 90px;">
 			<%--========================글쓰기 버튼 출력 종료===================== --%>
 
 			<%--======================페이지 네비게이션 시작===================== --%>
@@ -232,7 +239,28 @@
 			</div>
 			<%--======================페이지 네비게이션 종료===================== --%>
 		</article>
-		<aside>aside</aside>
+		<aside>
+			<div id="serviceWrap">
+				<div class="ss_myshop">
+					<a href="#"><span>주요서비스</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/usercheck.do"><span>로그인</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/userjoin.do"><span>회원가입</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/cartlistGet.do"><span>쇼핑카트</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/mylistGet.do"><span>마이리스트</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="#"><span>주문내역</span></a>
+				</div>
+			</div>
+		</aside>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>

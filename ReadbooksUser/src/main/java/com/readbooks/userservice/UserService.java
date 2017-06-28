@@ -12,4 +12,6 @@ public interface UserService {
 
 	public int userOut(UserVO user);
 
+	public int userupdate(UserVO user);
+
 }

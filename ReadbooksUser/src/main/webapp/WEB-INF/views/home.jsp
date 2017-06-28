@@ -21,42 +21,9 @@
 	media="screen" />
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
 	media="screen" />
-<title>리드북스에 오신 걸 환영합니다.</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-<script>
-	$(function() {
-
-		$(window).scroll(function() {
-			if ($(this).scrollTop() > 450) {
-				$('.gnb_add_btn').addClass('abs_view');
-				$('.ss_top').show();
-				if (!$('.add_search').is(':visible')) {
-					$('#head').addClass('head_mini');
-				}
-			} else {
-				$('#head').removeClass('head_mini');
-				$('.gnb_add_btn').removeClass('abs_view');
-				$('.ss_top').hide();
-			}
-
-			if ($(this).scrollTop() > 200) {
-				$('#serviceWrap').addClass('ss_fixed');
-			} else {
-				$('#serviceWrap').removeClass('ss_fixed');
-			}
-		});
-		$("#onTop").click(function() {
-			$('html, body').animate({
-				scrollTop : 0
-			}, 350);
-		});
-
-		$(".hb_close").click(function() {
-			$(".head_banner").hide();
-		});
-	});
-</script>
+<title>리드북스에 오신 걸 환영합니다.</title>
 <style type="text/css">
 .carousel-indicators .active {
 	background-color: #5fc5c5;
@@ -71,42 +38,8 @@
 	color: #5fc5c5;
 }
 
-.swiper-slide {
-	text-align: center;
-	font-size: 18px;
-	background: #fff;
-	/* Center slide text vertically */
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
-	-webkit-justify-content: center;
-	justify-content: center;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	-webkit-align-items: center;
-	align-items: center;
-}
-
-#serviceWrap {
-	top: 260px !important;
-}
-
-.ss_fixed {
-	margin-top: -220px !important;
-}
-
-#serviceWrap .ss_myshop {
-	border: 1px solid #e9e9e9;
-}
-
-#serviceWrap .ss_myshop a {
-	color: #5fc5c5;
-	font: normal 12 px;
-	font-weight: bold;
-	padding: 5px;
+.ss_top {
+	bottom: 80px !important;
 }
 </style>
 </head>
@@ -139,7 +72,6 @@
 							style="margin-left: 115px;">
 					</div>
 				</div>
-
 				<!-- Left and right controls -->
 				<a class="left carousel-control" href="#myCarousel"
 					data-slide="prev" style="background-image: none;"> <span
@@ -178,9 +110,6 @@
 
 									</ul>
 								</c:forEach></li>
-
-
-
 							<li class="swiper-slide"><c:forEach var="newbooklist"
 									items="${newbooklist }" begin="5" end="9">
 									<ul class="issue_book_list">
@@ -518,8 +447,6 @@
 
 									</ul>
 								</c:forEach></li>
-
-
 						</ul>
 					</div>
 					<div class="swiper-button-prev"></div>
@@ -540,7 +467,11 @@
 				</script>
 			</div>
 		</article>
-		<nav>nav</nav>
+		<nav>
+			<div id="tjfalstjr">
+				<img src="/resources/image/right_170616_ondo_2.jpg" />
+			</div>
+		</nav>
 		<aside>
 			<div id="serviceWrap">
 				<div class="ss_myshop">
@@ -553,7 +484,7 @@
 					<a href="/userjoin.do"><span>회원가입</span></a>
 				</div>
 				<div class="ss_myshop">
-					<a href="/cartlistGet.do"><span> 쇼핑카트</span></a>
+					<a href="/cartlistGet.do"><span>쇼핑카트</span></a>
 				</div>
 				<div class="ss_myshop">
 					<a href="/mylistGet.do"><span>마이리스트</span></a>

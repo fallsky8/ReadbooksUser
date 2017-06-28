@@ -37,4 +37,14 @@
 		where user_id
 		= #{user_id}
 	</update>
+	<update id="userupdate" parameterType="user">
+		update
+		tbl_user set
+		user_pw
+		= #{user_pw},
+		user_address = #{user_address},
+		user_phonenumber=#{user_phonenumber}
+		where user_id
+		= #{user_id}
+	</update>
 </mapper>

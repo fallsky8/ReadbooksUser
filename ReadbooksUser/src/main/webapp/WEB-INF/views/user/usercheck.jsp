@@ -5,9 +5,19 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
+
+<link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
 	media="screen" />
-<title>리드북스 로그인</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/resources/js/cart.js"></script>
+<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
+	media="screen" />
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
+
 <link
 	href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900'
 	rel='stylesheet' type='text/css'>
@@ -16,6 +26,14 @@
 	rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,300'
 	rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet"
+	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
+	type="text/css">
+
+<title>리드북스 로그인</title>
 <style type="text/css">
 #wrapper #box input {
 	outline: none;
@@ -212,13 +230,36 @@
 
 						<div id="bottom">
 							<a href="/userjoin.do">아직 리드북스 회원이 아니세요?</a> <a class="right_a"
-								href="#">찾기</a>
+								href="#"
+								onclick="window.open('http://localhost:8070/userjoin.do', '_blank', 'width=380px, height=380px top=250px,left=400px')">내
+								정보 찾기</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</article>
-		<aside>aside</aside>
+		<aside>
+			<div id="serviceWrap">
+				<div class="ss_myshop">
+					<a href="#"><span>주요서비스</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/usercheck.do"><span>로그인</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/userjoin.do"><span>회원가입</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/cartlistGet.do"><span>쇼핑카트</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="/mylistGet.do"><span>마이리스트</span></a>
+				</div>
+				<div class="ss_myshop">
+					<a href="#"><span>주문내역</span></a>
+				</div>
+			</div>
+		</aside>
 	</div>
 	<footer>
 		<jsp:include page="../footer.jsp"></jsp:include>
