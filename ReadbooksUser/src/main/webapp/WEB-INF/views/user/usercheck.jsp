@@ -32,7 +32,6 @@
 <link rel="stylesheet"
 	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
 	type="text/css">
-
 <title>리드북스 로그인</title>
 <style type="text/css">
 #wrapper #box input {
@@ -231,7 +230,7 @@
 						<div id="bottom">
 							<a href="/userjoin.do">아직 리드북스 회원이 아니세요?</a> <a class="right_a"
 								href="#"
-								onclick="window.open('http://localhost:8070/userjoin.do', '_blank', 'width=380px, height=380px top=250px,left=400px')">내
+								onclick="window.open('http://localhost:8070/findbutton.do', '_blank', 'width=400px, height=380px, top=250px,left=400px')">내
 								정보 찾기</a>
 						</div>
 					</div>

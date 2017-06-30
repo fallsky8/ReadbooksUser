@@ -26,8 +26,11 @@
 <title>리드북스에 오신 걸 환영합니다.</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.28.14/js/jquery.tablesorter.min.js"></script>
 <script type="text/javascript">
 	$(function() {
+		$('#keywords').tablesorter();
 		/* 검색 후 검색 대상과 검색 단어 출력 */
 		if ("<c:out value='${data.keyword}'/>" != "") {
 			$("#keyword").val("<c:out value='${data.keyword}' />");
@@ -75,7 +78,6 @@
 
 			$("#detailForm").submit();
 		});
-
 		/* 글쓰기 버튼 클릭 시 처리 이벤트 */
 		$("#InsertFormBtn").click(function() {
 			var now = "${sessionScope.user_id}";
@@ -87,16 +89,6 @@
 			}
 		});
 	});
-	/* 정렬 버튼 클릭 시 처리 함수 */
-	function setOrder(order_by) {
-		$("#order_by").val(order_by);
-		if ($("#order_sc").val() == 'DESC') {
-			$("#order_sc").val('ASC');
-		} else {
-			$("#order_sc").val('DESC');
-		}
-		goPage(1);
-	}
 
 	/* 검색과 한 페이지에 보여줄 레코드 수 처리 및 페이징을 위한 실질적인 처리 함수 */
 	function goPage(page) {
@@ -183,30 +175,13 @@
 
 			<%--=================리스트 시작================= --%>
 			<div id="boardList">
-				<table class="table" summary="게시판 리스트">
+				<table class="table" id="keywords" summary="게시판 리스트">
 					<thead>
 						<tr>
-							<th><a href="javascript:setOrder('reviewboard_number');">글번호
-									<c:choose>
-										<c:when
-											test="${data.order_by=='reviewboard_number' and data.order_sc=='ASC'}">▲</c:when>
-										<c:when
-											test="${data.order_by=='reviewboard_number' and data.order_sc=='DESC'}">▼</c:when>
-										<c:otherwise>▲</c:otherwise>
-									</c:choose>
-							</a></th>
+							<th>글번호</th>
 							<th>별점</th>
 							<th>글제목</th>
-							<th><a
-								href="javascript:setOrder('reviewboard_registerdate');">작성일
-									<c:choose>
-										<c:when
-											test="${data.order_by=='reviewboard_registerdate' and data.order_sc=='ASC'}">▲</c:when>
-										<c:when
-											test="${data.order_by=='reviewboard_registerdate' and data.order_sc=='DESC'}">▼</c:when>
-										<c:otherwise>▲</c:otherwise>
-									</c:choose>
-							</a></th>
+							<th>작성일</th>
 							<th>작성자</th>
 						</tr>
 					</thead>

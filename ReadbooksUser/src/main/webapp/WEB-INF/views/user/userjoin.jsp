@@ -222,6 +222,110 @@
 #bottom a:hover {
 	color: #5fc5c5;
 }
+
+.btn-info {
+	margin-top: -5px;
+	border-color: #46b8da;
+	float: right;
+	color: #fff;
+	background-color: #5bc0de;
+}
+
+.btn-info.focus, .btn-info:focus {
+	color: #fff;
+	background-color: #31b0d5;
+	border-color: #1b6d85
+}
+
+.btn-info:hover {
+	color: #fff;
+	background-color: #31b0d5;
+	border-color: #269abc
+}
+
+.btn-info.active, .btn-info:active, .open>.dropdown-toggle.btn-info {
+	color: #fff;
+	background-color: #31b0d5;
+	border-color: #269abc
+}
+
+.btn-info.active.focus, .btn-info.active:focus, .btn-info.active:hover,
+	.btn-info:active.focus, .btn-info:active:focus, .btn-info:active:hover,
+	.open>.dropdown-toggle.btn-info.focus, .open>.dropdown-toggle.btn-info:focus,
+	.open>.dropdown-toggle.btn-info:hover {
+	color: #fff;
+	background-color: #269abc;
+	border-color: #1b6d85
+}
+
+.btn-info.active, .btn-info:active, .open>.dropdown-toggle.btn-info {
+	background-image: none
+}
+
+.btn-info.disabled.focus, .btn-info.disabled:focus, .btn-info.disabled:hover,
+	.btn-info[disabled].focus, .btn-info[disabled]:focus, .btn-info[disabled]:hover,
+	fieldset[disabled] .btn-info.focus, fieldset[disabled] .btn-info:focus,
+	fieldset[disabled] .btn-info:hover {
+	background-color: #5bc0de;
+	border-color: #46b8da
+}
+
+.btn-info .badge {
+	color: #5bc0de;
+	background-color: #fff
+}
+
+.btn {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus,
+	.btn:active:focus, .btn:focus {
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px;
+}
+
+.btn.focus, .btn:focus, .btn:hover {
+	color: #333;
+	text-decoration: none;
+}
+
+.btn.active, .btn:active {
+	background-image: none;
+	outline: 0;
+	-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+	box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125)
+}
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+	cursor: not-allowed;
+	filter: alpha(opacity = 65);
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	opacity: .65;
+}
+
+a.btn.disabled, fieldset[disabled] a.btn {
+	pointer-events: none;
+}
 </style>
 </head>
 <body>
@@ -263,7 +367,8 @@
 								<input type="text" id="user_address" name="user_address"
 									placeholder="주소를 검색하세요!">
 								<div id="bottom">
-									<a onclick="Postcode()">주소검색</a>
+									<input type="button" onclick="Postcode()" class="btn btn-info"
+										value="주소를 찾아보세요">
 								</div>
 							</div>
 							<div class='container'>

@@ -19,6 +19,7 @@ import com.readbooks.common.Paging;
 import com.readbooks.common.PagingUtil;
 import com.readbooks.inquireboardservice.InquireBoardService;
 import com.readbooks.inquireboardvo.InquireBoardVO;
+import com.readbooks.noticeboardvo.NoticeBoardVO;
 
 @Controller
 @RequestMapping(value = "/")
@@ -30,6 +31,14 @@ public class InquireBoardController {
 	@RequestMapping(value = "/inquireinsertpage")
 	public String inquireboardinsertpage(@ModelAttribute InquireBoardVO inquire, HttpSession session) {
 		return "inquire/inquireboardinsert";
+	}
+
+	@RequestMapping(value = "/inquireboardDetail", method = RequestMethod.GET)
+	public String inquireboardDetail(@ModelAttribute InquireBoardVO inquire, HttpSession session, Model model) {
+		InquireBoardVO inquireboarddetail = new InquireBoardVO();
+		inquireboarddetail = inquireboardservice.inquireboardDetail(inquire);
+		model.addAttribute("inquireboarddetail", inquireboarddetail);
+		return "inquire/inquireboarddetail";
 	}
 
 	@RequestMapping(value = "/inquireboardInsert", method = RequestMethod.POST)

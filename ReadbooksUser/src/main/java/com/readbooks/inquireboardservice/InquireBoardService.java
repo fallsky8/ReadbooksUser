@@ -12,4 +12,6 @@ public interface InquireBoardService {
 
 	public List<InquireBoardVO> inquireboardList(InquireBoardVO inquire);
 
+	public InquireBoardVO inquireboardDetail(InquireBoardVO inquire);
+
 }

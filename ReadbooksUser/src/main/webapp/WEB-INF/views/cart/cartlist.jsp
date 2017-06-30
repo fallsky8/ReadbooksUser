@@ -17,7 +17,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
@@ -27,6 +26,16 @@
 <title>장바구니 목록</title>
 <script type="text/javascript">
 	$(function() {
+		$(".btndetail").click(function() {
+			var b_num = $(this).parents("article").attr("data-val");
+			$("#book_number").val(b_num);
+			$("#booknumform").attr({
+				"method" : "GET",
+				"action" : "/bookdetail.do"
+			});
+			$("#booknumform").submit();
+		});
+
 		var check = false;
 
 		function changeVal(el) {
@@ -67,10 +76,14 @@
 							$(".remove")
 									.click(
 											function() {
-												var b_num = $(this).parents(
+												var c_num = $(this).parents(
 														"article").attr(
 														"data-num");
-												$("#cart_number").val(b_num);
+												var b_num = $(this).parents(
+														"article").attr(
+														"data-val");
+												$("#book_number").val(b_num);
+												$("#cart_number").val(c_num);
 												$("#booknumform").attr({
 													"method" : "get",
 													"action" : "/cartDelete.do"
@@ -182,7 +195,11 @@
 		<jsp:include page="../header.jsp"></jsp:include>
 	</header>
 	<form id="booknumform">
-		<input type="hidden" id="cart_number" name="cart_number">
+		<input type="hidden" id="user_id" name="user_id"
+			value="${sessionScope.user_id }"> <input type="hidden"
+			id="cart_buyquantity" name="cart_buyquantity" value="1"> <input
+			type="hidden" id="book_number" name="book_number"> <input
+			type="hidden" id="cart_number" name="cart_number">
 	</form>
 	<div id="main">
 		<article>
@@ -192,7 +209,8 @@
 					<section id="cart">
 						<!-- 		상품1시작 -->
 						<c:forEach var="cartbooklist" items="${cartbooklist}">
-							<article class="product" data-num="${cartbooklist.cart_number }">
+							<article class="product" data-num="${cartbooklist.cart_number }"
+								data-val="${cartbooklist.book_number }">
 								<header>
 									<!-- 				삭제 이미지 -->
 									<a class="remove"> <!-- 					상품이미지 --> <img
@@ -205,7 +223,11 @@
 									<h1>${cartbooklist.book_name}</h1>
 									<!-- 상품 설명 -->
 									<p>${cartbooklist.book_writer }
-									<p>
+									<div id="primary_nav_wrap">
+										<ul>
+											<li><a class="btndetail">상세보기</a></li>
+										</ul>
+									</div>
 								</div>
 								<footer class="content">
 									<span class="qt-minus">-</span> <span class="qt">${cartbooklist.cart_buyquantity }</span>

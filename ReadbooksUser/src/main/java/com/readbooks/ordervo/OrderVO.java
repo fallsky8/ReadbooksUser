@@ -72,7 +72,7 @@ public class OrderVO {
 	}
 
 	public void setOrder_date(String order_date) {
-		this.order_date = order_date;
+		this.order_date = order_date.substring(0, 10);
 	}
 
 	public String getOrder_paymentdate() {

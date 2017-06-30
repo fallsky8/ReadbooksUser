@@ -26,16 +26,11 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.28.14/js/jquery.tablesorter.min.js"></script>
 <title>1:1문의</title>
 <script type="text/javascript">
 	$(document).ready(function() {
-		var asdasd = $(this).parents("tr").attr("data-num");
-		$(".showanswer").click(function() {
-			$(".hideanswer").show();
-		});
-		$("#close").click(function() {
-			$(".hideanswer").hide();
-		})
 		/* 검색 후 검색 대상과 검색 단어 출력 */
 		if ("<c:out value='${data.keyword}'/>" != "") {
 			$("#keyword").val("<c:out value='${data.keyword}' />");
@@ -65,6 +60,17 @@
 			}
 			goPage(1);
 		});
+		$(".goDetail").click(function() {
+			var inquireboard_number = $(this).parents("tr").attr("data-num");
+			$("#inquireboard_number").val(inquireboard_number);
+			//상세 페이지로 이동하기 위해 form 추가 (id: detailForm)
+			$("#detailForm").attr({
+				"method" : "get",
+				"action" : "/inquireboardDetail.do"
+			});
+
+			$("#detailForm").submit();
+		});
 
 		/* 한페이지에 보여줄 레코드 수를 변경될 때마다 처리 이벤트 */
 		$("#pageSize").change(function() {
@@ -76,16 +82,6 @@
 		});
 
 	});
-	/* 정렬 버튼 클릭 시 처리 함수 */
-	function setOrder(order_by) {
-		$("#order_by").val(order_by);
-		if ($("#order_sc").val() == 'DESC') {
-			$("#order_sc").val('ASC');
-		} else {
-			$("#order_sc").val('DESC');
-		}
-		goPage(1);
-	}
 
 	/* 검색과 한 페이지에 보여줄 레코드 수 처리 및 페이징을 위한 실질적인 처리 함수 */
 	function goPage(page) {
@@ -99,6 +95,9 @@
 		});
 		$("#f_search").submit();
 	}
+	$(function() {
+		$('#keywords').tablesorter();
+	});
 </script>
 <style type="text/css">
 .table {
@@ -118,6 +117,12 @@
 		<jsp:include page="../header.jsp"></jsp:include>
 	</header>
 	<div id="main">
+		<form name="detailForm" id="detailForm">
+			<input type="hidden" name="inquireboard_number"
+				id="inquireboard_number"> <input type="hidden" name="page"
+				id="${data.page}"> <input type="hidden" name="pageSize"
+				id="${data.pageSize}">
+		</form>
 		<article>
 			<div id="sideMenu" class="side-menu">
 				<a href="/noticeboardList.do" class="menu-item">고객센터</a> <a
@@ -165,29 +170,12 @@
 
 			<%--=================리스트 시작================= --%>
 			<div id="boardList">
-				<table class="table" summary="게시판 리스트">
+				<table class="table" id="keywords" summary="게시판 리스트">
 					<thead>
 						<tr>
-							<th><a href="javascript:setOrder('inquireboard_number');">글번호
-									<c:choose>
-										<c:when
-											test="${data.order_by=='inquireboard_number' and data.order_sc=='ASC'}">▲</c:when>
-										<c:when
-											test="${data.order_by=='inquireboard_number' and data.order_sc=='DESC'}">▼</c:when>
-										<c:otherwise>▲</c:otherwise>
-									</c:choose>
-							</a></th>
+							<th>글번호</th>
 							<th>글제목</th>
-							<th><a
-								href="javascript:setOrder('inquireboard_registerdate');">작성일
-									<c:choose>
-										<c:when
-											test="${data.order_by=='inquireboard_registerdate' and data.order_sc=='ASC'}">▲</c:when>
-										<c:when
-											test="${data.order_by=='inquireboard_registerdate' and data.order_sc=='DESC'}">▼</c:when>
-										<c:otherwise>▲</c:otherwise>
-									</c:choose>
-							</a></th>
+							<th>작성일</th>
 							<th>상담유형</th>
 							<th>답변여부</th>
 						</tr>
@@ -200,20 +188,13 @@
 									varStatus="status">
 									<tr data-num="${inquireboardList.inquireboard_number}">
 										<td>${count-(status.count-1)}</td>
-										<td><span class="showanswer">${inquireboardList.inquireboard_title}</span></td>
+										<td><span class="goDetail">${inquireboardList.inquireboard_title}</span></td>
 										<td>${inquireboardList.inquireboard_registerdate}</td>
 										<td>${inquireboardList.inquireboard_type }</td>
 										<td><c:if
 												test="${inquireboardList.inquireboard_answer==null}">답변대기
 											</c:if> <c:if test="${inquireboardList.inquireboard_answer!=null}">답변완료
 											</c:if></td>
-									</tr>
-									<tr class="hideanswer" hidden="hidden">
-										<td>${inquireboardList.inquireboard_title }</td>
-										<td>${inquireboardList.inquireboard_contents }
-											${inquireboardList.inquireboard_attachmentfile }</td>
-										<td>${inquireboardList.inquireboard_answer}</td>
-										<td><input type="button" id="close" value="닫기"></td>
 									</tr>
 								</c:forEach>
 							</c:when>
@@ -229,7 +210,7 @@
 			<%--==========================리스트 종료======================== --%>
 			<%--========================글쓰기 버튼 출력 시작===================== --%>
 			<input type="button" class="btn btn-default" value="문의하기"
-				id="inquireInsert" style="margin-left: 90px;">
+				id="inquireInsert" style="margin-left: 90px; margin-top: -10px;">
 			<%--========================글쓰기 버튼 출력 종료===================== --%>
 
 			<%--======================페이지 네비게이션 시작===================== --%>

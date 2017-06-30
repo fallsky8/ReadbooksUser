@@ -24,7 +24,7 @@
 		from
 		dual
 	</select>
-	<select id="userGet" parameterType="String" resultType="user">
+	<select id="userGet" parameterType="user" resultType="user">
 		select *
 		from tbl_user
 		where user_id = #{user_id}
@@ -45,6 +45,7 @@
 		user_address = #{user_address},
 		user_phonenumber=#{user_phonenumber}
 		where user_id
-		= #{user_id}
+		=
+		#{user_id}
 	</update>
 </mapper>

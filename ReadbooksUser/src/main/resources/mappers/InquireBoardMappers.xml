@@ -70,4 +70,18 @@
 		<include refid="inquireboardCommon" />
 		ORDER BY inquireboard_number desc )list )
 	</select>
+
+	<select id="inquireboardDetail" resultType="inquireboard"
+		parameterType="int">
+		SELECT inquireboard_number, user_id,
+		inquireboard_title,
+		inquireboard_contents,inquireboard_attachmentfile,inquireboard_answer,
+		inquireboard_type,
+		TO_CHAR(inquireboard_registerdate,'YYYY-MM-DD')
+		AS
+		inquireboard_registerdate FROM tbl_inquireboard
+		WHERE
+		inquireboard_number
+		= #{inquireboard_number}
+	</select>
 </mapper>

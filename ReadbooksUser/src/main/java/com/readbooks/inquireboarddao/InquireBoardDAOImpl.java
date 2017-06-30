@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.readbooks.inquireboardvo.InquireBoardVO;
+import com.readbooks.noticeboardvo.NoticeBoardVO;
 
 @Repository
 @Transactional
@@ -29,5 +30,10 @@ public class InquireBoardDAOImpl implements InquireBoardDAO {
 	@Override
 	public int inquireboardListCnt(InquireBoardVO inquire) {
 		return (Integer) session.selectOne("inquireboardListCnt", inquire);
+	}
+
+	@Override
+	public InquireBoardVO inquireboardDetail(InquireBoardVO inquire) {
+		return (InquireBoardVO) session.selectOne("inquireboardDetail", inquire);
 	}
 }

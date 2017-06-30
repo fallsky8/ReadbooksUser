@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.readbooks.inquireboarddao.InquireBoardDAO;
 import com.readbooks.inquireboardvo.InquireBoardVO;
+import com.readbooks.noticeboardvo.NoticeBoardVO;
 
 @Service
 @Transactional
@@ -33,5 +34,12 @@ public class InquireBoardServiceImpl implements InquireBoardService {
 		List<InquireBoardVO> inquireboardList = null;
 		inquireboardList = inquireboarddao.inquireboardList(inquire);
 		return inquireboardList;
+	}
+
+	@Override
+	public InquireBoardVO inquireboardDetail(InquireBoardVO inquire) {
+		InquireBoardVO detail = null;
+		detail = inquireboarddao.inquireboardDetail(inquire);
+		return detail;
 	}
 }

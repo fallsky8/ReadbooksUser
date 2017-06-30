@@ -346,7 +346,7 @@ header {
 
 #primary_nav_wrap ul ul li {
 	float: none;
-	width: 108px;
+	width: 110px;
 }
 
 #primary_nav_wrap ul ul a {
@@ -408,7 +408,7 @@ header {
 }
 
 .navmenu #primary_nav_wrap #iii {
-	margin-top: 20px;
+	margin-top: 10px;
 	margin-left: 15px;
 	margin-right: 15px;
 }

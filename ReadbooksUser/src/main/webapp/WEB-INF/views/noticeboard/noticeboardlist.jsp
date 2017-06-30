@@ -26,9 +26,12 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.28.14/js/jquery.tablesorter.min.js"></script>
 <title>공지사항</title>
 <script type="text/javascript">
 	$(function() {
+		$('#keywords').tablesorter();
 		/* 검색 후 검색 대상과 검색 단어 출력 */
 		if ("<c:out value='${data.keyword}'/>" != "") {
 			$("#keyword").val("<c:out value='${data.keyword}' />");
@@ -77,16 +80,6 @@
 		});
 
 	});
-	/* 정렬 버튼 클릭 시 처리 함수 */
-	function setOrder(order_by) {
-		$("#order_by").val(order_by);
-		if ($("#order_sc").val() == 'DESC') {
-			$("#order_sc").val('ASC');
-		} else {
-			$("#order_sc").val('DESC');
-		}
-		goPage(1);
-	}
 
 	/* 검색과 한 페이지에 보여줄 레코드 수 처리 및 페이징을 위한 실질적인 처리 함수 */
 	function goPage(page) {
@@ -126,7 +119,6 @@
 					href="/faqboardList.do" class="menu-item">자주 묻는 질문</a> <a
 					href="/inquireboardList.do" class="menu-item">1:1 문의</a>
 			</div>
-			<h2>공지사항</h2>
 			<%--================상세 페이지 이동을 위한 FORM================= --%>
 			<form name="detailForm" id="detailForm">
 				<input type="hidden" name="noticeboard_number"
@@ -175,29 +167,12 @@
 
 			<%--=================리스트 시작================= --%>
 			<div id="boardList">
-				<table class="table" summary="게시판 리스트">
+				<table class="table" id="keywords" summary="게시판 리스트">
 					<thead>
 						<tr>
-							<th><a href="javascript:setOrder('noticeboard_number');">글번호
-									<c:choose>
-										<c:when
-											test="${data.order_by=='noticeboard_number' and data.order_sc=='ASC'}">▲</c:when>
-										<c:when
-											test="${data.order_by=='noticeboard_number' and data.order_sc=='DESC'}">▼</c:when>
-										<c:otherwise>▲</c:otherwise>
-									</c:choose>
-							</a></th>
+							<th>글번호</th>
 							<th>글제목</th>
-							<th><a
-								href="javascript:setOrder('noticeboard_registerdate');">작성일
-									<c:choose>
-										<c:when
-											test="${data.order_by=='noticeboard_registerdate' and data.order_sc=='ASC'}">▲</c:when>
-										<c:when
-											test="${data.order_by=='noticeboard_registerdate' and data.order_sc=='DESC'}">▼</c:when>
-										<c:otherwise>▲</c:otherwise>
-									</c:choose>
-							</a></th>
+							<th>작성일</th>
 							<th>작성자</th>
 						</tr>
 					</thead>

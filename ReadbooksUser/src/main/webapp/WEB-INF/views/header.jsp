@@ -81,14 +81,14 @@
 					<!-- 					<li><a href="#">Sub Menu 5</a></li> --> <!-- 				</ul></li> -->
 				<li id="iii"><a href="/newbookGet.do">신간소설</a></li>
 				<li id="iii"><a href="/reviewboardList.do">리뷰게시판</a></li>
-				<li id="iii"><a href="#">마이페이지</a>
+				<li id="iii"><a href="/userinfo.do">마이페이지</a>
 					<ul>
-						<li><a href="#">회원정보관리</a>
+						<li><a href="/userinfo.do">회원정보관리</a>
 							<ul>
 								<li class="dir"><a href="/useroutpage.do">회원탈퇴</a></li>
-								<li class="dir"><a href="#">개인정보관리</a></li>
+								<li class="dir"><a href="/userinfo.do">개인정보관리</a></li>
 							</ul></li>
-						<li><a href="#">주문내역</a></li>
+						<li><a href="/orderSelect.do">주문내역</a></li>
 						<li><a href="/mylistGet.do">마이리스트</a></li>
 					</ul></li>
 				<li id="iii"><a href="/noticeboardList.do">고객센터</a>

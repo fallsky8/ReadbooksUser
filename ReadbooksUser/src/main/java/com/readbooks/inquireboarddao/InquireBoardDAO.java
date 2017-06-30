@@ -12,4 +12,6 @@ public interface InquireBoardDAO {
 
 	public int inquireboardListCnt(InquireBoardVO inquire);
 
+	public InquireBoardVO inquireboardDetail(InquireBoardVO inquire);
+
 }

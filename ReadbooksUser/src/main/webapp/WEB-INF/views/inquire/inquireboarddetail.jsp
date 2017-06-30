@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
+<title>1:1 문의</title>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
 <link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
 	media="screen" />
@@ -23,36 +25,12 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
-<title>문의하기</title>
 <script type="text/javascript">
-	$(document).ready(function() {
-		/* 저장 버튼 클릭 시 처리 이벤트 */
-		$("#inquireboardInsert").click(function() {
-			// 입력값 체크 
-			if (!chkSubmit($('#inquireboard_title'), "제목을"))
-				return;
-			else if (!chkSubmit($('#inquireboard_contents'), "작성할 내용을"))
-				return;
-
-			$("#inquireinsertForm").attr({
-				"method" : "POST",
-				"action" : "/inquireboardInsert.do"
-			});
-			$("#inquireinsertForm").submit();
-
+	$(function() {
+		$("#boardList").click(function() {
+			location.href = "/inquireboardList.do";
 		});
-
-		/* 목록 버튼 클릭 시 처리 이벤트 */
-		$("#inquireboardList").click(function() {
-			location.href = "/inquireboardList.do"
-		});
-
-		$('#paging').paging({
-			max : 50,
-			item : 20,
-			next
-		});
-	});
+	})
 </script>
 <style type="text/css">
 .table {
@@ -64,6 +42,29 @@
 
 #btd1, #btd2 {
 	border-top: 1px solid #5fc5c5;
+}
+
+#serviceWrap {
+	top: 260px !important;
+}
+
+.ss_fixed {
+	margin-top: -220px !important;
+}
+
+#serviceWrap .ss_myshop {
+	border: 1px solid #e9e9e9;
+}
+
+#serviceWrap .ss_myshop a {
+	color: #5fc5c5;
+	font: normal 12 px;
+	font-weight: bold;
+	padding: 5px;
+}
+
+.reviewreply {
+	margin-left: 210px;
 }
 </style>
 </head>
@@ -79,45 +80,58 @@
 					href="/faqboardList.do" class="menu-item">자주 묻는 질문</a> <a
 					href="/inquireboardList.do" class="menu-item">1:1 문의</a>
 			</div>
-			<h2>문의하기</h2>
-			<form id="inquireinsertForm" name="inquireinsertForm"
-				enctype="multipart/form-data">
-				<input type="hidden" name="user_id" id="user_id"
-					value="${sessionScope.user_id }">
-				<table class="table">
-					<tr id="btd1">
-						<td id="btd2">상담유형</td>
-						<td id="btd2"><select id="inquireboard_type"
-							name="inquireboard_type" class="form-control">
-								<option value="회원">회원</option>
-								<option value="상품">상품</option>
-								<option value="환불">환불</option>
-								<option value="주문">주문</option>
-								<option value="배송">배송</option>
-								<option value="서비스">서비스</option>
-								<option value="기타">기타</option>
-						</select></td>
-					</tr>
+
+			<table class="table">
+				<tr>
+					<th id="btd2">작성자</th>
+					<td id="btd2">${inquireboarddetail.user_id}</td>
+					<th id="btd2">작성일</th>
+					<td id="btd2">${inquireboarddetail.inquireboard_registerdate}</td>
+				</tr>
+				<tr>
+					<th>제목</th>
+					<td>${inquireboarddetail.inquireboard_title}</td>
+					<th>문의유형</th>
+					<td>${inquireboarddetail.inquireboard_type}관련</td>
+
+				</tr>
+				<tr>
+					<th>질문</th>
+					<td colspan="3">Q .
+						${inquireboarddetail.inquireboard_contents}</td>
+				</tr>
+				<c:if
+					test="${inquireboarddetail.inquireboard_attachmentfile!=null }">
 					<tr>
-						<td>글제목</td>
-						<td><input type="text" name="inquireboard_title"
-							id="inquireboard_title" class="form-control"></td>
+						<th>이미지</th>
+						<td colspan="3"><input type="image" width="320px"
+							height="240px"
+							src="resources/image/${inquireboarddetail.inquireboard_attachmentfile}"></td>
 					</tr>
+				</c:if>
+				<c:if
+					test="${inquireboarddetail.inquireboard_attachmentfile==null }">
 					<tr>
-						<td>문의내용</td>
-						<td><textarea name="inquireboard_contents"
-								id="inquireboard_contents" class="form-control"></textarea></td>
+						<th>이미지</th>
+						<td colspan="3">등록하신 이미지가 없습니다.</td>
 					</tr>
+				</c:if>
+				<c:if test="${inquireboarddetail.inquireboard_answer==null}">
 					<tr>
-						<td>첨부파일</td>
-						<td><input type="file" name="file" id="file"
-							class="form-control"></td>
+						<th>답변</th>
+						<td colspan="3">답변대기 상태입니다.</td>
 					</tr>
-				</table>
-			</form>
-			<input type="button" class="btn btn-default" value="문의하기"
-				id="inquireboardInsert"> <input type="button"
-				class="btn btn-default" value="목록" id="inquireboardList">
+				</c:if>
+				<c:if test="${inquireboarddetail.inquireboard_answer!=null}">
+					<tr>
+						<th>답변</th>
+						<td colspan="3">A . ${inquireboarddetail.inquireboard_answer}</td>
+					</tr>
+				</c:if>
+			</table>
+			<input type="button" value="목록" id="boardList"
+				class="btn btn-default" style="float: right; margin-top: -20px;">
+
 		</article>
 		<aside>
 			<div id="serviceWrap">
@@ -137,7 +151,7 @@
 					<a href="/mylistGet.do"><span>마이리스트</span></a>
 				</div>
 				<div class="ss_myshop">
-					<a href="#"><span>주문내역</span></a>
+					<a href="/orderSelect.do"><span>주문내역</span></a>
 				</div>
 			</div>
 		</aside>

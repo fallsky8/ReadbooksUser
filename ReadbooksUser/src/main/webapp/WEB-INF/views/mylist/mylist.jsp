@@ -16,7 +16,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
@@ -226,8 +225,9 @@
 	<div id="main">
 		<article>
 			<div id="sideMenu" class="side-menu">
-				<a href="#" class="menu-item">마이페이지</a> <a href="#"
-					class="menu-item">회원정보관리</a> <a href="#" class="menu-item">&nbsp;&nbsp;&nbsp;-개인정보관리</a>
+				<a href="/userinfo.do" class="menu-item">마이페이지</a> <a
+					href="/userinfo.do" class="menu-item">회원정보관리</a> <a
+					href="/userinfo.do" class="menu-item">&nbsp;&nbsp;&nbsp;-개인정보관리</a>
 				<a href="/useroutpage.do" class="menu-item">&nbsp;&nbsp;&nbsp;-회원탈퇴</a>
 				<a href="#" class="menu-item">주문내역</a> <a href="#" class="menu-item">마이리스트</a>
 			</div>
@@ -279,7 +279,8 @@
 				</div>
 			</div>
 		</article>
-		<aside><div id="serviceWrap">
+		<aside>
+			<div id="serviceWrap">
 				<div class="ss_myshop">
 					<a href="#"><span>주요서비스</span></a>
 				</div>
@@ -298,7 +299,8 @@
 				<div class="ss_myshop">
 					<a href="#"><span>주문내역</span></a>
 				</div>
-			</div></aside>
+			</div>
+		</aside>
 	</div>
 	<footer>
 		<jsp:include page="../footer.jsp"></jsp:include>

@@ -37,16 +37,36 @@ public class UserController {
 		return "user/usercheck";
 	}
 
+	@RequestMapping(value = "/findbutton")
+	public String findbutton(HttpSession session) {
+
+		return "user/findbutton";
+	}
+
 	@RequestMapping(value = "/userlogout")
 	public String outuser(HttpSession session) {
 
 		return "user/userlogout";
 	}
 
-	@RequestMapping(value = "/userinfo")
-	public String userinfo(HttpSession session) {
-
+	@RequestMapping(value = "/userinfo", method = RequestMethod.GET)
+	public String userinfo(HttpSession session, @ModelAttribute UserVO user, Model model) {
+		user.setUser_id((String) session.getAttribute("user_id"));
+		UserVO userget = userService.userGet(user);
+		model.addAttribute("userlist", userget);
 		return "user/userinfo";
+	}
+
+	@RequestMapping(value = "/userfindid")
+	public String userfindid(HttpSession session) {
+
+		return "user/userfindid";
+	}
+
+	@RequestMapping(value = "/userfindpw")
+	public String userfindpw(HttpSession session) {
+
+		return "user/userfindpw";
 	}
 
 	@RequestMapping(value = "/userInsert", method = RequestMethod.POST)
@@ -83,13 +103,13 @@ public class UserController {
 		return "redirect:" + url;
 	}
 
-	@RequestMapping(value = "/userget", method = RequestMethod.POST)
-	public String userGet(@ModelAttribute UserVO user, Model model) {
-		UserVO userget = new UserVO();
-		userget = userService.userGet(user);
-		model.addAttribute("userlist", userget);
-		return "/home";
-	}
+	// @RequestMapping(value = "/userget", method = RequestMethod.POST)
+	// public String userGet(@ModelAttribute UserVO user, Model model) {
+	// UserVO userget = new UserVO();
+	// userget = userService.userGet(user);
+	// model.addAttribute("userlist", userget);
+	// return "/home";
+	// }
 
 	@RequestMapping(value = "/userupdate", method = RequestMethod.POST)
 	public String userupdate(@ModelAttribute UserVO user, Model model) {

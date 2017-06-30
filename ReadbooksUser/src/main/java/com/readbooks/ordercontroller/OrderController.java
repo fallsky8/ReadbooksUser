@@ -1,6 +1,5 @@
 package com.readbooks.ordercontroller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.readbooks.bookvo.BookVO;
 import com.readbooks.orderservice.OrderService;
 import com.readbooks.ordervo.OrderVO;
+import com.readbooks.uservo.UserVO;
 
 @Controller
 @RequestMapping(value = "/")
@@ -41,9 +41,10 @@ public class OrderController {
 	}
 
 	@RequestMapping(value = "/orderSelect", method = RequestMethod.GET)
-	public String selectOrder(@ModelAttribute OrderVO order, Model model) {
-		List<OrderVO> orderselect = new ArrayList<OrderVO>();
-		orderselect = orderService.orderSelect(order);
+	public String selectOrder(@ModelAttribute OrderVO order, Model model, @ModelAttribute UserVO user,
+			HttpSession session) {
+		order.setUser_id((String) session.getAttribute("user_id"));
+		List<OrderVO> orderselect = orderService.orderSelect(order);
 		model.addAttribute("orderlist", orderselect);
 		return "order/orderlist";
 	}

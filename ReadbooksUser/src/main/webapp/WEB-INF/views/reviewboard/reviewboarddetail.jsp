@@ -27,21 +27,6 @@
 <script type="text/javascript">
 	var butChk = 0; //수정버튼과 삭제버튼을 구별하기 위한 변수
 	$(document).ready(function() {
-
-		/* 	$("#pwdChk").hide(); */
-
-		/*  첨부파일 이미지 보여주기 위한 속성 추가 
-		var file = "<c:out value='${reviewdetail.reviewboard_attachmentfile}' />";
-		if (file != "") {
-		$("#fileImage")
-		.attr(
-			{
-				src : "/uploadStorage/${reviewdetail.reviewboard_attachmentfile}",
-				width : "450px",
-				height : "200px"
-			});
-		}
-		 */
 		/* 수정 버튼 클릭 시 처리 이벤트 */
 		$("#updateForm").click(function() {
 			var now = "${sessionScope.user_id}";
@@ -74,11 +59,6 @@
 				alert("당신은 작성자가 아닙니다.");
 			}
 		});
-
-		// 						/* 비밀번호 확인 버튼 클릭 시 처리 이벤트 */
-		// 						$("#pwdBut").click(function() {
-		// 							pwdConfirm();
-		// 						});
 
 		/* 목록 버튼 클릭 시 처리 이벤트 */
 		$("#boardList").click(function() {
@@ -116,8 +96,9 @@
 	font-weight: bold;
 	padding: 5px;
 }
-.reviewreply{
-margin-left: 210px;
+
+.reviewreply {
+	margin-left: 210px;
 }
 </style>
 </head>
@@ -127,7 +108,7 @@ margin-left: 210px;
 	</header>
 	<div id="main">
 		<article>
-			<form name="f_data" id="f_data" method="get">
+			<form name="f_data" id="f_data">
 				<input type="hidden" name="reviewboard_number"
 					id="reviewboard_number" value="${reviewdetail.reviewboard_number}" />
 				<input type="hidden" id="user_id" name="user_id"
@@ -157,7 +138,8 @@ margin-left: 210px;
 				</tr>
 				<tr>
 					<th>이미지</th>
-					<td colspan="3"><input type="image" width="320px" height="240px"
+					<td colspan="3"><input type="image" width="320px"
+						height="240px"
 						src="resources/image/${reviewdetail.reviewboard_attachmentfile}"></td>
 				</tr>
 				<tr>
