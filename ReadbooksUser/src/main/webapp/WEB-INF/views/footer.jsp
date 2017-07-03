@@ -14,10 +14,10 @@
 				<div class="footer_center">
 					<nav id="primary_nav_wrap">
 						<ul>
-							<li><a href="#">리드북스소개</a></li>
-							<li><a href="#">이용약관</a></li>
-							<li><a href="#">개인정보처리방침</a></li>
-							<li><a href="#">사이트맵</a></li>
+							<li><a href="/introReadbooks.do">리드북스소개</a></li>
+							<li><a href="/serviceAgreement.do">이용약관</a></li>
+							<li><a href="/collectiveAgreement.do">개인정보처리방침</a></li>
+							<li><a href="/siteMap.do">사이트맵</a></li>
 						</ul>
 					</nav>
 					<div id="social-platforms">

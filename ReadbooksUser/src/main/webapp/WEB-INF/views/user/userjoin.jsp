@@ -34,12 +34,35 @@
 	type="text/css">
 <script type="text/javascript">
 	$(function() {
+		var writeEnumber = $("#writeEnumber");
+		var idCheckBtn = $("#idCheckBtn");
+		var memberEmail = $("#memberEmail");
+		var authNumHidden = $("#authNumHidden");
+		var eNumcheckHidden = $("#eNumcheckHidden");
 		$("#userjoin").click(function() {
 			$("#joinform").attr({
 				"method" : "POST",
 				"action" : "/userInsert.do"
 			});
 			$("#joinform").submit();
+		});
+		$("#mailbutton").click(function() {
+			$.ajax({
+				url : "/sendEmail.do",
+				type : "POST",
+				data : $("#joinform").serialize(),
+				error : function() {
+					alert("메일인 인증 실패!! 정확한 주소입력하세요");
+				},
+				success : function(authNum) {
+					if (authNum) {
+						alert("메일 보내기 성공");
+						$("#authNumHidden").val(authNum);
+					} else {
+						alert("메일 보내기 실패");
+					}
+				}
+			});
 		});
 	});
 	function Postcode() {
@@ -373,11 +396,20 @@ a.btn.disabled, fieldset[disabled] a.btn {
 							</div>
 							<div class='container'>
 								<input type="email" name='user_email' id='user_email'
-									maxlength="50" size="30" placeholder="이메일" /><br />
+									maxlength="50" size="30" placeholder="이메일" />
+								<div id="bottom">
+									<input type="button" class="btn btn-info" value="인증번호전송"
+										id="mailbutton">
+								</div>
+								<br />
 							</div>
 							<div class='container'>
 								<input type='button' id="userjoin" value='가입하기' />
 							</div>
+							<input type="hidden" name="authNumHidden" id="authNumHidden"
+								value="1"> <input type="hidden" name="idCheckHidden"
+								id="idCheckHidden" value="n"> <input type="hidden"
+								name="eNumcheckHidden" id="eNumcheckHidden" value="n">
 						</form>
 					</div>
 				</div>
@@ -386,7 +418,7 @@ a.btn.disabled, fieldset[disabled] a.btn {
 		<aside>
 			<div id="serviceWrap">
 				<div class="ss_myshop">
-					<a href="#"><span>주요서비스</span></a>
+					<a href="/siteMap.do"><span>주요서비스</span></a>
 				</div>
 				<div class="ss_myshop">
 					<a href="/usercheck.do"><span>로그인</span></a>
@@ -401,7 +433,7 @@ a.btn.disabled, fieldset[disabled] a.btn {
 					<a href="/mylistGet.do"><span>마이리스트</span></a>
 				</div>
 				<div class="ss_myshop">
-					<a href="#"><span>주문내역</span></a>
+					<a href="/orderSelect.do"><span>주문내역</span></a>
 				</div>
 			</div>
 		</aside>

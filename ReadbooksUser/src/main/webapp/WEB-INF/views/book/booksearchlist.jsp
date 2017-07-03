@@ -26,20 +26,61 @@
 	media="screen" />
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
 	media="screen" />
-<title>리드북스 해외 단편소설</title>
+<title>검색 결과</title>
 <script type="text/javascript">
 	$(function() {
 		var table = $('#keywords').DataTable();
+		$(window).scroll(function() {
+			if ($(this).scrollTop() > 450) {
+				$('.gnb_add_btn').addClass('abs_view');
+				$('.ss_top').show();
+				if (!$('.add_search').is(':visible')) {
+					$('#head').addClass('head_mini');
+				}
+			} else {
+				$('#head').removeClass('head_mini');
+				$('.gnb_add_btn').removeClass('abs_view');
+				$('.ss_top').hide();
+			}
+
+			if ($(this).scrollTop() > 200) {
+				$('#serviceWrap').addClass('ss_fixed');
+			} else {
+				$('#serviceWrap').removeClass('ss_fixed');
+			}
+		});
+		$("#onTop").click(function() {
+			$('html, body').animate({
+				scrollTop : 0
+			}, 350);
+		});
+
+		$(".hb_close").click(function() {
+			$(".head_banner").hide();
+		});
+
 	});
 </script>
 <style type="text/css">
-#primary_nav_wrap ul #iii:NTH-CHILD(3) {
-	background-color: #5fc5c5;
+#serviceWrap {
+	top: 260px !important;
 }
 
-#sideMenu a:NTH-CHILD(3) {
-	background-color: rgba(0, 0, 0, 0.15);
+.ss_fixed {
+	margin-top: -220px !important;
 }
+
+#serviceWrap .ss_myshop {
+	border: 1px solid #e9e9e9;
+}
+
+#serviceWrap .ss_myshop a {
+	color: #5fc5c5;
+	font: normal 12 px;
+	font-weight: bold;
+	padding: 5px;
+}
+
 input[type='search'] {
 	margin-left: 159px;
 }
@@ -51,11 +92,6 @@ input[type='search'] {
 	</header>
 	<div id="main">
 		<article>
-			<div id="sideMenu" class="side-menu">
-				<a href="/foreignbookGet.do" class="menu-item">해외 소설</a> <a
-					href="/foreignlongbookGet.do" class="menu-item">해외 장편 소설</a> <a
-					href="/foreignshortbookGet.do" class="menu-item">해외 단편 소설</a>
-			</div>
 			<div class="contain">
 				<div class="cartcontainer">
 					<form id="booknumform">
@@ -68,7 +104,7 @@ input[type='search'] {
 					<section id="cart">
 						<!-- 		상품1시작 -->
 						<c:choose>
-							<c:when test="${not empty foreignshortbooklist}">
+							<c:when test="${not empty searchbooklist}">
 								<table id="keywords">
 									<thead>
 										<tr>
@@ -76,24 +112,23 @@ input[type='search'] {
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach var="foreignshortbooklist"
-											items="${foreignshortbooklist}">
+										<c:forEach var="searchbooklist" items="${searchbooklist}">
 											<tr>
 												<td>
 													<article class="product"
-														data-num="${foreignshortbooklist.book_number }">
+														data-num="${searchbooklist.book_number }">
+
 														<header>
 															<!-- 				삭제 이미지 -->
 															<!-- 					상품이미지 -->
-															<img
-																src="/resources/image/${foreignshortbooklist.book_image }">
+															<img src="/resources/image/${searchbooklist.book_image }">
 															<!-- 제거 -->
 														</header>
 														<div class="content">
 															<!-- 상품이름 -->
-															<h1>${foreignshortbooklist.book_name}</h1>
+															<h1>${searchbooklist.book_name}</h1>
 															<!-- 상품 설명 -->
-															<p>${foreignshortbooklist.book_writer }
+															<p>${searchbooklist.book_writer }
 															<div id="primary_nav_wrap">
 																<ul>
 																	<li><a class="btndetail">상세보기</a></li>
@@ -107,9 +142,9 @@ input[type='search'] {
 															<span class="qt-minus">-</span> <span class="qt">1</span>
 															<span class="qt-plus">+</span>
 
-															<h2 class="full-price">${foreignshortbooklist.book_price}원</h2>
+															<h2 class="full-price">${searchbooklist.book_price}원</h2>
 
-															<h2 class="price">${foreignshortbooklist.book_price}원</h2>
+															<h2 class="price">${searchbooklist.book_price}원</h2>
 														</footer>
 													</article>
 												</td>
@@ -123,6 +158,8 @@ input[type='search'] {
 						</c:otherwise>
 						</c:choose>
 						<!-- 			상품1끝 -->
+
+
 					</section>
 				</div>
 			</div>
@@ -149,7 +186,13 @@ input[type='search'] {
 				</div>
 			</div>
 		</aside>
+		<div id="onTop" class="ss_top">
+			<a href="javascript://"><img
+				src="http://image.bandinlunis.com/images/common/2014/btn_top.png"></a>
+		</div>
 	</div>
-	<jsp:include page="../footer.jsp"></jsp:include>
+	<footer>
+		<jsp:include page="../footer.jsp"></jsp:include>
+	</footer>
 </body>
 </html>

@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.readbooks.bookservice.BookService;
 import com.readbooks.bookvo.BookVO;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class HomeController {
 
@@ -37,5 +34,13 @@ public class HomeController {
 		model.addAttribute("bestbooklist", bestbookget);
 		model.addAttribute("foreignbooklist", foreignbookGet);
 		return "home";
+	}
+
+	@RequestMapping(value = "/searchbookGet", method = RequestMethod.GET)
+	public String searchbookGet(@ModelAttribute BookVO book, Model model) {
+		List<BookVO> searchbookGet = new ArrayList<BookVO>();
+		searchbookGet = bookService.searchbookGet(book);
+		model.addAttribute("searchbooklist", searchbookGet);
+		return "book/booksearchlist";
 	}
 }

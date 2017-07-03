@@ -119,6 +119,9 @@
 #btd1, #btd2 {
 	border-top: 1px solid #5fc5c5;
 }
+#primary_nav_wrap ul #iii:NTH-CHILD(6) {
+	background-color: #5fc5c5;
+}
 </style>
 </head>
 <body>
@@ -265,9 +268,9 @@
 			<%--======================페이지 네비게이션 종료===================== --%>
 		</article>
 		<aside>
-			<div id="serviceWrap">
+				<div id="serviceWrap">
 				<div class="ss_myshop">
-					<a href="#"><span>주요서비스</span></a>
+					<a href="/siteMap.do"><span>주요서비스</span></a>
 				</div>
 				<div class="ss_myshop">
 					<a href="/usercheck.do"><span>로그인</span></a>
@@ -276,13 +279,13 @@
 					<a href="/userjoin.do"><span>회원가입</span></a>
 				</div>
 				<div class="ss_myshop">
-					<a href="/cartlistGet.do"><span> 쇼핑카트</span></a>
+					<a href="/cartlistGet.do"><span>쇼핑카트</span></a>
 				</div>
 				<div class="ss_myshop">
 					<a href="/mylistGet.do"><span>마이리스트</span></a>
 				</div>
 				<div class="ss_myshop">
-					<a href="#"><span>주문내역</span></a>
+					<a href="/orderSelect.do"><span>주문내역</span></a>
 				</div>
 			</div>
 		</aside>

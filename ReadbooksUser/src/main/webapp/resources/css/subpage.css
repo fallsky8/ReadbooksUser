@@ -6,7 +6,6 @@
 	flex-direction: column;
 	flex-wrap: no-wrap;
 	min-height: 100%;
-	/* 	height: auto; */
 	width: 120px;
 	background-color: gba(255, 255, 255, 0.6);
 	box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.35);
@@ -15,9 +14,6 @@
 	float: left;
 }
 
-/* .side-menu a:first-child { */
-/* 	margin-top: 76px; */
-/* } */
 .side-menu a {
 	display: inline-block;
 	text-decoration: none;
@@ -28,4 +24,8 @@
 
 .side-menu a:hover {
 	background-color: rgba(0, 0, 0, 0.15);
+}
+
+.side-menu a:VISITED {
+	color: black;
 }

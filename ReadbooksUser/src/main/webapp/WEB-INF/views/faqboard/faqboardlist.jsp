@@ -103,6 +103,12 @@
 .accordion .opened-for-codepen {
 	display: block;
 }
+#primary_nav_wrap ul #iii:NTH-CHILD(8) {
+	background-color: #5fc5c5;
+}
+#sideMenu a:NTH-CHILD(3) {
+	background-color: rgba(0, 0, 0, 0.15);
+}
 </style>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script type="text/javascript">
@@ -182,9 +188,9 @@
 			</div>
 		</article>
 		<aside>
-			<div id="serviceWrap">
+				<div id="serviceWrap">
 				<div class="ss_myshop">
-					<a href="#"><span>주요서비스</span></a>
+					<a href="/siteMap.do"><span>주요서비스</span></a>
 				</div>
 				<div class="ss_myshop">
 					<a href="/usercheck.do"><span>로그인</span></a>
@@ -199,7 +205,7 @@
 					<a href="/mylistGet.do"><span>마이리스트</span></a>
 				</div>
 				<div class="ss_myshop">
-					<a href="#"><span>주문내역</span></a>
+					<a href="/orderSelect.do"><span>주문내역</span></a>
 				</div>
 			</div>
 		</aside>

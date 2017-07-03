@@ -49,6 +49,12 @@ public class UserController {
 		return "user/userlogout";
 	}
 
+	@RequestMapping(value = "/mail", method = RequestMethod.GET)
+	public String mail(HttpSession session) {
+
+		return "user/mail";
+	}
+
 	@RequestMapping(value = "/userinfo", method = RequestMethod.GET)
 	public String userinfo(HttpSession session, @ModelAttribute UserVO user, Model model) {
 		user.setUser_id((String) session.getAttribute("user_id"));

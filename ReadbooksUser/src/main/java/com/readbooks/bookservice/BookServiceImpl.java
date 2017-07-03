@@ -98,4 +98,11 @@ public class BookServiceImpl implements BookService {
 		return mylistGet;
 	}
 
+	@Override
+	public List<BookVO> searchbookGet(BookVO book) {
+		List<BookVO> mylistGet = null;
+		mylistGet = bookdao.searchbookGet(book);
+		return mylistGet;
+	}
+
 }

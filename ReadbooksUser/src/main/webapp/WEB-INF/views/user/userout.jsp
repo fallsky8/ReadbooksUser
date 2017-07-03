@@ -35,6 +35,15 @@
 		});
 	});
 </script>
+<style type="text/css">
+#primary_nav_wrap ul #iii:NTH-CHILD(7) {
+	background-color: #5fc5c5;
+}
+
+#sideMenu a:NTH-CHILD(4) {
+	background-color: rgba(0, 0, 0, 0.15);
+}
+</style>
 </head>
 <body>
 	<header>
@@ -43,11 +52,12 @@
 	<div id="main">
 		<article>
 			<div id="sideMenu" class="side-menu">
-				<a href="#" class="menu-item">마이페이지</a> <a href="#"
-					class="menu-item">회원정보관리</a> <a href="#" class="menu-item">&nbsp;&nbsp;&nbsp;-개인정보관리</a>
+				<a href="/userinfo.do" class="menu-item">마이페이지</a> <a
+					href="/userinfo.do" class="menu-item">회원정보관리</a> <a
+					href="/userinfo.do" class="menu-item">&nbsp;&nbsp;&nbsp;-개인정보관리</a>
 				<a href="/useroutpage.do" class="menu-item">&nbsp;&nbsp;&nbsp;-회원탈퇴</a>
-				<a href="#" class="menu-item">주문내역</a> <a href="/mylistGet.do"
-					class="menu-item">마이리스트</a>
+				<a href="/orderSelect.do" class="menu-item">주문내역</a> <a
+					href="/mylistGet.do" class="menu-item">마이리스트</a>
 			</div>
 			<h2>회원탈퇴</h2>
 			<hr>
@@ -90,13 +100,13 @@
 					사유</label> <input type="radio" id="reason9" value="기타"
 					name="user_outreason"><label for="reason9">기타</label><br>
 				<input type="button" class="btn btn-danger" value="회원탈퇴"
-					id="useroutbtn"> 
+					id="useroutbtn">
 			</form>
 		</article>
 		<aside>
 			<div id="serviceWrap">
 				<div class="ss_myshop">
-					<a href="#"><span>주요서비스</span></a>
+					<a href="/siteMap.do"><span>주요서비스</span></a>
 				</div>
 				<div class="ss_myshop">
 					<a href="/usercheck.do"><span>로그인</span></a>
@@ -111,7 +121,7 @@
 					<a href="/mylistGet.do"><span>마이리스트</span></a>
 				</div>
 				<div class="ss_myshop">
-					<a href="#"><span>주문내역</span></a>
+					<a href="/orderSelect.do"><span>주문내역</span></a>
 				</div>
 			</div>
 		</aside>

@@ -3,6 +3,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.readbooks.bookdao.BookDAO">
+	<select id="searchbookGet" parameterType="book" resultType="book">
+		select
+		* from tbl_book
+		<trim prefixOverrides="AND" prefix="WHERE">
+			<if test="search=='book_name'">
+<![CDATA[book_name LIKE'%'||#{keyword}||'%']]>
+			</if>
+		</trim>
+	</select>
 	<select id="bestbookGet" parameterType="book" resultType="book">
 		select
 		* from tbl_book

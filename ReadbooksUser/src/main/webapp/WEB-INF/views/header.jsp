@@ -5,6 +5,37 @@
 <html>
 <head>
 <title>Insert title here</title>
+<script type="text/javascript">
+	$(function() {
+		/* 검색 후 검색 대상과 검색 단어 출력 */
+		if ("<c:out value='${data.keyword}'/>" != "") {
+			$("#keyword").val("<c:out value='${data.keyword}' />");
+			$("#search").val("<c:out value='${data.search}' />");
+		}
+
+		/* 검색 대상이 변경될 때마다 처리 이벤트 */
+		$("#search").change(function() {
+			if ($("#search").val() == "all") {
+				$("#keyword").val("글 목록 전체 조회");
+			} else if ($("#search").val() != "all") {
+				$("#keyword").val("");
+				$("#keyword").focus();
+			}
+		});
+
+		/* 검색 버튼 클릭 시 처리 이벤트 */
+		$("#searchData").click(function() {
+			if ($("#search").val() == "all") {
+				if (!chkSubmit($('#keyword'), "검색어를"))
+					return;
+			}
+			$("#f_search").attr({
+				"method" : "get",
+				"action" : "/searchbookGet.do"
+			});
+		});
+	});
+</script>
 </head>
 <body>
 	<c:choose>
@@ -33,18 +64,24 @@
 			width="240" height="60"></a>
 	</div>
 	<div class="search">
-		<div class="searchbar">
-			<input type="text" placeholder="책 제목으로 검색하세요!" autofocus="autofocus"
-				class="form-control" />
-		</div>
-		<div class="searchcart">
-			<ul>
-				<li><a><img alt="검색"
-						src="/resources/image/magnifying-glass.png" height="28" width="28"></a></li>
-				<li><a href="/cartlistGet.do"><img alt="장바구니"
-						src="/resources/image/shopping-cart.png" height="28" width="28"></a></li>
-			</ul>
-		</div>
+		<form id="f_search" name="f_search">
+			<div class="searchbar">
+				<select id="search" name="search" hidden="hidden">
+					<option value="book_name">제목</option>
+					<option value="all">전체</option>
+				</select> <input type="text" name="keyword" id="keyword"
+					placeholder="책 제목으로 검색하세요!" />
+			</div>
+			<div class="searchcart">
+				<ul>
+					<li><a id="searchData"> <input type="image"
+							src="/resources/image/magnifying-glass.png" height="28"
+							width="28"></a></li>
+					<li><a href="/cartlistGet.do"><img alt="장바구니"
+							src="/resources/image/shopping-cart.png" height="28" width="28"></a></li>
+				</ul>
+			</div>
+		</form>
 	</div>
 	<div class="navmenu">
 		<nav id="primary_nav_wrap">

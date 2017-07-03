@@ -16,14 +16,31 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/resources/js/cart.js"></script>
-<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
-	media="screen" />
-<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
-	media="screen" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="/resources/js/datatable.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+<script src="/resources/js/cart.js"></script>
+<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
+	media="screen" />
 <title>리드북스 베스트</title>
+<script type="text/javascript">
+	$(function() {
+		var table = $('#keywords').DataTable();
+	});
+</script>
+<style type="text/css">
+#primary_nav_wrap ul #iii:NTH-CHILD(4) {
+	background-color: #5fc5c5;
+}
+
+input[type='search'] {
+	margin-left: 159px;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -41,48 +58,59 @@
 							name="cart_buyquantity">
 					</form>
 					<section id="cart">
-						<!-- 		상품1시작 -->
 						<c:choose>
 							<c:when test="${not empty bestbooklist}">
-								<c:forEach var="bestbooklist" items="${bestbooklist}">
-									<article class="product"
-										data-num="${bestbooklist.book_number }">
-										<header>
-											<!-- 				삭제 이미지 -->
-											<!-- 					상품이미지 -->
-											<img src="/resources/image/${bestbooklist.book_image }">
-											<!-- 제거 -->
-										</header>
-										<div class="content">
-											<!-- 상품이름 -->
-											<h1>${bestbooklist.book_name}</h1>
-											<!-- 상품 설명 -->
-											<p>${bestbooklist.book_writer }
-											<div id="primary_nav_wrap">
-												<ul>
-													<li><a class="btndetail">상세보기</a></li>
-													<li><a class="cartlist">장바구니에 담기</a></li>
-													<li><a class="mylist">마이리스트에 추가</a></li>
-													<li><a class="orderinsert">주문하기</a></li>
-												</ul>
-											</div>
-										</div>
-										<footer class="content">
-											<span class="qt-minus">-</span> <span class="qt">1</span> <span
-												class="qt-plus">+</span>
+								<table id="keywords">
+									<thead>
+										<tr>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach var="bestbooklist" items="${bestbooklist}">
+											<tr>
+												<td>
+													<article class="product"
+														data-num="${bestbooklist.book_number }">
+														<header>
+															<!-- 				삭제 이미지 -->
+															<!-- 					상품이미지 -->
+															<img src="/resources/image/${bestbooklist.book_image }">
+															<!-- 제거 -->
+														</header>
+														<div class="content">
+															<!-- 상품이름 -->
+															<h1>${bestbooklist.book_name}</h1>
+															<!-- 상품 설명 -->
+															<p>${bestbooklist.book_writer }
+															<div id="primary_nav_wrap">
+																<ul>
+																	<li><a class="btndetail">상세보기</a></li>
+																	<li><a class="cartlist">장바구니에 담기</a></li>
+																	<li><a class="mylist">마이리스트에 추가</a></li>
+																	<li><a class="orderinsert">주문하기</a></li>
+																</ul>
+															</div>
+														</div>
+														<footer class="content">
+															<span class="qt-minus">-</span> <span class="qt">1</span>
+															<span class="qt-plus">+</span>
 
-											<h2 class="full-price">${bestbooklist.book_price}원</h2>
+															<h2 class="full-price">${bestbooklist.book_price}원</h2>
 
-											<h2 class="price">${bestbooklist.book_price}원</h2>
-										</footer>
-									</article>
-								</c:forEach>
+															<h2 class="price">${bestbooklist.book_price}원</h2>
+														</footer>
+													</article>
+												</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
 							</c:when>
 							<c:otherwise>
 						등록된 책이 존재하지 않습니다.
 						</c:otherwise>
 						</c:choose>
-						<!-- 			상품1끝 -->
 					</section>
 				</div>
 			</div>
@@ -90,7 +118,7 @@
 		<aside>
 			<div id="serviceWrap">
 				<div class="ss_myshop">
-					<a href="#"><span>주요서비스</span></a>
+					<a href="/siteMap.do"><span>주요서비스</span></a>
 				</div>
 				<div class="ss_myshop">
 					<a href="/usercheck.do"><span>로그인</span></a>
@@ -105,7 +133,7 @@
 					<a href="/mylistGet.do"><span>마이리스트</span></a>
 				</div>
 				<div class="ss_myshop">
-					<a href="#"><span>주문내역</span></a>
+					<a href="/orderSelect.do"><span>주문내역</span></a>
 				</div>
 			</div>
 		</aside>

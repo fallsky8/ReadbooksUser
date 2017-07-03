@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/resources/js/common.js"></script>
 <title>comment</title>
 <script type="text/javascript">
 	$(function() {
@@ -18,33 +19,38 @@
 		/* 덧글 내용 저장 이벤트 */
 		$("#reviewreplyInsert").click(function() {
 			// 작성자 이름에 대한 입력 여부 검사
+			var now = "${sessionScope.user_id}";
+			if (now != "") {
+				var insertUrl = "/reviewreplyInsert.do";
+				/* 글 저장을 위한 Post 방식의 Ajax 연동 처리 */
+				$.ajax({
+					url : insertUrl, //전송 url
+					type : "post", //전송 시 method 방식
+					headers : {
+						"Content-Type" : "application/json",
+						"X-HTTP-Method-Override" : "POST"
+					},
+					dataType : "text",
+					data : JSON.stringify({
+						reviewboard_number : reviewboard_number,
+						user_id : $("#user_id").val(),
+						reviewreply_contents : $("#reviewreply_contents").val()
+					}),
 
-			var insertUrl = "/reviewreplyInsert.do";
-			/* 글 저장을 위한 Post 방식의 Ajax 연동 처리 */
-			$.ajax({
-				url : insertUrl, //전송 url
-				type : "post", //전송 시 method 방식
-				headers : {
-					"Content-Type" : "application/json",
-					"X-HTTP-Method-Override" : "POST"
-				},
-				dataType : "text",
-				data : JSON.stringify({
-					reviewboard_number : reviewboard_number,
-					user_id : $("#user_id").val(),
-					reviewreply_contents : $("#reviewreply_contents").val()
-				}),
-				error : function() { //실행시 오류가 발생하였을 경우
-					alert('시스템 오류 입니다. 관리자에게 문의 하세요');
-				},
-				success : function(resultData) {
-					if (resultData == "SUCCESS") {
-						alert("댓글 등록이 완료되었습니다.");
-						dataReset();
-						listAll(reviewboard_number);
+					/* error : function() { //실행시 오류가 발생하였을 경우
+										alert('시스템 오류 입니다. 관리자에게 문의 하세요');
+									}, */
+					success : function(resultData) {
+						if (resultData == "SUCCESS") {
+							alert("댓글 등록이 완료되었습니다.");
+							dataReset();
+							listAll(reviewboard_number);
+						}
 					}
-				}
-			});
+				});
+			} else if (now == "") {
+				alert("로그인을 해야 댓글이 허용됩니다.");
+			}
 
 		});
 
@@ -54,30 +60,23 @@
 						"click",
 						".update_form",
 						function() {
-							var now = "${sessionScope.user_id}";
-							var user = $("#g2").val();
-							if (now == user) {
-								$(".reset_btn").click();
-								var conText = $(this).parents("li").children()
-										.eq(1).html();
-								console.log("conText: " + conText);
-								$(this).parents("li").find(
-										"input[type='button']").hide();
-								$(this).parents("li").children().eq(0).html();
-								var conArea = $(this).parents("li").children()
-										.eq(1);
 
-								conArea.html("");
-								var data = "<textarea name='content' id='content'>"
-										+ conText + "</textarea>";
-								data += "<input type='button' class='update_btn' value='수정완료'>";
-								data += "<input type='button' class='reset_btn' value='수정취소'>";
-								conArea.html(data);
-							} else if (now == "") {
-								alert("당신은 비회원입니다.");
-							} else if (now != user) {
-								alert("당신은 작성자가 아닙니다.");
-							}
+							$(".reset_btn").click();
+							var conText = $(this).parents("li").children()
+									.eq(1).html();
+							console.log("conText: " + conText);
+							$(this).parents("li").find("input[type='button']")
+									.hide();
+							$(this).parents("li").children().eq(0).html();
+							var conArea = $(this).parents("li").children()
+									.eq(1);
+
+							conArea.html("");
+							var data = "<textarea name='content' class='form-control' id='content'>"
+									+ conText + "</textarea>";
+							data += "<input type='button' class='update_btn btn btn-default' value='수정완료'>";
+							data += "<input type='button' class='reset_btn btn btn-default' value='수정취소'>";
+							conArea.html(data);
 
 						});
 
@@ -119,51 +118,36 @@
 		});
 
 		/* 글 삭제를 위한 Ajax 연동 처리 */
-		$(document).on(
-				"click",
-				".delete_btn",
-				function() {
+		$(document).on("click", ".delete_btn", function() {
 
-					var now = "${sessionScope.user_id}";
-					var user = $("#g2").val();
+			var reviewreply_number = $(this).parents("li").attr("data-num");
+			console.log("reviewreply_number: " + reviewreply_number);
 
-					if (now == user) {
-						var reviewreply_number = $(this).parents("li").attr(
-								"data-num");
-						console
-								.log("reviewreply_number: "
-										+ reviewreply_number);
-
-						if (confirm("선택하신 댓글을 삭제하시겠습니까?")) {
-							$.ajax({
-								type : 'delete',
-								url : '/' + reviewreply_number + ".do",
-								headers : {
-									"Content-Type" : "application/json",
-									"X-HTTP-Method-Override" : "DELETE"
-								},
-								dataType : 'text',
-								success : function(result) {
-									console.log("result: " + result);
-									if (result == 'SUCCESS') {
-										alert("삭제 되었습니다.");
-										listAll(reviewboard_number);
-									}
-								}
-							});
+			if (confirm("선택하신 댓글을 삭제하시겠습니까?")) {
+				$.ajax({
+					type : 'delete',
+					url : '/' + reviewreply_number + ".do",
+					headers : {
+						"Content-Type" : "application/json",
+						"X-HTTP-Method-Override" : "DELETE"
+					},
+					dataType : 'text',
+					success : function(result) {
+						console.log("result: " + result);
+						if (result == 'SUCCESS') {
+							alert("삭제 되었습니다.");
+							listAll(reviewboard_number);
 						}
-
-					} else if (now == "") {
-						alert("당신은 비회원입니다.");
-					} else if (now != user) {
-						alert("당신은 작성자가 아닙니다.");
 					}
-
 				});
+			}
+
+		});
 	});
 
 	//리스트 요청 함수
 	function listAll(reviewboard_number) {
+		var reply_id = $("#user_id").val();
 		$("#comment_list").html("");
 		var url = "/all/" + reviewboard_number + ".do";
 		$
@@ -178,10 +162,12 @@
 												var user_id = this.user_id;
 												var reviewreply_contents = this.reviewreply_contents;
 												var reviewreply_registerdate = this.reviewreply_registerdate;
-												addNewItem(reviewreply_number,
+												addNewItem(
+														reviewreply_number,
 														user_id,
 														reviewreply_contents,
-														reviewreply_registerdate);
+														reviewreply_registerdate,
+														reply_id);
 											});
 
 						}).fail(function() {
@@ -192,7 +178,7 @@
 
 	/* 새로운 글을 화면에 추가하기 위한 함수 */
 	function addNewItem(reviewreply_number, user_id, reviewreply_contents,
-			reviewreply_registerdate) {
+			reviewreply_registerdate, reply_id) {
 		//새로운 글이 추가될 li태그 객체
 		var new_li = $("<li>");
 		new_li.attr("data-num", reviewreply_number);
@@ -202,41 +188,51 @@
 		var writer_p = $("<p>");
 		writer_p.addClass("writer");
 
-		//작성자 정보의 이름
+		/* 작성자 정보의 이름
 		var name_span = $("<span>");
 		name_span.addClass("name");
 		name_span.html(user_id + "님");
-		$("#g2").val(user_id);
+		$("#g2").val(user_id); */
+		//작성자 정보의 이름
+		var name_input = $("<input>");
+		name_input.attr({
+			"type" : "text",
+			"value" : user_id + "님의 댓글",
+			"readonly" : "readonly",
+			"style" : "border:none"
+		});
 
 		//작성일시
 		var date_span = $("<span>");
-		date_span.html("/" + reviewreply_registerdate + " ");
+		date_span.html("/ 작성일 : " + reviewreply_registerdate);
 
-		// 수정하기 버튼
-		var up_input = $("<input>");
-		up_input.attr({
-			"type" : "button",
-			"value" : "수정하기",
-			"class" : "btn btn-default"
-		});
-		up_input.addClass("update_form");
+		if (user_id == reply_id) {
 
-		// 삭제하기 버튼
-		var del_input = $("<input>");
-		del_input.attr({
-			"type" : "button",
-			"value" : "삭제하기",
-			"class" : "btn btn-default"
-		});
-		del_input.addClass("delete_btn");
+			// 수정하기 버튼
+			var up_input = $("<input>");
+			up_input.attr({
+				"type" : "button",
+				"value" : "수정하기",
+				"class" : "btn btn-default"
+			});
+			up_input.addClass("update_form");
 
+			// 삭제하기 버튼
+			var del_input = $("<input>");
+			del_input.attr({
+				"type" : "button",
+				"value" : "삭제하기",
+				"class" : "btn btn-default"
+			});
+			del_input.addClass("delete_btn");
+		}
 		// 내용
 		var content_p = $("<p>");
 		content_p.addClass("con");
 		content_p.html(reviewreply_contents);
 
 		// 조립하기
-		writer_p.append(name_span).append(date_span).append(up_input).append(
+		writer_p.append(name_input).append(date_span).append(up_input).append(
 				del_input)
 		new_li.append(writer_p).append(content_p);
 		$("#comment_list").append(new_li);
@@ -252,8 +248,7 @@
 		<div id="comment_write">
 			<form id="comment_form">
 				<div>
-					<input id="g2" name="g2" type="hidden" value=""> <label
-						for="user_id">작성자</label>${sessionScope.user_id}<input
+					<label for="user_id">작성자</label>${sessionScope.user_id}<input
 						type="hidden" id="user_id" name="user_id"
 						value="${sessionScope.user_id}"> <input type="button"
 						id="reviewreplyInsert" value="저장하기" class="btn btn-default" />

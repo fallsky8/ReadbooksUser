@@ -217,6 +217,15 @@
 						});
 	});
 </script>
+<style type="text/css">
+#primary_nav_wrap ul #iii:NTH-CHILD(7) {
+	background-color: #5fc5c5;
+}
+
+#sideMenu a:NTH-CHILD(6) {
+	background-color: rgba(0, 0, 0, 0.15);
+}
+</style>
 </head>
 <body>
 	<header>
@@ -229,7 +238,8 @@
 					href="/userinfo.do" class="menu-item">회원정보관리</a> <a
 					href="/userinfo.do" class="menu-item">&nbsp;&nbsp;&nbsp;-개인정보관리</a>
 				<a href="/useroutpage.do" class="menu-item">&nbsp;&nbsp;&nbsp;-회원탈퇴</a>
-				<a href="#" class="menu-item">주문내역</a> <a href="#" class="menu-item">마이리스트</a>
+				<a href="/orderSelect.do" class="menu-item">주문내역</a> <a href="#"
+					class="menu-item">마이리스트</a>
 			</div>
 			<div class="contain">
 				<div class="cartcontainer">
@@ -282,7 +292,7 @@
 		<aside>
 			<div id="serviceWrap">
 				<div class="ss_myshop">
-					<a href="#"><span>주요서비스</span></a>
+					<a href="/siteMap.do"><span>주요서비스</span></a>
 				</div>
 				<div class="ss_myshop">
 					<a href="/usercheck.do"><span>로그인</span></a>
@@ -297,7 +307,7 @@
 					<a href="/mylistGet.do"><span>마이리스트</span></a>
 				</div>
 				<div class="ss_myshop">
-					<a href="#"><span>주문내역</span></a>
+					<a href="/orderSelect.do"><span>주문내역</span></a>
 				</div>
 			</div>
 		</aside>

@@ -216,9 +216,9 @@
 			</div>
 		</article>
 		<aside>
-			<div id="serviceWrap">
+				<div id="serviceWrap">
 				<div class="ss_myshop">
-					<a href="#"><span>주요서비스</span></a>
+					<a href="/siteMap.do"><span>주요서비스</span></a>
 				</div>
 				<div class="ss_myshop">
 					<a href="/usercheck.do"><span>로그인</span></a>
@@ -227,13 +227,13 @@
 					<a href="/userjoin.do"><span>회원가입</span></a>
 				</div>
 				<div class="ss_myshop">
-					<a href="/cartlistGet.do"><span> 쇼핑카트</span></a>
+					<a href="/cartlistGet.do"><span>쇼핑카트</span></a>
 				</div>
 				<div class="ss_myshop">
 					<a href="/mylistGet.do"><span>마이리스트</span></a>
 				</div>
 				<div class="ss_myshop">
-					<a href="#"><span>주문내역</span></a>
+					<a href="/orderSelect.do"><span>주문내역</span></a>
 				</div>
 			</div>
 

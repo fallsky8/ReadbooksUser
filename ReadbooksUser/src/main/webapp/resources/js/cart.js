@@ -197,4 +197,5 @@ $(function() {
 	$(".hb_close").click(function() {
 		$(".head_banner").hide();
 	});
+
 });

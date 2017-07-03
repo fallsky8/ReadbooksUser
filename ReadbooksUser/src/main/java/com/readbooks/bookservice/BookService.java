@@ -29,4 +29,6 @@ public interface BookService {
 
 	public List<BookVO> mylistGet(MyListVO mylist);
 
+	public List<BookVO> searchbookGet(BookVO book);
+
 }

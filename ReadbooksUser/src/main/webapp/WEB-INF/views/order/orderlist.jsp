@@ -16,7 +16,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
@@ -24,12 +23,23 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
-<script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.28.14/js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="/resources/js/datatable.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+<script src="/resources/js/cart.js"></script>
 <title>주문내역</title>
 <script type="text/javascript">
 	$(function() {
-		$('#keywords').tablesorter();
+		var table = $('#keywords').DataTable();
+		$("#keywords tbody").on('click', 'tr', function() {
+			var data = table.row(this).data();
+			$("#order_number").val(data[0]);
+			$("#detailForm").attr({
+				"method" : "get",
+				"action" : "/orderdetail.do"
+			});
+			$("#detailForm").submit();
+		});
 	});
 </script>
 <style type="text/css">
@@ -37,8 +47,9 @@
 
 /** page structure **/
 #keywords {
+	width: 100%;
 	font-size: 13px;
-	margin-left: 140px;
+	margin-left: 60px;
 }
 
 #keywords thead {
@@ -66,6 +77,42 @@
 #keywords thead .tablesorter-header-inner {
 	width: 90px !important;
 }
+
+div[class='row'] {
+	float: left;
+	width: 900px;
+}
+
+.dataTables_paginate {
+	width: 570px;
+	margin-top: -15px;
+}
+
+.col-sm-6 {
+	width: 70%;
+	margin-left: 60px;
+}
+
+.col-sm-7 {
+	width: 570px;
+	margin-left: 60px;
+}
+
+#boardList {
+	margin-left: 180px;
+}
+
+#keywords_info {
+	margin-left: 60px;
+}
+
+#primary_nav_wrap ul #iii:NTH-CHILD(7) {
+	background-color: #5fc5c5;
+}
+
+#sideMenu a:NTH-CHILD(5) {
+	background-color: rgba(0, 0, 0, 0.15);
+}
 </style>
 </head>
 <body>
@@ -81,7 +128,9 @@
 				<a href="#" class="menu-item">주문내역</a> <a href="/mylistGet.do"
 					class="menu-item">마이리스트</a>
 			</div>
-
+			<form name="detailForm" id="detailForm">
+				<input type="hidden" name="order_number" id="order_number">
+			</form>
 			<table id="keywords">
 				<thead>
 					<tr>
@@ -110,7 +159,7 @@
 		<aside>
 			<div id="serviceWrap">
 				<div class="ss_myshop">
-					<a href="#"><span>주요서비스</span></a>
+					<a href="/siteMap.do"><span>주요서비스</span></a>
 				</div>
 				<div class="ss_myshop">
 					<a href="/usercheck.do"><span>로그인</span></a>
@@ -125,7 +174,7 @@
 					<a href="/mylistGet.do"><span>마이리스트</span></a>
 				</div>
 				<div class="ss_myshop">
-					<a href="#"><span>주문내역</span></a>
+					<a href="/orderSelect.do"><span>주문내역</span></a>
 				</div>
 			</div>
 		</aside>
