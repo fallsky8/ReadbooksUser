@@ -36,9 +36,11 @@
 #primary_nav_wrap ul #iii:NTH-CHILD(2) {
 	background-color: #5fc5c5;
 }
+
 #sideMenu a:NTH-CHILD(2) {
 	background-color: rgba(0, 0, 0, 0.15);
 }
+
 input[type='search'] {
 	margin-left: 159px;
 }

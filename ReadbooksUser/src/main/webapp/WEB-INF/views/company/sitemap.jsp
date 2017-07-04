@@ -290,6 +290,14 @@ a:link:before, a:visited:before {
 	font-size: 9px;
 	margin-bottom: 3px;
 }
+
+#sideMenu a:NTH-CHILD(4) {
+	background-color: rgba(0, 0, 0, 0.15);
+}
+
+.footer_center #primary_nav_wrap li:NTH-CHILD(4) {
+	background-color: #5fc5c5;
+}
 </style>
 </head>
 <body>
