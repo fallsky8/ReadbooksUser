@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,90 +19,23 @@
 	media="screen" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript" src="/resources/js/common.js"></script>
-<script type="text/javascript" src="/resources/js/datatable.js"></script>
-<script
-	src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-<script src="/resources/js/cart.js"></script>
-<title>주문내역</title>
 <script type="text/javascript">
 	$(function() {
-		var table = $('#keywords').DataTable();
-		$("#keywords tbody").on('click', 'tr', function() {
-			var data = table.row(this).data();
-			$("#order_number").val(data[0]);
-			$("#detailForm").attr({
-				"method" : "get",
-				"action" : "/orderdetail.do"
-			});
-			$("#detailForm").submit();
+		$("#printbtn").click(function() {
+			$("#serviceWrap").hide();
+			$("#sideMenu").hide();
+			$("#fooot").hide();
+			$("#headd").hide();
+			window.print();
+			window.location.reload(true);
 		});
 	});
 </script>
+<title>주문 상세 내역</title>
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css?family=Amarante');
 
 /** page structure **/
-#keywords {
-	width: 100%;
-	font-size: 13px;
-	margin-left: 60px;
-}
-
-#keywords thead {
-	cursor: pointer;
-	background: #5fc5c5;
-}
-
-#keywords thead tr th {
-	font-weight: bold;
-	padding: 12px 30px;
-	padding-left: 30px;
-	text-align: center;
-}
-
-#keywords tbody tr {
-	color: #555;
-}
-
-#keywords tbody tr td {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	padding: 25px 10px;
-	text-align: center;
-}
-
-#keywords thead .tablesorter-header-inner {
-	width: 90px !important;
-}
-
-div[class='row'] {
-	float: left;
-	width: 900px;
-}
-
-.dataTables_paginate {
-	width: 570px;
-	margin-top: -15px;
-}
-
-.col-sm-6 {
-	width: 70%;
-	margin-left: 60px;
-}
-
-.col-sm-7 {
-	width: 570px;
-	margin-left: 60px;
-}
-
-#boardList {
-	margin-left: 180px;
-}
-
-#keywords_info {
-	margin-left: 60px;
-}
-
 #primary_nav_wrap ul #iii:NTH-CHILD(7) {
 	background-color: #5fc5c5;
 }
@@ -114,7 +46,7 @@ div[class='row'] {
 </style>
 </head>
 <body>
-	<header>
+	<header id="headd">
 		<jsp:include page="../header.jsp"></jsp:include>
 	</header>
 	<div id="main">
@@ -126,33 +58,59 @@ div[class='row'] {
 				<a href="#" class="menu-item">주문내역</a> <a href="/mylistGet.do"
 					class="menu-item">마이리스트</a>
 			</div>
-			<form name="detailForm" id="detailForm">
-				<input type="hidden" name="order_number" id="order_number">
-			</form>
-			<table id="keywords">
+			<input type="button" value="프린트하기" id="printbtn">
+			<table class="table">
+				<caption>주문 상품 정보</caption>
 				<thead>
 					<tr>
-						<th><span>주문번호</span></th>
-						<th><span>주문일자</span></th>
-						<th><span>주문내역</span></th>
-						<th><span>주문금액/수량 </span></th>
-						<th><span>주문자</span></th>
-						<th><span>주문상태</span></th>
+						<th><span>상태</span></th>
+						<th><span>상품명</span></th>
+						<th><span>주문수량</span></th>
+						<th><span>가격</span></th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="orderlist" items="${orderlist }">
-						<tr>
-							<td class="lalign">${orderlist.order_number }</td>
-							<td>${orderlist.order_date }</td>
-							<td>언어의 온도 외 2권</td>
-							<td>${orderlist.order_quantity}</td>
-							<td>${orderlist.order_orderer }</td>
-							<td>${orderlist.order_status }</td>
-						</tr>
-					</c:forEach>
+					<tr>
+						<td class="lalign">${orderdetail.order_status}</td>
+						<td>언어의 온도 외 2권</td>
+						<td>${orderdetail.order_quantity}</td>
+						<td>3권</td>
+					</tr>
 				</tbody>
 			</table>
+			<table id="keywords">
+				<caption>주문,배송 정보</caption>
+				<tr>
+					<th><span>주문번호</span></th>
+					<td class="lalign">${orderdetail.order_number}</td>
+				</tr>
+				<tr>
+					<th><span>주문일자</span></th>
+					<td>${orderdetail.order_date}</td>
+				</tr>
+				<tr>
+					<th><span>주문자</span></th>
+					<td>${orderdetail.order_orderer}</td>
+				</tr>
+				<tr>
+					<th><span>수령자</span></th>
+					<td>${orderdetail.order_recipient}</td>
+				</tr>
+				<tr>
+					<th><span>휴대폰번호</span></th>
+					<td>010-6292-9657</td>
+				</tr>
+				<tr>
+					<th><span>배송지주소</span></th>
+					<td>${orderdetail.order_receiptaddress}</td>
+				</tr>
+				<tr>
+					<th><span>요청사항</span></th>
+					<td>${orderdetail.order_requirement}</td>
+				</tr>
+			</table>
+			<input type="button" value="목록보기" id="listbtn"
+				onclick="history.go(-1)">
 		</article>
 		<aside>
 			<div id="serviceWrap">
@@ -176,9 +134,9 @@ div[class='row'] {
 				</div>
 			</div>
 		</aside>
+		<footer id="fooot">
+			<jsp:include page="../footer.jsp"></jsp:include>
+		</footer>
 	</div>
-	<footer>
-		<jsp:include page="../footer.jsp"></jsp:include>
-	</footer>
 </body>
 </html>

@@ -24,4 +24,9 @@ public class CartDAOImpl implements CartDAO {
 		return session.delete("cartDelete", cart);
 	}
 
+	@Override
+	public int cartDelete2(CartVO cart) {
+		return session.delete("cartDelete2", cart);
+	}
+
 }

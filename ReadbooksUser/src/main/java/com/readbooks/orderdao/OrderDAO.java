@@ -10,4 +10,6 @@ public interface OrderDAO {
 
 	public List<OrderVO> orderSelect(OrderVO order);
 
+	public OrderVO orderdetail(OrderVO order);
+
 }

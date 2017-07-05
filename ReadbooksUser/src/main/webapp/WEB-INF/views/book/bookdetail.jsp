@@ -13,25 +13,27 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
 	media="screen" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/resources/js/cart.js"></script>
 <title>${detailbook.book_name}</title>
 <script type="text/javascript">
 	$(function() {
-		$(".btnpay").on({
-			"click" : function() {
-				$("#booknumform").attr("action", "/orderinsertpage.do");
-				$("#booknumform").submit();
-			}
-		});
+		$(".btnpay").click(function() {
+			var b_num = "${detailbook.book_number}";
+			$("#book_number").val(b_num);
+			$("#booknumform").attr({
+				method : "GET",
+				action : "/orderinsertpage.do"
+			});
+			$("#booknumform").submit();
+		})
+
 	});
 </script>
 <style type="text/css">
@@ -75,13 +77,6 @@
 		<article>
 			<div class="contain">
 				<div class="cartcontainer">
-					<form id="booknumform">
-						<input type="hidden" id="user_id" name="user_id"
-							value="${sessionScope.user_id }"> <input type="hidden"
-							id="book_number" name="book_number"> <input type="hidden"
-							id="cart_buyquantity" id="cart_buyquantity"
-							name="cart_buyquantity">
-					</form>
 					<section id="cart">
 						<!-- 		상품1시작 -->
 

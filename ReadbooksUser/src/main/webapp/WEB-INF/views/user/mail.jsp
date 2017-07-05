@@ -9,8 +9,6 @@
 <link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
 	media="screen" />
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
@@ -221,102 +219,95 @@ a.btn.disabled, fieldset[disabled] a.btn {
 }
 </style>
 <script>
-	$(document)
-			.ready(
-					function() {
-						var findid = $("#findid");
-						function recieve() {
-							var txt = "<font color='red'>부모창에서 받아온 값</font>";
-							document.getElementById("authNumHidden").innerHTML = txt;
-							document.authform.authNumHidden.value = window.opener.document.joinform.authNumHidden.value;
-						}
+	$(document).ready(function() {
+		//초기값
 
-						//초기값
+		//초기값
 
-						var minute = 1;
+		var minute = 1;
 
-						var second = 59;
-						// 초기화
+		var second = 59;
+		// 초기화
 
-						$(".countTimeMinute").html(minute);
+		$(".countTimeMinute").html(minute);
 
-						$(".countTimeSecond").html(second);
+		$(".countTimeSecond").html(second);
 
-						var timer = setInterval(function() {
+		var timer = setInterval(function() {
 
-							// 설정
+			// 설정
 
-							$(".countTimeMinute").html(minute);
+			$(".countTimeMinute").html(minute);
 
-							$(".countTimeSecond").html(second);
+			$(".countTimeSecond").html(second);
 
-							if (second == 0 && minute == 0) {
+			if (second == 0 && minute == 0) {
 
-								window.close(); /* 타이머 종료 */
+				window.close(); /* 타이머 종료 */
 
-							} else {
+			} else {
 
-								second--;
+				second--;
 
-								// 분처리
+				// 분처리
 
-								if (second < 0) {
+				if (second < 0) {
 
-									minute--;
+					minute--;
 
-									second = 59;
+					second = 59;
 
-								}
+				}
 
-								//시간처리
+				//시간처리
 
-								if (minute < 0) {
+				if (minute < 0) {
 
-									if (hour > 0) {
+					if (hour > 0) {
 
-										hour--;
+						hour--;
 
-										minute = 59;
+						minute = 59;
 
-									}
+					}
 
-								}
+				}
 
-							}
+			}
 
-						}, 1000); /* millisecond 단위의 인터벌 */
+		}, 1000); /* millisecond 단위의 인터벌 */
 
-						$("#checkEnumBtn").click(function() {
-							if (findid.val() == null || findid.val() == "") {
-								alert("인증번호 입력하세요");
-							} else {
-								if (findid.val() == authNumHidden.val()) {
-									alert("인증 완료");
-									eNumcheckHidden.val("y");
+		$("#checkEnumBtn").click(function() {
+			if (findid.val() == null || findid.val() == "") {
+				alert("인증번호 입력하세요");
+			} else {
+				if (findid.val() == authNumHidden.val()) {
+					alert("인증 완료");
+					eNumcheckHidden.val("y");
 
-								} else {
-									alert("인증 실패");
-								}
-							}
-							if (eNumcheckHidden.val() == "n") {
-								alert("인증번호를 확인하세요")
-								findid.focus();
-								return false;
-							}
+				} else {
+					alert("인증 실패");
+				}
+			}
+			if (eNumcheckHidden.val() == "n") {
+				alert("인증번호를 확인하세요")
+				findid.focus();
+				return false;
+			}
 
-							if (findid.val() != authNumHidden.val()) {
-								alert("인증번호가 틀렸습니다")
-								findid.focus();
-								return false;
-							}
-							if (findid.val() == null || findid.val() == "") {
-								alert("인증번호를 입력하세요");
-								findid.focus();
-								return false;
-							}
-							close();
-						});
-					});
+			if (findid.val() != authNumHidden.val()) {
+				alert("인증번호가 틀렸습니다")
+				findid.focus();
+				return false;
+			}
+			if (findid.val() == null || findid.val() == "") {
+				alert("인증번호를 입력하세요");
+				findid.focus();
+				return false;
+			}
+			close();
+		});
+	});
 </script>
 </head>
 <body onresize="parent.resizeTo(400,380)"

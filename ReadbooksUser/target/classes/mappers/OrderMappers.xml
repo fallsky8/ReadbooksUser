@@ -11,4 +11,7 @@
 	<select id="orderSelect" parameterType="order" resultType="order">
 		select * from tbl_order where user_id = #{user_id}
 	</select>
+	<select id="orderdetail" parameterType="order" resultType="order">
+		select * from tbl_order where order_number=#{order_number}
+	</select>
 </mapper>

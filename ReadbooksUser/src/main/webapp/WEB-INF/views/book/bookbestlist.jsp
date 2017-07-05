@@ -12,14 +12,16 @@
 	type="text/css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="/resources/js/datatable.js"></script>
 <script
 	src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/resources/js/cart.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.min.js"></script>
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
 	media="screen" />
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
@@ -27,6 +29,10 @@
 <title>리드북스 베스트</title>
 <script type="text/javascript">
 	$(function() {
+		$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+			event.preventDefault();
+			$(this).ekkoLightbox();
+		});
 		var table = $('#keywords').DataTable();
 	});
 </script>
@@ -37,6 +43,21 @@
 
 input[type='search'] {
 	margin-left: 159px;
+}
+
+.modal-content {
+	width: 500px;
+	height: 735px;
+}
+
+.modal-body, .img-fluid {
+	width: 100%;
+	height: 700px;
+}
+
+.ekko-lightbox-item fade in show {
+	width: 100%;
+	height: 700px;
 }
 </style>
 </head>
@@ -71,10 +92,12 @@ input[type='search'] {
 													<article class="product"
 														data-num="${bestbooklist.book_number }">
 														<header>
-															<!-- 				삭제 이미지 -->
-															<!-- 					상품이미지 -->
-															<img src="/resources/image/${bestbooklist.book_image }">
-															<!-- 제거 -->
+															<a href="/resources/image/${bestbooklist.book_image }"
+																data-toggle="lightbox"> <img
+																src="/resources/image/${bestbooklist.book_image }"
+																class="img-fluid">
+															</a> <img src="/resources/image/${bestbooklist.book_image }">
+
 														</header>
 														<div class="content">
 															<!-- 상품이름 -->

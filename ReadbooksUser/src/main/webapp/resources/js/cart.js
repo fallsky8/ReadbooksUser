@@ -198,4 +198,14 @@ $(function() {
 		$(".head_banner").hide();
 	});
 
+	$(".orderinsert").click(function() {
+		var b_num = $(this).parents("article").attr("data-num");
+		$("#book_number").val(b_num);
+		$("#booknumform").attr({
+			method : "GET",
+			action : "/orderinsertpage.do"
+		});
+		$("#booknumform").submit();
+	})
+
 });

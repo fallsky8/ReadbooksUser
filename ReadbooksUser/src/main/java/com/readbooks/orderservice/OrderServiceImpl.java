@@ -32,4 +32,11 @@ public class OrderServiceImpl implements OrderService {
 
 	}
 
+	@Override
+	public OrderVO orderdetail(OrderVO order) {
+		OrderVO orderdetail = null;
+		orderdetail = orderdao.orderdetail(order);
+		return orderdetail;
+	}
+
 }

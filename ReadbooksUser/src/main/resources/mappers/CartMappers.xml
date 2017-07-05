@@ -12,4 +12,9 @@
 		delete from tbl_cart where
 		cart_number = #{cart_number}
 	</delete>
+	<delete id="cartDelete2" parameterType="cart">
+		delete from tbl_cart
+		where
+		user_id = #{user_id}
+	</delete>
 </mapper>
