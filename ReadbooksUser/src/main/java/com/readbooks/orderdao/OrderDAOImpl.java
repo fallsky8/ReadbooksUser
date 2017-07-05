@@ -26,4 +26,9 @@ public class OrderDAOImpl implements OrderDAO {
 		return session.selectList("orderSelect", order);
 	}
 
+	@Override
+	public OrderVO orderdetail(OrderVO order) {
+		return session.selectOne("orderdetail", order);
+	}
+
 }

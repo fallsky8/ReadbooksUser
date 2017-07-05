@@ -60,4 +60,15 @@ public class CartController {
 		return "redirect:" + url;
 	}
 
+	@RequestMapping(value = "/cartDelete2", method = RequestMethod.GET)
+	private String cartDelete2(@ModelAttribute CartVO cart, HttpSession session) {
+		int result = 0;
+		String url = "";
+		result = cartService.cartDelete2(cart);
+		if (result == 1) {
+			url = "/cartlistGet.do";
+		}
+		return "redirect:" + url;
+	}
+
 }

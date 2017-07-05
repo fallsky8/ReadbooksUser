@@ -9,8 +9,6 @@
 <link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
 	media="screen" />
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
@@ -230,7 +228,7 @@
 						<div id="bottom">
 							<a href="/userjoin.do">아직 리드북스 회원이 아니세요?</a> <a class="right_a"
 								href="#"
-								onclick="window.open('http://localhost:8070/findbutton.do', '_blank', 'width=400px, height=380px, top=250px,left=400px')">내
+								onclick="window.open('/findbutton.do', '_blank', 'width=400px, height=380px, top=250px,left=400px')">내
 								정보 찾기</a>
 						</div>
 					</div>

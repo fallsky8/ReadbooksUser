@@ -14,8 +14,19 @@ public class UserVO {
 	private String user_outreason;// 탈퇴 사유 VARCHAR2(50 BYTE)
 	private String user_outdate;// 탈퇴 일자 DATE
 
+	// 인증코드
+	private String user_authnum;
+
 	public UserVO() {
 		super();
+	}
+
+	public String getUser_authnum() {
+		return user_authnum;
+	}
+
+	public void setUser_authnum(String user_authnum) {
+		this.user_authnum = user_authnum;
 	}
 
 	public String getUser_id() {

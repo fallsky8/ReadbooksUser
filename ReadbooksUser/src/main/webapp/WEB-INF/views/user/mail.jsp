@@ -9,8 +9,6 @@
 <link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
 	media="screen" />
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
@@ -222,8 +220,6 @@ a.btn.disabled, fieldset[disabled] a.btn {
 </style>
 <script>
 	$(document).ready(function() {
-		var findid = $("#findid");
-		var authNumHidden = $("#authNumHidden");
 		//초기값
 
 		var minute = 1;
@@ -315,9 +311,6 @@ a.btn.disabled, fieldset[disabled] a.btn {
 </head>
 <body onresize="parent.resizeTo(400,380)"
 	onload="parent.resizeTo(400,380)">
-	<form id="authform">
-		<input type="hidden" name="authNumHidden" id="authNumHidden">
-	</form>
 	<div id="wrapper">
 		<div id="box">
 			<div id="top_header">

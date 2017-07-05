@@ -12,8 +12,6 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
@@ -120,7 +118,7 @@
 				class="btn btn-default" value="목록" id="inquireboardList">
 		</article>
 		<aside>
-				<div id="serviceWrap">
+			<div id="serviceWrap">
 				<div class="ss_myshop">
 					<a href="/siteMap.do"><span>주요서비스</span></a>
 				</div>

@@ -137,7 +137,7 @@ public class UserController {
 
 		String from = "admin@readbooks.com";
 		String memberEmail = user.getUser_email();
-		String title = "리드북스 메일 인증 코드입니다.";
+		String title = "회원가입 메일 인증 코드";
 		String content = "인증 코드 [" + authNum + "]";
 
 		try {
@@ -152,6 +152,7 @@ public class UserController {
 
 		} catch (MessagingException e) {
 			e.printStackTrace();
+
 		}
 
 		return authNum;
