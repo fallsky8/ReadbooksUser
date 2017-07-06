@@ -36,16 +36,22 @@ public class OrderController {
 			@ModelAttribute CartVO cartvo, HttpSession session, Model model) {
 		// 유저 정보
 		uservo.setUser_id((String) session.getAttribute("user_id"));
-		cartvo.setUser_id((String) session.getAttribute("user_id"));
 		UserVO userget = userService.userGet(uservo);
-		model.addAttribute("uservo", userget);
-		// 카트에 있던 책정보
+		model.addAttribute("user", userget);
+		
+//		//책정보
+//		BookVO detailbookGet = new BookVO();
+//		detailbookGet = bookService.detailbookGet(bookvo);
+//		model.addAttribute("book", detailbookGet);
+		
+		// 카트에 있는 책 정보
+		cartvo.setUser_id((String) session.getAttribute("user_id"));
 		List<BookVO> allbookGet = new ArrayList<BookVO>();
 		allbookGet = bookService.allbookGet(cartvo);
-		model.addAttribute("bookvo", allbookGet);
+//		model.addAttribute("cart", allbookGet);
+		session.setAttribute("cart", allbookGet);
 		return "order/orderinsert";
-		// 주문자 이름
-		// 그 책 정보
+		
 	}
 
 	@RequestMapping(value = "/orderInsert", method = RequestMethod.POST)

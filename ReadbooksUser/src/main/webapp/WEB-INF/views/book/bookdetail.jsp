@@ -72,7 +72,7 @@
 			<input type="hidden" id="user_id" name="user_id"
 				value="${sessionScope.user_id }"> <input type="hidden"
 				id="book_number" name="book_number"> <input type="hidden"
-				id="cart_buyquantity" id="cart_buyquantity" name="cart_buyquantity">
+				id="cart_buyquantity" name="cart_buyquantity">
 		</form>
 		<article>
 			<div class="contain">

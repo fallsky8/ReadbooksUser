@@ -4,9 +4,12 @@
 
 <mapper namespace="com.readbooks.orderdao.OrderDAO">
 	<insert id="orderInsert" parameterType="order">
-		insert into
-		tbl_order(order_number,user_id,book_number,order_password,order_orderer,order_recipient,order_date,order_paymentdate,order_receiptaddress,order_requirement,order_status,order_way,order_quantity)
-		values(1,#{user_id})
+		insert all
+		<foreach collection="">
+		into
+		tbl_order(order_number,user_id,book_number,order_orderer,order_quantity,order_ordernumber)
+		values(#{order_number},#{user_id},#{book_number},#{order_orderer},#{order_quantity},#{order_ordernumber})
+		</foreach>
 	</insert>
 	<select id="orderSelect" parameterType="order" resultType="order">
 		select * from tbl_order where user_id = #{user_id}

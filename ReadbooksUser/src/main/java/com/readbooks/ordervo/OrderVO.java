@@ -14,6 +14,7 @@ public class OrderVO {
 	private String order_status;
 	private String order_way;
 	private int order_quantity;
+	private int order_ordernumber;
 
 	public OrderVO() {
 		super();
@@ -122,4 +123,13 @@ public class OrderVO {
 	public void setOrder_quantity(int order_quantity) {
 		this.order_quantity = order_quantity;
 	}
+
+	public int getOrder_ordernumber() {
+		return order_ordernumber;
+	}
+
+	public void setOrder_ordernumber(int order_ordernumber) {
+		this.order_ordernumber = order_ordernumber;
+	}
+	
 }
