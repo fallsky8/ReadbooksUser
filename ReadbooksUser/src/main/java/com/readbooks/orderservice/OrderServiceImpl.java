@@ -7,9 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.readbooks.bookvo.BookVO;
 import com.readbooks.orderdao.OrderDAO;
+import com.readbooks.ordervo.OrderDTO;
 import com.readbooks.ordervo.OrderVO;
+import com.readbooks.uservo.UserVO;
 
 @Service
 @Transactional
@@ -44,6 +45,20 @@ public class OrderServiceImpl implements OrderService {
 	public List<OrderVO> orderlist(OrderVO order) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<OrderDTO> orderInfoGet(OrderDTO orderdto) {
+		List<OrderDTO> orderInfoGet = null;
+		orderInfoGet = orderdao.orderInfoGet(orderdto);
+		return orderInfoGet;
+	}
+
+	@Override
+	public OrderDTO orderUserGet(OrderDTO orderdto) {
+		OrderDTO userget = null;
+		userget = orderdao.orderUserGet(orderdto);
+		return userget;
 	}
 
 }

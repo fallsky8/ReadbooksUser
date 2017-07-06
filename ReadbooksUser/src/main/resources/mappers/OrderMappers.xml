@@ -37,6 +37,20 @@
 	<select id="orderSelect" parameterType="order" resultType="order">
 		select * from tbl_order where user_id = #{user_id}
 	</select>
+	<select id="orderUserGet" parameterType="orderdto" resultType="orderdto">
+		select *
+		from tbl_user
+		where user_id = #{user_id}
+	</select>
+	<select id="orderInfoGet" parameterType="orderdto" resultType="orderdto">
+		select
+		c.*, b.*
+		from tbl_book b, tbl_cart c where
+		b.book_number in (select
+		c.book_number from tbl_cart
+		where c.user_id =
+		#{user_id})
+	</select>
 	
 	<select id="orderdetail" parameterType="order" resultType="order">
 		select * from tbl_order where order_number=#{order_number}

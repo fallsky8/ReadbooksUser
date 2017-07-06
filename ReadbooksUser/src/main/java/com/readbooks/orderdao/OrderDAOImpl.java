@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.readbooks.ordervo.OrderDTO;
 import com.readbooks.ordervo.OrderVO;
+import com.readbooks.uservo.UserVO;
 
 @Repository
 @Transactional
@@ -30,6 +32,16 @@ public class OrderDAOImpl implements OrderDAO {
 	@Override
 	public OrderVO orderdetail(OrderVO order) {
 		return session.selectOne("orderdetail", order);
+	}
+
+	@Override
+	public List<OrderDTO> orderInfoGet(OrderDTO orderdto) {
+		return session.selectList("orderInfoGet", orderdto);
+	}
+
+	@Override
+	public OrderDTO orderUserGet(OrderDTO orderdto) {
+		return (OrderDTO) session.selectOne("orderUserGet", orderdto);
 	}
 
 }

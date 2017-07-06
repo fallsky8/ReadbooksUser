@@ -37,6 +37,13 @@
 		});
 
 		$(".payment").click(function() {
+			var cart_subtotal = $(".subtotal span").html();
+			var cart_totalquantity = $(".quantity span").html();
+			var cart_totalprice = $(".total span").html();
+			$("#cart_subtotal").val(cart_subtotal);
+			$("#cart_totalquantity").val(cart_totalquantity);
+			$("#cart_totalprice").val(cart_totalprice);
+
 			$("#orderform").attr({
 				"method" : "get",
 				"action" : "/orderinsertpage.do"
@@ -161,12 +168,16 @@
 		<input type="hidden" id="user_id" name="user_id"
 			value="${sessionScope.user_id }"> <input type="hidden"
 			id="cart_buyquantity" name="cart_buyquantity" value="1"> <input
-			type="hidden" id="book_number" name="book_number"> <input
-			type="hidden" id="cart_number" name="cart_number">
+			type="hidden" id="book_number" name="book_number">
+
 	</form>
 	<form id="orderform">
 		<input type="hidden" id="user_id" name="user_id"
-			value="${sessionScope.user_id }">
+			value="${sessionScope.user_id }"> <input type="hidden"
+			id="cart_subtotal" name="cart_subtotal"> <input type="hidden"
+			id="cart_totalquantity" name="cart_totalquantity"> <input
+			type="hidden" id="cart_totalprice" name="cart_totalprice">
+
 	</form>
 	<div id="main">
 		<article>
