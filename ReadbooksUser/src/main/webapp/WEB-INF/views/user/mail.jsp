@@ -222,10 +222,11 @@ a.btn.disabled, fieldset[disabled] a.btn {
 	$(document).ready(function() {
 		//초기값
 
+		//초기값
+
 		var minute = 1;
 
 		var second = 59;
-
 		// 초기화
 
 		$(".countTimeMinute").html(minute);
@@ -312,6 +313,7 @@ a.btn.disabled, fieldset[disabled] a.btn {
 <body onresize="parent.resizeTo(400,380)"
 	onload="parent.resizeTo(400,380)">
 	<div id="wrapper">
+
 		<div id="box">
 			<div id="top_header">
 				<h3>메일 인증</h3>
@@ -323,6 +325,9 @@ a.btn.disabled, fieldset[disabled] a.btn {
 				id="checkEnumBtn"> <br> <br>
 			<div id="inputs">
 				<div class='container'>
+					<form id="authform">
+						<input type="text" name="authNumHidden" id="authNumHidden">
+					</form>
 					<input type='text' id="findid" /> <br>
 				</div>
 			</div>

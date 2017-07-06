@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.readbooks.bookvo.BookVO;
 import com.readbooks.cartvo.CartVO;
 import com.readbooks.mylistdao.MyListDAO;
+import com.readbooks.mylistvo.MyListDTO;
 import com.readbooks.mylistvo.MyListVO;
 
 @Service
@@ -26,8 +27,8 @@ public class MyListServiceImpl implements MyListService {
 	}
 
 	@Override
-	public List<BookVO> mylistGet(MyListVO mylist) {
-		List<BookVO> mylistGet = null;
+	public List<MyListDTO> mylistGet(MyListVO mylist) {
+		List<MyListDTO> mylistGet = null;
 		mylistGet = mylistdao.mylistGet(mylist);
 		return mylistGet;
 	}

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.readbooks.bookvo.BookVO;
+import com.readbooks.mylistvo.MyListDTO;
 import com.readbooks.mylistvo.MyListVO;
 
 @Repository
@@ -23,7 +23,7 @@ public class MyListDAOImpl implements MyListDAO {
 	}
 
 	@Override
-	public List<BookVO> mylistGet(MyListVO mylist) {
+	public List<MyListDTO> mylistGet(MyListVO mylist) {
 		return session.selectList("myListGet", mylist);
 	}
 

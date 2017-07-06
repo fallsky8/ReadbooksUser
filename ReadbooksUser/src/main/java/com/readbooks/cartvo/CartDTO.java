@@ -1,6 +1,15 @@
-package com.readbooks.bookvo;
+package com.readbooks.cartvo;
 
-public class BookVO {
+public class CartDTO {
+	//카트정보
+	private int cart_number;
+	private String user_id;
+	private int cart_buyquantity;
+	private int cart_buyprice;
+	private int cart_totalquantity;
+	private int cart_totalprice;
+	
+	//책
 	private int book_number;
 	private String book_name;
 	private int book_quantity;
@@ -18,36 +27,64 @@ public class BookVO {
 	private String book_status;
 	private String book_opening;
 
-	private String search = "";
-	private String keyword = "";
-
-	public String getSearch() {
-		return search;
-	}
-
-	public void setSearch(String search) {
-		this.search = search;
-	}
-
-	public String getKeyword() {
-		return keyword;
-	}
-
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
-
-	public BookVO() {
+	public CartDTO() {
 		super();
 	}
 
-	
+	public int getCart_number() {
+		return cart_number;
+	}
+
+	public void setCart_number(int cart_number) {
+		this.cart_number = cart_number;
+	}
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
 	public int getBook_number() {
 		return book_number;
 	}
 
 	public void setBook_number(int book_number) {
 		this.book_number = book_number;
+	}
+
+	public int getCart_buyquantity() {
+		return cart_buyquantity;
+	}
+
+	public void setCart_buyquantity(int cart_buyquantity) {
+		this.cart_buyquantity = cart_buyquantity;
+	}
+
+	public int getCart_buyprice() {
+		return cart_buyprice;
+	}
+
+	public void setCart_buyprice(int cart_buyprice) {
+		this.cart_buyprice = cart_buyprice;
+	}
+
+	public int getCart_totalquantity() {
+		return cart_totalquantity;
+	}
+
+	public void setCart_totalquantity(int cart_totalquantity) {
+		this.cart_totalquantity = cart_totalquantity;
+	}
+
+	public int getCart_totalprice() {
+		return cart_totalprice;
+	}
+
+	public void setCart_totalprice(int cart_totalprice) {
+		this.cart_totalprice = cart_totalprice;
 	}
 
 	public String getBook_name() {
@@ -151,7 +188,7 @@ public class BookVO {
 	}
 
 	public void setBook_registerdate(String book_registerdate) {
-		this.book_registerdate = book_registerdate.substring(0, 10);
+		this.book_registerdate = book_registerdate;
 	}
 
 	public String getBook_status() {
@@ -167,7 +204,7 @@ public class BookVO {
 	}
 
 	public void setBook_opening(String book_opening) {
-		this.book_opening = book_opening.substring(0, 10);
+		this.book_opening = book_opening;
 	}
 
 }

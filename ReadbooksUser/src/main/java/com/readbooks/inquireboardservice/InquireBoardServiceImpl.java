@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.readbooks.inquireboarddao.InquireBoardDAO;
 import com.readbooks.inquireboardvo.InquireBoardVO;
-import com.readbooks.noticeboardvo.NoticeBoardVO;
 
 @Service
 @Transactional

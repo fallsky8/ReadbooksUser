@@ -45,11 +45,7 @@
 			location.href = "/inquireboardList.do"
 		});
 
-		$('#paging').paging({
-			max : 50,
-			item : 20,
-			next
-		});
+		
 	});
 </script>
 <style type="text/css">

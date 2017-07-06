@@ -6,6 +6,9 @@ public class CartVO {
 	private int book_number;
 	private int cart_buyquantity;
 	private int cart_buyprice;
+	
+	//책
+	
 
 	public CartVO() {
 		super();

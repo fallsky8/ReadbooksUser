@@ -3,6 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.readbooks.orderdao.OrderDAO">
+
 	<sql id="deletecart">
 		delete from tbl_cart where user_id=#{user_id}
 	</sql>
@@ -32,9 +33,11 @@
 		select * from dual
 		<include refid="deletecart"></include>
 	</insert>
+		
 	<select id="orderSelect" parameterType="order" resultType="order">
 		select * from tbl_order where user_id = #{user_id}
 	</select>
+	
 	<select id="orderdetail" parameterType="order" resultType="order">
 		select * from tbl_order where order_number=#{order_number}
 	</select>

@@ -29,6 +29,8 @@
 <link rel="stylesheet"
 	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
 	type="text/css">
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
@@ -37,6 +39,98 @@
 		var memberEmail = $("#memberEmail");
 		var authNumHidden = $("#authNumHidden");
 		var eNumcheckHidden = $("#eNumcheckHidden");
+		var authNumHidden = $("#authNumHidden");
+		var newWindow;
+		var findid = $("#findid");
+
+		//초기값
+
+		var minute = 2;
+
+		var second = 59;
+		// 초기화
+
+		$(".countTimeMinute").html(minute);
+
+		$(".countTimeSecond").html(second);
+
+		var timer = setInterval(function() {
+
+			// 설정
+
+			$(".countTimeMinute").html(minute);
+
+			$(".countTimeSecond").html(second);
+
+			if (second == 0 && minute == 0) {
+
+				$(".ui-dialog-titlebar-close").click(); /* 타이머 종료 */
+
+			} else {
+
+				second--;
+
+				// 분처리
+
+				if (second < 0) {
+
+					minute--;
+
+					second = 59;
+
+				}
+
+				//시간처리
+
+				if (minute < 0) {
+
+					if (hour > 0) {
+
+						hour--;
+
+						minute = 59;
+
+					}
+
+				}
+
+			}
+
+		}, 1000); /* millisecond 단위의 인터벌 */
+
+		$("#checkEnumBtn").click(function() {
+
+			if (findid.val() == null || findid.val() == "") {
+				alert("인증번호 입력하세요");
+			} else {
+				if (findid.val() == authNumHidden.val()) {
+					alert("인증 완료");
+					eNumcheckHidden.val("y");
+					$(".ui-dialog-titlebar-close").click();
+
+				} else {
+					alert("인증 실패");
+				}
+			}
+			if (eNumcheckHidden.val() == "n") {
+				alert("인증번호를 확인하세요")
+				findid.focus();
+				return false;
+			}
+
+			if (findid.val() != authNumHidden.val()) {
+				alert("인증번호가 틀렸습니다")
+				findid.focus();
+				return false;
+			}
+			if (findid.val() == null || findid.val() == "") {
+				alert("인증번호를 입력하세요");
+				findid.focus();
+				return false;
+			}
+
+		});
+
 		$("#userjoin").click(function() {
 			$("#joinform").attr({
 				"method" : "POST",
@@ -53,9 +147,11 @@
 					alert("메일인 인증 실패!! 정확한 주소입력하세요");
 				},
 				success : function(authNum) {
+					authNumHidden.val(authNum);
+					dialog = $("#checkAuthNum").dialog();
+
 					if (authNum) {
 						alert("메일 보내기 성공");
-						$("#authNumHidden").val(authNum);
 					} else {
 						alert("메일 보내기 실패");
 					}
@@ -339,6 +435,10 @@
 	box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125)
 }
 
+.ui-dialog-titlebar-close {
+	display: none;
+}
+
 .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
 	cursor: not-allowed;
 	filter: alpha(opacity = 65);
@@ -349,6 +449,17 @@
 
 a.btn.disabled, fieldset[disabled] a.btn {
 	pointer-events: none;
+}
+
+#box2 {
+	width: 400px;
+	height: 200px;
+	background-color: #fff;
+	margin: 0 auto;
+	-webkit-border-radius: 4px;
+	-o-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 3px;
 }
 </style>
 </head>
@@ -436,10 +547,29 @@ a.btn.disabled, fieldset[disabled] a.btn {
 							<div class='container control-group'>
 								<input type='button' id="userjoin" value='가입하기' />
 							</div>
-							<input type="hidden" name="authNumHidden" id="authNumHidden"
-								value="1"> <input type="hidden" name="idCheckHidden"
-								id="idCheckHidden" value="n"> <input type="hidden"
-								name="eNumcheckHidden" id="eNumcheckHidden" value="n">
+							<div id="checkAuthNum" style="display: none;">
+								<div id="box2">
+									<div id="top_header">
+										<h3>메일 인증</h3>
+										<br> <br>
+									</div>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><span
+										class="countTimeMinute">60</span>분 <span
+										class="countTimeSecond">60</span>초 안에 인증번호를 입력하세요.</b> <input
+										type="button" class="btn btn-info" value="인증"
+										id="checkEnumBtn"> <br> <br>
+									<div id="inputs">
+										<div class='container'>
+											<input type='text' id="findid" value=""> <input
+												type="text" name="authNumHidden" id="authNumHidden"
+												value="1"> <br>
+										</div>
+									</div>
+								</div>
+							</div>
+							<input type="hidden" name="idCheckHidden" id="idCheckHidden"
+								value="n"> <input type="hidden" name="eNumcheckHidden"
+								id="eNumcheckHidden" value="n"><span id="process"></span>
 						</form>
 					</div>
 				</div>

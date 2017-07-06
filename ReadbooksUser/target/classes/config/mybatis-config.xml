@@ -9,6 +9,11 @@
 		<typeAlias type="com.readbooks.ordervo.OrderVO" alias="order" />
 		<typeAlias type="com.readbooks.cartvo.CartVO" alias="cart" />
 		<typeAlias type="com.readbooks.mylistvo.MyListVO" alias="mylist" />
+		<typeAlias type="com.readbooks.uservo.UserDTO" alias="userdto" />
+		<typeAlias type="com.readbooks.bookvo.BookDTO" alias="bookdto" />
+		<typeAlias type="com.readbooks.ordervo.OrderDTO" alias="orderdto" />
+		<typeAlias type="com.readbooks.cartvo.CartDTO" alias="cartdto" />
+		<typeAlias type="com.readbooks.mylistvo.MyListDTO" alias="mylistdto" />
 		<typeAlias type="com.readbooks.faqboardvo.FAQBoardVO" alias="faqboard" />
 		<typeAlias type="com.readbooks.noticeboardvo.NoticeBoardVO"
 			alias="noticeboard" />

@@ -1,6 +1,6 @@
 package com.readbooks.bookvo;
 
-public class BookVO {
+public class BookDTO {
 	private int book_number;
 	private String book_name;
 	private int book_quantity;
@@ -17,13 +17,29 @@ public class BookVO {
 	private String book_registerdate;
 	private String book_status;
 	private String book_opening;
-
+	private int cart_buyquantity;
+	private int cart_number;
+	private int mylist_number;
 	private String search = "";
 	private String keyword = "";
+	
+	//유저
+	private String user_id;// 아이디 VARCHAR2(20 BYTE)
 
 	public String getSearch() {
 		return search;
 	}
+
+	
+	public String getUser_id() {
+		return user_id;
+	}
+
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
 
 	public void setSearch(String search) {
 		this.search = search;
@@ -37,11 +53,34 @@ public class BookVO {
 		this.keyword = keyword;
 	}
 
-	public BookVO() {
+	public int getMylist_number() {
+		return mylist_number;
+	}
+
+	public void setMylist_number(int mylist_number) {
+		this.mylist_number = mylist_number;
+	}
+
+	public int getCart_number() {
+		return cart_number;
+	}
+
+	public void setCart_number(int cart_number) {
+		this.cart_number = cart_number;
+	}
+
+	public BookDTO() {
 		super();
 	}
 
-	
+	public int getCart_buyquantity() {
+		return cart_buyquantity;
+	}
+
+	public void setCart_buyquantity(int cart_buyquantity) {
+		this.cart_buyquantity = cart_buyquantity;
+	}
+
 	public int getBook_number() {
 		return book_number;
 	}
