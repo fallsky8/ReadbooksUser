@@ -36,22 +36,13 @@
 			$("#booknumform").submit();
 		});
 
-		$(".payment")
-				.click(
-						function() {
-							$
-									.ajax({
-										url : "/cartDelete2.do",
-										type : "GET",
-										data : $("#deleteform").serialize(),
-										success : function() {
-											$("#cart")
-													.html(
-															"<h1>구매 완료</h1><p>감사합니다 구매가 완료되었습니다. 쇼핑을 계속 하시려면 <a href='/home.do'>readbooks</a>. </p>");
-											$("#site-footer").hide();
-										}
-									});
-						});
+		$(".payment").click(function() {
+			$("#orderform").attr({
+				"method" : "get",
+				"action" : "/orderinsertpage.do"
+			});
+			$("#orderform").submit();
+		});
 		function changeVal(el) {
 			var qt = parseFloat(el.parent().children(".qt").html());
 			var price = parseFloat(el.parent().children(".price").html());
@@ -173,7 +164,7 @@
 			type="hidden" id="book_number" name="book_number"> <input
 			type="hidden" id="cart_number" name="cart_number">
 	</form>
-	<form id="deleteform">
+	<form id="orderform">
 		<input type="hidden" id="user_id" name="user_id"
 			value="${sessionScope.user_id }">
 	</form>

@@ -16,8 +16,8 @@ public class InquireBoardVO extends PagingVO {
 	private MultipartFile file;
 
 	// 조건 검색시 사용할 필드
-	private String search = "";
-	private String keyword = "";
+	private String searchinquire = "";
+	private String keywordinquire = "";
 
 	// 열제목 클릭시 정렬을 위한 필드
 	private String order_by;
@@ -83,20 +83,20 @@ public class InquireBoardVO extends PagingVO {
 		this.inquireboard_attachmentfile = inquireboard_attachmentfile;
 	}
 
-	public String getSearch() {
-		return search;
+	public String getSearchinquire() {
+		return searchinquire;
 	}
 
-	public void setSearch(String search) {
-		this.search = search;
+	public void setSearchinquire(String searchinquire) {
+		this.searchinquire = searchinquire;
 	}
 
-	public String getKeyword() {
-		return keyword;
+	public String getKeywordinquire() {
+		return keywordinquire;
 	}
 
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
+	public void setKeywordinquire(String keywordinquire) {
+		this.keywordinquire = keywordinquire;
 	}
 
 	public String getOrder_by() {

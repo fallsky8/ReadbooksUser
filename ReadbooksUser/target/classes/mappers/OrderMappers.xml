@@ -3,10 +3,34 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.readbooks.orderdao.OrderDAO">
-	<insert id="orderInsert" parameterType="order">
-		insert into
-		tbl_order(order_number,user_id,book_number,order_password,order_orderer,order_recipient,order_date,order_paymentdate,order_receiptaddress,order_requirement,order_status,order_way,order_quantity)
-		values(1,#{user_id})
+	<sql id="deletecart">
+		delete from tbl_cart where user_id=#{user_id}
+	</sql>
+	<insert id="orderInsert" parameterType="java.util.Map">
+		<selectKey order="BEFORE" keyProperty="order_ordernumber"
+			resultType="String">
+			select
+			replace(from_date,' ','')
+			from
+			(select
+			((select
+			to_char(sysdate,'YYYYMM') from dual) ||
+			to_char(ROUND(DBMS_RANDOM.VALUE(1, 30),0), '00') ||
+			to_char(ROUND(DBMS_RANDOM.VALUE(1, 23),0), '00') ||
+			to_char(ROUND(DBMS_RANDOM.VALUE(0, 59),0), '00') ||
+			to_char(ROUND(DBMS_RANDOM.VALUE(0, 59),0), '00')) as FROM_DATE
+			from
+			dual)
+		</selectKey>
+		insert all
+		<foreach collection="list" item="item">
+			into
+			tbl_order(order_number,user_id,book_number)
+			values
+			(#{order_ordernumber},'#{item.user_id}',3)
+		</foreach>
+		select * from dual
+		<include refid="deletecart"></include>
 	</insert>
 	<select id="orderSelect" parameterType="order" resultType="order">
 		select * from tbl_order where user_id = #{user_id}
@@ -14,4 +38,4 @@
 	<select id="orderdetail" parameterType="order" resultType="order">
 		select * from tbl_order where order_number=#{order_number}
 	</select>
-</mapper>
+</mapper> 

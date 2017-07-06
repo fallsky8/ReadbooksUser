@@ -15,6 +15,8 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
@@ -28,70 +30,75 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.28.14/js/jquery.tablesorter.min.js"></script>
 <title>1:1문의</title>
 <script type="text/javascript">
-	$(document).ready(function() {
-		/* 검색 후 검색 대상과 검색 단어 출력 */
-		if ("<c:out value='${data.keyword}'/>" != "") {
-			$("#keyword").val("<c:out value='${data.keyword}' />");
-			$("#search").val("<c:out value='${data.search}' />");
-		}
+	$(document).ready(
+			function() {
+				/* 검색 후 검색 대상과 검색 단어 출력 */
+				if ("<c:out value='${data.keywordinquire}'/>" != "") {
+					$("#keywordinquire").val(
+							"<c:out value='${data.keywordinquire}' />");
+					$("#searchinquire").val(
+							"<c:out value='${data.searchinquire}' />");
+				}
 
-		/* 한페이지에 보여줄 레코드 수 조회 후 선택한 값 그대로 유지하기 위한 설정 */
-		if ("<c:out value='${data.pageSize}' />" != "") {
-			$("#pageSize").val("<c:out value='${data.pageSize}' />");
-		}
+				/* 한페이지에 보여줄 레코드 수 조회 후 선택한 값 그대로 유지하기 위한 설정 */
+				if ("<c:out value='${data.pageSize}' />" != "") {
+					$("#pageSize").val("<c:out value='${data.pageSize}' />");
+				}
 
-		/* 검색 대상이 변경될 때마다 처리 이벤트 */
-		$("#search").change(function() {
-			if ($("#search").val() == "all") {
-				$("#keyword").val("글 목록 전체 조회");
-			} else if ($("#search").val() != "all") {
-				$("#keyword").val("");
-				$("#keyword").focus();
-			}
-		});
+				/* 검색 대상이 변경될 때마다 처리 이벤트 */
+				$("#searchinquire").change(function() {
+					if ($("#searchinquire").val() == "all") {
+						$("#keywordinquire").val("글 목록 전체 조회");
+					} else if ($("#searchinquire").val() != "all") {
+						$("#keywordinquire").val("");
+						$("#keywordinquire").focus();
+					}
+				});
 
-		/* 검색 버튼 클릭 시 처리 이벤트 */
-		$("#searchData").click(function() {
-			if ($("#search").val() == "all") {
-				if (!chkSubmit($('#keyword'), "검색어를"))
-					return;
-			}
-			goPage(1);
-		});
-		$(".goDetail").click(function() {
-			var inquireboard_number = $(this).parents("tr").attr("data-num");
-			$("#inquireboard_number").val(inquireboard_number);
-			//상세 페이지로 이동하기 위해 form 추가 (id: detailForm)
-			$("#detailForm").attr({
-				"method" : "get",
-				"action" : "/inquireboardDetail.do"
+				/* 검색 버튼 클릭 시 처리 이벤트 */
+				$("#searchdata").click(function() {
+					if ($("#searchinquire").val() == "all") {
+						if (!chkSubmit($('#keyword'), "검색어를"))
+							return;
+					}
+					goPage(1);
+				});
+				$(".goDetail").click(
+						function() {
+							var inquireboard_number = $(this).parents("tr")
+									.attr("data-num");
+							$("#inquireboard_number").val(inquireboard_number);
+							//상세 페이지로 이동하기 위해 form 추가 (id: detailForm)
+							$("#detailForm").attr({
+								"method" : "get",
+								"action" : "/inquireboardDetail.do"
+							});
+
+							$("#detailForm").submit();
+						});
+
+				/* 한페이지에 보여줄 레코드 수를 변경될 때마다 처리 이벤트 */
+				$("#pageSize").change(function() {
+					goPage(1);
+				});
+
+				$("#inquireInsert").click(function() {
+					location.href = "/inquireinsertpage.do";
+				});
+
 			});
-
-			$("#detailForm").submit();
-		});
-
-		/* 한페이지에 보여줄 레코드 수를 변경될 때마다 처리 이벤트 */
-		$("#pageSize").change(function() {
-			goPage(1);
-		});
-
-		$("#inquireInsert").click(function() {
-			location.href = "/inquireinsertpage.do";
-		});
-
-	});
 
 	/* 검색과 한 페이지에 보여줄 레코드 수 처리 및 페이징을 위한 실질적인 처리 함수 */
 	function goPage(page) {
-		if ($("#search").val() == "all") {
-			$("#keyword").val("");
+		if ($("#searchinquire").val() == "all") {
+			$("#keywordinquire").val("");
 		}
 		$("#page").val(page);
-		$("#f_search").attr({
+		$("#i_search").attr({
 			"method" : "get",
 			"action" : "/inquireboardList.do"
 		});
-		$("#f_search").submit();
+		$("#i_search").submit();
 	}
 	$(function() {
 		$('#keywords').tablesorter();
@@ -138,24 +145,24 @@
 			</div>
 			<%--================검색기능 시작================= --%>
 			<div id="boardSearch">
-				<form id="f_search" name="f_search">
+				<form id="i_search" name="i_search">
 					<input type="hidden" id="page" name="page" value="${data.page}">
 					<input type="hidden" id="order_by" name="order_by"
 						value="${data.order_by}" /> <input type="hidden" id="order_sc"
 						name="order_sc" value="${data.order_sc}" />
 					<table class="table">
 						<tr>
-							<td id="btd1"><select id="search" name="search"
-								class="form-control"
+							<td id="btd1"><select id="searchinquire"
+								name="searchinquire" class="form-control"
 								style="width: 100px !important; display: inline !important;">
 									<option value="all">전체</option>
 									<option value="inquireboard_title">제목</option>
 									<option value="inquireboard_contents">질문</option>
 									<option value="inquireboard_answer">답변</option>
-							</select> <input type="text" name="keyword" id="keyword"
+							</select> <input type="text" name="keywordinquire" id="keywordinquire"
 								placeholder="검색어를 입력하세요" class="form-control"
 								style="width: 200px !important; display: inline !important;" />
-								<input type="button" value="검색" id="searchData"
+								<input type="button" value="검색" id="searchdata"
 								class="btn btn-default"
 								style="height: 30px !important; margin-top: -3px;" /></td>
 							<td id="btd2"><select id="pageSize" name="pageSize"
