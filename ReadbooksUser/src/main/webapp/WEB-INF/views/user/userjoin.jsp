@@ -7,13 +7,13 @@
 
 <link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
 	media="screen" />
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script src="/resources/js/validation.js"></script>
 <script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
 	media="screen" />
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-latest.js"></script>
 <title>리드북스 회원가입</title>
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <link
@@ -33,6 +33,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
 	$(function() {
+		$("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
 		var writeEnumber = $("#writeEnumber");
 		var idCheckBtn = $("#idCheckBtn");
 		var memberEmail = $("#memberEmail");
@@ -340,11 +341,14 @@
 }
 
 .btn-info {
-	margin-top: -5px;
+	margin-top: -1px;
+	margin-bottom: 5px !important;
 	border-color: #46b8da;
 	float: right;
 	color: #fff;
 	background-color: #5bc0de;
+	border-color: #46b8da;
+	margin-bottom: 5px !important;
 }
 
 .btn-info.focus, .btn-info:focus {
@@ -472,27 +476,52 @@ a.btn.disabled, fieldset[disabled] a.btn {
 						<h5>리드북스 가입을 환영합니다.</h5>
 					</div>
 					<div id="inputs">
-						<form id='joinform' style="margin-left: 6px;">
+						<form id='joinform' class="form-horizontal"
+							style="margin-left: 6px;">
 							<input type="hidden" id="user_collectiveagreement"
 								name="user_collectiveagreement"> <input type="hidden"
 								id="user_referralagreement" name="user_referralagreement">
 							<input type="hidden" id="user_serviceagreement"
 								name="user_serviceagreement">
-							<div class='container'>
-								<input type='text' name='user_name' id='user_name'
-									maxlength="50" size="30" placeholder="이름" /><br />
+							<div class='container control-group'>
+								<div class="controls">
+									<input type='text' name='user_name' id='user_name'
+										maxlength="50" size="30" placeholder="이름" required="required"
+										pattern="^[가-힣]{2,5}$"
+										data-validation-pattern-message="이름 : 2~5자의 한글" /><br />
+									<p class="help-block"
+										style="color: #E74652; position: relative; top: -4px;"></p>
+								</div>
 							</div>
-							<div class='container'>
-								<input type='text' name='user_id' id='user_id' maxlength="50"
-									size="30" placeholder="아이디" /><br />
+							<div class='container control-group'>
+								<div class="controls">
+									<input type='text' name='user_id' id='user_id' maxlength="50"
+										size="30" placeholder="아이디" required="required"
+										pattern="^[a-z]{1}[a-z0-9]{4,18}$"
+										data-validation-pattern-message="아이디 : 영문으로 시작하는  4~18byte + 숫자" /><br />
+									<p class="help-block"
+										style="color: #E74652; position: relative; top: -4px;"></p>
+								</div>
 							</div>
-							<div class='container'>
-								<input type='password' name='user_pw' id='user_pw'
-									maxlength="50" size="30" placeholder="비밀번호" /><br />
+							<div class='container control-group'>
+								<div class="controls">
+									<input type='password' name='user_pw' id='user_pw'
+										maxlength="50" size="30" placeholder="비밀번호"
+										required="required" pattern="^[a-z]{1}[a-z0-9]{4,18}$"
+										data-validation-pattern-message="비밀번호 : 영문으로 시작하는  4~18byte + 숫자" /><br />
+									<p class="help-block"
+										style="color: #E74652; position: relative; top: -4px;"></p>
+								</div>
 							</div>
-							<div class='container'>
-								<input type='password' name='user_pwck' id='user_pwck'
-									maxlength="50" size="30" placeholder="비밀번호확인" /><br />
+							<div class='container control-group'>
+								<div class="controls">
+									<input type='password' name='user_pwck' id='user_pwck'
+										maxlength="50" size="30" placeholder="비밀번호확인"
+										required="required" data-validation-match-match="user_pw"
+										data-validation-match-message="비밀번호가 일치하지 않습니다." /><br />
+									<p class="help-block"
+										style="color: #E74652; position: relative; top: -4px;"></p>
+								</div>
 							</div>
 							<div class='container'>
 								<input type="text" id="user_address" name="user_address"
@@ -502,16 +531,20 @@ a.btn.disabled, fieldset[disabled] a.btn {
 										value="주소를 찾아보세요">
 								</div>
 							</div>
-							<div class='container'>
-								<input type="email" name='user_email' id='user_email'
-									maxlength="50" size="30" placeholder="이메일" />
+							<div class='container control-group'>
+								<div class="controls">
+									<input type="email" name='user_email' id='user_email'
+										maxlength="50" size="30" placeholder="이메일" required="required" />
+									<p class="help-block"
+										style="color: #E74652; position: relative; top: 12px;"></p>
+								</div>
 								<div id="bottom">
 									<input type="button" class="btn btn-info" value="인증번호전송"
 										id="mailbutton">
 								</div>
 								<br />
 							</div>
-							<div class='container'>
+							<div class='container control-group'>
 								<input type='button' id="userjoin" value='가입하기' />
 							</div>
 							<div id="checkAuthNum" style="display: none;">

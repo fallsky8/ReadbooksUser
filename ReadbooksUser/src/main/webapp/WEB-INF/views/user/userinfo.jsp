@@ -184,7 +184,8 @@
 						</th>
 						<td><div class="tdcell">
 								<input type="password" name="user_pw" id="user_pw"
-									class="form-control" value="${userlist.user_pw }">
+									class="form-control" value="${userlist.user_pw }"
+									readonly="readonly">
 							</div></td>
 					</tr>
 					<tr>

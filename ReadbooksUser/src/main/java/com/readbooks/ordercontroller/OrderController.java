@@ -1,7 +1,9 @@
 package com.readbooks.ordercontroller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -34,31 +36,31 @@ public class OrderController {
 	@RequestMapping(value = "/orderinsertpage", method = RequestMethod.GET)
 	public String orderInsertPage(@ModelAttribute BookVO bookvo, @ModelAttribute UserVO uservo,
 			@ModelAttribute CartVO cartvo, HttpSession session, Model model) {
-		// 유저 정보
-		uservo.setUser_id((String) session.getAttribute("user_id"));
-		UserVO userget = userService.userGet(uservo);
-		model.addAttribute("user", userget);
-		
-//		//책정보
-//		BookVO detailbookGet = new BookVO();
-//		detailbookGet = bookService.detailbookGet(bookvo);
-//		model.addAttribute("book", detailbookGet);
-		
-		// 카트에 있는 책 정보
+
 		cartvo.setUser_id((String) session.getAttribute("user_id"));
 		List<BookVO> allbookGet = new ArrayList<BookVO>();
 		allbookGet = bookService.allbookGet(cartvo);
-//		model.addAttribute("cart", allbookGet);
-		session.setAttribute("cart", allbookGet);
+
 		return "order/orderinsert";
-		
+
 	}
 
 	@RequestMapping(value = "/orderInsert", method = RequestMethod.POST)
-	public String insertOrder(@ModelAttribute OrderVO order) {
+	public String insertOrder(@ModelAttribute OrderVO order, @ModelAttribute BookVO bookvo,
+			@ModelAttribute UserVO uservo, @ModelAttribute CartVO cartvo, HttpSession session, Model model) {
 		int result = 0;
 		String url = "";
-		result = orderService.orderInsert(order);
+		// 유저 정보
+		order.setUser_id((String) session.getAttribute("user_id"));
+		// 카트에 있던 책정보
+		cartvo.setUser_id((String) session.getAttribute("user_id"));
+		List<BookVO> allbookGet = new ArrayList<BookVO>();
+		allbookGet = bookService.allbookGet(cartvo);
+		List<OrderVO> orderlist = new ArrayList<OrderVO>();
+		orderlist = orderService.orderlist(order);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", allbookGet);
+		result = orderService.orderInsert(map);
 		if (result == 1) {
 			url = "/home";
 		}

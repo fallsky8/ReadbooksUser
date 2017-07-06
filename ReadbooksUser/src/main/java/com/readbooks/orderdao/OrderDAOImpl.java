@@ -1,6 +1,7 @@
 package com.readbooks.orderdao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,8 @@ public class OrderDAOImpl implements OrderDAO {
 	private SqlSession session;
 
 	@Override
-	public int orderInsert(OrderVO order) {
-		return session.insert("orderInsert", order);
+	public int orderInsert(Map<String, Object> map) {
+		return session.insert("orderInsert", map);
 	}
 
 	@Override

@@ -121,6 +121,12 @@ public class UserController {
 		return "redirect:" + url;
 	}
 
+	@RequestMapping(value = "/useragreement")
+	public String useragreement(@ModelAttribute UserVO user, Model model) {
+
+		return "user/userjoinagreement";
+	}
+
 	@RequestMapping(value = "/mail")
 	public String mail(HttpSession session) {
 

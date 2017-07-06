@@ -5,17 +5,10 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-
-<link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
-	media="screen" />
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/resources/js/cart.js"></script>
-<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
-	media="screen" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-
+<script src="/resources/js/validation.js"></script>
+<script src="/resources/js/cart.js"></script>
 <link
 	href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900'
 	rel='stylesheet' type='text/css'>
@@ -24,12 +17,11 @@
 	rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,300'
 	rel='stylesheet' type='text/css'>
-
-<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
-	media="screen" />
 <link rel="stylesheet"
 	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
 	type="text/css">
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
+	media="screen" />
 <title>리드북스 로그인</title>
 <style type="text/css">
 #wrapper #box input {
@@ -165,10 +157,10 @@
 	float: right;
 }
 </style>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-latest.js"></script>
+
 <script type="text/javascript">
 	$(function() {
+		$("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
 		$("#userlogin").click(function() {
 			$("#loginform").attr({
 				"method" : "POST",
@@ -208,19 +200,36 @@
 					</div>
 
 					<div id="inputs">
-						<form id='loginform' style="margin-left: 6px;">
-
-							<div class='container'>
-								<input type='text' name='user_id' id='user_id' maxlength="50"
-									size="30" placeholder="아이디" /><br />
+						<form id='loginform' style="margin-left: 6px;"
+							class="form-horizontal">
+							<div class='container control-group'>
+								<div class="controls">
+									<!-- 									<input type='text' name='user_id' id='user_id' maxlength="50" -->
+									<!-- 										size="30" placeholder="아이디" required="required" -->
+									<!-- 										pattern="^[a-z]{1}[a-z0-9]{4,18}$" -->
+									<!-- 										data-validation-pattern-message="아이디 : 영문으로 시작하는  4~18byte + 숫자" /><br /> -->
+									<input type='text' name='user_id' id='user_id' maxlength="50"
+										size="30" placeholder="아이디" required="required" /><br />
+									<p class="help-block"
+										style="color: #E74652; position: relative; top: -4px;"></p>
+								</div>
 							</div>
 
-							<div class='container'>
-								<input type='password' name='user_pw' id='user_pw'
-									maxlength="50" size="30" placeholder="비밀번호" /><br />
+							<div class='container control-group'>
+								<div class="controls">
+									<!-- 									<input type='password' name='user_pw' id='user_pw' -->
+									<!-- 										maxlength="50" size="30" placeholder="비밀번호" -->
+									<!-- 										required="required" pattern="^[a-z]{1}[a-z0-9]{4,18}$" -->
+									<!-- 										data-validation-pattern-message="비밀번호 : 영문으로 시작하는  4~18byte + 숫자" /><br /> -->
+									<input type='password' name='user_pw' id='user_pw'
+										maxlength="50" size="30" placeholder="비밀번호"
+										required="required" /><br />
+									<p class="help-block"
+										style="color: #E74652; position: relative; top: -4px;"></p>
+								</div>
 							</div>
 
-							<div class='container'>
+							<div class='container control-group'>
 								<input type='button' name='userlogin' id="userlogin" value='로그인' />
 							</div>
 						</form>

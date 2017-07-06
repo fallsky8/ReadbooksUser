@@ -1,6 +1,7 @@
 package com.readbooks.orderservice;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,9 +19,9 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDAO orderdao;
 
 	@Override
-	public int orderInsert(OrderVO order) {
+	public int orderInsert(Map<String, Object> map) {
 		int result = 0;
-		result = orderdao.orderInsert(order);
+		result = orderdao.orderInsert(map);
 		return result;
 	}
 
@@ -37,6 +38,12 @@ public class OrderServiceImpl implements OrderService {
 		OrderVO orderdetail = null;
 		orderdetail = orderdao.orderdetail(order);
 		return orderdetail;
+	}
+
+	@Override
+	public List<OrderVO> orderlist(OrderVO order) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

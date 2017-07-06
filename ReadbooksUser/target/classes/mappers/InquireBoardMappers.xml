@@ -10,14 +10,14 @@
 		FROM
 		tbl_inquireboard where user_id=#{user_id}
 		<trim>
-			<if test="search=='inquireboard_title'">
-<![CDATA[and inquireboard_title LIKE'%'||#{keyword}||'%']]>
+			<if test="searchinquire=='inquireboard_title'">
+<![CDATA[and inquireboard_title LIKE'%'||#{keywordinquire}||'%']]>
 			</if>
-			<if test="search=='INQUIREBOARD_CONTENTS'">
-<![CDATA[and INQUIREBOARD_CONTENTS LIKE'%'||#{keyword}||'%']]>
+			<if test="searchinquire=='INQUIREBOARD_CONTENTS'">
+<![CDATA[and INQUIREBOARD_CONTENTS LIKE'%'||#{keywordinquire}||'%']]>
 			</if>
-			<if test="search=='INQUIREBOARD_ANSWER'">
-<![CDATA[and INQUIREBOARD_ANSWER LIKE'%'||#{keyword}||'%']]>
+			<if test="searchinquire=='INQUIREBOARD_ANSWER'">
+<![CDATA[and INQUIREBOARD_ANSWER LIKE'%'||#{keywordinquire}||'%']]>
 			</if>
 		</trim>
 	</sql>

@@ -18,8 +18,8 @@ public class ReviewBoardVO extends PagingVO {
 	private String reviewboard_attachmentfile = ""; // 서버에 저장될 첨부파일명
 
 	// 조건 검색시 사용할 필드
-	private String search = "";
-	private String keyword = "";
+	private String searchreview = "";
+	private String keywordreview = "";
 
 	// 열제목 클릭시 정렬을 위한 필드
 	private String order_by;
@@ -27,6 +27,22 @@ public class ReviewBoardVO extends PagingVO {
 
 	public ReviewBoardVO() {
 		super();
+	}
+
+	public String getSearchreview() {
+		return searchreview;
+	}
+
+	public void setSearchreview(String searchreview) {
+		this.searchreview = searchreview;
+	}
+
+	public String getKeywordreview() {
+		return keywordreview;
+	}
+
+	public void setKeywordreview(String keywordreview) {
+		this.keywordreview = keywordreview;
 	}
 
 	public int getReviewboard_number() {
@@ -101,22 +117,6 @@ public class ReviewBoardVO extends PagingVO {
 		this.replypermit = replypermit;
 	}
 
-	public String getSearch() {
-		return search;
-	}
-
-	public void setSearch(String search) {
-		this.search = search;
-	}
-
-	public String getKeyword() {
-		return keyword;
-	}
-
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
-
 	public String getOrder_by() {
 		return order_by;
 	}
@@ -133,5 +133,4 @@ public class ReviewBoardVO extends PagingVO {
 		this.order_sc = order_sc;
 	}
 
-	
 }

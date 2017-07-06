@@ -8,14 +8,14 @@
 		reviewboard_title,
 		reviewboard_registerdate FROM tbl_reviewboard
 		<trim prefixOverrides="AND" prefix="WHERE">
-			<if test="search=='reviewboard_title'">
-<![CDATA[reviewboard_title LIKE'%'||#{keyword}||'%']]>
+			<if test="searchreview=='reviewboard_title'">
+<![CDATA[reviewboard_title LIKE'%'||#{keywordreview}||'%']]>
 			</if>
-			<if test="search=='reviewboard_contents'">
-<![CDATA[AND reviewboard_contents LIKE'%'||#{keyword}||'%']]>
+			<if test="searchreview=='reviewboard_contents'">
+<![CDATA[AND reviewboard_contents LIKE'%'||#{keywordreview}||'%']]>
 			</if>
-			<if test="search=='user_id'">
-<![CDATA[AND user_id LIKE'%'||#{keyword}||'%']]>
+			<if test="searchreview=='user_id'">
+<![CDATA[AND user_id LIKE'%'||#{keywordreview}||'%']]>
 			</if>
 		</trim>
 	</sql>

@@ -34,6 +34,52 @@
 				"action" : "/searchbookGet.do"
 			});
 		});
+
+		$("#inquire").click(function() {
+			var user_id = "${sessionScope.user_id}";
+			if (user_id != "") {
+				location.href = "/inquireboardList.do";
+			} else {
+				alert("회원만 들어갈 수 있습니다. 로그인 페이지로 이동합니다.");
+				location.href = "/usercheck.do";
+			}
+		});
+		$("#mylist").click(function() {
+			var user_id = "${sessionScope.user_id}";
+			if (user_id != "") {
+				location.href = "/mylistGet.do";
+			} else {
+				alert("회원만 들어갈 수 있습니다. 로그인 페이지로 이동합니다.");
+				location.href = "/usercheck.do";
+			}
+		});
+		$("#userout").click(function() {
+			var user_id = "${sessionScope.user_id}";
+			if (user_id != "") {
+				location.href = "/useroutpage.do";
+			} else {
+				alert("회원만 들어갈 수 있습니다. 로그인 페이지로 이동합니다.");
+				location.href = "/usercheck.do";
+			}
+		});
+		$("#userinfo").click(function() {
+			var user_id = "${sessionScope.user_id}";
+			if (user_id != "") {
+				location.href = "/userinfo.do";
+			} else {
+				alert("회원만 들어갈 수 있습니다. 로그인 페이지로 이동합니다.");
+				location.href = "/usercheck.do";
+			}
+		});
+		$("#order").click(function() {
+			var user_id = "${sessionScope.user_id}";
+			if (user_id != "") {
+				location.href = "/orderSelect.do";
+			} else {
+				alert("회원만 들어갈 수 있습니다. 로그인 페이지로 이동합니다.");
+				location.href = "/usercheck.do";
+			}
+		});
 	});
 </script>
 </head>
@@ -44,7 +90,7 @@
 				<nav id="primary_nav_wrap">
 					<ul>
 						<li><a href="/usercheck.do">로그인</a></li>
-						<li><a href="/userjoin.do">회원가입</a></li>
+						<li><a href="/useragreement.do">회원가입</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -118,21 +164,22 @@
 					<!-- 					<li><a href="#">Sub Menu 5</a></li> --> <!-- 				</ul></li> -->
 				<li id="iii"><a href="/newbookGet.do">신간소설</a></li>
 				<li id="iii"><a href="/reviewboardList.do">리뷰게시판</a></li>
-				<li id="iii"><a href="/userinfo.do">마이페이지</a>
+				<li id="iii"><a id="userinfo">마이페이지</a>
 					<ul>
 						<li><a href="/userinfo.do">회원정보관리</a>
 							<ul>
-								<li class="dir"><a href="/useroutpage.do">회원탈퇴</a></li>
-								<li class="dir"><a href="/userinfo.do">개인정보관리</a></li>
+								<li class="dir"><a id="userout">회원탈퇴</a></li>
+								<li class="dir"><a id="userinfo">개인정보관리</a></li>
 							</ul></li>
-						<li><a href="/orderSelect.do">주문내역</a></li>
-						<li><a href="/mylistGet.do">마이리스트</a></li>
+						<li><a id="order">주문내역</a></li>
+						<li><a id="mylist">마이리스트</a></li>
 					</ul></li>
 				<li id="iii"><a href="/noticeboardList.do">고객센터</a>
 					<ul>
 						<li><a href="/noticeboardList.do">공지사항</a></li>
 						<li><a href="/faqboardList.do">자주 묻는 질문</a></li>
-						<li><a href="/inquireboardList.do">1:1 문의</a></li>
+						<li><a id="inquire">1:1 문의</a><input type="hidden"
+							id="user_id" name="user_id" value="${sessionScope.user_id}"></li>
 					</ul></li>
 			</ul>
 		</nav>
