@@ -57,7 +57,7 @@ public class BookController {
 
 
 	@RequestMapping(value = "/bookdetail", method = RequestMethod.GET)
-	public String bookdetailGet(@ModelAttribute BookVO book, @ModelAttribute CartVO cart, Model model,
+	public String bookdetailGet(@ModelAttribute BookVO book, Model model,
 			HttpSession session) {
 		BookVO detailbookGet = new BookVO();
 		detailbookGet = bookService.detailbookGet(book);

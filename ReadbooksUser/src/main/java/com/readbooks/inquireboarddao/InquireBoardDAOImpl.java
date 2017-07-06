@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.readbooks.inquireboardvo.InquireBoardVO;
-import com.readbooks.noticeboardvo.NoticeBoardVO;
 
 @Repository
 @Transactional

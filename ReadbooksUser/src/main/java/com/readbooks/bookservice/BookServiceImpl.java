@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.readbooks.bookdao.BookDAO;
 import com.readbooks.bookvo.BookVO;
-import com.readbooks.cartvo.CartVO;
 import com.readbooks.mylistvo.MyListVO;
 
 @Service
@@ -84,12 +83,6 @@ public class BookServiceImpl implements BookService {
 		return koreashortbookGet;
 	}
 
-	@Override
-	public List<BookVO> allbookGet(CartVO cart) {
-		List<BookVO> allbookGet = null;
-		allbookGet = bookdao.allbookGet(cart);
-		return allbookGet;
-	}
 
 	@Override
 	public List<BookVO> mylistGet(MyListVO mylist) {

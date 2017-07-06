@@ -12,4 +12,14 @@
 		delete from tbl_mylist where
 		mylist_number = #{mylist_number}
 	</delete>
+	<select id="myListGet" parameterType="mylist" resultType="mylistdto">
+		select
+		m.mylist_NUMBER, b.*
+		from tbl_book b, tbl_mylist m where
+		b.book_number
+		in (select
+		m.book_number from tbl_mylist
+		where m.user_id =
+		#{user_id})
+	</select>
 </mapper>

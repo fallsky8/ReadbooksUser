@@ -33,7 +33,7 @@
 		select * from dual
 		<include refid="deletecart"></include>
 	</insert>
-	
+		
 	<select id="orderSelect" parameterType="order" resultType="order">
 		select * from tbl_order where user_id = #{user_id}
 	</select>

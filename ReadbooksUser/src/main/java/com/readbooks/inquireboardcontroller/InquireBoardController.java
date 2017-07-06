@@ -19,7 +19,6 @@ import com.readbooks.common.Paging;
 import com.readbooks.common.PagingUtil;
 import com.readbooks.inquireboardservice.InquireBoardService;
 import com.readbooks.inquireboardvo.InquireBoardVO;
-import com.readbooks.noticeboardvo.NoticeBoardVO;
 
 @Controller
 @RequestMapping(value = "/")

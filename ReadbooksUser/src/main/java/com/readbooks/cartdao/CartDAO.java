@@ -1,5 +1,8 @@
 package com.readbooks.cartdao;
 
+import java.util.List;
+
+import com.readbooks.cartvo.CartDTO;
 import com.readbooks.cartvo.CartVO;
 
 public interface CartDAO {
@@ -9,5 +12,7 @@ public interface CartDAO {
 	public int cartDelete(CartVO cart);
 
 	public int cartDelete2(CartVO cart);
+
+	public List<CartDTO> allbookGet(CartDTO cartdto);
 
 }

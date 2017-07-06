@@ -1,10 +1,13 @@
 package com.readbooks.cartdao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.readbooks.cartvo.CartDTO;
 import com.readbooks.cartvo.CartVO;
 
 @Repository
@@ -27,6 +30,11 @@ public class CartDAOImpl implements CartDAO {
 	@Override
 	public int cartDelete2(CartVO cart) {
 		return session.delete("cartDelete2", cart);
+	}
+
+	@Override
+	public List<CartDTO> allbookGet(CartDTO cartdto) {
+		return session.selectList("allbookGet", cartdto);
 	}
 
 }

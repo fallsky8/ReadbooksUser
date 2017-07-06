@@ -26,16 +26,10 @@
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 	$(function() {
-<<<<<<< HEAD
 
 		$("#payment").click(function() {
 			$("#order_info").attr({
-				"method" : "get",
-=======
-		$("#payment").click(function() {
-			$("#order_info").attr({
 				"method" : "POST",
->>>>>>> branch 'master' of https://github.com/fallsky8/ReadbooksUser/
 				"action" : "/orderInsert.do"
 			});
 			$("#order_info").submit();
@@ -84,28 +78,16 @@
 				value="${sessionScope.user_id}">
 		</form>
 		<!-- 			<input type="hidden" id="order_number" name="order_number"> 
-<<<<<<< HEAD
 
 
-<%-- 				  <input type="hidden" --%>
-<!-- 				id="order_orderer" name="order_orderer"> <input -->
-		<!-- 				type="hidden" id="order_quantity" name="order_quantity"> <input -->
-		<!-- 				type="hidden" id="order_ordernumber" name="order_ordernumber"> -->
 
-
-	</div>
-	<input type="submit" id="payment" value="전송 ">
-=======
- 
- 
-<%-- 				  <input type="hidden" --%>
-<!-- 				id="order_orderer" name="order_orderer"> <input -->
+	<%-- 				  <input type="hidden" --%>
+	<!-- 				id="order_orderer" name="order_orderer"> <input -->
 		<!-- 				type="hidden" id="order_quantity" name="order_quantity"> <input -->
 		<!-- 				type="hidden" id="order_ordernumber" name="order_ordernumber"> -->
 
 
 	</div>
 	<input type="button" id="payment" value="전송 ">
->>>>>>> branch 'master' of https://github.com/fallsky8/ReadbooksUser/
 </body>
 </html>

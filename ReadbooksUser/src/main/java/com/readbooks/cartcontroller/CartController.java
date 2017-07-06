@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.readbooks.bookservice.BookService;
-import com.readbooks.bookvo.BookVO;
 import com.readbooks.cartservice.CartService;
+import com.readbooks.cartvo.CartDTO;
 import com.readbooks.cartvo.CartVO;
 import com.readbooks.uservo.UserVO;
 
@@ -25,8 +24,6 @@ public class CartController {
 
 	@Autowired
 	private CartService cartService;
-	@Autowired
-	private BookService bookService;
 
 	@RequestMapping(value = "/cartInsert", method = RequestMethod.GET)
 	public String cartInsert(@ModelAttribute CartVO cart, @ModelAttribute UserVO user, HttpSession session) {
@@ -40,11 +37,11 @@ public class CartController {
 	}
 
 	@RequestMapping(value = "/cartlistGet", method = RequestMethod.GET)
-	public String cartlistGet(@ModelAttribute CartVO cart, @ModelAttribute BookVO book, @ModelAttribute UserVO user,
+	public String cartlistGet(@ModelAttribute CartDTO cartdto, @ModelAttribute UserVO user,
 			HttpSession session, HttpServletRequest request, Model model) {
-		cart.setUser_id((String) session.getAttribute("user_id"));
-		List<BookVO> allbookGet = new ArrayList<BookVO>();
-		allbookGet = bookService.allbookGet(cart);
+		cartdto.setUser_id((String) session.getAttribute("user_id"));
+		List<CartDTO> allbookGet = new ArrayList<CartDTO>();
+		allbookGet = cartService.allbookGet(cartdto);
 		model.addAttribute("cartbooklist", allbookGet);
 		return "cart/cartlist";
 	}

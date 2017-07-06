@@ -1,6 +1,10 @@
-package com.readbooks.bookvo;
+package com.readbooks.mylistvo;
 
-public class BookVO {
+public class MyListDTO {
+	private int mylist_number;
+	private String user_id;
+
+	//책
 	private int book_number;
 	private String book_name;
 	private int book_quantity;
@@ -17,31 +21,26 @@ public class BookVO {
 	private String book_registerdate;
 	private String book_status;
 	private String book_opening;
-
-	private String search = "";
-	private String keyword = "";
-
-	public String getSearch() {
-		return search;
-	}
-
-	public void setSearch(String search) {
-		this.search = search;
-	}
-
-	public String getKeyword() {
-		return keyword;
-	}
-
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
-
-	public BookVO() {
+	public MyListDTO() {
 		super();
 	}
 
-	
+	public int getMylist_number() {
+		return mylist_number;
+	}
+
+	public void setMylist_number(int mylist_number) {
+		this.mylist_number = mylist_number;
+	}
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
 	public int getBook_number() {
 		return book_number;
 	}
@@ -151,7 +150,7 @@ public class BookVO {
 	}
 
 	public void setBook_registerdate(String book_registerdate) {
-		this.book_registerdate = book_registerdate.substring(0, 10);
+		this.book_registerdate = book_registerdate;
 	}
 
 	public String getBook_status() {
@@ -167,7 +166,7 @@ public class BookVO {
 	}
 
 	public void setBook_opening(String book_opening) {
-		this.book_opening = book_opening.substring(0, 10);
+		this.book_opening = book_opening;
 	}
 
 }

@@ -3,7 +3,6 @@ package com.readbooks.bookservice;
 import java.util.List;
 
 import com.readbooks.bookvo.BookVO;
-import com.readbooks.cartvo.CartVO;
 import com.readbooks.mylistvo.MyListVO;
 
 public interface BookService {
@@ -24,8 +23,6 @@ public interface BookService {
 	public List<BookVO> korealongbookGet(BookVO book);
 
 	public List<BookVO> koreashortbookGet(BookVO book);
-
-	public List<BookVO> allbookGet(CartVO cart);
 
 	public List<BookVO> mylistGet(MyListVO mylist);
 

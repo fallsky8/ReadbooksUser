@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.readbooks.bookvo.BookVO;
-import com.readbooks.cartvo.CartVO;
 import com.readbooks.mylistvo.MyListVO;
 
 @Repository
@@ -63,11 +62,7 @@ public class BookDAOImpl implements BookDAO {
 		return session.selectList("koreashortbookGet", book);
 	}
 
-	@Override
-	public List<BookVO> allbookGet(CartVO cart) {
-		return session.selectList("allbookGet", cart);
-	}
-
+	
 	@Override
 	public List<BookVO> mylistGet(MyListVO mylist) {
 		return session.selectList("myListGet", mylist);
