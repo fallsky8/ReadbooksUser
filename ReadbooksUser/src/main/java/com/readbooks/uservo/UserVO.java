@@ -17,8 +17,6 @@ public class UserVO {
 	// 인증코드
 	private String user_authnum;
 
-
-	
 	
 	public UserVO() {
 		super();

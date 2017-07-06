@@ -1,8 +1,8 @@
 package com.readbooks.ordervo;
 
 public class OrderDTO {
+	//오더
 	private int order_number;
-	private String user_id;
 	private String order_password;
 	private String order_orderer;
 	private String order_recipient;
@@ -20,6 +20,8 @@ public class OrderDTO {
 	private int cart_buyprice;
 	private int cart_totalquantity;
 	private int cart_totalprice;
+	private int cart_subtotal;
+	private int cart_discount;
 
 	// 책
 	private int book_number;
@@ -38,6 +40,12 @@ public class OrderDTO {
 	private String book_registerdate;
 	private String book_status;
 	private String book_opening;
+	// 유저
+	private String user_id;// 아이디 VARCHAR2(20 BYTE)
+	private String user_address;// 주소 VARCHAR2(200 BYTE)
+	private String user_name;// 이름 VARCHAR2(20 BYTE)
+	private String user_email;// 이메일 VARCHAR2(100 BYTE)
+	private String user_phonenumber;// 휴대폰 번호 VARCHAR2(20 BYTE)
 
 	public OrderDTO() {
 		super();
@@ -313,6 +321,54 @@ public class OrderDTO {
 
 	public void setBook_opening(String book_opening) {
 		this.book_opening = book_opening;
+	}
+
+	public String getUser_address() {
+		return user_address;
+	}
+
+	public void setUser_address(String user_address) {
+		this.user_address = user_address;
+	}
+
+	public String getUser_name() {
+		return user_name;
+	}
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+
+	public String getUser_email() {
+		return user_email;
+	}
+
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
+	}
+
+	public String getUser_phonenumber() {
+		return user_phonenumber;
+	}
+
+	public void setUser_phonenumber(String user_phonenumber) {
+		this.user_phonenumber = user_phonenumber;
+	}
+
+	public int getCart_subtotal() {
+		return cart_subtotal;
+	}
+
+	public void setCart_subtotal(int cart_subtotal) {
+		this.cart_subtotal = cart_subtotal;
+	}
+
+	public int getCart_discount() {
+		return cart_discount;
+	}
+
+	public void setCart_discount(int cart_discount) {
+		this.cart_discount = cart_discount;
 	}
 
 }

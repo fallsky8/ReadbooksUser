@@ -1,5 +1,4 @@
-﻿
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -39,55 +38,37 @@
 <title>주문 목록</title>
 </head>
 <body>
-	<p>유저아이디 : ${user.user_id };</p>
 
-	<c:forEach var="cartbooklist" items="${sessionScope.cart}">
-		<article class="product" data-num="${cartbooklist.cart_number }"
-			data-val="${cartbooklist.book_number }">
-			<header>
-				<!-- 				삭제 이미지 -->
-				<a class="remove"> <!-- 					상품이미지 --> <img
-					src="/resources/image/${cartbooklist.book_image }"> <!-- 제거 -->
-					<h3>삭제하기</h3>
-				</a>
-			</header>
-			<div class="content">
-				<!-- 상품이름 -->
-				<h1>${cartbooklist.book_name}</h1>
-				<!-- 상품 설명 -->
-				<p>${cartbooklist.book_writer }
-				<div id="primary_nav_wrap">
-					<ul>
-						<li><a class="btndetail">상세보기</a></li>
-					</ul>
-				</div>
-			</div>
-			<footer class="content">
-				<span class="qt-minus">-</span> <span class="qt">${cartbooklist.cart_buyquantity }</span>
-				<span class="qt-plus">+</span>
+	<p>유저아이디 : ${orderUserGet.user_id };</p>
+	<p>유저주소 : ${orderUserGet.user_address };</p>
 
-				<h2 class="full-price">${cartbooklist.book_price * cartbooklist.cart_buyquantity }원</h2>
+	<c:forEach var="orderlist" items="${orderInfoGet}">
+		<table>
+			<tr>
 
-				<h2 class="price">${cartbooklist.book_price}원</h2>
-			</footer>
-		</article>
+				<th>저자</th>
+				<td>${orderlist.book_writer}</td>
+			</tr>
+			<tr>
+				<th>가격</th>
+				<td>${orderlist.book_price}</td>
+			</tr>
+
+
+			<tr>
+
+				<th>저자</th>
+				<td>${orderlist.cart_buyquantity}</td>
+			</tr>
+			<tr>
+				<th>가격</th>
+				<td>${orderlist.book_price}</td>
+			</tr>
+
+
+		</table>
+
 	</c:forEach>
-	<div>
-		<form id="order_info">
-			<input type="hidden" id="user_id" name="user_id"
-				value="${sessionScope.user_id}">
-		</form>
-		<!-- 			<input type="hidden" id="order_number" name="order_number"> 
-
-
-
-	<%-- 				  <input type="hidden" --%>
-	<!-- 				id="order_orderer" name="order_orderer"> <input -->
-		<!-- 				type="hidden" id="order_quantity" name="order_quantity"> <input -->
-		<!-- 				type="hidden" id="order_ordernumber" name="order_ordernumber"> -->
-
-
-	</div>
 	<input type="button" id="payment" value="전송 ">
 </body>
 </html>

@@ -3,6 +3,7 @@ package com.readbooks.orderdao;
 import java.util.List;
 import java.util.Map;
 
+import com.readbooks.ordervo.OrderDTO;
 import com.readbooks.ordervo.OrderVO;
 
 public interface OrderDAO {
@@ -12,5 +13,9 @@ public interface OrderDAO {
 	public List<OrderVO> orderSelect(OrderVO order);
 
 	public OrderVO orderdetail(OrderVO order);
+
+	public List<OrderDTO> orderInfoGet(OrderDTO orderdto);
+
+	public OrderDTO orderUserGet(OrderDTO orderdto);
 
 }
