@@ -126,6 +126,10 @@ input[type='search'] {
 		<aside>
 		<jsp:include page="../aside.jsp"></jsp:include>
 		</aside>
+		<div id="onTop" class="ss_top">
+			<a href="javascript://"><img
+				src="http://image.bandinlunis.com/images/common/2014/btn_top.png"></a>
+		</div>
 	</div>
 		<jsp:include page="../footer.jsp"></jsp:include>
 </body>

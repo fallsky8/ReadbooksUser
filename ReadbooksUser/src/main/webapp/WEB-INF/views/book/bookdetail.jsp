@@ -129,26 +129,29 @@
 			</div>
 			<div id="detailinfo">
 				<div>
-					<div>
+					<div style="border-bottom: 1px solid #ccc">
 						<h1>책소개</h1>
 					</div>
-					<div>
-						<p>${detailbook.book_bookinfo }</p>
-					</div>
-					<div>
+
+					<div style="padding: 10px;">${detailbook.book_bookinfo }</div>
+					<div style="border-bottom: 1px solid #ccc">
 						<h1>저자소개</h1>
 					</div>
-					<div>${detailbook.book_writerinfo }</div>
-					<div>
+					<div style="padding: 10px;">${detailbook.book_writerinfo }</div>
+					<div style="border-bottom: 1px solid #ccc">
 						<h1>출판사리뷰</h1>
 					</div>
-					<div>${detailbook.book_publisherreview }</div>
+					<div style="padding: 10px;">${detailbook.book_publisherreview }</div>
 				</div>
 			</div>
 		</article>
 		<aside>
 			<jsp:include page="../aside.jsp"></jsp:include>
 		</aside>
+		<div id="onTop" class="ss_top">
+			<a href="javascript://"><img
+				src="http://image.bandinlunis.com/images/common/2014/btn_top.png"></a>
+		</div>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 

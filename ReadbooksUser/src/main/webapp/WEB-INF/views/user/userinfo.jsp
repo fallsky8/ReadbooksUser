@@ -179,18 +179,6 @@
 					<tr>
 						<th>
 
-							<div class="thcell">비밀번호</div>
-
-						</th>
-						<td><div class="tdcell">
-								<input type="password" name="user_pw" id="user_pw"
-									class="form-control" value="${userlist.user_pw }"
-									readonly="readonly">
-							</div></td>
-					</tr>
-					<tr>
-						<th>
-
 							<div class="thcell">이름</div>
 
 						</th>

@@ -167,7 +167,11 @@ input[type='search'] {
 			<a href="javascript://"><img
 				src="http://image.bandinlunis.com/images/common/2014/btn_top.png"></a>
 		</div>
+		<div id="onTop" class="ss_top">
+			<a href="javascript://"><img
+				src="http://image.bandinlunis.com/images/common/2014/btn_top.png"></a>
+		</div>
 	</div>
-		<jsp:include page="../footer.jsp"></jsp:include>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

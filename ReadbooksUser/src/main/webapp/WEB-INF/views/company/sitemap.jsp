@@ -161,7 +161,7 @@ a {
 	font-weight: bold;
 	text-align: center;
 	color: black;
-	background: #c3eafb;
+	background: #ffffff;
 	border: 2px solid #b5d9ea;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -170,12 +170,12 @@ a {
 }
 
 #primaryNav li a:hover {
-	background-color: #e2f4fd;
+	background-color: rgba(0, 0, 0, 0.15);
 	border-color: #97bdcf;
 }
 
 #primaryNav li a:hover {
-	background-color: #e2f4fd;
+	background-color: rgba(0, 0, 0, 0.15);
 	border-color: #97bdcf;
 }
 
@@ -200,13 +200,13 @@ a:link:before, a:visited:before {
 #primaryNav li li a {
 	width: 80%;
 	float: right;
-	background-color: #cee3ac;
+	background-color: #ffffff;
 	border-color: #b8da83;
 }
 
 #primaryNav li li a:hover {
-	border-color: #94b75f;
-	background-color: #e7f1d7;
+	border-color: #b8da83;
+	background-color: rgba(0, 0, 0, 0.15);
 }
 
 #primaryNav li li:first-child {
@@ -231,8 +231,8 @@ a:link:before, a:visited:before {
 }
 
 #primaryNav li li li a {
-	background-color: #fff7aa;
-	border-color: #e3ca4b;
+	background-color: #ffffff;
+	border-color: #b1bbbb;
 	font-size: 12px;
 	padding: 5px 0;
 	width: 60%;
@@ -240,8 +240,8 @@ a:link:before, a:visited:before {
 }
 
 #primaryNav li li li a:hover {
-	background-color: #fffce5;
-	border-color: #d1b62c;
+	background-color: rgba(0, 0, 0, 0.15);
+	border-color: #b1bbbb;
 }
 
 /* ------------------------------------------------------------
@@ -262,13 +262,13 @@ a:link:before, a:visited:before {
 	margin: 0 10px 0 0;
 	padding: 5px 10px;
 	display: block;
-	border: 2px solid #e3ca4b;
+	border: 2px solid #b1bbbb;
 	font-size: 12px;
 	font-weight: bold;
 	text-align: center;
 	color: black;
-	background: #fff7aa
-		url('https://dl.dropboxusercontent.com/u/70953/codepen/images/sitemap/white-highlight.png')
+	background: #ffffff
+		url('https:/dl.dropboxusercontent.com/u/70953/codepen/images/sitemap/white-highlight.png')
 		top left repeat-x;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -277,22 +277,14 @@ a:link:before, a:visited:before {
 }
 
 #utilityNav li a:hover {
-	background-color: #fffce5;
-	border-color: #d1b62c;
+	background-color: rgba(0, 0, 0, 0.15);
+	border-color: #b1bbbb;
 }
 
 #utilityNav li a:link:before, #utilityNav li a:visited:before {
 	color: #ccae14;
 	font-size: 9px;
 	margin-bottom: 3px;
-}
-
-#sideMenu a:NTH-CHILD(4) {
-	background-color: rgba(0, 0, 0, 0.15);
-}
-
-.footer_center #primary_nav_wrap li:NTH-CHILD(4) {
-	background-color: #5fc5c5;
 }
 </style>
 </head>
@@ -306,13 +298,22 @@ a:link:before, a:visited:before {
 				<a href="/introReadbooks.do" class="menu-item">회사소개</a> <a
 					href="/serviceAgreement.do" class="menu-item">이용약관</a> <a
 					href="/collectiveAgreement.do" class="menu-item">개인정보 처리 방침</a> <a
-					href="/siteMap.do" class="menu-item">사이트맵</a>
+					href="/siteMap.do" class="menu-item">주요 서비스</a>
 			</div>
 
 			<div class="sitemap">
 				<ul id="utilityNav">
-					<li><a href="/userjoin.do">회원가입</a></li>
-					<li><a href="/usercheck.do">로그인</a></li>
+					<c:choose>
+						<c:when test="${empty sessionScope.user_id }">
+							<li><a href="/userjoin.do">회원가입</a></li>
+							<li><a href="/usercheck.do">로그인</a></li>
+							<li><a style="cursor: pointer;"
+								onclick="window.open('/findbutton.do', '_blank', 'width=400px, height=380px, top=250px,left=400px')">아이디&비밀번호찾기</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="/userlogout.do">로그아웃</a></li>
+						</c:otherwise>
+					</c:choose>
 					<li><a href="/cartlistGet.do">쇼핑카트</a></li>
 				</ul>
 
@@ -332,21 +333,22 @@ a:link:before, a:visited:before {
 				</ul>
 				<ul id="primaryNav" class="col4">
 					<li><a href="/reviewboard.do">리뷰게시판</a></li>
-					<li><a href="#">마이페이지</a>
+					<li><a class="userinfo" style="cursor: pointer;">마이페이지</a>
 						<ul>
-							<li><a href="#">내 정보 관리</a>
+							<li><a class="userinfo" style="cursor: pointer;">내 정보 관리</a>
 								<ul>
-									<li><a href="#">회원탈퇴</a></li>
-									<li><a href="#">내 정보 수정</a></li>
+									<li><a class="userout" style="cursor: pointer;">회원탈퇴</a></li>
+									<li><a class="userinfo" style="cursor: pointer;">내 정보
+											수정</a></li>
 								</ul></li>
-							<li><a href="#">주문 내역</a></li>
-							<li><a href="/mylistGet.do">마이리스트</a></li>
+							<li><a class="order" style="cursor: pointer;">주문 내역</a></li>
+							<li><a class="mylist" style="cursor: pointer;">마이리스트</a></li>
 						</ul></li>
 					<li><a href="/noticeboardList.do">고객센터</a>
 						<ul>
 							<li><a href="/noticeboardList.do">공지사항</a></li>
 							<li><a href="/faqboardList.do">자주 묻는 질문</a></li>
-							<li><a href="/inquireboardList.do">1:1 문의</a></li>
+							<li><a class="inquire" style="cursor: pointer;">1:1 문의</a></li>
 						</ul></li>
 					<li><a href="/introReadbooks.do">리드북스소개</a>
 						<ul>

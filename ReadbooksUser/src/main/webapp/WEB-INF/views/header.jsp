@@ -166,7 +166,7 @@
 				<li id="iii"><a href="/reviewboardList.do">리뷰게시판</a></li>
 				<li id="iii"><a class="userinfo" style="cursor: pointer;">마이페이지</a>
 					<ul>
-						<li><a href="/userinfo.do">회원정보관리</a>
+						<li><a class="userinfo" style="cursor: pointer;">회원정보관리</a>
 							<ul>
 								<li class="dir"><a class="userout" style="cursor: pointer;">회원탈퇴</a></li>
 								<li class="dir"><a class="userinfo"

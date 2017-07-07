@@ -90,7 +90,7 @@ div[class='row'] {
 				<a href="/noticeboardList.do" class="menu-item">고객센터</a> <a
 					href="/noticeboardList.do" class="menu-item">공지사항</a> <a
 					href="/faqboardList.do" class="menu-item">자주 묻는 질문</a> <a
-					href="/inquireboardList.do" class="menu-item">1:1 문의</a>
+					class="menu-item inquire" style="cursor: pointer;">1:1 문의</a>
 			</div>
 			<%--================상세 페이지 이동을 위한 FORM================= --%>
 			<form name="detailForm" id="detailForm">
