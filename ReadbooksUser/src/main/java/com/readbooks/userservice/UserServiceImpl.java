@@ -56,4 +56,11 @@ public class UserServiceImpl implements UserService {
 		return useridget;
 	}
 
+	@Override
+	public int updatepw(UserVO user) {
+		int result = 0;
+		result = userdao.updatepw(user);
+		return result;
+	}
+
 }

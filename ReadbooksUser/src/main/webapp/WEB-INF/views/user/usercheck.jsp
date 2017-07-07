@@ -213,6 +213,13 @@
 									<p class="help-block"
 										style="color: #E74652; position: relative; top: -4px;"></p>
 								</div>
+								<c:if test="${useridcheck != null}">
+									<div class='container'>
+										<span id="usercheck"
+											style="padding-left: 30px; color: #378de5"><c:out
+												value="${useridcheck}"></c:out> </span>
+									</div>
+								</c:if>
 							</div>
 
 							<div class='container control-group'>
@@ -227,6 +234,13 @@
 									<p class="help-block"
 										style="color: #E74652; position: relative; top: -4px;"></p>
 								</div>
+								<c:if test="${userpwcheck != null}">
+									<div class='container'>
+										<span id="usercheck"
+											style="padding-left: 30px; color: #378de5"><c:out
+												value="${userpwcheck}"></c:out> </span>
+									</div>
+								</c:if>
 							</div>
 
 							<div class='container control-group'>

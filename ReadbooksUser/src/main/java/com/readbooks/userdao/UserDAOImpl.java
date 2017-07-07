@@ -44,4 +44,9 @@ public class UserDAOImpl implements UserDAO {
 		return session.selectOne("findid", user);
 	}
 
+	@Override
+	public int updatepw(UserVO user) {
+		return session.update("updatepw", user);
+	}
+
 }

@@ -8,21 +8,15 @@
 		tbl_user(user_id,user_pw,user_address,user_name,user_email,user_serviceagreement,user_collectiveagreement,user_referralagreement,user_registerdate)
 		values(#{user_id},#{user_pw},#{user_address},#{user_name},#{user_email},1,1,1,sysdate)
 	</insert>
-	<select id="userCheck" parameterType="user" resultType="int">
+	<select id="userCheck" parameterType="user" resultType="user">
 		select
-		nvl((
-		select
-		1 from
+		*
+		from
 		tbl_user
 		where
 		user_id=#{user_id}
 		and
-		user_pw=#{user_pw}
-		and
 		user_outdate is null
-		),0)as state
-		from
-		dual
 	</select>
 	<select id="userGet" parameterType="user" resultType="user">
 		select *
@@ -47,6 +41,16 @@
 		where user_id
 		=
 		#{user_id}
+	</update>
+	<update id="updatepw" parameterType="user">
+		update
+		tbl_user set
+		user_pw
+		=
+		#{user_pw}
+		where user_email
+		=
+		#{user_email}
 	</update>
 	<select id="findid" parameterType="user" resultType="user">
 		select

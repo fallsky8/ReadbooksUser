@@ -169,17 +169,19 @@
 						<li><a href="/userinfo.do">회원정보관리</a>
 							<ul>
 								<li class="dir"><a class="userout" style="cursor: pointer;">회원탈퇴</a></li>
-								<li class="dir"><a class="userinfo" style="cursor: pointer;">개인정보관리</a></li>
+								<li class="dir"><a class="userinfo"
+									style="cursor: pointer;">개인정보관리</a></li>
 							</ul></li>
 						<li><a class="order" style="cursor: pointer;">주문내역</a></li>
-						<li><a class="mylist"  style="cursor: pointer;">마이리스트</a></li>
+						<li><a class="mylist" style="cursor: pointer;">마이리스트</a></li>
 					</ul></li>
 				<li id="iii"><a href="/noticeboardList.do">고객센터</a>
 					<ul>
 						<li><a href="/noticeboardList.do">공지사항</a></li>
 						<li><a href="/faqboardList.do">자주 묻는 질문</a></li>
-						<li><a class="inquire" style="cursor: pointer;">1:1 문의</a><input type="hidden"
-							id="user_id" name="user_id" value="${sessionScope.user_id}"></li>
+						<li><a class="inquire" style="cursor: pointer;">1:1 문의</a><input
+							type="hidden" id="user_id" name="user_id"
+							value="${sessionScope.user_id}"></li>
 					</ul></li>
 			</ul>
 		</nav>

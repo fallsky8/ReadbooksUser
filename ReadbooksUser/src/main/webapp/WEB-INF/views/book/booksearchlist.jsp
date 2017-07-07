@@ -5,8 +5,6 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-<link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
-	media="screen" />
 <link rel="stylesheet"
 	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
 	type="text/css">

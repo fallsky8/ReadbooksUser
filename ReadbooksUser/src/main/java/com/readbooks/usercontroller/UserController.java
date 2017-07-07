@@ -2,6 +2,7 @@ package com.readbooks.usercontroller;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.readbooks.userservice.UserService;
 import com.readbooks.uservo.UserVO;
@@ -107,26 +109,29 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/userlogin", method = RequestMethod.POST)
-	public String userCheck(@ModelAttribute UserVO user, HttpSession session, Model model) {
+	public ModelAndView userCheck(@ModelAttribute UserVO user, HttpSession session, Model model) {
+		ModelAndView mav = new ModelAndView();
 		UserVO result = new UserVO();
-		String url = "";
-
-		String user_enterpw = user.getUser_pw();
 		result = userService.userCheck(user);
-		String userdbpw = result.getUser_pw();
 
-		if (result.getUser_id() != null) {
-			if (passwordEncoder.matches(user_enterpw, userdbpw)) {
-				session.setAttribute("user_id", result.getUser_id());
-				url = "/home.do";
-			} else {
-				url = "/usercheck.do";
-			}
+		if (result == null || result.getUser_id() == "") {
+			mav.setViewName("user/usercheck");
+			mav.addObject("useridcheck", "아이디를 잘못 입력하셨습니다.");
+			return mav;
 		} else {
-			url = "/usercheck.do";
-		}
+			String viewpw = user.getUser_pw();
+			String dbpw = result.getUser_pw();
+			if (passwordEncoder.matches(viewpw, dbpw)) {
+				session.setAttribute("user_id", result.getUser_id());
+				mav.setViewName("redirect: /home.do");
 
-		return "redirect:" + url;
+			} else {
+				mav.setViewName("user/usercheck");
+				mav.addObject("userpwcheck", "비밀번호를 잘못 입력하셨습니다.");
+				return mav;
+			}
+		}
+		return mav;
 	}
 
 	@RequestMapping(value = "/userupdate", method = RequestMethod.POST)
@@ -136,6 +141,20 @@ public class UserController {
 		result = userService.userupdate(user);
 		if (result == 1) {
 			url = "/userinfo.do";
+		}
+		return "redirect:" + url;
+	}
+
+	@RequestMapping(value = "/updatePW", method = RequestMethod.POST)
+	public String updatePW(@ModelAttribute UserVO user, Model model) {
+		int result = 0;
+		String url = "";
+		String user_pw = user.getUser_pw();
+		String encoder = passwordEncoder.encode(user_pw);
+		user.setUser_pw(encoder);
+		result = userService.updatepw(user);
+		if (result == 1) {
+			url = "/usercheck.do";
 		}
 		return "redirect:" + url;
 	}
@@ -180,6 +199,37 @@ public class UserController {
 
 		}
 
+		return authNum;
+
+	}
+
+	@RequestMapping(value = "/sendPW", method = RequestMethod.POST)
+	@ResponseBody
+	public String sendPW(@ModelAttribute UserVO user, HttpServletRequest request, HttpSession session) {
+
+		// 난수 발생
+		String authNum = randomNum() + "";
+
+		String from = "admin@readbooks.com";
+		String memberEmail = user.getUser_email();
+		String title = "비밀번호 찾기 메일 인증 코드";
+		String content = "인증 코드 [" + authNum + "]";
+
+		try {
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+			messageHelper.setFrom(from); // 보내는사람 생략하거나 하면 정상작동을 안함
+			messageHelper.setTo(memberEmail); // 받는사람 이메일
+			messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+			messageHelper.setText(content); // 메일 내용
+
+			mailSender.send(message);
+
+		} catch (MessagingException e) {
+			e.printStackTrace();
+
+		}
+		session.setAttribute("updateemail", user.getUser_email());
 		return authNum;
 
 	}

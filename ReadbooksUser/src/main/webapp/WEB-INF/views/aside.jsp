@@ -17,7 +17,7 @@
 					<a href="/usercheck.do"><span>로그인</span></a>
 				</div>
 				<div class="ss_myshop">
-					<a href="/userjoinagreement.do"><span>회원가입</span></a>
+					<a href="/useragreement.do"><span>회원가입</span></a>
 				</div>
 			</c:when>
 			<c:otherwise>

@@ -4,16 +4,10 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-
-<link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
-	media="screen" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-
 <script src="/resources/js/validation.js"></script>
 <script src="/resources/js/cart.js"></script>
-<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
-	media="screen" />
 <title>리드북스 회원가입</title>
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <link
@@ -43,63 +37,7 @@
 		var newWindow;
 		var findid = $("#findid");
 
-		//초기값
-
-		var minute = 2;
-
-		var second = 59;
-		// 초기화
-
-		$(".countTimeMinute").html(minute);
-
-		$(".countTimeSecond").html(second);
-
-		var timer = setInterval(function() {
-
-			// 설정
-
-			$(".countTimeMinute").html(minute);
-
-			$(".countTimeSecond").html(second);
-
-			if (second == 0 && minute == 0) {
-
-				$(".ui-dialog-titlebar-close").click(); /* 타이머 종료 */
-
-			} else {
-
-				second--;
-
-				// 분처리
-
-				if (second < 0) {
-
-					minute--;
-
-					second = 59;
-
-				}
-
-				//시간처리
-
-				if (minute < 0) {
-
-					if (hour > 0) {
-
-						hour--;
-
-						minute = 59;
-
-					}
-
-				}
-
-			}
-
-		}, 1000); /* millisecond 단위의 인터벌 */
-
 		$("#checkEnumBtn").click(function() {
-
 			if (findid.val() == null || findid.val() == "") {
 				alert("인증번호 입력하세요");
 			} else {
@@ -107,7 +45,6 @@
 					alert("인증 완료");
 					eNumcheckHidden.val("y");
 					$(".ui-dialog-titlebar-close").click();
-
 				} else {
 					alert("인증 실패");
 				}
@@ -132,13 +69,18 @@
 		});
 
 		$("#userjoin").click(function() {
-			$("#joinform").attr({
-				"method" : "POST",
-				"action" : "/userInsert.do"
-			});
-			$("#joinform").submit();
+			if (eNumcheckHidden.val() == "y") {
+				$("#joinform").attr({
+					"method" : "POST",
+					"action" : "/userInsert.do"
+				});
+				$("#joinform").submit();
+			} else {
+				alert("메일 인증을 해주세요.");
+			}
 		});
 		$("#mailbutton").click(function() {
+
 			$.ajax({
 				url : "/sendEmail.do",
 				type : "POST",
@@ -149,6 +91,42 @@
 				success : function(authNum) {
 					authNumHidden.val(authNum);
 					dialog = $("#checkAuthNum").dialog();
+					//초기값
+
+					var minute = 2;
+					var second = 59;
+					// 초기화
+					$(".countTimeMinute").html(minute);
+
+					$(".countTimeSecond").html(second);
+					var timer = setInterval(function() {
+						$("#checkAuthNum").bind("dialogclose", function() {
+							clearInterval(timer);
+						})
+						// 설정
+						$(".countTimeMinute").html(minute);
+
+						$(".countTimeSecond").html(second);
+						if (second == 0 && minute == 0) {
+							$(".ui-dialog-titlebar-close").click();
+						} else {
+
+							second--;
+
+							// 분처리
+
+							if (second < 0) {
+
+								minute--;
+
+								second = 59;
+
+							}
+
+						}
+
+					}, 1000); /* millisecond 단위의 인터벌 */
+
 					if (authNum) {
 						alert("메일 보내기 성공");
 					} else {
@@ -553,10 +531,9 @@ a.btn.disabled, fieldset[disabled] a.btn {
 										<br> <br>
 									</div>
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><span
-										class="countTimeMinute">60</span>분 <span
-										class="countTimeSecond">60</span>초 안에 인증번호를 입력하세요.</b> <input
-										type="button" class="btn btn-info" value="인증"
-										id="checkEnumBtn"> <br> <br>
+										class="countTimeMinute"></span>분 <span class="countTimeSecond"></span>초
+										안에 인증번호를 입력하세요.</b> <input type="button" class="btn btn-info"
+										value="인증" id="checkEnumBtn"> <br> <br>
 									<div id="inputs">
 										<div class='container'>
 											<input type='text' id="findid" value=""> <input

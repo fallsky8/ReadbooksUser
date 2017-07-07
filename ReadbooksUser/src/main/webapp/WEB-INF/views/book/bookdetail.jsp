@@ -5,8 +5,6 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-<link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
-	media="screen" />
 <link rel="stylesheet"
 	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
 	type="text/css">
@@ -111,7 +109,7 @@
 									<ul>
 										<li><a class="btnpay">주문하기</a></li>
 										<li><a class="cartlist">장바구니에 담기</a></li>
-										<li><a href="/reviewboardlist.do">회원리뷰</a></li>
+										<li><a href="/reviewboardList.do">회원리뷰</a></li>
 										<li><a class="mylist">마이리스트에 추가</a></li>
 									</ul>
 								</div>

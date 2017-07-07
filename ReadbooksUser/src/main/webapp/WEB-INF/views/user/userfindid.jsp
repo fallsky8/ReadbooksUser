@@ -24,6 +24,8 @@
 <link rel="stylesheet"
 	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
 	type="text/css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <title>아이디 찾기</title>
 <script type="text/javascript">
 	$(function() {
@@ -31,12 +33,12 @@
 			$.ajax({
 				url : "/sendID.do",
 				type : "POST",
-				data : $("#findform").serialize(),
+				data : $("#findidform").serialize(),
 				error : function(data) {
 					alert("메일 전송 실패!! 정확한 주소를 입력하세요.");
 				},
 				success : function(data) {
-					alert("메일로 고객님이 요청하신 아이디가 전송되었습니다.")
+					alert("메일로 고객님이 요청하신 아이디가 전송되었습니다.");
 				}
 			});
 		});
@@ -109,7 +111,7 @@ html {
 	position: relative;
 }
 
-#inputs #findid, #inputs #findpw {
+#inputs #user_email, #inputs #findpw {
 	width: 300px;
 	height: 55px;
 	position: relative;
@@ -121,7 +123,7 @@ html {
 	-webkit-text-stroke: 0.1px;
 }
 
-#findid, #findpw {
+#user_email, #findpw {
 	color: #5fc5c5;
 	background-color: #fff;
 	border: 1px solid #5fc5c5;
@@ -140,18 +142,18 @@ html {
 	<div id="wrapper">
 		<div id="box">
 			<div id="top_header">
-				<br>
 				<h3>아이디 찾기</h3>
-				<br> <br> <br>
+				<br> <br>
 			</div>
 			<div id="inputs">
 				<div class='container'>
-					<form id="findform" method="POST">
-						<input type='email' id="user_email" name="user_email" /> <br>
-						<br>
+					<form id="findidform">
+						<input type='email' id="user_email" name="user_email"
+							placeholder="이메일을 입력해주세요." /> <br> <br>
 					</form>
-					<input type="button" id="mailsend" value="메일로 아이디받기"> <input
-						type="button" id="backfind" value="뒤로가기">
+					<input type="button" id="mailsend" value="메일로 아이디받기"
+						class="btn btn-info"> <input type="button" id="backfind"
+						value="뒤로가기" class="btn btn-info">
 				</div>
 			</div>
 		</div>
