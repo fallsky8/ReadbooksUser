@@ -184,6 +184,36 @@ public class UserController {
 
 	}
 
+	// 메일 보내기
+	@RequestMapping(value = "/sendID", method = RequestMethod.POST)
+	@ResponseBody
+	public UserVO sendID(@ModelAttribute UserVO user) {
+		UserVO useridget = new UserVO();
+		// 난수 발생
+		String from = "admin@readbooks.com";
+		String memberEmail = user.getUser_email();
+		String title = "메일로 요청하신 아이디입니다.";
+		useridget = userService.findid(user);
+		String content = "회원님이 요청하신 아이디는  '" + useridget.getUser_id() + "'입니다. 비밀번호는 리드북스 홈페이지 비밀번호찾기를 이용해주세요!";
+
+		try {
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+			messageHelper.setFrom(from); // 보내는사람 생략하거나 하면 정상작동을 안함
+			messageHelper.setTo(memberEmail); // 받는사람 이메일
+			messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+			messageHelper.setText(content); // 메일 내용
+
+			mailSender.send(message);
+
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+
+		return useridget;
+
+	}
+
 	private String randomNum() {
 
 		return ((int) (Math.random() * 100000)) + "";

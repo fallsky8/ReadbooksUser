@@ -49,4 +49,11 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
+	@Override
+	public UserVO findid(UserVO user) {
+		UserVO useridget = null;
+		useridget = userdao.findid(user);
+		return useridget;
+	}
+
 }

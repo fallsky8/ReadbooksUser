@@ -48,4 +48,8 @@
 		=
 		#{user_id}
 	</update>
+	<select id="findid" parameterType="user" resultType="user">
+		select
+		user_id from tbl_user where user_email=#{user_email}
+	</select>
 </mapper>

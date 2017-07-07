@@ -149,7 +149,6 @@
 				success : function(authNum) {
 					authNumHidden.val(authNum);
 					dialog = $("#checkAuthNum").dialog();
-
 					if (authNum) {
 						alert("메일 보내기 성공");
 					} else {

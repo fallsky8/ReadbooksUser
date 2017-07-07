@@ -12,4 +12,6 @@ public interface UserDAO {
 	public int userOut(UserVO user);
 
 	public int userupdate(UserVO user);
+
+	public UserVO findid(UserVO user);
 }

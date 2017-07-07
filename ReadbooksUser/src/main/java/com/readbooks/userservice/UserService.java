@@ -14,4 +14,6 @@ public interface UserService {
 
 	public int userupdate(UserVO user);
 
+	public UserVO findid(UserVO user);
+
 }

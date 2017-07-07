@@ -4,17 +4,13 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-
-<link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
-	media="screen" />
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
 	media="screen" />
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-latest.js"></script>
-
 <link
 	href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900'
 	rel='stylesheet' type='text/css'>
@@ -23,13 +19,32 @@
 	rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,300'
 	rel='stylesheet' type='text/css'>
-
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 <link rel="stylesheet"
 	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
 	type="text/css">
 <title>아이디 찾기</title>
+<script type="text/javascript">
+	$(function() {
+		$("#mailsend").click(function() {
+			$.ajax({
+				url : "/sendID.do",
+				type : "POST",
+				data : $("#findform").serialize(),
+				error : function(data) {
+					alert("메일 전송 실패!! 정확한 주소를 입력하세요.");
+				},
+				success : function(data) {
+					alert("메일로 고객님이 요청하신 아이디가 전송되었습니다.")
+				}
+			});
+		});
+		$("#backfind").click(function() {
+			history.go(-1);
+		});
+	});
+</script>
 <style type="text/css">
 html {
 	overflow-x: hidden;
@@ -118,11 +133,6 @@ html {
 	margin-top: 0px;
 	cursor: pointer;
 }
-
-#findid:hover, #findpw:hover {
-	background-color: #5fc5c5;
-	color: #fff;
-}
 </style>
 </head>
 <body onresize="parent.resizeTo(400,380)"
@@ -136,7 +146,12 @@ html {
 			</div>
 			<div id="inputs">
 				<div class='container'>
-					<input type='email' id="findid" /> <br> <br>
+					<form id="findform" method="POST">
+						<input type='email' id="user_email" name="user_email" /> <br>
+						<br>
+					</form>
+					<input type="button" id="mailsend" value="메일로 아이디받기"> <input
+						type="button" id="backfind" value="뒤로가기">
 				</div>
 			</div>
 		</div>
