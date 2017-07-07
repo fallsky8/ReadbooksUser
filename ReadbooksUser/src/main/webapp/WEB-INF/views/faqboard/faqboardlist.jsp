@@ -25,9 +25,9 @@
 <title>자주 묻는 질문</title>
 <style type="text/css">
 .accordion {
-	width: 800px; 
+	width: 800px;
 	border: 1px solid #5FC5C5;
-	margin-left: 220px; 
+	margin-left: 220px;
 }
 
 .accordion h1, h2, h3, h4 {
@@ -102,9 +102,11 @@
 .accordion .opened-for-codepen {
 	display: block;
 }
+
 #primary_nav_wrap ul #iii:NTH-CHILD(8) {
 	background-color: #5fc5c5;
 }
+
 #sideMenu a:NTH-CHILD(3) {
 	background-color: rgba(0, 0, 0, 0.15);
 }
@@ -180,37 +182,16 @@
 					</div>
 				</c:forEach>
 			</div>
-			<div style="margin-left: 581px;"> 
+			<div style="margin-left: 581px;">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;찾으시는 질문이 없나요? <b><ins>문의 게시판</ins></b>에
 				문의해주세요. <input type="button" class="btn btn-default" value="문의하기"
 					id="munui">
 			</div>
 		</article>
 		<aside>
-				<div id="serviceWrap">
-				<div class="ss_myshop">
-					<a href="/siteMap.do"><span>주요서비스</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/usercheck.do"><span>로그인</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/userjoin.do"><span>회원가입</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/cartlistGet.do"><span>쇼핑카트</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/mylistGet.do"><span>마이리스트</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/orderSelect.do"><span>주문내역</span></a>
-				</div>
-			</div>
+			<jsp:include page="../aside.jsp"></jsp:include>
 		</aside>
 	</div>
-	<footer>
 		<jsp:include page="../footer.jsp"></jsp:include>
-	</footer>
 </body>
 </html>

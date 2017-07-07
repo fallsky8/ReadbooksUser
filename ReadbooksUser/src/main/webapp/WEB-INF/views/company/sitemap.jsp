@@ -363,26 +363,7 @@ a:link:before, a:visited:before {
 			</div>
 		</article>
 		<aside>
-			<div id="serviceWrap">
-				<div class="ss_myshop">
-					<a href="/introreadbooks.do"><span>주요서비스</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/usercheck.do"><span>로그인</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/userjoin.do"><span>회원가입</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/cartlistGet.do"><span> 쇼핑카트</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/mylistGet.do"><span>마이리스트</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="#"><span>주문내역</span></a>
-				</div>
-			</div>
+			<jsp:include page="../aside.jsp"></jsp:include>
 		</aside>
 		<div id="onTop" class="ss_top">
 			<a href="javascript://"><img

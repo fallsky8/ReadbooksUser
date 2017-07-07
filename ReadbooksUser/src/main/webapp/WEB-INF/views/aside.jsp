@@ -2,14 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html> 
+<html>
 <head>
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
-	type="text/css">
-<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
-	media="screen" />
 </head>
 <body>
 	<div id="serviceWrap">

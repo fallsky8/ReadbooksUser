@@ -37,7 +37,7 @@
 		$("#reviewboard_contents").cleditor({
 			width : 650,
 			height : 340
-	});
+		});
 		var getstar = "1";
 		check = document.getElementById("star-rating-" + getstar);
 		check.checked = true;
@@ -232,32 +232,8 @@
 			</div>
 		</article>
 		<aside>
-			<div id="serviceWrap">
-				<div class="ss_myshop">
-					<a href="/siteMap.do"><span>주요서비스</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/usercheck.do"><span>로그인</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/userjoin.do"><span>회원가입</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/cartlistGet.do"><span>쇼핑카트</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/mylistGet.do"><span>마이리스트</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/orderSelect.do"><span>주문내역</span></a>
-				</div>
-			</div>
-
+			<jsp:include page="../aside.jsp"></jsp:include>
 		</aside>
-		<div id="onTop" class="ss_top">
-			<a href="javascript://"><img
-				src="http://image.bandinlunis.com/images/common/2014/btn_top.png"></a>
-		</div>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 
