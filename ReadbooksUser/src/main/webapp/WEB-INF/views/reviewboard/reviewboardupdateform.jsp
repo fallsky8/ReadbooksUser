@@ -15,6 +15,8 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
@@ -24,8 +26,18 @@
 <title>리드북스에 오신 걸 환영합니다.</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/jquery.cleditor.css">
+<script type="text/javascript"
+	src="/resources/js/jquery.cleditor.min.js"></script>
+<script type="text/javascript"
+	src="/resources/js/jquery.cleditor.table.min.js"></script>
 <script type="text/javascript">
 	$(function() {
+		$("#reviewboard_contents").cleditor({
+			width : 500,
+			height : 300
+		});
 		var getstar = "${reviewupdateData.reviewboard_star}";
 		check = document.getElementById("star-rating-" + getstar);
 		check.checked = true;
@@ -244,7 +256,7 @@
 			</div>
 		</article>
 		<aside>
-				<div id="serviceWrap">
+			<div id="serviceWrap">
 				<div class="ss_myshop">
 					<a href="/siteMap.do"><span>주요서비스</span></a>
 				</div>

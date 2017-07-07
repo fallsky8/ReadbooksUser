@@ -14,6 +14,10 @@
 	type="text/css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/jquery.cleditor.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/resources/js/cart.js"></script>
@@ -24,8 +28,16 @@
 <title>리드북스에 오신 걸 환영합니다.</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript"
+	src="/resources/js/jquery.cleditor.min.js"></script>
+<script type="text/javascript"
+	src="/resources/js/jquery.cleditor.table.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$("#reviewboard_contents").cleditor({
+			width : 650,
+			height : 340
+	});
 		var getstar = "1";
 		check = document.getElementById("star-rating-" + getstar);
 		check.checked = true;
@@ -49,7 +61,6 @@
 		$("#boardList").click(function() {
 			location.href = "/reviewboardList.do"
 		});
-
 	});
 </script>
 <style type="text/css">
@@ -94,7 +105,7 @@
 }
 
 .table {
-	width: 78%;
+	width: 80%;
 	margin-left: 210px;
 	border: 1px solid #5fc5c5;
 	background-color: rgba(95, 197, 197, 0.1);
@@ -162,16 +173,23 @@
 								<td><input type="text" name="reviewboard_title"
 									id="reviewboard_title" class="form-control"></td>
 							</tr>
+
+							<!-- <textarea name="reviewboard_contents" id="reviewboard_contents"
+								class="form-control"></textarea> -->
+
 							<tr id="tr">
 								<th>내용</th>
 								<td><textarea name="reviewboard_contents"
 										id="reviewboard_contents" class="form-control"></textarea></td>
+
 							</tr>
+
 							<tr id="tr">
 								<th>첨부파일</th>
 								<td><input type="file" name="file" id="file"
 									class="btn btn-default"></td>
 							</tr>
+
 							<tr id="tr">
 								<th>별점</th>
 								<td>
@@ -214,7 +232,7 @@
 			</div>
 		</article>
 		<aside>
-				<div id="serviceWrap">
+			<div id="serviceWrap">
 				<div class="ss_myshop">
 					<a href="/siteMap.do"><span>주요서비스</span></a>
 				</div>
@@ -242,5 +260,6 @@
 		</div>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
+
 </body>
 </html>

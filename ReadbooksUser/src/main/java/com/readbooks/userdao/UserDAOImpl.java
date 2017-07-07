@@ -20,8 +20,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public int userCheck(UserVO user) {
-		return (Integer) session.selectOne("userCheck", user);
+	public UserVO userCheck(UserVO user) {
+		return session.selectOne("userCheck", user);
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,6 +26,8 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private JavaMailSender mailSender;
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	@RequestMapping(value = "/userjoin")
 	public String insertuser(HttpSession session) {
@@ -80,8 +83,13 @@ public class UserController {
 	public String userInsert(@ModelAttribute UserVO user) {
 		int result = 0;
 		String url = "";
+		String user_pw = user.getUser_pw();
+		String encoder = passwordEncoder.encode(user_pw);
+		user.setUser_pw(encoder);
 		result = userService.userInsert(user);
+
 		if (result == 1) {
+
 			url = "/home";
 		}
 		return url;
@@ -100,13 +108,24 @@ public class UserController {
 
 	@RequestMapping(value = "/userlogin", method = RequestMethod.POST)
 	public String userCheck(@ModelAttribute UserVO user, HttpSession session, Model model) {
-		int result = 0;
+		UserVO result = new UserVO();
 		String url = "";
+
+		String user_enterpw = user.getUser_pw();
 		result = userService.userCheck(user);
-		session.setAttribute("user_id", user.getUser_id());
-		if (result == 1) {
-			url = "/home.do";
+		String userdbpw = result.getUser_pw();
+
+		if (result.getUser_id() != null) {
+			if (passwordEncoder.matches(user_enterpw, userdbpw)) {
+				session.setAttribute("user_id", result.getUser_id());
+				url = "/home.do";
+			} else {
+				url = "/usercheck.do";
+			}
+		} else {
+			url = "/usercheck.do";
 		}
+
 		return "redirect:" + url;
 	}
 

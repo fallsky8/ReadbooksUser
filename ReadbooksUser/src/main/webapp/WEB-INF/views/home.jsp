@@ -94,7 +94,6 @@
 							<li class="swiper-slide"><c:forEach var="newbooklist"
 									items="${newbooklist }" begin="0" end="4">
 									<ul class="issue_book_list">
-
 										<li>
 											<div class="b_img">
 												<a
@@ -109,7 +108,6 @@
 												<dd class="b_author">${newbooklist.book_writer }</dd>
 											</dl>
 										</li>
-
 									</ul>
 								</c:forEach></li>
 							<li class="swiper-slide"><c:forEach var="newbooklist"
@@ -422,7 +420,6 @@
 												<dd class="b_author">${foreignbooklist.book_writer }</dd>
 											</dl>
 										</li>
-
 									</ul>
 								</c:forEach></li>
 
@@ -475,26 +472,7 @@
 			</div>
 		</nav>
 		<aside>
-			<div id="serviceWrap">
-				<div class="ss_myshop">
-					<a href="/siteMap.do"><span>주요서비스</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/usercheck.do"><span>로그인</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/userjoin.do"><span>회원가입</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/cartlistGet.do"><span>쇼핑카트</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/mylistGet.do"><span>마이리스트</span></a>
-				</div>
-				<div class="ss_myshop">
-					<a href="/orderSelect.do"><span>주문내역</span></a>
-				</div>
-			</div>
+			<jsp:include page="aside.jsp"></jsp:include>
 		</aside>
 		<div id="onTop" class="ss_top">
 			<a href="javascript://"><img

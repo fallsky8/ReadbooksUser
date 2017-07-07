@@ -22,8 +22,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int userCheck(UserVO user) {
-		int result = 0;
+	public UserVO userCheck(UserVO user) {
+		UserVO result = null;
 		result = userdao.userCheck(user);
 		return result;
 	}

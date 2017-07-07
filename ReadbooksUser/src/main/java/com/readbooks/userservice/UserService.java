@@ -6,7 +6,7 @@ public interface UserService {
 
 	public int userInsert(UserVO user);
 
-	public int userCheck(UserVO user);
+	public UserVO userCheck(UserVO user);
 
 	public UserVO userGet(UserVO user);
 
