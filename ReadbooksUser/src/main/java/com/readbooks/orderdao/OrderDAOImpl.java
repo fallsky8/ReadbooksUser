@@ -44,4 +44,9 @@ public class OrderDAOImpl implements OrderDAO {
 		return (OrderDTO) session.selectOne("orderUserGet", orderdto);
 	}
 
+	@Override
+	public int orderseq() {
+		return session.selectOne("orderseq");
+	}
+
 }

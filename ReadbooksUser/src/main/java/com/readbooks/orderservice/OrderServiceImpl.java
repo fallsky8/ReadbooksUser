@@ -61,4 +61,11 @@ public class OrderServiceImpl implements OrderService {
 		return userget;
 	}
 
+	@Override
+	public int orderseq() {
+		int seq = 0;
+		seq = orderdao.orderseq();
+		return seq;
+	}
+
 }

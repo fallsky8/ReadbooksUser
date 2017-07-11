@@ -56,4 +56,8 @@
 		select
 		user_id from tbl_user where user_email=#{user_email}
 	</select>
+	<select id="userfindpw" parameterType="user" resultType="user">
+		select * from tbl_user where user_id = #{user_id} and
+		user_email=#{user_email}
+	</select>
 </mapper>

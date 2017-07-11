@@ -137,8 +137,8 @@ html {
 }
 </style>
 </head>
-<body onresize="parent.resizeTo(400,380)"
-	onload="parent.resizeTo(400,380)">
+<body onresize="parent.resizeTo(450,400)"
+	onload="parent.resizeTo(450,400)">
 	<div id="wrapper">
 		<div id="box">
 			<div id="top_header">

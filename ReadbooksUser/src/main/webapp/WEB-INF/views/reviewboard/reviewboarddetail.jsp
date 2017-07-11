@@ -6,22 +6,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
 	type="text/css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
 	media="screen" />
 <title>리드북스에 오신 걸 환영합니다.</title>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 	var butChk = 0; //수정버튼과 삭제버튼을 구별하기 위한 변수
 	$(document).ready(function() {
@@ -138,7 +136,7 @@
 					<th>이미지</th>
 					<td colspan="3"><input type="image" width="320px"
 						height="240px"
-						src="resources/image/${reviewdetail.reviewboard_attachmentfile}"></td>
+						src="/resources/image/${reviewdetail.reviewboard_attachmentfile}"></td>
 				</tr>
 				<tr>
 					<th>별점</th>

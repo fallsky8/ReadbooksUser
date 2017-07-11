@@ -4,28 +4,18 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-<link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
-	media="screen" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="/resources/js/cart.js"></script>
 <script src="/resources/js/validation.js"></script>
 <title>리드북스 회원가입</title>
-<link
-	href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900'
-	rel='stylesheet' type='text/css'>
-<link
-	href='https://fonts.googleapis.com/css?family=Gafata|Nobile:400,700'
-	rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Roboto:400,300'
-	rel='stylesheet' type='text/css'>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
-	media="screen" />
 <link rel="stylesheet"
 	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
 	type="text/css">
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
+	media="screen" />
 <script type="text/javascript">
 	$(function() {
 		var checkAll = $('#agreementtotalch');

@@ -7,58 +7,19 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-<link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
-	media="screen" />
 <link rel="stylesheet"
 	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
 	type="text/css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/resources/js/cart.js"></script>
-<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
-	media="screen" />
-<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
-	media="screen" />
-<title>회사소개</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-<script>
-	$(function() {
-
-		$(window).scroll(function() {
-			if ($(this).scrollTop() > 450) {
-				$('.gnb_add_btn').addClass('abs_view');
-				$('.ss_top').show();
-				if (!$('.add_search').is(':visible')) {
-					$('#head').addClass('head_mini');
-				}
-			} else {
-				$('#head').removeClass('head_mini');
-				$('.gnb_add_btn').removeClass('abs_view');
-				$('.ss_top').hide();
-			}
-
-			if ($(this).scrollTop() > 200) {
-				$('#serviceWrap').addClass('ss_fixed');
-			} else {
-				$('#serviceWrap').removeClass('ss_fixed');
-			}
-		});
-		$("#onTop").click(function() {
-			$('html, body').animate({
-				scrollTop : 0
-			}, 350);
-		});
-
-		$(".hb_close").click(function() {
-			$(".head_banner").hide();
-		});
-	});
-</script>
-
-
+<script src="/resources/js/cart.js"></script>
+<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
+	media="screen" />
+<title>회사소개</title>
 <style type="text/css">
 #serviceWrap {
 	top: 260px !important;

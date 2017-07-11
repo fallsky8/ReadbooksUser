@@ -10,8 +10,6 @@
 	type="text/css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
@@ -44,13 +42,6 @@
 	color: #4afcdc;
 }
 
-/* .accordion h1:first-child { */
-/* 	border-radius: 10px 10px 0 0; */
-/* } */
-
-/* .accordion h1:last-of-type { */
-/* 	border-radius: 0 0 10px 10px; */
-/* } */
 .accordion div, .accordion p {
 	display: none;
 }
@@ -93,7 +84,6 @@
 	padding: 15px 35px;
 	font-size: 14px;
 	color: #333;
-	line-height: 1.3rem;
 }
 
 .accordion .opened-for-codepen {
@@ -133,13 +123,19 @@
 													}
 												});
 								$(allAtDepth).slideUp(10);
-
 								subItem.slideToggle(10);
 							}
 						});
 
 		$("#munui").click(function() {
-			location.href = "/inquireboardList.do";
+			var user_id = "${sessionScope.user_id}";
+			if (user_id != "") {
+				location.href = "/inquireboardList.do";
+
+			} else {
+				alert("비회원은 입장할 수 없습니다. 로그인 페이지로 이동합니다.")
+				location.href = "/usercheck.do";
+			}
 		})
 	});
 </script>
@@ -154,7 +150,7 @@
 				<a href="/noticeboardList.do" class="menu-item">고객센터</a> <a
 					href="/noticeboardList.do" class="menu-item">공지사항</a> <a
 					href="/faqboardList.do" class="menu-item">자주 묻는 질문</a> <a
-					href="/inquireboardList.do" class="menu-item">1:1 문의</a>
+					class="menu-item inquire" style="cursor: pointer;">1:1 문의</a>
 			</div>
 			<div class="accordion">
 				<h1>회원 FAQ</h1>
@@ -179,7 +175,7 @@
 					</div>
 				</c:forEach>
 			</div>
-			<div style="margin-left: 581px;">
+			<div style="margin-left: 638px;">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;찾으시는 질문이 없나요? <b><ins>문의 게시판</ins></b>에
 				문의해주세요. <input type="button" class="btn btn-default" value="문의하기"
 					id="munui">
@@ -188,6 +184,10 @@
 		<aside>
 			<jsp:include page="../aside.jsp"></jsp:include>
 		</aside>
+		<div id="onTop" class="ss_top">
+			<a href="javascript://"><img
+				src="http://image.bandinlunis.com/images/common/2014/btn_top.png"></a>
+		</div>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>

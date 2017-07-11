@@ -18,4 +18,6 @@ public interface OrderDAO {
 
 	public OrderDTO orderUserGet(OrderDTO orderdto);
 
+	public int orderseq();
+
 }

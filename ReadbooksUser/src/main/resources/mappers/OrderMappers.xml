@@ -3,15 +3,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.readbooks.orderdao.OrderDAO">
-
-	<sql id="deletecart">
-		delete from tbl_cart where user_id=#{user_id}
-	</sql>
 	<insert id="orderInsert" parameterType="java.util.Map">
 		<selectKey order="BEFORE" keyProperty="order_ordernumber"
 			resultType="String">
-			select
-			replace(from_date,' ','')
+			select replace(from_date,' ','')
 			from
 			(select
 			((select
@@ -26,14 +21,13 @@
 		insert all
 		<foreach collection="list" item="item">
 			into
-			tbl_order(order_number,user_id,book_number)
+			tbl_order(order_number,order_ordernumber,user_id,book_number,order_orderer,order_recipient,order_receiptaddress,order_requirement,order_quantity,order_orderprice,order_recipientphonenumber)
 			values
-			(#{order_ordernumber},'#{item.user_id}',3)
+			(#{item.order_number},#{order_ordernumber},#{item.user_id},#{item.book_number},#{item.order_orderer},#{item.order_recipient},#{item.order_receiptaddress},#{item.order_requirement},#{item.order_quantity},#{item.order_orderprice},#{item.order_recipientphonenumber})
 		</foreach>
 		select * from dual
-		<include refid="deletecart"></include>
 	</insert>
-		
+
 	<select id="orderSelect" parameterType="order" resultType="order">
 		select * from tbl_order where user_id = #{user_id}
 	</select>
@@ -46,13 +40,18 @@
 		select
 		c.*, b.*
 		from tbl_book b, tbl_cart c where
-		b.book_number in (select
+		b.book_number in
+		(select
 		c.book_number from tbl_cart
 		where c.user_id =
 		#{user_id})
 	</select>
-	
+
 	<select id="orderdetail" parameterType="order" resultType="order">
 		select * from tbl_order where order_number=#{order_number}
+	</select>
+	<select id="orderseq" resultType="int">
+		select order_number_seq.nextval
+		from dual
 	</select>
 </mapper> 

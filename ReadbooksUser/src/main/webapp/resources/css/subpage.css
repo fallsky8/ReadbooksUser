@@ -8,7 +8,7 @@
 	min-height: 100%;
 	width: 120px;
 	background-color: gba(255, 255, 255, 0.6);
-	box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.35);
+	box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.6);
 	will-change: transform;
 	transition: transform ease-in-out 0.3s, visibility ease-in-out 0.3s;
 	float: left;
@@ -20,12 +20,10 @@
 	height: 48px;
 	color: rgb(25, 27, 29);
 	transition: background-color 0.2s;
+	padding-top: 16px;
+	font-weight: bolder;
 }
 
 .side-menu a:hover {
 	background-color: rgba(0, 0, 0, 0.15);
-}
-
-.side-menu a:VISITED {
-	color: black;
 }

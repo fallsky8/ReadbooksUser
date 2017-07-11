@@ -4,16 +4,11 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-
-<link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
-	media="screen" />
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
 	media="screen" />
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-latest.js"></script>
 <link
 	href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900'
 	rel='stylesheet' type='text/css'>
@@ -22,7 +17,6 @@
 	rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,300'
 	rel='stylesheet' type='text/css'>
-
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 <link rel="stylesheet"

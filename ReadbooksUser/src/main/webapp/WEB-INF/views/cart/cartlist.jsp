@@ -1,4 +1,3 @@
-<%@page import="com.readbooks.cartvo.CartVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -6,18 +5,14 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-<link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
-	media="screen" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
 	type="text/css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
-	media="screen" />
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
@@ -168,8 +163,8 @@
 		<input type="hidden" id="user_id" name="user_id"
 			value="${sessionScope.user_id }"> <input type="hidden"
 			id="cart_buyquantity" name="cart_buyquantity" value="1"> <input
-			type="hidden" id="book_number" name="book_number">
-
+			type="hidden" id="book_number" name="book_number"> <input
+			type="hidden" id="cart_number" name="cart_number">
 	</form>
 	<form id="orderform">
 		<input type="hidden" id="user_id" name="user_id"
@@ -177,7 +172,6 @@
 			id="cart_subtotal" name="cart_subtotal"> <input type="hidden"
 			id="cart_totalquantity" name="cart_totalquantity"> <input
 			type="hidden" id="cart_totalprice" name="cart_totalprice">
-
 	</form>
 	<div id="main">
 		<article>
@@ -190,16 +184,13 @@
 							<article class="product" data-num="${cartbooklist.cart_number }"
 								data-val="${cartbooklist.book_number }">
 								<header>
-									<!-- 				삭제 이미지 -->
 									<a class="remove"> <!-- 					상품이미지 --> <img
 										src="/resources/image/${cartbooklist.book_image }"> <!-- 제거 -->
 										<h3>삭제하기</h3>
 									</a>
 								</header>
 								<div class="content">
-									<!-- 상품이름 -->
 									<h1>${cartbooklist.book_name}</h1>
-									<!-- 상품 설명 -->
 									<p>${cartbooklist.book_writer }
 									<div id="primary_nav_wrap">
 										<ul>

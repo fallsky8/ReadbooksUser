@@ -63,4 +63,11 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
+	@Override
+	public UserVO userfindpw(UserVO user) {
+		UserVO useridget = null;
+		useridget = userdao.userfindpw(user);
+		return useridget;
+	}
+
 }

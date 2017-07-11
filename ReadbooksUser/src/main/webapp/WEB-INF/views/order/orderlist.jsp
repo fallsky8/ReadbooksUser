@@ -5,26 +5,23 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-<link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
-	media="screen" />
 <link rel="stylesheet"
 	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
 	type="text/css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
-	media="screen" />
-<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
-	media="screen" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript" src="/resources/js/common.js"></script>
 <script type="text/javascript" src="/resources/js/datatable.js"></script>
 <script
 	src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/resources/js/cart.js"></script>
+<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
+	media="screen" />
 <title>주문내역</title>
 <script type="text/javascript">
 	$(function() {
@@ -132,6 +129,7 @@ div[class='row'] {
 			<table id="keywords">
 				<thead>
 					<tr>
+						<th><span>번호</span></th>
 						<th><span>주문번호</span></th>
 						<th><span>주문일자</span></th>
 						<th><span>주문내역</span></th>
@@ -143,7 +141,8 @@ div[class='row'] {
 				<tbody>
 					<c:forEach var="orderlist" items="${orderlist }">
 						<tr>
-							<td class="lalign">${orderlist.order_number }</td>
+							<td>${orderlist.order_number }</td>
+							<td class="lalign">${orderlist.order_ordernumber }</td>
 							<td>${orderlist.order_date }</td>
 							<td>언어의 온도 외 2권</td>
 							<td>${orderlist.order_quantity}</td>

@@ -97,22 +97,6 @@ public class ReviewBoardController {
 		return url;
 	}
 
-	/*
-	 * @RequestMapping(value = "/reviewboardInsert", method =
-	 * RequestMethod.POST) public String boardInsert(@ModelAttribute
-	 * ReviewBoardVO reviewboard, HttpServletRequest request) throws
-	 * IllegalStateException, IOException {
-	 * 
-	 * int result = 0; String url = "";
-	 * 
-	 * String attachmentfile = FileUploadUtil.fileUpload(reviewboard.getFile(),
-	 * request); reviewboard.setReviewboard_attachmentfile(attachmentfile);
-	 * result = reviewboardService.reviewboardInsert(reviewboard); if (result ==
-	 * 1) { url = "/reviewboardList.do"; }
-	 * 
-	 * return "redirect:" + url; }
-	 */
-
 	/* 글 상세보기 구현 */
 	@RequestMapping(value = "/reviewboardDetail", method = RequestMethod.GET)
 	public String boardDetail(@ModelAttribute ReviewBoardVO reviewboard, Model model) {
@@ -138,11 +122,6 @@ public class ReviewBoardController {
 		reviewupdateData = reviewboardService.reviewboardDetail(reviewboard);
 
 		model.addAttribute("reviewupdateData", reviewupdateData);
-
-		/*
-		 * System.out.println(reviewupdateData.getReviewboard_number());
-		 * System.out.println(reviewupdateData.getUser_id());
-		 */
 
 		return "reviewboard/reviewboardupdateform";
 	}
@@ -182,41 +161,6 @@ public class ReviewBoardController {
 		return "redirect:" + url;
 	}
 
-	/*
-	 * @RequestMapping(value = "/reviewboardUpdate", method =
-	 * RequestMethod.POST) public String boardUpdate(@ModelAttribute
-	 * ReviewBoardVO reviewboard, HttpServletRequest request) throws
-	 * IllegalStateException, IOException {
-	 * 
-	 * int result = 0; String url = ""; String reviewboard_attachmentfile = "";
-	 * 
-	 * System.out.println(reviewboard.getFile()); if
-	 * (!reviewboard.getFile().isEmpty()) {
-	 * System.out.println(reviewboard.getReviewboard_number());
-	 * System.out.println(reviewboard.getReviewboard_title());
-	 * 
-	 * FileUploadUtil.fileDelete(reviewboard.getReviewboard_attachmentfile(),
-	 * request); reviewboard_attachmentfile =
-	 * FileUploadUtil.fileUpload(reviewboard.getFile(), request);
-	 * reviewboard.setReviewboard_attachmentfile(reviewboard_attachmentfile);
-	 * 
-	 * } else { reviewboard.setReviewboard_attachmentfile("없음"); }
-	 * 
-	 * result = reviewboardService.reviewboardUpdate(reviewboard);
-	 * 
-	 * if (result == 1) { // url = "/board/boardList.do"; // 수정 후 목록으로 이동 // 아래
-	 * url은 수정 후 상세 페이지로 이동 url = "reviewboardDetail.do?reviewboard_number=" +
-	 * reviewboard.getReviewboard_number();
-	 * 
-	 * 
-	 * ra.addFlashAttribute("b_num", bvo.getB_num()); url =
-	 * "/board/boardDetail.do";
-	 * 
-	 * 
-	 * } return "redirect:" + url; }
-	 */
-
-	/* 글 삭제 구현하기 */
 
 	@RequestMapping(value = "/reviewboardDelete")
 	public String boardDelete(@ModelAttribute ReviewBoardVO reviewboard, HttpServletRequest request)

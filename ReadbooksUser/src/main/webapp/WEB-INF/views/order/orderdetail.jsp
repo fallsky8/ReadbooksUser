@@ -26,6 +26,8 @@
 			$("#sideMenu").hide();
 			$("#fooot").hide();
 			$("#headd").hide();
+			$("#printbtn").hide();
+			$("#listbtn").hide();
 			window.print();
 			window.location.reload(true);
 		});
@@ -115,7 +117,9 @@
 		<aside>
 			<jsp:include page="../aside.jsp"></jsp:include>
 		</aside>
-		<jsp:include page="../footer.jsp"></jsp:include>
+		<footer id="fooot">
+			<jsp:include page="../footer.jsp"></jsp:include>
+		</footer>
 	</div>
 </body>
 </html>

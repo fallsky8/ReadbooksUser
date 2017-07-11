@@ -18,4 +18,6 @@ public interface UserService {
 
 	public int updatepw(UserVO user);
 
+	public UserVO userfindpw(UserVO user);
+
 }

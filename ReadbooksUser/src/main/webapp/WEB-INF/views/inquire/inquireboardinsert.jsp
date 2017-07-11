@@ -18,12 +18,22 @@
 	media="screen" />
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
 	media="screen" />
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/jquery.cleditor.css">
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript"
+	src="/resources/js/jquery.cleditor.min.js"></script>
+<script type="text/javascript"
+	src="/resources/js/jquery.cleditor.table.min.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
 <title>문의하기</title>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$("#inquireboard_contents").cleditor({
+			width : 500,
+			height : 300
+		});
 		/* 저장 버튼 클릭 시 처리 이벤트 */
 		$("#inquireboardInsert").click(function() {
 			// 입력값 체크 

@@ -18,13 +18,12 @@
 	rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,300'
 	rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
-	media="screen" />
 <link rel="stylesheet"
 	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
 	type="text/css">
-
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
+	media="screen" />
 <script type="text/javascript">
 	$(function() {
 		$("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
@@ -555,6 +554,5 @@ a.btn.disabled, fieldset[disabled] a.btn {
 			<jsp:include page="../aside.jsp"></jsp:include>
 		</aside>
 	</div>
-	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

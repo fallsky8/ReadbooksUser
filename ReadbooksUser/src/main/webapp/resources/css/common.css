@@ -9,17 +9,34 @@
 * {
 	margin: 0;
 	padding: 0;
+	border: none;
+	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial,
+		sans-serif;
+	font-weight: 600px !important;
 }
 
 body {
 	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial,
-		sans-serif;
+		sans-serif !important;
+	font-size: 12px !important;
+	font-weight: 600px !important;
+}
+
+h2 {
+	font-weight: 600 !important;
+}
+
+.price {
+	font-weight: 600 !important;
+}
+
+.qt {
+	font-weight: 600 !important;
 }
 
 #main {
 	min-height: 100%;
 	margin-top: 70px;
-	padding: 0px;
 	display: -webkit-flex;
 	display: flex;
 	-webkit-flex-flow: row;
@@ -64,23 +81,6 @@ header {
 	/* 	border: 1px solid #eebb55; */
 }
 
-/* Too narrow to support three columns */
-@media all and (max-width: 640px) {
-	#main, #page {
-		-webkit-flex-flow: column;
-		flex-flow: column;
-	}
-	#main>article, #main>nav, #main>aside {
-		/* Return them to document order */
-		-webkit-order: 0;
-		order: 0;
-	}
-	#main>nav, #main>aside, header, footer {
-		min-height: 50px;
-		max-height: 50px;
-	}
-}
-
 /*Ignore me, I'm just page styling*/
 #social-platforms {
 	float: left;
@@ -119,7 +119,7 @@ header {
 	-webkit-transition: all .5s;
 	-moz-transition: all .5s;
 	transition: all .5s;
-	line-height: 1em
+	line-height: 1em;
 }
 
 .btn>span {
@@ -225,6 +225,7 @@ header {
 	-o-transition: all 1s ease;
 	-ms-transition: all 1s ease;
 	transition: all 1s ease;
+	box-sizing: border-box;
 }
 
 .footer #button:hover {
@@ -237,6 +238,7 @@ header {
 	-ms-transition: all 1s ease;
 	transition: all 1s ease;
 	position: relative;
+	box-sizing: border-box;
 }
 
 .footer {
@@ -253,6 +255,7 @@ header {
 	-ms-transition: all 1s ease;
 	transition: all 1s ease;
 	z-index: 999;
+	box-sizing: border-box;
 }
 
 .footer:hover {
@@ -261,7 +264,8 @@ header {
 	-o-transition: all 1s ease;
 	-ms-transition: all 1s ease;
 	transition: all 1s ease;
-	height: 15em;
+	height: 220px;
+	box-sizing: border-box;
 }
 
 .footer #container {
@@ -271,6 +275,7 @@ header {
 	position: relative;
 	top: 0;
 	left: 0;
+	box-sizing: border-box;
 }
 
 .footer #cont {
@@ -279,16 +284,19 @@ header {
 	width: 150px;
 	height: auto;
 	margin: 0 auto;
+	box-sizing: border-box;
 }
 
 .footer_center {
 	width: 500px;
 	text-align: center;
+	box-sizing: border-box;
 }
 
 .footer_center>nav {
 	margin-top: 30px;
 	margin-left: 100px;
+	box-sizing: border-box;
 }
 
 .footer h3 {
@@ -305,6 +313,7 @@ header {
 	float: left;
 	margin: 0;
 	padding: 0;
+	cursor: pointer;
 }
 
 #primary_nav_wrap ul a {
@@ -315,8 +324,6 @@ header {
 	font-size: 12px;
 	line-height: 32px;
 	padding: 0 15px;
-	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial,
-		sans-serif
 }
 
 #primary_nav_wrap ul li {
@@ -325,9 +332,11 @@ header {
 	margin: 0;
 	padding: 0;
 	position: relative;
+	box-sizing: border-box;
 }
 
 #primary_nav_wrap ul li.current-menu-item {
+	
 }
 
 #primary_nav_wrap ul li:hover {
@@ -381,14 +390,14 @@ header {
 
 .searchbar {
 	float: left;
-	border: 1px solid #5FC5C5;
+	border: 2px solid #5FC5C5;
 	margin-left: 35px;
 	margin-bottom: 12px;
 	margin-right: 10px;
 }
 
 .searchbar input {
-	height: 28px;
+	height: 26px;
 	width: 600px;
 	border: none;
 }
@@ -601,9 +610,11 @@ a.control_next {
 
 .product header, .product .content {
 	background-color: #fff;
-	border: 1px solid #ccc;
-	border-style: none none solid none;
 	float: left;
+}
+
+.divcontent {
+	border-style: none !important;
 }
 
 .product header {
@@ -649,9 +660,10 @@ a.control_next {
 .product .content {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	height: 140px;
+	height: 153.5px;
 	padding: 0 20px;
 	width: 75%;
+	border-bottom: 1px solid #ccc;
 }
 
 .product h1 {
@@ -673,7 +685,7 @@ a.control_next {
 	float: right;
 	font-size: 15px;
 	font-weight: 300;
-	line-height: 49px;
+	line-height: 48px;
 	margin: 0;
 	padding: 0 30px;
 }
@@ -683,8 +695,8 @@ a.control_next {
 	color: #fff;
 	float: right;
 	font-size: 22px;
-	font-weight: 300;
-	line-height: 49px;
+	font-weight: 600 !important;
+	line-height: 48px;
 	margin: 0;
 	padding: 0 30px;
 	-webkit-transition: margin .15s linear;
@@ -701,7 +713,7 @@ a.control_next {
 
 .qt {
 	font-size: 19px;
-	line-height: 50px;
+	line-height: 49px;
 	width: 70px;
 	text-align: center;
 }
@@ -711,6 +723,7 @@ a.control_next {
 	border: none;
 	font-size: 30px;
 	font-weight: 300;
+	line-height: 49px;
 	height: 100%;
 	padding: 0 20px;
 	-webkit-transition: background .2s linear;
@@ -724,14 +737,6 @@ a.control_next {
 	background: #53b5aa;
 	color: #fff;
 	cursor: pointer;
-}
-
-.qt-plus {
-	line-height: 50px;
-}
-
-.qt-minus {
-	line-height: 47px;
 }
 
 #site-footer {
@@ -790,11 +795,13 @@ a.control_next {
 	-ms-transition: all .2s linear;
 	-o-transition: all .2s linear;
 	transition: all .2s linear;
+	text-decoration: none;
 }
 
 .payment:hover {
 	color: #fff;
 	background: #429188;
+	text-decoration: none;
 }
 
 .type {
@@ -857,6 +864,7 @@ a.control_next {
 
 #serviceWrap {
 	top: 260px !important;
+	box-sizing: border-box;
 }
 
 .ss_fixed {
@@ -864,14 +872,16 @@ a.control_next {
 }
 
 #serviceWrap .ss_myshop {
-	border: 1px solid #e9e9e9;
+	border: 1px solid #e9e9e9 !important;
+	box-sizing: border-box;
 }
 
 #serviceWrap .ss_myshop a {
-	color: #5fc5c5;
-	font: normal 12 px;
-	font-weight: bold;
-	padding: 5px;
+	color: #5fc5c5 !important;
+	font: normal 12 px !important;
+	font-weight: bold !important;
+	padding: 5px !important;
+	box-sizing: border-box;
 }
 
 #tjfalstjr {

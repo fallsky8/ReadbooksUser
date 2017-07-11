@@ -21,10 +21,13 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/resources/js/validation.js"></script>
+<script src="/resources/js/cart.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <title>비밀번호 찾기</title>
 <script type="text/javascript">
 	$(function() {
+		$("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
 		var writeEnumber = $("#writeEnumber");
 		var idCheckBtn = $("#idCheckBtn");
 		var authNumHidden = $("#authNumHidden");
@@ -40,48 +43,49 @@
 					alert("메일 전송 실패!! 정확한 주소를 입력하세요.");
 				},
 				success : function(authNum) {
-					authNumHidden.val(authNum);
-					dialog12 = $("#checkAuthNu").dialog();
-					//초기값
 
-					var minute = 2;
-					var second = 59;
-					// 초기화
-					$(".countTimeMinute").html(minute);
+					if (authNum) {
+						authNumHidden.val(authNum);
+						dialog12 = $("#checkAuthNu").dialog();
+						//초기값
 
-					$(".countTimeSecond").html(second);
-					var timer = setInterval(function() {
-						$("#checkAuthNu").bind("dialogclose", function() {
-							clearInterval(timer);
-						})
-						// 설정
+						var minute = 2;
+						var second = 59;
+						// 초기화
 						$(".countTimeMinute").html(minute);
 
 						$(".countTimeSecond").html(second);
-						if (second == 0 && minute == 0) {
-							$(".ui-dialog-titlebar-close").click();
-						} else {
+						var timer = setInterval(function() {
+							$("#checkAuthNu").bind("dialogclose", function() {
+								clearInterval(timer);
+							})
+							// 설정
+							$(".countTimeMinute").html(minute);
 
-							second--;
+							$(".countTimeSecond").html(second);
+							if (second == 0 && minute == 0) {
+								$(".ui-dialog-titlebar-close").click();
+							} else {
 
-							// 분처리
+								second--;
 
-							if (second < 0) {
+								// 분처리
 
-								minute--;
+								if (second < 0) {
 
-								second = 59;
+									minute--;
+
+									second = 59;
+
+								}
 
 							}
 
-						}
+						}, 1000); /* millisecond 단위의 인터벌 */
 
-					}, 1000); /* millisecond 단위의 인터벌 */
-
-					if (authNum) {
 						alert("메일 보내기 성공");
 					} else {
-						alert("메일 보내기 실패");
+						alert("입력하신 아이디와 이메일이 일치하지 않습니다.");
 					}
 				}
 			});
@@ -89,51 +93,86 @@
 		$("#backfind").click(function() {
 			history.go(-1);
 		});
-		$("#checkEnumBtn").click(function() {
-			if (findid.val() == null || findid.val() == "") {
-				alert("인증번호 입력하세요");
-			} else {
-				if (findid.val() == authNumHidden.val()) {
-					alert("인증 완료");
-					eNumcheckHidden.val("y");
-					$(".ui-dialog-titlebar-close").click();
-					$("#inputs").hide();
-					$("#updatediv").show();
-					$("#updatepw").click(function() {
-						$.ajax({
-							url : "/updatePW.do",
-							type : "POST",
-							data : $("#updateinfoform").serialize(),
-							success : function(data) {
-								alert("비밀번호가 변경되었습니다.");
-								window.close();
+		$("#checkEnumBtn")
+				.click(
+						function() {
+							if (findid.val() == null || findid.val() == "") {
+								alert("인증번호 입력하세요");
+							} else {
+								if (findid.val() == authNumHidden.val()) {
+									alert("인증 완료");
+									eNumcheckHidden.val("y");
+									$(".ui-dialog-titlebar-close").click();
+									$("#inputs").hide();
+									$("#updatediv").show();
+									$("#updatepw")
+											.click(
+													function() {
+														var userpw = $("#user_pw");
+														var userpwval = userpw
+																.val();
+														var userpwck = $("#user_pwck");
+														var userpwckval = userpwck
+																.val();
+														var pattern = /^[a-z]{1}[a-z0-9]{4,18}$/;
+
+														alert(userpwval);
+														alert(userpwckval);
+
+														if (userpwval != ""
+																&& userpwckval != "") {
+															if (pattern
+																	.test(userpwval)) {
+																if (userpwval == userpwckval) {
+																	$
+																			.ajax({
+																				url : "/updatePW.do",
+																				type : "POST",
+																				data : $(
+																						"#updateinfoform")
+																						.serialize(),
+																				success : function(
+																						data) {
+																					alert("비밀번호가 변경되었습니다.");
+																					window
+																							.close();
+																				}
+																			});
+																} else if (userpwval != userpwckval) {
+																}
+															} else {
+															}
+														} else if (userpwval == ""
+																&& userpwckval == "") {
+															alert("비밀번호를 입력하세요");
+														} else if (userpwval == "") {
+														} else if (userpwckval == "") {
+														}
+
+													});
+
+								} else {
+									alert("인증 실패");
+								}
 							}
+							if (eNumcheckHidden.val() == "n") {
+								alert("인증번호를 확인하세요")
+								findid.focus();
+								return false;
+							}
+
+							if (findid.val() != authNumHidden.val()) {
+								alert("인증번호가 틀렸습니다")
+								findid.focus();
+								return false;
+							}
+							if (findid.val() == null || findid.val() == "") {
+								alert("인증번호를 입력하세요");
+								findid.focus();
+								return false;
+							}
+
 						});
-
-					});
-
-				} else {
-					alert("인증 실패");
-				}
-			}
-			if (eNumcheckHidden.val() == "n") {
-				alert("인증번호를 확인하세요")
-				findid.focus();
-				return false;
-			}
-
-			if (findid.val() != authNumHidden.val()) {
-				alert("인증번호가 틀렸습니다")
-				findid.focus();
-				return false;
-			}
-			if (findid.val() == null || findid.val() == "") {
-				alert("인증번호를 입력하세요");
-				findid.focus();
-				return false;
-			}
-
-		});
 	});
 </script>
 <style type="text/css">
@@ -200,7 +239,7 @@ html {
 	position: relative;
 }
 
-#inputs #user_id, #inputs #user_email {
+#inputs #user_id, #inputs #user_email, #user_pw, #user_pwck {
 	width: 300px;
 	height: 55px;
 	position: relative;
@@ -212,7 +251,27 @@ html {
 	-webkit-text-stroke: 0.1px;
 }
 
-#user_id, #user_email {
+#mailsend, #updatepw {
+	margin-left: 22px;
+}
+
+#checkEnumBtn {
+	margin-left: 12px;
+}
+
+#inputs #findid {
+	width: 250px;
+	height: 55px;
+	position: relative;
+	margin: 0 auto;
+	display: block;
+	margin-bottom: -10px;
+	padding: 15px;
+	box-sizing: border-box;
+	-webkit-text-stroke: 0.1px;
+}
+
+#user_id, #user_email, #user_pw, #user_pwck, #findid {
 	color: #5fc5c5;
 	background-color: #fff;
 	border: 1px solid #5fc5c5;
@@ -242,8 +301,8 @@ html {
 }
 </style>
 </head>
-<body onresize="parent.resizeTo(400,380)"
-	onload="parent.resizeTo(400,380)">
+<body onresize="parent.resizeTo(450,400)"
+	onload="parent.resizeTo(450,400)">
 	<div id="wrapper">
 		<div id="box">
 			<div id="top_header">
@@ -252,27 +311,42 @@ html {
 			<div id="inputs">
 				<div class='container'>
 					<form id="findpwform">
-						<br> <br> <input type='email' id="user_id"
-							name="user_id" placeholder="아이디를 입력해주세요." /> <br> <input
-							type='email' id="user_email" name="user_email"
-							placeholder="이메일을 입력해주세요." />
+						<br> <br> <input type='text' id="user_id" name="user_id"
+							placeholder="아이디를 입력해주세요." /> <br> <input type='email'
+							id="user_email" name="user_email" placeholder="이메일을 입력해주세요." />
 					</form>
 				</div>
 				<br> <input type="button" id="mailsend" value="메일인증"
 					class="btn btn-info"> <input type="button" id="backfind"
 					value="뒤로가기" class="btn btn-info">
 			</div>
-			<div id="updatediv" style="display: none;">
-				<div class='container'>
-					<form id="updateinfoform">
+			<form id="updateinfoform" class="form-horizontal">
+				<br> <br>
+				<div id="updatediv" class="control-group" style="display: none;">
+					<div class='container controls'>
 						<input type='password' id="user_pw" name="user_pw"
-							placeholder="변경할 비밀번호를 입력해주세요." /> <br> <input
-							type='hidden' id="user_email" name="user_email"
+							placeholder="변경할 비밀번호를 입력해주세요." class="updatepwpw"
+							required="required" pattern="^[a-z]{1}[a-z0-9]{4,18}$"
+							data-validation-pattern-message="비밀번호 : 영문으로 시작하는  4~18byte + 숫자" />
+						<br>
+						<p class="help-block"
+							style="color: #E74652; position: relative; top: -4px;"></p>
+						<input type='hidden' id="user_email" name="user_email"
 							value="${sessionScope.updateemail }" />
-					</form>
+					</div>
+				</div>
+				<div class='container control-group'>
+					<div class="controls">
+						<input type='password' name='user_pwck' id='user_pwck'
+							maxlength="50" size="30" placeholder="비밀번호확인" required="required"
+							data-validation-match-match="user_pw"
+							data-validation-match-message="비밀번호가 일치하지 않습니다." /><br />
+						<p class="help-block"
+							style="color: #E74652; position: relative; top: -4px;"></p>
+					</div>
 				</div>
 				<input type="button" id="updatepw" value="변경하기" class="btn btn-info">
-			</div>
+			</form>
 		</div>
 	</div>
 	<div id="checkAuthNu" style="display: none;">

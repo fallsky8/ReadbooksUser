@@ -16,4 +16,6 @@ public interface UserDAO {
 	public UserVO findid(UserVO user);
 
 	public int updatepw(UserVO user);
+
+	public UserVO userfindpw(UserVO user);
 }

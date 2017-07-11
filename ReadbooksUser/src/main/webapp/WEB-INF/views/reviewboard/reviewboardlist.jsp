@@ -7,13 +7,13 @@
 <html>
 <head>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet"
 	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
 	type="text/css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
@@ -107,7 +107,6 @@
 	margin-left: 200px;
 	border: 1px solid #5fc5c5;
 	background-color: rgba(95, 197, 197, 0.1);
-	border: 1px solid #5fc5c5;
 }
 
 #btd1, #btd2 {
@@ -238,7 +237,7 @@
 							</c:when>
 							<c:otherwise>
 								<tr style="background-color: rgba(95, 197, 197, 0.1);">
-									<td>등록된 게시물이 존재하지 않습니다.</td>
+									<td colspan="5">등록된 게시물이 존재하지 않습니다.</td>
 								</tr>
 							</c:otherwise>
 						</c:choose>

@@ -206,6 +206,7 @@ public class UserController {
 	@RequestMapping(value = "/sendPW", method = RequestMethod.POST)
 	@ResponseBody
 	public String sendPW(@ModelAttribute UserVO user, HttpServletRequest request, HttpSession session) {
+		UserVO result = new UserVO();
 
 		// 난수 발생
 		String authNum = randomNum() + "";
@@ -215,22 +216,29 @@ public class UserController {
 		String title = "비밀번호 찾기 메일 인증 코드";
 		String content = "인증 코드 [" + authNum + "]";
 
-		try {
-			MimeMessage message = mailSender.createMimeMessage();
-			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
-			messageHelper.setFrom(from); // 보내는사람 생략하거나 하면 정상작동을 안함
-			messageHelper.setTo(memberEmail); // 받는사람 이메일
-			messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
-			messageHelper.setText(content); // 메일 내용
+		result = userService.userfindpw(user);
+		System.out.println(result);
 
-			mailSender.send(message);
+		if (result != null) {
+			try {
+				MimeMessage message = mailSender.createMimeMessage();
+				MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+				messageHelper.setFrom(from); // 보내는사람 생략하거나 하면 정상작동을 안함
+				messageHelper.setTo(memberEmail); // 받는사람 이메일
+				messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+				messageHelper.setText(content); // 메일 내용
 
-		} catch (MessagingException e) {
-			e.printStackTrace();
+				mailSender.send(message);
 
+			} catch (MessagingException e) {
+				e.printStackTrace();
+
+			}
+			session.setAttribute("updateemail", user.getUser_email());
+			return authNum;
+		} else {
+			return null;
 		}
-		session.setAttribute("updateemail", user.getUser_email());
-		return authNum;
 
 	}
 

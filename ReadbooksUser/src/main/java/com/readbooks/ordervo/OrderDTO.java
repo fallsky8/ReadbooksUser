@@ -1,9 +1,10 @@
 package com.readbooks.ordervo;
 
+import java.util.List;
+
 public class OrderDTO {
-	//오더
+	// 오더
 	private int order_number;
-	private String order_password;
 	private String order_orderer;
 	private String order_recipient;
 	private String order_date;
@@ -11,9 +12,10 @@ public class OrderDTO {
 	private String order_receiptaddress;
 	private String order_requirement;
 	private String order_status;
-	private String order_way;
 	private int order_quantity;
 	private int order_ordernumber;
+	private int order_orderprice;
+	private String order_recipientphonenumber;
 	// 카트정보
 	private int cart_number;
 	private int cart_buyquantity;
@@ -51,6 +53,22 @@ public class OrderDTO {
 		super();
 	}
 
+	public String getOrder_recipientphonenumber() {
+		return order_recipientphonenumber;
+	}
+
+	public void setOrder_recipientphonenumber(String order_recipientphonenumber) {
+		this.order_recipientphonenumber = order_recipientphonenumber;
+	}
+
+	public int getOrder_orderprice() {
+		return order_orderprice;
+	}
+
+	public void setOrder_orderprice(int order_orderprice) {
+		this.order_orderprice = order_orderprice;
+	}
+
 	public int getOrder_number() {
 		return order_number;
 	}
@@ -73,14 +91,6 @@ public class OrderDTO {
 
 	public void setBook_number(int book_number) {
 		this.book_number = book_number;
-	}
-
-	public String getOrder_password() {
-		return order_password;
-	}
-
-	public void setOrder_password(String order_password) {
-		this.order_password = order_password;
 	}
 
 	public String getOrder_orderer() {
@@ -137,14 +147,6 @@ public class OrderDTO {
 
 	public void setOrder_status(String order_status) {
 		this.order_status = order_status;
-	}
-
-	public String getOrder_way() {
-		return order_way;
-	}
-
-	public void setOrder_way(String order_way) {
-		this.order_way = order_way;
 	}
 
 	public int getOrder_quantity() {

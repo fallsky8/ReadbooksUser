@@ -14,7 +14,7 @@ public class OrderVO {
 	private String order_status;
 	private String order_way;
 	private int order_quantity;
-	private int order_ordernumber;
+	private long order_ordernumber;
 
 	public OrderVO() {
 		super();
@@ -73,7 +73,7 @@ public class OrderVO {
 	}
 
 	public void setOrder_date(String order_date) {
-		this.order_date = order_date.substring(0, 10);
+		this.order_date = order_date;
 	}
 
 	public String getOrder_paymentdate() {
@@ -124,12 +124,12 @@ public class OrderVO {
 		this.order_quantity = order_quantity;
 	}
 
-	public int getOrder_ordernumber() {
+	public long getOrder_ordernumber() {
 		return order_ordernumber;
 	}
 
-	public void setOrder_ordernumber(int order_ordernumber) {
+	public void setOrder_ordernumber(long order_ordernumber) {
 		this.order_ordernumber = order_ordernumber;
 	}
-	
+
 }

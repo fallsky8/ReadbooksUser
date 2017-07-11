@@ -145,6 +145,7 @@ a {
 	margin: 0;
 	float: left;
 	width: 100%;
+	text-decoration: none;
 }
 
 #primaryNav li {
@@ -165,18 +166,14 @@ a {
 	border: 2px solid #b5d9ea;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
-	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 2px;
-	-moz-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 2px; /* FF 3.5+ */
+	-webkit-box-shadow: rgba(198, 255, 255, 0.5) 4px 4px 4px;
+	-moz-box-shadow: rgba(198, 255, 255, 0.5) 4px 4px 4px; /* FF 3.5+ */
 }
 
 #primaryNav li a:hover {
-	background-color: rgba(0, 0, 0, 0.15);
+	background-color: rgba(198, 255, 255, 0.15);
 	border-color: #97bdcf;
-}
-
-#primaryNav li a:hover {
-	background-color: rgba(0, 0, 0, 0.15);
-	border-color: #97bdcf;
+	text-decoration: none;
 }
 
 a:link:before, a:visited:before {
@@ -184,6 +181,7 @@ a:link:before, a:visited:before {
 	text-transform: uppercase;
 	font-size: 10px;
 	margin-bottom: 5px;
+	text-decoration: none;
 }
 
 #primaryNav li a:link:before, #primaryNav li a:visited:before {
@@ -206,7 +204,7 @@ a:link:before, a:visited:before {
 
 #primaryNav li li a:hover {
 	border-color: #b8da83;
-	background-color: rgba(0, 0, 0, 0.15);
+	background-color: rgba(198, 255, 255, 0.15);
 }
 
 #primaryNav li li:first-child {
@@ -240,7 +238,7 @@ a:link:before, a:visited:before {
 }
 
 #primaryNav li li li a:hover {
-	background-color: rgba(0, 0, 0, 0.15);
+	background-color: rgba(198, 255, 255, 0.15);
 	border-color: #b1bbbb;
 }
 
@@ -251,6 +249,7 @@ a:link:before, a:visited:before {
 	float: right;
 	max-width: 50%;
 	margin-right: 10px;
+	text-decoration: none;
 }
 
 #utilityNav li {
@@ -272,19 +271,29 @@ a:link:before, a:visited:before {
 		top left repeat-x;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
-	-webkit-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 2px;
-	-moz-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 2px; /* FF 3.5+ */
+	-webkit-box-shadow: rgba(198, 255, 255, 0.5) 4px 4px 4px;
+	-moz-box-shadow: rgba(198, 255, 255, 0.5) 4px 4px 4px; /* FF 3.5+ */
 }
 
 #utilityNav li a:hover {
-	background-color: rgba(0, 0, 0, 0.15);
+	background-color: rgba(198, 255, 255, 0.15);
 	border-color: #b1bbbb;
+	text-decoration: none;
 }
 
 #utilityNav li a:link:before, #utilityNav li a:visited:before {
 	color: #ccae14;
 	font-size: 9px;
 	margin-bottom: 3px;
+	text-decoration: none;
+}
+
+#sideMenu a:NTH-CHILD(4) {
+	background-color: rgba(0, 0, 0, 0.15);
+}
+
+.footer_center #primary_nav_wrap li:NTH-CHILD(4) {
+	background-color: #5fc5c5;
 }
 </style>
 </head>
@@ -298,7 +307,7 @@ a:link:before, a:visited:before {
 				<a href="/introReadbooks.do" class="menu-item">회사소개</a> <a
 					href="/serviceAgreement.do" class="menu-item">이용약관</a> <a
 					href="/collectiveAgreement.do" class="menu-item">개인정보 처리 방침</a> <a
-					href="/siteMap.do" class="menu-item">주요 서비스</a>
+					href="/siteMap.do" class="menu-item">사이트맵</a>
 			</div>
 
 			<div class="sitemap">

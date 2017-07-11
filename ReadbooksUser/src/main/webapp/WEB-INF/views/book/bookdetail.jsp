@@ -10,18 +10,27 @@
 	type="text/css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
-	media="screen" />
-<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
-	media="screen" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="/resources/js/datatable.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/resources/js/cart.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.min.js"></script>
+<link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
+	media="screen" />
 <title>${detailbook.book_name}</title>
 <script type="text/javascript">
 	$(function() {
+		$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+			event.preventDefault();
+			$(this).ekkoLightbox();
+		});
 		$(".btnpay").click(function() {
 			var b_num = "${detailbook.book_number}";
 			$("#book_number").val(b_num);
@@ -53,11 +62,32 @@
 }
 
 .product header {
-	height: 300px !important;
+	height: 370px !important;
+	width: 220px;
+}
+
+.product .content {
+	border-top: 1px solid #ccc;
+	border-bottom: 1px soild #ccc !important;
 }
 
 #main {
 	margin-left: 50px;
+}
+
+.modal-content {
+	width: 500px;
+	height: 735px;
+}
+
+.modal-body, .img-fluid {
+	width: 100%;
+	height: 700px;
+}
+
+.ekko-lightbox-item fade in show {
+	width: 100%;
+	height: 700px;
 }
 </style>
 </head>
@@ -80,12 +110,13 @@
 
 						<article class="product" data-num="${detailbook.book_number }">
 							<header>
-								<!-- 				삭제 이미지 -->
-								<!-- 					상품이미지 -->
-								<img src="/resources/image/${detailbook.book_image }">
-								<!-- 제거 -->
+								<a href="/resources/image/${detailbook.book_image }"
+									data-toggle="lightbox"> <img
+									src="/resources/image/${detailbook.book_image }"
+									class="img-fluid">
+								</a> <img src="/resources/image/${detailbook.book_image }">
 							</header>
-							<div class="content">
+							<div class="content divcontent">
 								<!-- 상품이름 -->
 								<h1>${detailbook.book_name}</h1>
 								<!-- 상품 설명 -->
@@ -154,7 +185,5 @@
 		</div>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
-
-
 </body>
 </html>

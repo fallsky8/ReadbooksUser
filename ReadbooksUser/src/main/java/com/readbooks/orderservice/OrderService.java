@@ -15,10 +15,11 @@ public interface OrderService {
 	public OrderVO orderdetail(OrderVO order);
 
 	public List<OrderVO> orderlist(OrderVO order);
-	
+
 	public List<OrderDTO> orderInfoGet(OrderDTO orderdto);
 
 	public OrderDTO orderUserGet(OrderDTO orderdto);
 
+	public int orderseq();
 
 }

@@ -7,8 +7,6 @@
 <head>
 <title>리뷰게시판 글쓰기</title>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-<link rel="stylesheet" href="/resources/css/swipers.css" type="text/css"
-	media="screen" />
 <link rel="stylesheet"
 	href="http://www.bandinlunis.com/common/css/newMain.1.06.css?v=20170623"
 	type="text/css">
@@ -16,51 +14,56 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/jquery.cleditor.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="/resources/js/cart.js"></script>
 <link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
 	media="screen" />
-<title>리드북스에 오신 걸 환영합니다.</title>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript"
 	src="/resources/js/jquery.cleditor.min.js"></script>
 <script type="text/javascript"
 	src="/resources/js/jquery.cleditor.table.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("#reviewboard_contents").cleditor({
-			width : 650,
-			height : 340
-		});
-		var getstar = "1";
-		check = document.getElementById("star-rating-" + getstar);
-		check.checked = true;
-		// star rating
-		$(".star-rating__input").click(function() {
-			var star = $("input:radio[name='reviewboard_star']:checked").val();
-		});
-		var locked = 0;
-		/* 저장 버튼 클릭 시 처리 이벤트 */
-		$("#boardInsert").click(function() {
+	$(function() {
+		$(document)
+				.ready(
+						function() {
+							$("#reviewboard_contents").cleditor({
+								width : 650,
+								height : 340
+							});
+							var getstar = "1";
+							check = document.getElementById("star-rating-"
+									+ getstar);
+							check.checked = true;
+							// star rating
+							$(".star-rating__input")
+									.click(
+											function() {
+												var star = $(
+														"input:radio[name='reviewboard_star']:checked")
+														.val();
+											});
+							var locked = 0;
 
-			$("#f_writeForm").attr({
-				"method" : "POST",
-				"action" : "/reviewboardInsert.do"
-			});
-			$("#f_writeForm").submit();
+							/* 저장 버튼 클릭 시 처리 이벤트 */
+							$("#boardInsert").click(function() {
 
-		});
+								$("#f_writeForm").attr({
+									"method" : "POST",
+									"action" : "/reviewboardInsert.do"
+								});
+								$("#f_writeForm").submit();
 
-		/* 목록 버튼 클릭 시 처리 이벤트 */
-		$("#boardList").click(function() {
-			location.href = "/reviewboardList.do"
-		});
+							});
+
+							/* 목록 버튼 클릭 시 처리 이벤트 */
+							$("#boardList").click(function() {
+								location.href = "/reviewboardList.do"
+							});
+						});
 	});
 </script>
 <style type="text/css">
