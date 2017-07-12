@@ -77,12 +77,12 @@ img {
 	width: 80%;
 	height: 50px;
 	margin-left: 1%;
-	font-size: 1em;
+	font-size: 12px;
 	font-weight: 300;
 }
 
 #accordian .title h1 {
-	font-size: 2em;
+	font-size: 24px;
 	font-weight: 400;
 	margin-top: 10px;
 }
@@ -94,7 +94,7 @@ img {
 	color: #aaa;
 	background: #FFF;
 	text-align: center;
-	font-size: 3em;
+	font-size: 36px;
 	border-radius: 50%;
 	margin-top: 5px;
 	padding-top: 0px;
@@ -107,7 +107,7 @@ img {
 }
 
 #accordian .content {
-	padding: 1.3em 1.3em;
+	padding: 1.36px 1.36px;
 	width: 100%;
 	margin: 0 auto;
 	background: #FFF;
@@ -117,7 +117,7 @@ img {
 }
 
 #accordian .content label {
-	font-size: 1.3em;
+	font-size: 13px;
 }
 
 #accordian .content input {
@@ -125,7 +125,7 @@ img {
 	border: 1px solid #ccc;
 	border-radius: 3px;
 	display: inline-block;
-	font-size: 2em;
+	font-size: 24px;
 }
 
 #accordian .content button {
@@ -135,7 +135,7 @@ img {
 	width: 200px;
 	border: 0;
 	padding: 5px 15px;
-	font-size: 1.6em;
+	font-size: 19px;
 	color: #FFF;
 	border-bottom: 3px solid #4da7ff;
 	border-radius: 2px;
@@ -149,7 +149,7 @@ img {
 	width: 200px;
 	border: 0;
 	padding: 5px 15px;
-	font-size: 1.6em;
+	font-size: 19px;
 	color: #FFF;
 	border-bottom: 3px solid #4da7ff;
 	border-radius: 2px;
@@ -166,7 +166,7 @@ img {
 	width: 200px;
 	border: 0;
 	padding: 5px 15px;
-	font-size: 1.6em;
+	font-size: 19px;
 	color: #FFF;
 	border-bottom: 3px solid #4da7ff;
 	border-radius: 2px;
@@ -215,7 +215,7 @@ img {
 	display: inline-block;
 	width: 100%;
 	padding: 5px;
-	font-size: 2em;
+	font-size: 24px;
 	line-height: 1;
 	border: 0;
 	border-radius: 0;
@@ -288,7 +288,7 @@ img {
 	margin-right: -100%;
 	border-bottom-right-radius: 3px;
 	border-top-right-radius: 3px;
-	width: 70px;
+	width: 80px;
 	height: 40px;
 	top: 5px;
 }
@@ -319,7 +319,7 @@ img {
 }
 
 #accordian #payment span.divider {
-	font-size: 2em;
+	font-size: 24px;
 	display: inline-block;
 	padding-left: 5px;
 	padding-right: 5px;
@@ -331,7 +331,7 @@ img {
 	display: inline-block;
 	width: 100%;
 	padding: 5px;
-	font-size: 2em;
+	font-size: 24px;
 	line-height: 1;
 	border: 0;
 	border-radius: 0;
@@ -348,13 +348,13 @@ img {
 }
 
 #accordian .credit_card {
-	padding: 3em 1em;
+	padding: 36px 12px;
 }
 
 #accordian .accepted {
 	width: 100%;
-	padding-right: 1em;
-	padding-left: 1em;
+	padding-right: 12px;
+	padding-left: 12px;
 	margin-top: 30px;
 }
 
@@ -365,13 +365,13 @@ img {
 
 #accordian .secured {
 	margin-top: 5px;
-	padding-left: 1em;
-	padding-right: 1em;
+	padding-left: 12px;
+	padding-right: 12px;
 }
 
 #accordian .secured .lock {
 	float: left;
-	padding: 3px;
+	padding: 12px;
 	width: 25%;
 }
 
@@ -384,11 +384,11 @@ img {
 }
 
 #accordian #ordered {
-	padding-right: 1em;
+	padding-right: 12px;
 }
 
 #accordian #reviewed {
-	padding-left: 1em;
+	padding-left: 12px;
 }
 
 #accordian .products {
@@ -413,8 +413,7 @@ img {
 #accordian .products .product_details span {
 	display: table-cell;
 	vertical-align: middle;
-	margin-top: 30%;
-	font-size: 1.5em;
+	font-size: 18px;
 	color: #aaa;
 }
 
@@ -425,7 +424,7 @@ img {
 }
 
 #accordian .totals .subtitle {
-	font-size: 2em;
+	font-size: 24px;
 	display: block;
 	text-align: right;
 	color: #aaa;
@@ -441,7 +440,7 @@ img {
 #accordian .final {
 	width: 100%;
 	float: left;
-	font-size: 2.2em;
+	font-size: 2.24px;
 	text-align: right;
 	color: #888;
 }
@@ -454,7 +453,7 @@ img {
 
 #accordian #reviewed .title {
 	width: 49%;
-	font-size: 1.8em;
+	font-size: 21px;
 	float: left;
 }
 
@@ -467,7 +466,7 @@ img {
 #accordian #reviewed .billing .address_reviewed, #accordian #reviewed .shipping .address_reviewed,
 	#accordian #reviewed .payment .payment_reviewed {
 	color: #aaa;
-	font-size: 1.2em;
+	font-size: 20px;
 	height: 100px;
 	width: 50%;
 	float: left;
@@ -493,7 +492,7 @@ img {
 	padding-top: 15px;
 	padding-bottom: 10px;
 	color: #fff;
-	font-size: 2em;
+	font-size: 24px;
 	text-decoration: none;
 	background: #5fc5c5;
 	text-align: center;
@@ -666,11 +665,16 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 		transform: scale(1);
 		-webkit-transform: scale(1);
 	}
+	.full-price {
+		width: 20%;
+	}
+	.book_name {
+		width: 30%;
+	}
 }
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
-
 		changeTotal();
 		function changeTotal() {
 			var price = 0;
@@ -705,6 +709,7 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 			var cardcompany = $("#card_status").val();
 			$("div.payment_reviewed .number_hidden").html(cardnumber);
 			$("div.payment_reviewed .method").html(cardcompany);
+
 		}
 		$("#card_check").click(function() {
 			cardInfo();
@@ -712,8 +717,7 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 
 		//1번 구매자정보 계속버튼 클릭시
 		$(".continue").click(function() {
-			var book_number = parents.find(".book_number").text();
-			alert(book_number + "북넘버");
+
 		});
 	});
 
@@ -902,10 +906,10 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 									</div>
 									<span class="divider">-</span>
 									<div class="year_select">
-										<select name="exp_year" value="" id="exp_year" placeholder=""
-											data-trigger="change" data-type="name" data-required="true"
+										<select name="exp_year" id="exp_year" data-trigger="change"
+											data-type="name" data-required="true"
 											data-error-message="카드 만료날짜를 입력하세요 ">
-											<option value="1">17 년</option>
+											<option value="1" selected="selected">17 년</option>
 											<option value="2">18 년</option>
 											<option value="3">19 년</option>
 											<option value="4">20 년</option>
@@ -948,11 +952,9 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 							<p class="security info">보안관련</p>
 						</div>
 					</div>
-					<button id="card_check">카드 확인</button>
+					<input type="button" id="card_check" value="카드 확인">
 
 				</div>
-							결제 정보  끝         
-							주문정보 확인 시작 
 				<div class="step" id="step4">
 					<div class="number">
 						<span>4</span>
@@ -1018,12 +1020,12 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 									class="phone"></span>
 							</div>
 						</div>
-						<!-- 						<div class="payment"> -->
-						<!-- 							<span class="title">결제정보 : </span> -->
-						<!-- 							<div class="payment_reviewed"> -->
-						<!-- 								<span class="method">Visa</span> <span class="number_hidden">xxxx-xxxx-xxxx-1111</span> -->
-						<!-- 							</div> -->
-						<!-- 						</div> -->
+						<div class="payment">
+							<span class="title">결제정보 : </span>
+							<div class="payment_reviewed">
+								<span class="method">Visa</span> <span class="number_hidden">xxxx-xxxx-xxxx-1111</span>
+							</div>
+						</div>
 						<div class="requirement">
 							<span class="title">요구사항 </span>
 							<div class="payment_reviewed">

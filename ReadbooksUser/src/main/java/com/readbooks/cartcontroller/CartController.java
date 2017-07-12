@@ -37,8 +37,8 @@ public class CartController {
 	}
 
 	@RequestMapping(value = "/cartlistGet", method = RequestMethod.GET)
-	public String cartlistGet(@ModelAttribute CartDTO cartdto, @ModelAttribute UserVO user,
-			HttpSession session, HttpServletRequest request, Model model) {
+	public String cartlistGet(@ModelAttribute CartDTO cartdto, @ModelAttribute UserVO user, HttpSession session,
+			HttpServletRequest request, Model model) {
 		cartdto.setUser_id((String) session.getAttribute("user_id"));
 		List<CartDTO> allbookGet = new ArrayList<CartDTO>();
 		allbookGet = cartService.allbookGet(cartdto);
@@ -51,17 +51,6 @@ public class CartController {
 		int result = 0;
 		String url = "";
 		result = cartService.cartDelete(cart);
-		if (result == 1) {
-			url = "/cartlistGet.do";
-		}
-		return "redirect:" + url;
-	}
-
-	@RequestMapping(value = "/cartDelete2", method = RequestMethod.GET)
-	private String cartDelete2(@ModelAttribute CartVO cart, HttpSession session) {
-		int result = 0;
-		String url = "";
-		result = cartService.cartDelete2(cart);
 		if (result == 1) {
 			url = "/cartlistGet.do";
 		}

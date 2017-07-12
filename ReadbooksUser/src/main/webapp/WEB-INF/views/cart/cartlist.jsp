@@ -35,15 +35,18 @@
 			var cart_subtotal = $(".subtotal span").html();
 			var cart_totalquantity = $(".quantity span").html();
 			var cart_totalprice = $(".total span").html();
-			$("#cart_subtotal").val(cart_subtotal);
-			$("#cart_totalquantity").val(cart_totalquantity);
-			$("#cart_totalprice").val(cart_totalprice);
-
-			$("#orderform").attr({
-				"method" : "get",
-				"action" : "/orderinsertpage.do"
-			});
-			$("#orderform").submit();
+			if (cart_subtotal == '0') {
+				alert("카트에 상품이 없습니다!");
+			} else {
+				$("#cart_subtotal").val(cart_subtotal);
+				$("#cart_totalquantity").val(cart_totalquantity);
+				$("#cart_totalprice").val(cart_totalprice);
+				$("#orderform").attr({
+					"method" : "get",
+					"action" : "/orderinsertpage.do"
+				});
+				$("#orderform").submit();
+			}
 		});
 		function changeVal(el) {
 			var qt = parseFloat(el.parent().children(".qt").html());

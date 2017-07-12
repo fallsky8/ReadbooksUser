@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.readbooks.cartservice.CartService;
 import com.readbooks.orderservice.OrderService;
 import com.readbooks.ordervo.OrderDTO;
 import com.readbooks.ordervo.OrderForm;
@@ -27,6 +28,8 @@ public class OrderController {
 
 	@Autowired
 	private OrderService orderService;
+	@Autowired
+	private CartService cartService;
 
 	@RequestMapping(value = "/orderinsertpage", method = RequestMethod.GET)
 	public ModelAndView orderInsertPage(@ModelAttribute OrderDTO orderdto, HttpSession session, Model model) {
@@ -69,7 +72,8 @@ public class OrderController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("list", orderdt);
 		orderService.orderInsert(map);
-		return new ModelAndView("order/orderlist", "orderForm", orderForm);
+		cartService.cartDelete2((String) session.getAttribute("user_id"));
+		return new ModelAndView("order/payment", "orderForm", orderForm);
 	}
 
 	@RequestMapping(value = "/orderSelect", method = RequestMethod.GET)

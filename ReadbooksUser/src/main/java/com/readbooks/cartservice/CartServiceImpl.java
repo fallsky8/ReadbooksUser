@@ -32,9 +32,9 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public int cartDelete2(CartVO cart) {
+	public int cartDelete2(String string) {
 		int result = 0;
-		result = cartdao.cartDelete2(cart);
+		result = cartdao.cartDelete2(string);
 		return result;
 	}
 
@@ -44,7 +44,5 @@ public class CartServiceImpl implements CartService {
 		allbookGet = cartdao.allbookGet(cartdto);
 		return allbookGet;
 	}
-
-
 
 }

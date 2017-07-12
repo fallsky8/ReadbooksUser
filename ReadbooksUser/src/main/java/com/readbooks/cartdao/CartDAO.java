@@ -11,7 +11,7 @@ public interface CartDAO {
 
 	public int cartDelete(CartVO cart);
 
-	public int cartDelete2(CartVO cart);
+	public int cartDelete2(String string);
 
 	public List<CartDTO> allbookGet(CartDTO cartdto);
 

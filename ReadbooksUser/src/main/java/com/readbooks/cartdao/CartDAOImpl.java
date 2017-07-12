@@ -28,8 +28,8 @@ public class CartDAOImpl implements CartDAO {
 	}
 
 	@Override
-	public int cartDelete2(CartVO cart) {
-		return session.delete("cartDelete2", cart);
+	public int cartDelete2(String string) {
+		return session.delete("cartDelete2", string);
 	}
 
 	@Override
