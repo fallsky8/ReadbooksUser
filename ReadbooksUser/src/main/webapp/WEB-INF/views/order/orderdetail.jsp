@@ -35,11 +35,18 @@
 		});
 
 		$("#ordercancle").click(function() {
-			$("#orderdata").attr({
-				"method" : "POST",
-				"action" : "/orderstatus.do"
-			});
-			$("#orderdata").submit();
+			var b_num = $(".lalign1").text();
+			var c_num = $(".lalign").text();
+			$("#order_ordernumber").val(b_num);
+			if (c_num.substring(0, 5) != '취소대기중') {
+				$("#orderdata").attr({
+					"method" : "POST",
+					"action" : "/orderstatus.do"
+				});
+				$("#orderdata").submit();
+			} else {
+				alert("이미 취소된 주문입니다 1:1 문의를 이용해주세요.");
+			}
 		});
 		$("#listbtn").click(function() {
 			location.href = "/orderSelect.do"
@@ -82,75 +89,76 @@
 					class="menu-item">마이리스트</a>
 			</div>
 			<form id="orderdata" name="orderdata">
-				<div class="orderdiv">
-					<input type="button" value="프린트하기" id="printbtn"> <input
-						type="hidden" name="order_number" id="order_number" />
-					<table class="table">
-						<caption>주문 상품 정보</caption>
-						<thead>
-							<tr>
-								<th><span>상태</span></th>
-								<th><span>상품명</span></th>
-								<th><span>주문수량</span></th>
-								<th><span>가격</span></th>
-								<th class="hideee"><input type="button" id="ordercancle"
-									value="주문일괄취소"></th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="${orderdetail }" var="orderdetail">
-								<tr>
-									<td class="lalign">${orderdetail.order_status}</td>
-									<td>${orderdetail.book_name}</td>
-									<td>${orderdetail.order_quantity}권</td>
-									<td>${orderdetail.order_orderprice}원</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-					<table id="keywords" class="table">
-						<caption>주문,배송 정보</caption>
-						<c:forEach items="${orderdetail }" var="orderdetail"
-							varStatus="status">
-							<c:if test="${status.last }">
-								<tr>
-									<th><span>주문번호</span></th>
-									<td class="lalign">${orderdetail.order_ordernumber}</td>
-								</tr>
-								<tr>
-									<th><span>주문일자</span></th>
-									<td>${orderdetail.order_date}</td>
-								</tr>
-								<tr>
-									<th><span>주문자</span></th>
-									<td>${orderdetail.order_orderer}</td>
-								</tr>
-								<tr>
-									<th><span>수령자</span></th>
-									<td>${orderdetail.order_recipient}</td>
-								</tr>
-								<tr>
-									<th><span>휴대폰번호</span></th>
-									<td>010-6292-9657</td>
-								</tr>
-								<tr>
-									<th><span>배송지주소</span></th>
-									<td>${orderdetail.order_receiptaddress}</td>
-								</tr>
-								<tr>
-									<th><span>요청사항</span></th>
-									<td>${orderdetail.order_requirement}</td>
-								</tr>
-								<tr>
-									<th><span>결제 총 금액</span></th>
-									<td>${orderdetail.order_totalprice}원</td>
-								</tr>
-							</c:if>
-						</c:forEach>
-					</table>
-					<input type="button" value="목록보기" id="listbtn">
-				</div>
+				<input type="hidden" id="order_ordernumber" name="order_ordernumber">
 			</form>
+			<div class="orderdiv">
+				<input type="button" value="프린트하기" id="printbtn"> <input
+					type="button" value="목록보기" id="listbtn"> <input
+					type="button" class="hideee" id="ordercancle" value="주문일괄취소">
+				<table class="table">
+					<caption>주문 상품 정보</caption>
+					<thead>
+						<tr>
+							<th><span>상태</span></th>
+							<th><span>상품명</span></th>
+							<th><span>주문수량</span></th>
+							<th><span>가격</span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${orderdetail }" var="orderdetail">
+							<tr>
+								<td class="lalign">${orderdetail.order_status}</td>
+								<td>${orderdetail.book_name}</td>
+								<td>${orderdetail.order_quantity}권</td>
+								<td>${orderdetail.order_orderprice}원</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+				<table id="keywords" class="table">
+					<caption>주문,배송 정보</caption>
+					<c:forEach items="${orderdetail }" var="orderdetail"
+						varStatus="status">
+						<c:if test="${status.last }">
+							<tr>
+								<th><span>주문번호</span></th>
+								<td class="lalign1">${orderdetail.order_ordernumber}</td>
+							</tr>
+							<tr>
+								<th><span>주문일자</span></th>
+								<td>${orderdetail.order_date}</td>
+							</tr>
+							<tr>
+								<th><span>주문자</span></th>
+								<td>${orderdetail.order_orderer}</td>
+							</tr>
+							<tr>
+								<th><span>수령자</span></th>
+								<td>${orderdetail.order_recipient}</td>
+							</tr>
+							<tr>
+								<th><span>휴대폰번호</span></th>
+								<td>010-6292-9657</td>
+							</tr>
+							<tr>
+								<th><span>배송지주소</span></th>
+								<td>${orderdetail.order_receiptaddress}</td>
+							</tr>
+							<tr>
+								<th><span>요청사항</span></th>
+								<td>${orderdetail.order_requirement}</td>
+							</tr>
+							<tr>
+								<th><span>결제 총 금액</span></th>
+								<td>${orderdetail.order_totalprice}원</td>
+							</tr>
+						</c:if>
+					</c:forEach>
+				</table>
+
+			</div>
+
 		</article>
 		<aside>
 			<jsp:include page="../aside.jsp"></jsp:include>

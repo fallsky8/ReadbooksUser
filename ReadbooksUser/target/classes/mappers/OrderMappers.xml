@@ -65,11 +65,11 @@
 		from dual
 	</select>
 
-	<update id="orderstatus" parameterType="order">
+	<update id="orderstatus" parameterType="orderdto">
 		UPDATE tbl_order
 		SET
 		order_status = '취소대기중'
-		WHERE order_number =
-		#{order_number}
+		WHERE order_ordernumber =
+		#{order_ordernumber}
 	</update>
 </mapper> 

@@ -99,8 +99,8 @@ public class OrderController {
 		int orderstatus = 0;
 		String url = "";
 		orderstatus = orderService.orderstatus(order);
-		if (orderstatus == 1) {
-			url = "orderdetail.do?order_number=" + order.getOrder_number();
+		if (orderstatus != 0) {
+			url = "/orderSelect.do";
 		}
 		model.addAttribute("orderstatus", orderstatus);
 		return "redirect:" + url;
