@@ -12,10 +12,11 @@ public class OrderDTO {
 	private String order_receiptaddress;
 	private String order_requirement;
 	private String order_status;
-	private int order_quantity;  
+	private int order_quantity;
 	private long order_ordernumber;
 	private int order_orderprice;
 	private String order_recipientphonenumber;
+	private int order_totalprice;
 	// 카트정보
 	private int cart_number;
 	private int cart_buyquantity;
@@ -51,6 +52,14 @@ public class OrderDTO {
 
 	public OrderDTO() {
 		super();
+	}
+
+	public int getOrder_totalprice() {
+		return order_totalprice;
+	}
+
+	public void setOrder_totalprice(int order_totalprice) {
+		this.order_totalprice = order_totalprice;
 	}
 
 	public String getOrder_recipientphonenumber() {

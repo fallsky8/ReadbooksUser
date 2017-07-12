@@ -30,12 +30,9 @@
 
 	<select id="orderSelect" parameterType="order" resultType="orderdto">
 		select
-		o.*, b.*
-		from tbl_book b, tbl_order o where
-		b.book_number in
-		(select
-		o.book_number from tbl_order
-		where o.user_id =#{user_id})
+		*
+		from tbl_order where user_id =#{user_id} and rowid in(select
+		max(rowid) from tbl_order group by order_ordernumber)
 	</select>
 	<select id="orderUserGet" parameterType="orderdto" resultType="orderdto">
 		select *
@@ -53,7 +50,7 @@
 		#{user_id})
 	</select>
 
-	<select id="orderdetail" parameterType="order" resultType="orderdto">
+	<select id="orderdetail" parameterType="orderdto" resultType="orderdto">
 		select
 		o.*, b.*
 		from tbl_book b, tbl_order o where
@@ -61,8 +58,7 @@
 		(select
 		o.book_number from tbl_order
 		where
-		o.order_number=#{order_number})
-
+		o.order_ordernumber=#{order_ordernumber})
 	</select>
 	<select id="orderseq" resultType="int">
 		select order_number_seq.nextval
@@ -70,10 +66,10 @@
 	</select>
 
 	<update id="orderstatus" parameterType="order">
-	UPDATE tbl_order
-	SET
-	order_status = '취소대기중'
-	WHERE order_number =
-	#{order_number}
+		UPDATE tbl_order
+		SET
+		order_status = '취소대기중'
+		WHERE order_number =
+		#{order_number}
 	</update>
 </mapper> 

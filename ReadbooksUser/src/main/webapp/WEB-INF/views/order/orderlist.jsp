@@ -28,7 +28,7 @@
 		var table = $('#keywords').DataTable();
 		$("#keywords tbody").on('click', 'tr', function() {
 			var data = table.row(this).data();
-			$("#order_number").val(data[0]);
+			$("#order_ordernumber").val(data[1]);
 			$("#detailForm").attr({
 				"method" : "get",
 				"action" : "/orderdetail.do"
@@ -124,7 +124,7 @@ div[class='row'] {
 					class="menu-item">마이리스트</a>
 			</div>
 			<form name="detailForm" id="detailForm">
-				<input type="hidden" name="order_number" id="order_number">
+				<input type="hidden" name="order_ordernumber" id="order_ordernumber">
 			</form>
 			<table id="keywords">
 				<thead>
@@ -132,8 +132,8 @@ div[class='row'] {
 						<th><span>번호</span></th>
 						<th><span>주문번호</span></th>
 						<th><span>주문일자</span></th>
-						<th><span>주문내역</span></th>
-						<th><span>주문금액/수량 </span></th>
+						<!-- 						<th><span>주문내역</span></th> -->
+						<!-- 						<th><span>주문금액/수량 </span></th> -->
 						<th><span>주문자</span></th>
 						<th><span>주문상태</span></th>
 					</tr>
@@ -144,8 +144,8 @@ div[class='row'] {
 							<td>${orderlist.order_number }</td>
 							<td class="lalign">${orderlist.order_ordernumber }</td>
 							<td>${orderlist.order_date }</td>
-							<td>${orderlist.book_name }</td>
-							<td>${orderlist.order_quantity}</td>
+							<%-- 							<td>${orderlist.book_name }</td> --%>
+							<%-- 							<td>${orderlist.order_quantity}</td> --%>
 							<td>${orderlist.order_orderer }</td>
 							<td>${orderlist.order_status }</td>
 						</tr>

@@ -30,8 +30,8 @@ public class OrderDAOImpl implements OrderDAO {
 	}
 
 	@Override
-	public OrderDTO orderdetail(OrderDTO order) {
-		return session.selectOne("orderdetail", order);
+	public List<OrderDTO> orderdetail(OrderDTO order) {
+		return session.selectList("orderdetail", order);
 	}
 
 	@Override

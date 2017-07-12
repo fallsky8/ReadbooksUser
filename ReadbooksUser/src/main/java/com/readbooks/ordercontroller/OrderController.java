@@ -83,8 +83,13 @@ public class OrderController {
 
 	@RequestMapping(value = "/orderdetail", method = RequestMethod.GET)
 	public String bookdetailGet(@ModelAttribute OrderDTO order, Model model, HttpSession session) {
-		OrderDTO orderdetail = new OrderDTO();
+		List<OrderDTO> orderdetail = new ArrayList<OrderDTO>();
 		orderdetail = orderService.orderdetail(order);
+		int totalprice = 0;
+		for (int i = 0; orderdetail.size() > i; i++) {
+			totalprice += orderdetail.get(i).getOrder_orderprice();
+			orderdetail.get(i).setOrder_totalprice(totalprice);
+		}
 		model.addAttribute("orderdetail", orderdetail);
 		return "order/orderdetail";
 	}

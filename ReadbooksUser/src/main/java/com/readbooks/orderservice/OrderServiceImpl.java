@@ -35,8 +35,8 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public OrderDTO orderdetail(OrderDTO order) {
-		OrderDTO orderdetail = null;
+	public List<OrderDTO> orderdetail(OrderDTO order) {
+		List<OrderDTO> orderdetail = null;
 		orderdetail = orderdao.orderdetail(order);
 		return orderdetail;
 	}

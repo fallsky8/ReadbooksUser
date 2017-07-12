@@ -12,7 +12,7 @@ public interface OrderService {
 
 	public List<OrderDTO> orderSelect(OrderDTO order);
 
-	public OrderDTO orderdetail(OrderDTO order);
+	public List<OrderDTO> orderdetail(OrderDTO order);
 
 	public List<OrderVO> orderlist(OrderVO order);
 
