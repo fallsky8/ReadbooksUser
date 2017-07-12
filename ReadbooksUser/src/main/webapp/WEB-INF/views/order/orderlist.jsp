@@ -144,7 +144,7 @@ div[class='row'] {
 							<td>${orderlist.order_number }</td>
 							<td class="lalign">${orderlist.order_ordernumber }</td>
 							<td>${orderlist.order_date }</td>
-							<td>언어의 온도 외 2권</td>
+							<td>${orderlist.book_name }</td>
 							<td>${orderlist.order_quantity}</td>
 							<td>${orderlist.order_orderer }</td>
 							<td>${orderlist.order_status }</td>

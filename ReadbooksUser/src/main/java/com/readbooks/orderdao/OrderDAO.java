@@ -10,14 +10,16 @@ public interface OrderDAO {
 
 	public int orderInsert(Map<String, Object> map);
 
-	public List<OrderVO> orderSelect(OrderVO order);
+	public List<OrderDTO> orderSelect(OrderDTO order);
 
-	public OrderVO orderdetail(OrderVO order);
+	public OrderDTO orderdetail(OrderDTO order);
 
 	public List<OrderDTO> orderInfoGet(OrderDTO orderdto);
 
 	public OrderDTO orderUserGet(OrderDTO orderdto);
 
 	public int orderseq();
+
+	public int orderstatus(OrderDTO order);
 
 }

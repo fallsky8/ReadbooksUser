@@ -31,6 +31,14 @@
 			window.print();
 			window.location.reload(true);
 		});
+
+		$("#ordercencle").click(function() {
+			$("#orderdata").attr({
+				"method" : "POST",
+				"action" : "/orderstatus.do"
+			});
+			$("#orderdata").submit();
+		});
 	});
 </script>
 <title>주문 상세 내역</title>
@@ -44,6 +52,14 @@
 
 #sideMenu a:NTH-CHILD(5) {
 	background-color: rgba(0, 0, 0, 0.15);
+}
+
+.table {
+	width: 100%;
+}
+
+.orderdiv {
+	margin-left: 210px;
 }
 </style>
 </head>
@@ -60,59 +76,68 @@
 				<a href="#" class="menu-item">주문내역</a> <a href="/mylistGet.do"
 					class="menu-item">마이리스트</a>
 			</div>
-			<input type="button" value="프린트하기" id="printbtn">
-			<table class="table">
-				<caption>주문 상품 정보</caption>
-				<thead>
-					<tr>
-						<th><span>상태</span></th>
-						<th><span>상품명</span></th>
-						<th><span>주문수량</span></th>
-						<th><span>가격</span></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="lalign">${orderdetail.order_status}</td>
-						<td>언어의 온도 외 2권</td>
-						<td>${orderdetail.order_quantity}</td>
-						<td>3권</td>
-					</tr>
-				</tbody>
-			</table>
-			<table id="keywords">
-				<caption>주문,배송 정보</caption>
-				<tr>
-					<th><span>주문번호</span></th>
-					<td class="lalign">${orderdetail.order_number}</td>
-				</tr>
-				<tr>
-					<th><span>주문일자</span></th>
-					<td>${orderdetail.order_date}</td>
-				</tr>
-				<tr>
-					<th><span>주문자</span></th>
-					<td>${orderdetail.order_orderer}</td>
-				</tr>
-				<tr>
-					<th><span>수령자</span></th>
-					<td>${orderdetail.order_recipient}</td>
-				</tr>
-				<tr>
-					<th><span>휴대폰번호</span></th>
-					<td>010-6292-9657</td>
-				</tr>
-				<tr>
-					<th><span>배송지주소</span></th>
-					<td>${orderdetail.order_receiptaddress}</td>
-				</tr>
-				<tr>
-					<th><span>요청사항</span></th>
-					<td>${orderdetail.order_requirement}</td>
-				</tr>
-			</table>
-			<input type="button" value="목록보기" id="listbtn"
-				onclick="history.go(-1)">
+			<form id="orderdata" name="orderdata">
+				<div class="orderdiv">
+					<input type="button" value="프린트하기" id="printbtn"> <input
+						type="hidden" name="order_number" id="order_number"
+						value="${orderdetail.order_number}" />
+					<table class="table">
+						<caption>주문 상품 정보</caption>
+						<thead>
+							<tr>
+								<th><span>상태</span></th>
+								<th><span>상품명</span></th>
+								<th><span>주문수량</span></th>
+								<th><span>가격</span></th>
+								<th><span>주문취소</span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="lalign">${orderdetail.order_status}</td>
+								<td>${orderdetail.book_name}</td>
+								<td>${orderdetail.order_quantity}권</td>
+								<td>${orderdetail.order_orderprice}원</td>
+								<td><input type="button" id="ordercencle"
+									name="ordercencle" value="주문취소"></td>
+							</tr>
+						</tbody>
+					</table>
+					<table id="keywords" class="table">
+						<caption>주문,배송 정보</caption>
+						<tr>
+							<th><span>주문번호</span></th>
+							<td class="lalign">${orderdetail.order_number}</td>
+						</tr>
+						<tr>
+							<th><span>주문일자</span></th>
+							<td>${orderdetail.order_date}</td>
+						</tr>
+						<tr>
+							<th><span>주문자</span></th>
+							<td>${orderdetail.order_orderer}</td>
+						</tr>
+						<tr>
+							<th><span>수령자</span></th>
+							<td>${orderdetail.order_recipient}</td>
+						</tr>
+						<tr>
+							<th><span>휴대폰번호</span></th>
+							<td>010-6292-9657</td>
+						</tr>
+						<tr>
+							<th><span>배송지주소</span></th>
+							<td>${orderdetail.order_receiptaddress}</td>
+						</tr>
+						<tr>
+							<th><span>요청사항</span></th>
+							<td>${orderdetail.order_requirement}</td>
+						</tr>
+					</table>
+					<input type="button" value="목록보기" id="listbtn"
+						onclick="history.go(-1)">
+				</div>
+			</form>
 		</article>
 		<aside>
 			<jsp:include page="../aside.jsp"></jsp:include>

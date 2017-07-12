@@ -63,7 +63,7 @@
 		<if
 			test="reviewboard_attachmentfile != null and reviewboard_attachmentfile !=''">,#{reviewboard_attachmentfile}</if>
 		)
-	</insert>
+	</insert>  
 
 	<!-- 글상세 -->
 	<select id="reviewboardDetail" parameterType="reviewboard"

@@ -710,13 +710,6 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 			cardInfo();
 		});
 
-		// 		$("#complete").click(function() {
-		// 			$("#orderform").attr({
-		// 				"method" : "POST",
-		// 				"action" : "/orderInsert.do"
-		// 			});
-		// 			$("#orderform").submit();
-		// 		});
 		//1번 구매자정보 계속버튼 클릭시
 		$(".continue").click(function() {
 			var book_number = parents.find(".book_number").text();
@@ -877,89 +870,89 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 					</div>
 
 				</div>
-				<!-- 				<div class="content" id="payment"> -->
-				<!-- 					<div class="left credit_card"> -->
-				<!-- 						<div class="go-right"> -->
-				<!-- 							<div> -->
-				<!-- 								<input type="text" name="card_number" value="" id="card_number" -->
-				<!-- 									placeholder="xxxx-xxxx-xxxx-xxxx" data-trigger="change" -->
-				<!-- 									data-validation-minlength="1" data-type="name" -->
-				<!-- 									data-required="true" data-error-message="카드번호를 입력해 주세요" /><label -->
-				<!-- 									for="card_number">카드 번호</label> -->
-				<!-- 							</div> -->
-				<!-- 							<div> -->
-				<!-- 								<div class="expiry"> -->
-				<!-- 									<div class="month_select"> -->
-				<!-- 										<select name="exp_month" id="exp_month" data-trigger="change" -->
-				<!-- 											data-type="name" data-required="true" -->
-				<!-- 											data-error-message="카드 만료날짜를 입력하세요"> -->
-				<!-- 											<option value="1">01 (Jan)</option> -->
-				<!-- 											<option value="2">02 (Feb)</option> -->
-				<!-- 											<option value="3">03 (Mar)</option> -->
-				<!-- 											<option value="4">04 (Apr)</option> -->
-				<!-- 											<option value="5">05 (May)</option> -->
-				<!-- 											<option value="6">06 (Jun)</option> -->
-				<!-- 											<option value="7">07 (Jul)</option> -->
-				<!-- 											<option value="8">08 (Aug)</option> -->
-				<!-- 											<option value="9">09 (Sep)</option> -->
-				<!-- 											<option value="10">10 (Oct)</option> -->
-				<!-- 											<option value="11">11 (Nov)</option> -->
-				<!-- 											<option value="12">12 (Dec)</option> -->
-				<!-- 										</select> -->
-				<!-- 									</div> -->
-				<!-- 									<span class="divider">-</span> -->
-				<!-- 									<div class="year_select"> -->
-				<!-- 										<select name="exp_year" value="" id="exp_year" placeholder="" -->
-				<!-- 											data-trigger="change" data-type="name" data-required="true" -->
-				<!-- 											data-error-message="카드 만료날짜를 입력하세요 "> -->
-				<!-- 											<option value="1">17 년</option> -->
-				<!-- 											<option value="2">18 년</option> -->
-				<!-- 											<option value="3">19 년</option> -->
-				<!-- 											<option value="4">20 년</option> -->
-				<!-- 											<option value="5">21 년</option> -->
-				<!-- 											<option value="6">22 년</option> -->
-				<!-- 											<option value="7">23 년</option> -->
-				<!-- 											<option value="8">24 년</option> -->
-				<!-- 											<option value="9">25 년</option> -->
-				<!-- 											<option value="10">26 년</option> -->
-				<!-- 											<option value="11">27 년</option> -->
-				<!-- 											<option value="12">28 년</option> -->
-				<!-- 										</select> -->
-				<!-- 									</div> -->
-				<!-- 								</div> -->
-				<!-- 								<label class="exp_date" for="Exp_Date">유효기간</label> -->
-				<!-- 							</div> -->
-				<!-- 							<div class="sec_num"> -->
-				<!-- 								<div> -->
-				<!-- 									<input type="text" name="cvc" value="" id="cvc" -->
-				<!-- 										placeholder="556" data-trigger="change" -->
-				<!-- 										data-validation-minlength="3" data-type="name" -->
-				<!-- 										data-required="true" data-error-message="카드 뒷면의 CVC코드를 입력하세요" /> -->
-				<!-- 									<label for="cvc">CVC</label> -->
-				<!-- 								</div> -->
-				<!-- 							</div> -->
+				<div class="content" id="payment">
+					<div class="left credit_card">
+						<div class="go-right">
+							<div>
+								<input type="text" name="card_number" value="" id="card_number"
+									placeholder="xxxx-xxxx-xxxx-xxxx" data-trigger="change"
+									data-validation-minlength="1" data-type="name"
+									data-required="true" data-error-message="카드번호를 입력해 주세요" /><label
+									for="card_number">카드 번호</label>
+							</div>
+							<div>
+								<div class="expiry">
+									<div class="month_select">
+										<select name="exp_month" id="exp_month" data-trigger="change"
+											data-type="name" data-required="true"
+											data-error-message="카드 만료날짜를 입력하세요">
+											<option value="1">01 (Jan)</option>
+											<option value="2">02 (Feb)</option>
+											<option value="3">03 (Mar)</option>
+											<option value="4">04 (Apr)</option>
+											<option value="5">05 (May)</option>
+											<option value="6">06 (Jun)</option>
+											<option value="7">07 (Jul)</option>
+											<option value="8">08 (Aug)</option>
+											<option value="9">09 (Sep)</option>
+											<option value="10">10 (Oct)</option>
+											<option value="11">11 (Nov)</option>
+											<option value="12">12 (Dec)</option>
+										</select>
+									</div>
+									<span class="divider">-</span>
+									<div class="year_select">
+										<select name="exp_year" value="" id="exp_year" placeholder=""
+											data-trigger="change" data-type="name" data-required="true"
+											data-error-message="카드 만료날짜를 입력하세요 ">
+											<option value="1">17 년</option>
+											<option value="2">18 년</option>
+											<option value="3">19 년</option>
+											<option value="4">20 년</option>
+											<option value="5">21 년</option>
+											<option value="6">22 년</option>
+											<option value="7">23 년</option>
+											<option value="8">24 년</option>
+											<option value="9">25 년</option>
+											<option value="10">26 년</option>
+											<option value="11">27 년</option>
+											<option value="12">28 년</option>
+										</select>
+									</div>
+								</div>
+								<label class="exp_date" for="Exp_Date">유효기간</label>
+							</div>
+							<div class="sec_num">
+								<div>
+									<input type="text" name="cvc" value="" id="cvc"
+										placeholder="556" data-trigger="change"
+										data-validation-minlength="3" data-type="name"
+										data-required="true" data-error-message="카드 뒷면의 CVC코드를 입력하세요" />
+									<label for="cvc">CVC</label>
+								</div>
+							</div>
 
-				<!-- 						</div> -->
-				<!-- 					</div> -->
-				<!-- 										<div class="right"> -->
-				<!-- 											<div class="accepted"> -->
-				<!-- 												<span><img src="https://i.imgur.com/Z5HVIOt.png"></span> <span><img -->
-				<!-- 													src="https://i.imgur.com/Le0Vvgx.png"></span> <span><img -->
-				<!-- 													src="https://i.imgur.com/D2eQTim.png"></span> <span><img -->
-				<!-- 													src="https://i.imgur.com/Pu4e7AT.png"></span> <span><img -->
-				<!-- 													src="https://i.imgur.com/ewMjaHv.png"></span> <span><img -->
-				<!-- 													src="https://i.imgur.com/3LmmFFV.png"></span> -->
-				<!-- 											</div> -->
-				<!-- 											<div class="secured"> -->
-				<!-- 												<img class="lock" src="https://i.imgur.com/hHuibOR.png"> -->
-				<!-- 												<p class="security info">보안관련</p> -->
-				<!-- 											</div> -->
-				<!-- 										</div> -->
-				<!-- 										<button id="card_check">카드 확인</button> -->
+						</div>
+					</div>
+					<div class="right">
+						<div class="accepted">
+							<span><img src="https://i.imgur.com/Z5HVIOt.png"></span> <span><img
+								src="https://i.imgur.com/Le0Vvgx.png"></span> <span><img
+								src="https://i.imgur.com/D2eQTim.png"></span> <span><img
+								src="https://i.imgur.com/Pu4e7AT.png"></span> <span><img
+								src="https://i.imgur.com/ewMjaHv.png"></span> <span><img
+								src="https://i.imgur.com/3LmmFFV.png"></span>
+						</div>
+						<div class="secured">
+							<img class="lock" src="https://i.imgur.com/hHuibOR.png">
+							<p class="security info">보안관련</p>
+						</div>
+					</div>
+					<button id="card_check">카드 확인</button>
 
-				<!-- 				</div> -->
-				<!-- 			결제 정보  끝          -->
-				<!-- 			주문정보 확인 시작 -->
+				</div>
+							결제 정보  끝         
+							주문정보 확인 시작 
 				<div class="step" id="step4">
 					<div class="number">
 						<span>4</span>
@@ -994,7 +987,6 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 
 
 						<!-- 					상품끝  -->
-
 						<div class="totals">
 							<span class="subtitle">원가 합계 <span id="subtotal"> </span>원
 							</span> <span class="subtitle">할인(10%)<span id="discount">
