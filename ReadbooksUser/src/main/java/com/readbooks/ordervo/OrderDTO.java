@@ -12,8 +12,8 @@ public class OrderDTO {
 	private String order_receiptaddress;
 	private String order_requirement;
 	private String order_status;
-	private int order_quantity;
-	private int order_ordernumber;
+	private int order_quantity;  
+	private long order_ordernumber;
 	private int order_orderprice;
 	private String order_recipientphonenumber;
 	// 카트정보
@@ -157,11 +157,11 @@ public class OrderDTO {
 		this.order_quantity = order_quantity;
 	}
 
-	public int getOrder_ordernumber() {
+	public long getOrder_ordernumber() {
 		return order_ordernumber;
 	}
 
-	public void setOrder_ordernumber(int order_ordernumber) {
+	public void setOrder_ordernumber(long order_ordernumber) {
 		this.order_ordernumber = order_ordernumber;
 	}
 

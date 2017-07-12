@@ -27,16 +27,16 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<OrderVO> orderSelect(OrderVO order) {
-		List<OrderVO> orderget = null;
+	public List<OrderDTO> orderSelect(OrderDTO order) {
+		List<OrderDTO> orderget = null;
 		orderget = orderdao.orderSelect(order);
 		return orderget;
 
 	}
 
 	@Override
-	public OrderVO orderdetail(OrderVO order) {
-		OrderVO orderdetail = null;
+	public OrderDTO orderdetail(OrderDTO order) {
+		OrderDTO orderdetail = null;
 		orderdetail = orderdao.orderdetail(order);
 		return orderdetail;
 	}
@@ -66,6 +66,13 @@ public class OrderServiceImpl implements OrderService {
 		int seq = 0;
 		seq = orderdao.orderseq();
 		return seq;
+	}
+
+	@Override
+	public int orderstatus(OrderDTO order) {
+		int orderstatus = 0;
+		orderstatus = orderdao.orderstatus(order);
+		return orderstatus;
 	}
 
 }

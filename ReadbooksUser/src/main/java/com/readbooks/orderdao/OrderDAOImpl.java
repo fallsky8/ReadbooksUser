@@ -25,12 +25,12 @@ public class OrderDAOImpl implements OrderDAO {
 	}
 
 	@Override
-	public List<OrderVO> orderSelect(OrderVO order) {
+	public List<OrderDTO> orderSelect(OrderDTO order) {
 		return session.selectList("orderSelect", order);
 	}
 
 	@Override
-	public OrderVO orderdetail(OrderVO order) {
+	public OrderDTO orderdetail(OrderDTO order) {
 		return session.selectOne("orderdetail", order);
 	}
 
@@ -47,6 +47,11 @@ public class OrderDAOImpl implements OrderDAO {
 	@Override
 	public int orderseq() {
 		return session.selectOne("orderseq");
+	}
+
+	@Override
+	public int orderstatus(OrderDTO order) {
+		return session.update("orderstatus", order);
 	}
 
 }

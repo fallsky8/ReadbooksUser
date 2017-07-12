@@ -73,19 +73,31 @@ public class OrderController {
 	}
 
 	@RequestMapping(value = "/orderSelect", method = RequestMethod.GET)
-	public String selectorder(@ModelAttribute OrderVO order, Model model, HttpSession session) {
+	public String selectorder(@ModelAttribute OrderDTO order, Model model, HttpSession session) {
 		order.setUser_id((String) session.getAttribute("user_id"));
-		List<OrderVO> orderlistget = new ArrayList<OrderVO>();
+		List<OrderDTO> orderlistget = new ArrayList<OrderDTO>();
 		orderlistget = orderService.orderSelect(order);
 		model.addAttribute("orderlist", orderlistget);
 		return "order/orderlist";
 	}
 
 	@RequestMapping(value = "/orderdetail", method = RequestMethod.GET)
-	public String bookdetailGet(@ModelAttribute OrderVO order, Model model, HttpSession session) {
-		OrderVO orderdetail = new OrderVO();
+	public String bookdetailGet(@ModelAttribute OrderDTO order, Model model, HttpSession session) {
+		OrderDTO orderdetail = new OrderDTO();
 		orderdetail = orderService.orderdetail(order);
 		model.addAttribute("orderdetail", orderdetail);
 		return "order/orderdetail";
+	}
+
+	@RequestMapping(value = "/orderstatus", method = RequestMethod.POST)
+	public String orderstatus(@ModelAttribute OrderDTO order, Model model, HttpSession session) {
+		int orderstatus = 0;
+		String url = "";
+		orderstatus = orderService.orderstatus(order);
+		if (orderstatus == 1) {
+			url = "orderdetail.do?order_number=" + order.getOrder_number();
+		}
+		model.addAttribute("orderstatus", orderstatus);
+		return "redirect:" + url;
 	}
 }
