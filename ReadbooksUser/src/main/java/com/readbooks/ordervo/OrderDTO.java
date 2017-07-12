@@ -123,7 +123,7 @@ public class OrderDTO {
 	}
 
 	public void setOrder_date(String order_date) {
-		this.order_date = order_date.substring(0, 10);
+		this.order_date = order_date;
 	}
 
 	public String getOrder_paymentdate() {

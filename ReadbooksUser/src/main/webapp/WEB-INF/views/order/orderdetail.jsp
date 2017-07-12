@@ -164,7 +164,7 @@
 			<jsp:include page="../aside.jsp"></jsp:include>
 		</aside>
 		<footer id="fooot">
-			<jsp:include page="../footer.jsp"></jsp:include>
+			<%-- 			<jsp:include page="../footer.jsp"></jsp:include> --%>
 		</footer>
 	</div>
 </body>

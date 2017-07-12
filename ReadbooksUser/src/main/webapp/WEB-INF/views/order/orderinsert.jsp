@@ -15,9 +15,9 @@
 	href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600'
 	rel='stylesheet' type='text/css'>
 <link rel="shortcut icon" href="/resources/image/favicon.ico">
-<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
-	media="screen" />
 <link rel="stylesheet" href="/resources/css/subpage.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet" href="/resources/css/common.css" type="text/css"
 	media="screen" />
 
 
@@ -440,7 +440,7 @@ img {
 #accordian .final {
 	width: 100%;
 	float: left;
-	font-size: 2.24px;
+	font-size: 30px !important;
 	text-align: right;
 	color: #888;
 }
@@ -675,6 +675,7 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
+
 		changeTotal();
 		function changeTotal() {
 			var price = 0;
@@ -697,27 +698,22 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 			$(".subtitle #quantity").html(qt);
 			$(".subtitle #subtotal").html(price);
 			$(".subtitle #discount").html(discount);
-			$(".final #total").html(fullPrice);
+			$(".subtitle #total").html(fullPrice);
 
 		}
 	});
 
 	$(function() {
 		//카드정보
-		function cardInfo() {
-			var cardnumber = $("#card_number").val();
-			var cardcompany = $("#card_status").val();
-			$("div.payment_reviewed .number_hidden").html(cardnumber);
-			$("div.payment_reviewed .method").html(cardcompany);
-
-		}
-		$("#card_check").click(function() {
-			cardInfo();
+		$("#copy_address").click(function() {
+			$('html, body').animate({
+				scrollTop : 493
+			}, 350);
 		});
-
-		//1번 구매자정보 계속버튼 클릭시
-		$(".continue").click(function() {
-
+		$("#adddd").click(function() {
+			$('html, body').animate({
+				scrollTop : 819
+			}, 350);
 		});
 	});
 
@@ -757,15 +753,14 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 						}
 
 						// 우편번호와 주소 정보를 해당 필드에 넣는다.
-						document.getElementById('recipient_address').value = data.zonecode; //5자리 새우편번호 사용
-						document.getElementById('recipient_address').value = data.zonecode
+						document.getElementById('order_receiptaddress').value = data.zonecode; //5자리 새우편번호 사용
+						document.getElementById('order_receiptaddress').value = data.zonecode
 								+ fullAddr;
 
 						// 커서를 상세주소 필드로 이동한다.
-						document.getElementById('recipient_address').focus();
+						document.getElementById('order_receiptaddress').focus();
 					}
 				}).open();
-
 	}
 </script>
 <title>주문 목록</title>
@@ -778,8 +773,6 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 		<div id="accordian">
 			<form:form modelAttribute="orderForm" method="POST"
 				action="/orderInsert.do">
-
-				<!-- 			주문정보 확인 시작 -->
 				<div class="step" id="step1">
 					<div class="number">
 						<span>1</span>
@@ -799,11 +792,11 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 								data-error-message="필수 기입 사항입니다" /><label for="user_name">주문자</label>
 						</div>
 						<div>
-							<input type="tel" name="order_phonenumber" value="010"
-								id="order_phonenumber" placeholder="010-xxxx-xxxx"
-								data-trigger="change" data-validation-minlength="1"
-								data-type="number" data-required="true"
-								data-error-message="필수 기입 사항입니다" /><label
+							<input type="tel" name="order_phonenumber"
+								value="${orderUserGet.user_phonenumber }" id="order_phonenumber"
+								placeholder="010-xxxx-xxxx" data-trigger="change"
+								data-validation-minlength="1" data-type="number"
+								data-required="true" data-error-message="필수 기입 사항입니다" /><label
 								for="order_phonenumber">연락처</label>
 						</div>
 						<div>
@@ -814,15 +807,10 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 								data-required="true" data-error-message="필수 기입 사항입니다" /><label
 								for="order_address">주소</label>
 						</div>
-						<div>
-							<input type="checkbox" /> <label class="same"
-								for="same_as_shipping">이 주소를 배송지로 설정합니다</label><span></span>
-						</div>
-						<input type="button" class="continue" id="copy_address" value="계속">
+						<input type="button" class="continue" id="copy_address" value="계속"
+							style="cursor: pointer;">
 					</div>
 				</div>
-
-				<!-- 			받는분 정보              -->
 				<div class="step" id="step2">
 					<div class="number">
 						<span>2</span>
@@ -830,7 +818,6 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 					<div class="title">
 						<h1>받는분 정보</h1>
 					</div>
-
 				</div>
 				<div class="content" id="address">
 					<div class="go-right">
@@ -841,9 +828,8 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 								data-required="true" data-error-message="필수 기입 사항입니다" /><label
 								for="order_recipient">받는분</label>
 						</div>
-
 						<div>
-							<input type="tel" name="order_recipientphonenumber" value="010"
+							<input type="tel" name="order_recipientphonenumber"
 								id="order_recipientphonenumber" placeholder="연락처를 입력해주세요"
 								data-trigger="change" data-validation-minlength="1"
 								data-type="number" data-required="true"
@@ -859,12 +845,11 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 								for="recipient_address">주소</label>
 						</div>
 						<input type="button" onclick="Postcode()" class="postcode"
-							value="주소 찾기"> <input type="button" class="continue"
-							value="계속">
+							value="주소 찾기" style="cursor: pointer;"><input
+							type="button" id="adddd" class="continue" value="계속"
+							style="cursor: pointer;">
 					</div>
 				</div>
-				<!-- 			받는분 정보  끝            -->
-				<!-- 			결제 정보  시작            -->
 				<div class="step" id="step3">
 					<div class="number">
 						<span>3</span>
@@ -872,70 +857,62 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 					<div class="title">
 						<h1>결제 정보</h1>
 					</div>
-
 				</div>
 				<div class="content" id="payment">
-					<div class="left credit_card">
-						<div class="go-right">
+					<div class="go-right">
+						<div>
+							<input type="text" name="card_number" value="" id="card_number"
+								placeholder="xxxx-xxxx-xxxx-xxxx" data-trigger="change"
+								data-validation-minlength="1" data-type="name"
+								data-required="true" data-error-message="카드번호를 입력해 주세요" /><label
+								for="card_number">카드 번호</label>
+						</div>
+						<div class="expiry">
+							<div class="month_select">
+								<select name="exp_month" id="exp_month" data-trigger="change"
+									data-type="name" data-required="true"
+									data-error-message="카드 만료날짜를 입력하세요">
+									<option value="1" selected="selected">01 (Jan)</option>
+									<option value="2">02 (Feb)</option>
+									<option value="3">03 (Mar)</option>
+									<option value="4">04 (Apr)</option>
+									<option value="5">05 (May)</option>
+									<option value="6">06 (Jun)</option>
+									<option value="7">07 (Jul)</option>
+									<option value="8">08 (Aug)</option>
+									<option value="9">09 (Sep)</option>
+									<option value="10">10 (Oct)</option>
+									<option value="11">11 (Nov)</option>
+									<option value="12">12 (Dec)</option>
+								</select>
+							</div>
+							<span class="divider"></span>
+							<div class="year_select">
+								<select name="exp_year" id="exp_year" data-trigger="change"
+									data-type="name" data-required="true"
+									data-error-message="카드 만료날짜를 입력하세요 ">
+									<option value="1" selected="selected">17 년</option>
+									<option value="2">18 년</option>
+									<option value="3">19 년</option>
+									<option value="4">20 년</option>
+									<option value="5">21 년</option>
+									<option value="6">22 년</option>
+									<option value="7">23 년</option>
+									<option value="8">24 년</option>
+									<option value="9">25 년</option>
+									<option value="10">26 년</option>
+									<option value="11">27 년</option>
+									<option value="12">28 년</option>
+								</select>
+							</div>
+						</div>
+						<div class="sec_num">
 							<div>
-								<input type="text" name="card_number" value="" id="card_number"
-									placeholder="xxxx-xxxx-xxxx-xxxx" data-trigger="change"
-									data-validation-minlength="1" data-type="name"
-									data-required="true" data-error-message="카드번호를 입력해 주세요" /><label
-									for="card_number">카드 번호</label>
+								<input type="text" name="cvc" id="cvc" placeholder="556"
+									data-trigger="change" data-validation-minlength="3"
+									data-type="name" data-required="true"
+									data-error-message="카드 뒷면의 CVC코드를 입력하세요" /> <label for="cvc">CVC</label>
 							</div>
-							<div>
-								<div class="expiry">
-									<div class="month_select">
-										<select name="exp_month" id="exp_month" data-trigger="change"
-											data-type="name" data-required="true"
-											data-error-message="카드 만료날짜를 입력하세요">
-											<option value="1">01 (Jan)</option>
-											<option value="2">02 (Feb)</option>
-											<option value="3">03 (Mar)</option>
-											<option value="4">04 (Apr)</option>
-											<option value="5">05 (May)</option>
-											<option value="6">06 (Jun)</option>
-											<option value="7">07 (Jul)</option>
-											<option value="8">08 (Aug)</option>
-											<option value="9">09 (Sep)</option>
-											<option value="10">10 (Oct)</option>
-											<option value="11">11 (Nov)</option>
-											<option value="12">12 (Dec)</option>
-										</select>
-									</div>
-									<span class="divider">-</span>
-									<div class="year_select">
-										<select name="exp_year" id="exp_year" data-trigger="change"
-											data-type="name" data-required="true"
-											data-error-message="카드 만료날짜를 입력하세요 ">
-											<option value="1" selected="selected">17 년</option>
-											<option value="2">18 년</option>
-											<option value="3">19 년</option>
-											<option value="4">20 년</option>
-											<option value="5">21 년</option>
-											<option value="6">22 년</option>
-											<option value="7">23 년</option>
-											<option value="8">24 년</option>
-											<option value="9">25 년</option>
-											<option value="10">26 년</option>
-											<option value="11">27 년</option>
-											<option value="12">28 년</option>
-										</select>
-									</div>
-								</div>
-								<label class="exp_date" for="Exp_Date">유효기간</label>
-							</div>
-							<div class="sec_num">
-								<div>
-									<input type="text" name="cvc" value="" id="cvc"
-										placeholder="556" data-trigger="change"
-										data-validation-minlength="3" data-type="name"
-										data-required="true" data-error-message="카드 뒷면의 CVC코드를 입력하세요" />
-									<label for="cvc">CVC</label>
-								</div>
-							</div>
-
 						</div>
 					</div>
 					<div class="right">
@@ -947,13 +924,7 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 								src="https://i.imgur.com/ewMjaHv.png"></span> <span><img
 								src="https://i.imgur.com/3LmmFFV.png"></span>
 						</div>
-						<div class="secured">
-							<img class="lock" src="https://i.imgur.com/hHuibOR.png">
-							<p class="security info">보안관련</p>
-						</div>
 					</div>
-					<input type="button" id="card_check" value="카드 확인">
-
 				</div>
 				<div class="step" id="step4">
 					<div class="number">
@@ -991,56 +962,23 @@ div.go-right input:focus+label, div.go-right textarea:focus+label {
 						<!-- 					상품끝  -->
 						<div class="totals">
 							<span class="subtitle">원가 합계 <span id="subtotal"> </span>원
-							</span> <span class="subtitle">할인(10%)<span id="discount">
-							</span>원
-							</span> <span class="subtitle"> 수량 총합 :<span id="quantity">
+							</span> <span class="subtitle">할인(10%) : <span id="discount">
+							</span> 원
+							</span> <span class="subtitle"> 수량 총합 : <span id="quantity">
 							</span> 개
+							</span> <span class="subtitle">총 주문 금액 : <span id="total">
+							</span> 원
 							</span>
 						</div>
-						<div class="final">
-							<span class="title">총 합계 <span id="total"> </span>원
-							</span>
-						</div>
-
 					</div>
-
-
 					<div class="right" id="reviewed">
-						<div class="billing">
-							<span class="title">구매자 정보 :</span>
-							<div class="address_reviewed">
-								<span class="name"></span> <span class="address"></span> <span
-									class="phone"></span>
-							</div>
-						</div>
-						<div class="shipping">
-							<span class="title">배송지 정보:</span>
-							<div class="address_reviewed">
-								<span class="name"></span> <span class="address"></span> <span
-									class="phone"></span>
-							</div>
-						</div>
-						<div class="payment">
-							<span class="title">결제정보 : </span>
-							<div class="payment_reviewed">
-								<span class="method">Visa</span> <span class="number_hidden">xxxx-xxxx-xxxx-1111</span>
-							</div>
-						</div>
-						<div class="requirement">
-							<span class="title">요구사항 </span>
-							<div class="payment_reviewed">
-
-								<input type="text" placeholder="배송 시 문자 주세요 "
-									id="order_requirement" name="order_requirement" value="ㅁㄴㅇ">
-							</div>
-						</div>
-
+						<input type="text" placeholder="배송시 요청사항을 입력해주세요!"
+							id="order_requirement" name="order_requirement" size="39">
 					</div>
 					<div id="complete">
-						<input type="submit" class="big_button" id="complete" value="주문완료"><span
-							class="sub">결제정보 동의</span>
+						<input type="submit" class="big_button" id="complete" value="주문완료"
+							style="cursor: pointer;">
 					</div>
-					<!-- 			주문정보 확인 끝-->
 				</div>
 			</form:form>
 		</div>

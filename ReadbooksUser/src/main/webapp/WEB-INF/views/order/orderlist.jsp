@@ -28,7 +28,7 @@
 		var table = $('#keywords').DataTable();
 		$("#keywords tbody").on('click', 'tr', function() {
 			var data = table.row(this).data();
-			$("#order_ordernumber").val(data[1]);
+			$("#order_ordernumber").val(data[0]);
 			$("#detailForm").attr({
 				"method" : "get",
 				"action" : "/orderdetail.do"
@@ -129,11 +129,8 @@ div[class='row'] {
 			<table id="keywords">
 				<thead>
 					<tr>
-						<th><span>번호</span></th>
 						<th><span>주문번호</span></th>
 						<th><span>주문일자</span></th>
-						<!-- 						<th><span>주문내역</span></th> -->
-						<!-- 						<th><span>주문금액/수량 </span></th> -->
 						<th><span>주문자</span></th>
 						<th><span>주문상태</span></th>
 					</tr>
@@ -141,11 +138,8 @@ div[class='row'] {
 				<tbody>
 					<c:forEach var="orderlist" items="${orderlist }">
 						<tr>
-							<td>${orderlist.order_number }</td>
 							<td class="lalign">${orderlist.order_ordernumber }</td>
 							<td>${orderlist.order_date }</td>
-							<%-- 							<td>${orderlist.book_name }</td> --%>
-							<%-- 							<td>${orderlist.order_quantity}</td> --%>
 							<td>${orderlist.order_orderer }</td>
 							<td>${orderlist.order_status }</td>
 						</tr>
@@ -161,6 +155,6 @@ div[class='row'] {
 				src="http://image.bandinlunis.com/images/common/2014/btn_top.png"></a>
 		</div>
 	</div>
-	<jsp:include page="../footer.jsp"></jsp:include>
+	<%-- 	<jsp:include page="../footer.jsp"></jsp:include> --%>
 </body>
 </html>

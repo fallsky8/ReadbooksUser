@@ -19,6 +19,30 @@
 <title>장바구니 목록</title>
 <script type="text/javascript">
 	$(function() {
+		$(window).scroll(function() {
+			if ($(this).scrollTop() > 450) {
+				$('.gnb_add_btn').addClass('abs_view');
+				$('.ss_top').show();
+				if (!$('.add_search').is(':visible')) {
+					$('#head').addClass('head_mini');
+				}
+			} else {
+				$('#head').removeClass('head_mini');
+				$('.gnb_add_btn').removeClass('abs_view');
+				$('.ss_top').hide();
+			}
+
+			if ($(this).scrollTop() > 200) {
+				$('#serviceWrap').addClass('ss_fixed');
+			} else {
+				$('#serviceWrap').removeClass('ss_fixed');
+			}
+		});
+		$("#onTop").click(function() {
+			$('html, body').animate({
+				scrollTop : 0
+			}, 350);
+		});
 		$(".btndetail").click(function() {
 			var b_num = $(this).parents("article").attr("data-val");
 			var c_num = $(this).parents("article").attr("data-num");

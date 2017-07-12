@@ -10,9 +10,11 @@
 			from
 			(select
 			((select
-			to_char(sysdate,'YYYYMM') from dual) ||
-			to_char(ROUND(DBMS_RANDOM.VALUE(1, 30),0), '00') ||
-			to_char(ROUND(DBMS_RANDOM.VALUE(1, 23),0), '00') ||
+			to_char(sysdate,'YYMMDD') from dual) ||
+			to_char(ROUND(DBMS_RANDOM.VALUE(0, 59),0), '00') ||
+			to_char(ROUND(DBMS_RANDOM.VALUE(0, 59),0), '00') ||
+			to_char(ROUND(DBMS_RANDOM.VALUE(0, 59),0), '00') ||
+			to_char(ROUND(DBMS_RANDOM.VALUE(0, 59),0), '00') ||
 			to_char(ROUND(DBMS_RANDOM.VALUE(0, 59),0), '00') ||
 			to_char(ROUND(DBMS_RANDOM.VALUE(0, 59),0), '00')) as FROM_DATE
 			from
